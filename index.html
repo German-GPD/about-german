@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f5f7">
+  <meta name="description" content="GERMAN — личный сайт, проекты и ссылки">
+  <meta name="color-scheme" content="light dark">
+  <title>GERMAN — personal space</title>
+
+  <style>
+    /* GERMAN · Single-file personal website */
+    :root {
+      color-scheme: light dark;
+      --accent: #6750e8;
+      --bg: #f5f5f7;
+      --bg-elevated: #ffffff;
+      --text: #19191d;
+      --muted: #777781;
+      --line: rgba(24, 24, 32, .09);
+      --surface: rgba(255, 255, 255, .70);
+      --surface-strong: rgba(255, 255, 255, .88);
+      --shadow: 0 24px 70px rgba(30, 25, 60, .09);
+      --radius: 26px;
+      --ease: cubic-bezier(.2, .75, .25, 1);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0e0e11;
+        --bg-elevated: #151519;
+        --text: #f5f5f7;
+        --muted: #9999a4;
+        --line: rgba(255, 255, 255, .09);
+        --surface: rgba(255, 255, 255, .045);
+        --surface-strong: rgba(27, 27, 33, .88);
+        --shadow: 0 24px 80px rgba(0, 0, 0, .25);
+      }
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(ellipse at 12% 3%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 32rem),
+        radial-gradient(ellipse at 92% 34%, color-mix(in srgb, var(--accent) 7%, transparent), transparent 29rem),
+        var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      transition: background-color .35s ease, color .35s ease;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--accent); color: #fff; }
+    a { color: inherit; }
+    button { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button:focus-visible, a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+    .progress-track { position: fixed; z-index: 1000; inset: 0 0 auto; height: 3px; background: transparent; }
+    .progress-bar { display: block; width: 0%; height: 100%; background: var(--accent); box-shadow: 0 0 14px color-mix(in srgb, var(--accent) 65%, transparent); }
+
+    .site-header {
+      position: sticky;
+      z-index: 100;
+      top: 0;
+      border-bottom: 1px solid transparent;
+      transition: background .25s ease, border-color .25s ease;
+    }
+    .site-header.scrolled {
+      background: color-mix(in srgb, var(--bg) 78%, transparent);
+      border-color: var(--line);
+      backdrop-filter: blur(22px) saturate(150%);
+      -webkit-backdrop-filter: blur(22px) saturate(150%);
+    }
+    .header-inner {
+      width: min(1120px, calc(100% - 44px));
+      min-height: 76px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 11px; text-decoration: none; font-weight: 850; letter-spacing: -.055em; }
+    .brand-mark {
+      display: grid; place-items: center; width: 36px; height: 36px; border-radius: 12px;
+      background: var(--accent); color: white; font-size: 17px; letter-spacing: -.08em;
+      box-shadow: 0 6px 22px color-mix(in srgb, var(--accent) 28%, transparent);
+    }
+    .brand-name { font-size: 16px; }
+    .brand-dot { color: var(--accent); }
+    .nav { display: flex; align-items: center; gap: 7px; }
+    .nav a {
+      color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 650;
+      padding: 10px 13px; border-radius: 12px; transition: color .2s ease, background .2s ease;
+    }
+    .nav a:hover { color: var(--text); background: var(--surface); }
+    .nav .nav-contact { color: white; background: var(--accent); padding-inline: 16px; }
+    .nav .nav-contact:hover { color: white; filter: brightness(1.08); }
+    .menu-toggle { display: none; border: 1px solid var(--line); background: var(--surface); color: var(--text); border-radius: 12px; width: 42px; height: 42px; cursor: pointer; }
+
+    .wrap { width: min(1120px, calc(100% - 44px)); margin-inline: auto; }
+    .hero {
+      min-height: min(760px, calc(100svh - 76px));
+      display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(280px, .85fr);
+      align-items: center; gap: clamp(38px, 7vw, 90px); padding-top: 76px; padding-bottom: 90px;
+    }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--muted); font-size: 11px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; }
+    .eyebrow::before { content: ""; display: block; width: 24px; height: 2px; border-radius: 5px; background: var(--accent); }
+    .hero h1 { margin: 22px 0 0; font-size: clamp(60px, 10vw, 124px); line-height: .86; font-weight: 900; letter-spacing: -.105em; }
+    .hero h1 .accent { color: var(--accent); }
+    .hero-lead { max-width: 510px; margin: 27px 0 0; color: var(--muted); font-size: clamp(16px, 2vw, 19px); line-height: 1.75; }
+    .hero-lead strong { color: var(--text); font-weight: 720; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 11px; margin-top: 30px; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 48px;
+      border: 1px solid var(--line); border-radius: 15px; padding: 0 18px;
+      background: var(--surface); color: var(--text); text-decoration: none; font-size: 13px; font-weight: 750;
+      cursor: pointer; transition: transform .2s var(--ease), background .2s ease, border-color .2s ease, filter .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
+    .button-primary { background: var(--accent); border-color: var(--accent); color: white; box-shadow: 0 10px 28px color-mix(in srgb, var(--accent) 22%, transparent); }
+    .button-primary:hover { background: var(--accent); color: white; filter: brightness(1.08); }
+    .button svg { width: 16px; height: 16px; flex: 0 0 auto; }
+    .hero-meta { display: flex; align-items: center; flex-wrap: wrap; gap: 16px; margin-top: 34px; color: var(--muted); font-size: 12px; }
+    .meta-dot { width: 7px; height: 7px; border-radius: 50%; background: #24b47e; box-shadow: 0 0 0 4px color-mix(in srgb, #24b47e 15%, transparent); }
+    .meta-item { display: inline-flex; align-items: center; gap: 9px; }
+
+    /* Decorative profile card */
+    .hero-art { min-width: 0; position: relative; display: grid; place-items: center; }
+    .art-glow { position: absolute; width: 75%; aspect-ratio: 1; border-radius: 50%; background: var(--accent); filter: blur(90px); opacity: .16; }
+    .profile-card {
+      position: relative; width: min(100%, 390px); padding: 23px; border-radius: 30px; overflow: hidden;
+      background: linear-gradient(145deg, var(--surface-strong), var(--surface)); border: 1px solid var(--line); box-shadow: var(--shadow);
+      transform: rotate(2deg); transition: transform .5s var(--ease), border-color .3s ease;
+      backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+    }
+    .profile-card:hover { transform: rotate(0deg) translateY(-5px); border-color: color-mix(in srgb, var(--accent) 28%, var(--line)); }
+    .card-topline { display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 10px; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+    .live-pill { display: inline-flex; align-items: center; gap: 7px; border: 1px solid var(--line); border-radius: 999px; padding: 7px 10px; letter-spacing: .05em; }
+    .live-pill::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #24b47e; }
+    .monogram {
+      position: relative; display: grid; place-items: center; width: 100%; aspect-ratio: 1.3; margin: 23px 0 20px;
+      border: 1px solid color-mix(in srgb, var(--accent) 22%, var(--line)); border-radius: 22px; overflow: hidden;
+      background: radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--accent) 23%, transparent), transparent 48%), var(--surface);
+    }
+    .monogram::before, .monogram::after { content: ""; position: absolute; border: 1px solid color-mix(in srgb, var(--accent) 32%, transparent); border-radius: 50%; aspect-ratio: 1; width: 65%; }
+    .monogram::after { width: 88%; border-style: dashed; opacity: .5; }
+    .monogram-letter { z-index: 1; color: var(--accent); font-size: clamp(92px, 13vw, 142px); line-height: 1; font-weight: 950; letter-spacing: -.13em; padding-right: .12em; text-shadow: 0 12px 55px color-mix(in srgb, var(--accent) 25%, transparent); }
+    .card-name { font-size: 22px; font-weight: 850; letter-spacing: -.05em; }
+    .card-caption { margin-top: 5px; color: var(--muted); font-size: 12px; }
+    .tech-stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 19px; }
+    .tech-tag { padding: 7px 10px; border: 1px solid var(--line); border-radius: 9px; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; font-weight: 700; }
+    .floating-chip { position: absolute; display: flex; align-items: center; gap: 9px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 16px; background: var(--surface-strong); box-shadow: var(--shadow); backdrop-filter: blur(14px); font-size: 12px; font-weight: 750; animation: float 5s ease-in-out infinite; }
+    .floating-chip .chip-icon { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 9px; background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); font-size: 15px; }
+    .chip-one { top: 12%; right: -5%; }
+    .chip-two { bottom: 10%; left: -9%; animation-delay: -2.3s; }
+
+    .section { padding-top: 78px; padding-bottom: 32px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 22px; margin-bottom: 27px; }
+    .section-kicker { color: var(--accent); text-transform: uppercase; letter-spacing: .15em; font-size: 10px; font-weight: 850; }
+    .section-title { margin: 8px 0 0; font-size: clamp(29px, 5vw, 43px); line-height: 1.08; letter-spacing: -.065em; font-weight: 850; }
+    .section-description { max-width: 410px; color: var(--muted); font-size: 13px; line-height: 1.7; }
+
+    /* Quote */
+    .quote-panel {
+      position: relative; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 24px; overflow: hidden;
+      padding: clamp(24px, 5vw, 42px); border: 1px solid var(--line); border-radius: var(--radius);
+      background: linear-gradient(120deg, color-mix(in srgb, var(--accent) 11%, var(--surface)), var(--surface));
+    }
+    .quote-panel::after { content: "“"; position: absolute; top: -45px; right: 18px; color: color-mix(in srgb, var(--accent) 12%, transparent); font-family: Georgia, serif; font-size: 220px; line-height: 1; pointer-events: none; }
+    .quote-content { z-index: 1; }
+    .quote-label { color: var(--accent); font-size: 10px; font-weight: 850; letter-spacing: .15em; text-transform: uppercase; }
+    .quote-text { max-width: 780px; margin: 17px 0 0; font-size: clamp(23px, 4.5vw, 39px); font-weight: 760; line-height: 1.2; letter-spacing: -.055em; }
+    .quote-foot { display: flex; align-items: center; gap: 10px; margin-top: 22px; color: var(--muted); font-size: 12px; }
+    .quote-foot::before { content: ""; width: 23px; height: 1px; background: var(--accent); }
+    .quote-controls { z-index: 1; display: flex; align-items: center; flex-wrap: wrap; gap: 8px; }
+    .icon-button { display: inline-flex; justify-content: center; align-items: center; width: 43px; height: 43px; border: 1px solid var(--line); border-radius: 14px; color: var(--text); background: var(--surface-strong); cursor: pointer; transition: border-color .2s ease, transform .2s ease, color .2s ease; }
+    .icon-button:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+    .icon-button svg { width: 18px; height: 18px; }
+
+    /* Links */
+    .links-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; }
+    .link-card {
+      position: relative; min-width: 0; display: flex; flex-direction: column; min-height: 165px; padding: 19px;
+      text-decoration: none; background: var(--surface); border: 1px solid var(--line); border-radius: 21px;
+      transition: transform .25s var(--ease), background .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+    .link-card:hover { transform: translateY(-5px); background: var(--surface-strong); border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); box-shadow: 0 15px 38px color-mix(in srgb, var(--accent) 8%, transparent); }
+    .link-card-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .link-icon { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 14px; color: var(--accent); background: color-mix(in srgb, var(--accent) 12%, transparent); font-size: 15px; font-weight: 850; letter-spacing: -.04em; }
+    .link-arrow { color: var(--muted); font-size: 20px; transition: color .2s ease, transform .2s ease; }
+    .link-card:hover .link-arrow { color: var(--accent); transform: translate(2px, -2px); }
+    .link-title { margin-top: 19px; font-size: 15px; font-weight: 800; letter-spacing: -.025em; }
+    .link-description { margin-top: 4px; color: var(--muted); font-size: 12px; overflow-wrap: anywhere; }
+    .link-domain { margin-top: auto; padding-top: 13px; color: color-mix(in srgb, var(--muted) 75%, transparent); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 10px; }
+
+    /* Featured project */
+    .project-card { display: grid; grid-template-columns: minmax(0, 1fr) 190px; align-items: stretch; gap: 22px; padding: clamp(24px, 4vw, 36px); border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); overflow: hidden; }
+    .project-overline { color: var(--accent); text-transform: uppercase; font-size: 10px; letter-spacing: .15em; font-weight: 850; }
+    .project-title { margin: 11px 0 0; font-size: clamp(28px, 4.4vw, 42px); letter-spacing: -.07em; line-height: 1.04; }
+    .project-description { max-width: 610px; margin: 13px 0 0; color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 19px; }
+    .project-tag { padding: 6px 9px; border-radius: 8px; border: 1px solid var(--line); color: var(--muted); font-size: 10px; font-weight: 750; }
+    .project-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 23px; }
+    .project-visual { min-height: 180px; display: grid; place-items: center; position: relative; border: 1px solid color-mix(in srgb, var(--accent) 23%, var(--line)); border-radius: 22px; background: radial-gradient(circle at 50% 40%, color-mix(in srgb, var(--accent) 25%, transparent), transparent 65%), var(--surface); }
+    .project-visual::before, .project-visual::after { content: ""; position: absolute; border: 1px solid color-mix(in srgb, var(--accent) 28%, transparent); border-radius: 24px; width: 115px; height: 145px; transform: rotate(-10deg); }
+    .project-visual::after { transform: rotate(10deg); opacity: .4; }
+    .project-symbol { z-index: 1; display: grid; place-items: center; width: 83px; height: 83px; border-radius: 25px; background: var(--accent); color: white; box-shadow: 0 18px 40px color-mix(in srgb, var(--accent) 30%, transparent); font-size: 32px; font-weight: 900; letter-spacing: -.08em; }
+
+    /* Principles */
+    .principles-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 13px; }
+    .principle { padding: 22px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); }
+    .principle-number { color: var(--accent); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; font-size: 11px; font-weight: 850; }
+    .principle-title { margin: 15px 0 0; font-size: 16px; letter-spacing: -.035em; font-weight: 820; }
+    .principle-text { margin: 8px 0 0; color: var(--muted); font-size: 12px; line-height: 1.75; }
+
+    .closing { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding: 40px 0 45px; margin-top: 68px; border-top: 1px solid var(--line); }
+    .closing-title { font-size: clamp(23px, 4vw, 34px); font-weight: 850; letter-spacing: -.06em; }
+    .closing-text { margin-top: 7px; color: var(--muted); font-size: 13px; }
+    .footer { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 20px 0 27px; border-top: 1px solid var(--line); color: var(--muted); font-size: 11px; }
+    .footer strong { color: var(--text); }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 15px; }
+    .footer a { text-decoration: none; }
+    .footer a:hover { color: var(--accent); }
+    .back-top { position: fixed; z-index: 80; right: 22px; bottom: 22px; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 15px; background: var(--surface-strong); color: var(--accent); box-shadow: var(--shadow); cursor: pointer; opacity: 0; pointer-events: none; transform: translateY(8px); transition: opacity .2s ease, transform .2s ease; backdrop-filter: blur(12px); }
+    .back-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+    .toast { position: fixed; z-index: 500; left: 50%; bottom: 26px; max-width: calc(100% - 36px); padding: 12px 17px; transform: translate(-50%, 14px); opacity: 0; pointer-events: none; border: 1px solid var(--line); border-radius: 13px; background: var(--surface-strong); color: var(--text); box-shadow: var(--shadow); font-size: 12px; font-weight: 750; transition: opacity .22s ease, transform .22s ease; backdrop-filter: blur(16px); }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .reveal.in-view { opacity: 1; transform: translateY(0); }
+    .delay-1 { transition-delay: .07s; }
+    .delay-2 { transition-delay: .14s; }
+    .delay-3 { transition-delay: .21s; }
+    @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+    @keyframes quote-in { from { opacity: .2; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+    .quote-text.changing { animation: quote-in .32s ease both; }
+
+    @media (max-width: 850px) {
+      .hero { grid-template-columns: 1fr; gap: 48px; padding-top: 70px; }
+      .hero-copy { text-align: center; }
+      .hero-copy .eyebrow, .hero-actions, .hero-meta { justify-content: center; }
+      .hero-lead { margin-inline: auto; }
+      .hero-art { width: min(100%, 450px); margin-inline: auto; }
+      .chip-one { right: 0; }
+      .chip-two { left: 0; }
+      .project-card { grid-template-columns: minmax(0, 1fr) 150px; }
+    }
+    @media (max-width: 680px) {
+      .header-inner, .wrap { width: min(100% - 32px, 1120px); }
+      .header-inner { min-height: 68px; }
+      .menu-toggle { display: inline-grid; place-items: center; font-size: 19px; }
+      .nav { display: none; position: absolute; top: calc(100% + 8px); left: 16px; right: 16px; align-items: stretch; flex-direction: column; gap: 4px; padding: 10px; border: 1px solid var(--line); border-radius: 18px; background: var(--surface-strong); box-shadow: var(--shadow); backdrop-filter: blur(22px); }
+      .nav.open { display: flex; }
+      .nav a { padding: 13px 14px; }
+      .nav .nav-contact { text-align: center; }
+      .hero { min-height: auto; padding-top: 66px; padding-bottom: 48px; }
+      .hero h1 { font-size: clamp(62px, 17vw, 94px); }
+      .profile-card { max-width: 355px; }
+      .chip-one { right: -2px; top: 8%; }
+      .chip-two { left: -3px; bottom: 7%; }
+      .section { padding-top: 56px; }
+      .section-heading { align-items: start; flex-direction: column; gap: 9px; }
+      .quote-panel { grid-template-columns: 1fr; align-items: start; }
+      .quote-controls { justify-content: flex-start; }
+      .links-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+      .link-card { min-height: 158px; padding: 15px; border-radius: 18px; }
+      .link-icon { width: 38px; height: 38px; border-radius: 12px; }
+      .project-card { grid-template-columns: 1fr; }
+      .project-visual { min-height: 160px; grid-row: 1; }
+      .principles-grid { grid-template-columns: 1fr; }
+      .principle { padding: 19px; }
+      .closing { align-items: start; flex-direction: column; margin-top: 44px; padding-top: 32px; }
+      .footer { align-items: start; flex-direction: column; }
+    }
+    @media (max-width: 390px) {
+      .links-grid { grid-template-columns: 1fr; }
+      .link-card { min-height: 130px; }
+      .hero-actions .button { width: 100%; }
+      .hero-meta { gap: 12px; }
+      .floating-chip { padding: 9px 10px; font-size: 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="progress-track" aria-hidden="true"><span class="progress-bar" id="progress-bar"></span></div>
+
+  <header class="site-header" id="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#home" aria-label="GERMAN — home">
+        <span class="brand-mark">G.</span><span class="brand-name">GERMAN<span class="brand-dot">.</span></span>
+      </a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="Открыть меню" aria-expanded="false">☰</button>
+      <nav class="nav" id="nav">
+        <a href="#thoughts" data-i18n="navThoughts">Мысли</a>
+        <a href="#links" data-i18n="navLinks">Ссылки</a>
+        <a href="#projects" data-i18n="navProjects">Проект</a>
+        <a href="#about" data-i18n="navAbout">Принципы</a>
+        <a class="nav-contact" href="https://t.me/german_gpd" target="_blank" rel="noopener noreferrer" data-i18n="navContact">Написать ↗</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <div class="eyebrow" data-i18n="heroEyebrow">ЛИЧНОЕ ПРОСТРАНСТВО · 2026</div>
+        <h1>GER<br><span class="accent">MAN.</span></h1>
+        <p class="hero-lead" data-i18n="heroLead">Привет! Это мой уголок в интернете — место для <strong>идей, проектов и всего, что хочется создавать.</strong></p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#projects"><span data-i18n="heroPrimary">Смотреть проект</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a class="button" href="https://t.me/german_gpd" target="_blank" rel="noopener noreferrer"><span data-i18n="heroSecondary">Связаться</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 3 9 15M21 3l-7 18-5-8-8-5 20-5Z"/></svg></a>
+        </div>
+        <div class="hero-meta">
+          <span class="meta-item"><span class="meta-dot"></span><span data-i18n="metaStatus">Сайт работает</span></span>
+          <span class="meta-item"><span data-i18n="metaLocalTime">ТВОЁ МЕСТНОЕ ВРЕМЯ</span> <strong id="local-time">--:--</strong></span>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-label="GERMAN profile card">
+        <div class="art-glow"></div>
+        <div class="floating-chip chip-one"><span class="chip-icon">✦</span><span data-i18n="chipCreative">Идеи в процессе</span></div>
+        <div class="profile-card">
+          <div class="card-topline"><span data-i18n="cardLabel">ЦИФРОВОЕ ПРОСТРАНСТВО</span><span class="live-pill">ONLINE</span></div>
+          <div class="monogram"><span class="monogram-letter">G</span></div>
+          <div class="card-name">GERMAN<span class="brand-dot">.</span></div>
+          <div class="card-caption" data-i18n="cardCaption">Создаю. Учусь. Пробую снова.</div>
+          <div class="tech-stack"><span class="tech-tag">HTML</span><span class="tech-tag">CSS</span><span class="tech-tag">JavaScript</span><span class="tech-tag">IDEAS.exe</span></div>
+        </div>
+        <div class="floating-chip chip-two"><span class="chip-icon">⌘</span><span data-i18n="chipBuild">Build mode: ON</span></div>
+      </div>
+    </section>
+
+    <section class="section wrap reveal" id="thoughts">
+      <div class="section-heading">
+        <div><div class="section-kicker" data-i18n="thoughtKicker">Немного мыслей</div><h2 class="section-title" data-i18n="thoughtTitle">Слова, которые стоит сохранить.</h2></div>
+        <p class="section-description" data-i18n="thoughtDescription">Короткие напоминания о творчестве, коде и движении вперёд. Нажми на стрелку — будет новая мысль.</p>
+      </div>
+      <div class="quote-panel">
+        <div class="quote-content">
+          <div class="quote-label" data-i18n="quoteLabel">ЗАМЕТКА ДНЯ · НЕБОЛЬШОЕ НАПОМИНАНИЕ</div>
+          <blockquote class="quote-text" id="quote-text">Не обязательно быть лучшим сегодня. Достаточно стать сильнее, чем вчера.</blockquote>
+          <div class="quote-foot" id="quote-foot">Процесс важнее идеального старта.</div>
+        </div>
+        <div class="quote-controls">
+          <button class="icon-button" id="copy-quote" type="button" data-title-ru="Скопировать цитату" data-title-en="Copy quote" aria-label="Скопировать цитату" title="Скопировать цитату">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"/></svg>
+          </button>
+          <button class="icon-button" id="next-quote" type="button" data-title-ru="Следующая мысль" data-title-en="Next thought" aria-label="Следующая мысль" title="Следующая мысль">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5l2 2"/><path d="M20 4v5h-5M20 12a8 8 0 0 1-14 5l-2-2"/><path d="M4 20v-5h5"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap reveal" id="links">
+      <div class="section-heading">
+        <div><div class="section-kicker" data-i18n="linksKicker">Найти меня</div><h2 class="section-title" data-i18n="linksTitle">Мои ссылки.</h2></div>
+        <p class="section-description" data-i18n="linksDescription">Сообщества, проекты и способы связаться. Всё важное — в одном месте.</p>
+      </div>
+      <div class="links-grid">
+        <a class="link-card" href="https://discord.com/invite/mTkQtrHABz" target="_blank" rel="noopener noreferrer">
+          <div class="link-card-top"><span class="link-icon">D.</span><span class="link-arrow">↗</span></div><div class="link-title">Discord</div><div class="link-description" data-i18n="discordDesc">Залетай в наше сообщество</div><div class="link-domain">discord.com</div>
+        </a>
+        <a class="link-card" href="https://t.me/redfox_g56" target="_blank" rel="noopener noreferrer">
+          <div class="link-card-top"><span class="link-icon">RF</span><span class="link-arrow">↗</span></div><div class="link-title">RedFox G56</div><div class="link-description" data-i18n="redfoxDesc">Telegram-канал</div><div class="link-domain">t.me/redfox_g56</div>
+        </a>
+        <a class="link-card" href="https://german-gpd.github.io/school-calc/" target="_blank" rel="noopener noreferrer">
+          <div class="link-card-top"><span class="link-icon">SC</span><span class="link-arrow">↗</span></div><div class="link-title">School Calc</div><div class="link-description" data-i18n="schoolDesc">Мой проект для школьных оценок</div><div class="link-domain">german-gpd.github.io</div>
+        </a>
+        <a class="link-card" href="https://t.me/german_gpd" target="_blank" rel="noopener noreferrer">
+          <div class="link-card-top"><span class="link-icon">TG</span><span class="link-arrow">↗</span></div><div class="link-title" data-i18n="contactTitle">Написать мне</div><div class="link-description">@german_gpd</div><div class="link-domain">t.me/german_gpd</div>
+        </a>
+        <a class="link-card" href="https://t.me/german_me" target="_blank" rel="noopener noreferrer">
+          <div class="link-card-top"><span class="link-icon">GM</span><span class="link-arrow">↗</span></div><div class="link-title" data-i18n="personalTelegram">Личный Telegram</div><div class="link-description">@german_me</div><div class="link-domain">t.me/german_me</div>
+        </a>
+        <a class="link-card" href="https://s.team/p/dpmh-htfd/QPKNWMQD" target="_blank" rel="noopener noreferrer">
+          <div class="link-card-top"><span class="link-icon">S.</span><span class="link-arrow">↗</span></div><div class="link-title">Steam</div><div class="link-description" data-i18n="steamDesc">Мой игровой профиль</div><div class="link-domain">steamcommunity.com</div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section wrap reveal" id="projects">
+      <div class="section-heading">
+        <div><div class="section-kicker" data-i18n="projectKicker">То, что я создаю</div><h2 class="section-title" data-i18n="projectHeading">Из идеи — в проект.</h2></div>
+        <p class="section-description" data-i18n="projectHeadDesc">Небольшие шаги тоже ведут к большим результатам.</p>
+      </div>
+      <article class="project-card">
+        <div class="project-copy">
+          <div class="project-overline" data-i18n="featuredLabel">FEATURED PROJECT · 001</div>
+          <h3 class="project-title">School Calc<span class="brand-dot">.</span></h3>
+          <p class="project-description" data-i18n="projectDescription">Калькулятор школьных оценок с собственным характером, расчётом среднего балла и идеями для улучшения результата. Один из проектов, который постепенно становится лучше.</p>
+          <div class="project-tags"><span class="project-tag">HTML</span><span class="project-tag">CSS</span><span class="project-tag">JavaScript</span><span class="project-tag" data-i18n="projectTagWeb">WEB PROJECT</span></div>
+          <div class="project-actions"><a class="button button-primary" href="https://german-gpd.github.io/school-calc/" target="_blank" rel="noopener noreferrer"><span data-i18n="openProject">Открыть проект</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a><a class="button" href="https://github.com/german-gpd" target="_blank" rel="noopener noreferrer"><span data-i18n="githubLink">GitHub</span><span aria-hidden="true">↗</span></a></div>
+        </div>
+        <div class="project-visual" aria-hidden="true"><div class="project-symbol">SC</div></div>
+      </article>
+    </section>
+
+    <section class="section wrap reveal" id="about">
+      <div class="section-heading">
+        <div><div class="section-kicker" data-i18n="principlesKicker">Мой подход</div><h2 class="section-title" data-i18n="principlesTitle">Три простые идеи.</h2></div>
+        <p class="section-description" data-i18n="principlesDescription">Не правила на всю жизнь. Просто ориентиры, которые помогают не стоять на месте.</p>
+      </div>
+      <div class="principles-grid">
+        <article class="principle"><div class="principle-number">01 / CREATE</div><h3 class="principle-title" data-i18n="principle1Title">Сначала сделай</h3><p class="principle-text" data-i18n="principle1Text">Не жди идеального момента. Начни с того, что есть, а улучшения придут по ходу.</p></article>
+        <article class="principle"><div class="principle-number">02 / LEARN</div><h3 class="principle-title" data-i18n="principle2Title">Учись на практике</h3><p class="principle-text" data-i18n="principle2Text">Ошибки — не конец проекта. Часто это просто подсказка, что попробовать дальше.</p></article>
+        <article class="principle"><div class="principle-number">03 / IMPROVE</div><h3 class="principle-title" data-i18n="principle3Title">Делай по-своему</h3><p class="principle-text" data-i18n="principle3Text">Вдохновляйся чужими работами, но добавляй собственный характер и детали.</p></article>
+      </div>
+    </section>
+
+    <section class="wrap closing reveal">
+      <div><div class="closing-title" data-i18n="closingTitle">Есть идея? Давай на связи.</div><p class="closing-text" data-i18n="closingText">Для вопросов, предложений и просто общения.</p></div>
+      <a class="button button-primary" href="https://t.me/german_gpd" target="_blank" rel="noopener noreferrer"><span data-i18n="closingButton">Написать в Telegram</span><span aria-hidden="true">↗</span></a>
+    </section>
+  </main>
+
+  <footer class="footer wrap">
+    <div>© <span id="year"></span> <strong>GERMAN</strong><span class="brand-dot">.</span> <span data-i18n="footerMade">Сделано с любопытством.</span></div>
+    <div class="footer-links"><a href="#home" data-i18n="footerTop">Наверх ↑</a><a href="https://github.com/german-gpd" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+  </footer>
+
+  <button class="back-top" id="back-top" type="button" aria-label="Наверх" title="Наверх">↑</button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    "use strict";
+
+    // Accent changes on each fresh page load.
+    const accentColors = [
+      "#6750e8", "#3478f6", "#00a884", "#e94b8a", "#f07836", "#a855f7",
+      "#d4a017", "#16a6b6", "#e5484d", "#5e6ad2", "#12a594", "#d946ef",
+      "#e05d44", "#3b82a0", "#8b6bd6", "#1f9d75"
+    ];
+    const translations = {
+      ru: {
+        navThoughts: "Мысли", navLinks: "Ссылки", navProjects: "Проект", navAbout: "Принципы", navContact: "Написать ↗",
+        heroEyebrow: "ЛИЧНОЕ ПРОСТРАНСТВО · 2026",
+        heroLead: "Привет! Это мой уголок в интернете — место для идей, проектов и всего, что хочется создавать.",
+        heroPrimary: "Смотреть проект", heroSecondary: "Связаться", metaStatus: "Сайт работает", metaLocalTime: "ТВОЁ МЕСТНОЕ ВРЕМЯ",
+        chipCreative: "Идеи в процессе", cardLabel: "ЦИФРОВОЕ ПРОСТРАНСТВО", cardCaption: "Создаю. Учусь. Пробую снова.", chipBuild: "Build mode: ON",
+        thoughtKicker: "Немного мыслей", thoughtTitle: "Слова, которые стоит сохранить.", thoughtDescription: "Короткие напоминания о творчестве, коде и движении вперёд. Нажми на стрелку — будет новая мысль.",
+        quoteLabel: "ЗАМЕТКА ДНЯ · НЕБОЛЬШОЕ НАПОМИНАНИЕ",
+        linksKicker: "Найти меня", linksTitle: "Мои ссылки.", linksDescription: "Сообщества, проекты и способы связаться. Всё важное — в одном месте.",
+        discordDesc: "Залетай в наше сообщество", redfoxDesc: "Telegram-канал", schoolDesc: "Мой проект для школьных оценок", contactTitle: "Написать мне", personalTelegram: "Личный Telegram", steamDesc: "Мой игровой профиль",
+        projectKicker: "То, что я создаю", projectHeading: "Из идеи — в проект.", projectHeadDesc: "Небольшие шаги тоже ведут к большим результатам.", featuredLabel: "FEATURED PROJECT · 001",
+        projectDescription: "Калькулятор школьных оценок с собственным характером, расчётом среднего балла и идеями для улучшения результата. Один из проектов, который постепенно становится лучше.", projectTagWeb: "WEB PROJECT", openProject: "Открыть проект", githubLink: "GitHub",
+        principlesKicker: "Мой подход", principlesTitle: "Три простые идеи.", principlesDescription: "Не правила на всю жизнь. Просто ориентиры, которые помогают не стоять на месте.",
+        principle1Title: "Сначала сделай", principle1Text: "Не жди идеального момента. Начни с того, что есть, а улучшения придут по ходу.",
+        principle2Title: "Учись на практике", principle2Text: "Ошибки — не конец проекта. Часто это просто подсказка, что попробовать дальше.",
+        principle3Title: "Делай по-своему", principle3Text: "Вдохновляйся чужими работами, но добавляй собственный характер и детали.",
+        closingTitle: "Есть идея? Давай на связи.", closingText: "Для вопросов, предложений и просто общения.", closingButton: "Написать в Telegram", footerMade: "Сделано с любопытством.", footerTop: "Наверх ↑",
+        copied: "Цитата скопирована", copyTitle: "Скопировать цитату", copyFailed: "Не удалось скопировать автоматически", menuOpen: "Открыть меню", menuClose: "Закрыть меню", backTop: "Наверх"
+      },
+      en: {
+        navThoughts: "Thoughts", navLinks: "Links", navProjects: "Project", navAbout: "Principles", navContact: "Say hello ↗",
+        heroEyebrow: "PERSONAL SPACE · 2026",
+        heroLead: "Hey! This is my corner of the internet — a place for ideas, projects, and things I want to build.",
+        heroPrimary: "Explore project", heroSecondary: "Get in touch", metaStatus: "Website is running", metaLocalTime: "YOUR LOCAL TIME",
+        chipCreative: "Ideas in progress", cardLabel: "DIGITAL SPACE", cardCaption: "Build. Learn. Try again.", chipBuild: "Build mode: ON",
+        thoughtKicker: "A few thoughts", thoughtTitle: "Words worth keeping.", thoughtDescription: "Small reminders about creativity, code, and moving forward. Hit the arrow for another thought.",
+        quoteLabel: "NOTE OF THE DAY · A SMALL REMINDER",
+        linksKicker: "Find me", linksTitle: "My links.", linksDescription: "Communities, projects, and ways to reach me. The important stuff in one place.",
+        discordDesc: "Come hang out with the community", redfoxDesc: "Telegram channel", schoolDesc: "My school grade calculator", contactTitle: "Message me", personalTelegram: "Personal Telegram", steamDesc: "My gaming profile",
+        projectKicker: "Things I build", projectHeading: "From idea to project.", projectHeadDesc: "Small steps can still lead to big things.", featuredLabel: "FEATURED PROJECT · 001",
+        projectDescription: "A school grade calculator with its own personality, average-grade calculations, and ideas to help improve results. One of the projects that keeps getting better over time.", projectTagWeb: "WEB PROJECT", openProject: "Open project", githubLink: "GitHub",
+        principlesKicker: "My approach", principlesTitle: "Three simple ideas.", principlesDescription: "Not rules for life. Just a few signposts to help keep moving.",
+        principle1Title: "Make a start", principle1Text: "Don't wait for the perfect moment. Start with what you have and improve as you go.",
+        principle2Title: "Learn by doing", principle2Text: "A mistake isn't the end of a project. Often, it's a hint about what to try next.",
+        principle3Title: "Make it yours", principle3Text: "Get inspired by other people's work, then add your own character and details.",
+        closingTitle: "Got an idea? Let's talk.", closingText: "Questions, suggestions, or just a friendly hello.", closingButton: "Message on Telegram", footerMade: "Made with curiosity.", footerTop: "Back to top ↑",
+        copied: "Quote copied", copyTitle: "Copy quote", copyFailed: "Could not copy automatically", menuOpen: "Open menu", menuClose: "Close menu", backTop: "Back to top"
+      }
+    };
+
+    const quotes = {
+      ru: [
+        { text: "Не обязательно быть лучшим сегодня. Достаточно стать сильнее, чем вчера.", foot: "Процесс важнее идеального старта." },
+        { text: "Большие проекты начинаются не с идеальных условий, а с первого сохранённого файла.", foot: "Открой редактор. Сделай первый шаг." },
+        { text: "Код превращает мысли в вещи, которыми можно пользоваться.", foot: "Создавай не только ради идеи — создавай ради людей." },
+        { text: "Не сравнивай свой первый шаг с чьим-то сотым километром.", foot: "У каждого свой темп и свой маршрут." },
+        { text: "Если не получилось с первого раза — поздравляю, ты уже чему-то научился.", foot: "Ошибка — это данные для следующей попытки." },
+        { text: "Хороший дизайн не кричит. Он просто делает всё понятнее.", foot: "Меньше шума. Больше смысла." },
+        { text: "Любопытство — отличный двигатель. Главное, иногда нажимать кнопку «Запустить».", foot: "Идея становится реальной через действие." },
+        { text: "Версия 1.0 не обязана быть идеальной. Она обязана существовать.", foot: "Сначала рабочее. Потом прекрасное." },
+        { text: "Не нужно знать весь путь, чтобы сделать следующий шаг.", foot: "Разберёшься по дороге." },
+        { text: "Свой стиль появляется, когда перестаёшь бояться пробовать.", foot: "Экспериментируй. Оставляй лучшее." }
+      ],
+      en: [
+        { text: "You don't have to be the best today. Just be better than you were yesterday.", foot: "The process matters more than a perfect start." },
+        { text: "Big projects don't start with perfect conditions. They start with the first saved file.", foot: "Open the editor. Take the first step." },
+        { text: "Code turns thoughts into things people can actually use.", foot: "Don't just build for the idea — build for people." },
+        { text: "Don't compare your first step to someone else's hundredth mile.", foot: "Everyone has their own pace and route." },
+        { text: "Didn't get it right the first time? Congrats — you just learned something.", foot: "A mistake is data for the next attempt." },
+        { text: "Good design doesn't shout. It quietly makes everything clearer.", foot: "Less noise. More meaning." },
+        { text: "Curiosity is a great engine. Just remember to press Run sometimes.", foot: "Ideas become real through action." },
+        { text: "Version 1.0 doesn't need to be perfect. It needs to exist.", foot: "Working first. Beautiful next." },
+        { text: "You don't need to know the whole route to take the next step.", foot: "You'll figure it out along the way." },
+        { text: "Your style begins to show when you stop being afraid to try.", foot: "Experiment. Keep what works." }
+      ]
+    };
+
+    let currentLanguage = (navigator.language || "en").toLowerCase().startsWith("ru") ? "ru" : "en";
+    let quoteIndex = -1;
+    let toastTimer;
+
+    function setRandomAccent() {
+      const color = accentColors[Math.floor(Math.random() * accentColors.length)];
+      document.documentElement.style.setProperty("--accent", color);
+    }
+
+    function applyLanguage(language) {
+      currentLanguage = language;
+      document.documentElement.lang = language;
+      const dictionary = translations[language];
+      document.querySelectorAll("[data-i18n]").forEach((element) => {
+        const value = dictionary[element.dataset.i18n];
+        if (value !== undefined) element.textContent = value;
+      });
+      document.querySelector('meta[name="description"]').content = language === "ru"
+        ? "GERMAN — личный сайт, проекты и ссылки"
+        : "GERMAN — personal website, projects and links";
+      document.getElementById("menu-toggle").setAttribute("aria-label", dictionary.menuOpen);
+      document.getElementById("back-top").setAttribute("aria-label", dictionary.backTop);
+      document.getElementById("back-top").title = dictionary.backTop;
+      document.getElementById("copy-quote").title = dictionary.copyTitle;
+      document.getElementById("copy-quote").setAttribute("aria-label", language === "ru" ? "Скопировать цитату" : "Copy quote");
+      document.getElementById("next-quote").title = language === "ru" ? "Следующая мысль" : "Next thought";
+      document.getElementById("next-quote").setAttribute("aria-label", document.getElementById("next-quote").title);
+      showQuote(true);
+      updateClock();
+    }
+
+    function showQuote(initial = false) {
+      const list = quotes[currentLanguage];
+      let nextIndex = Math.floor(Math.random() * list.length);
+      if (!initial && list.length > 1) {
+        while (nextIndex === quoteIndex) nextIndex = Math.floor(Math.random() * list.length);
+      }
+      quoteIndex = nextIndex;
+      const quote = list[quoteIndex];
+      const text = document.getElementById("quote-text");
+      text.classList.remove("changing");
+      // Force the browser to restart the tiny text transition.
+      void text.offsetWidth;
+      text.textContent = quote.text;
+      text.classList.add("changing");
+      document.getElementById("quote-foot").textContent = quote.foot;
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 2200);
+    }
+
+    async function copyQuote() {
+      const quote = document.getElementById("quote-text").textContent;
+      const foot = document.getElementById("quote-foot").textContent;
+      const text = `“${quote}”\n${foot}`;
+      try {
+        if (navigator.clipboard && window.isSecureContext) {
+          await navigator.clipboard.writeText(text);
+        } else {
+          const field = document.createElement("textarea");
+          field.value = text;
+          field.setAttribute("readonly", "");
+          field.style.position = "fixed";
+          field.style.opacity = "0";
+          document.body.appendChild(field);
+          field.select();
+          const success = document.execCommand("copy");
+          field.remove();
+          if (!success) throw new Error("copy failed");
+        }
+        showToast(translations[currentLanguage].copied);
+      } catch (error) {
+        showToast(translations[currentLanguage].copyFailed);
+      }
+    }
+
+    function updateThemeColor() {
+      const dark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.querySelector('meta[name="theme-color"]').content = dark ? "#0e0e11" : "#f5f5f7";
+    }
+
+    function updateClock() {
+      const locale = currentLanguage === "ru" ? "ru-RU" : "en-GB";
+      document.getElementById("local-time").textContent = new Intl.DateTimeFormat(locale, {
+        hour: "2-digit", minute: "2-digit"
+      }).format(new Date());
+      document.getElementById("year").textContent = new Date().getFullYear();
+    }
+
+    function updateScrollUI() {
+      const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+      document.getElementById("progress-bar").style.width = `${progress}%`;
+      document.getElementById("site-header").classList.toggle("scrolled", window.scrollY > 8);
+      document.getElementById("back-top").classList.toggle("visible", window.scrollY > 550);
+    }
+
+    function setupReveal() {
+      const elements = document.querySelectorAll(".reveal");
+      if (!("IntersectionObserver" in window)) {
+        elements.forEach((element) => element.classList.add("in-view"));
+        return;
+      }
+      const observer = new IntersectionObserver((entries, instance) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            instance.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+      elements.forEach((element) => observer.observe(element));
+    }
+
+    function setupMenu() {
+      const button = document.getElementById("menu-toggle");
+      const nav = document.getElementById("nav");
+      function closeMenu() {
+        nav.classList.remove("open");
+        button.setAttribute("aria-expanded", "false");
+        button.setAttribute("aria-label", translations[currentLanguage].menuOpen);
+        button.textContent = "☰";
+      }
+      button.addEventListener("click", () => {
+        const isOpen = nav.classList.toggle("open");
+        button.setAttribute("aria-expanded", String(isOpen));
+        button.setAttribute("aria-label", isOpen ? translations[currentLanguage].menuClose : translations[currentLanguage].menuOpen);
+        button.textContent = isOpen ? "×" : "☰";
+      });
+      nav.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+      window.addEventListener("resize", () => { if (window.innerWidth > 680) closeMenu(); });
+    }
+
+    document.getElementById("next-quote").addEventListener("click", () => showQuote());
+    document.getElementById("copy-quote").addEventListener("click", copyQuote);
+    document.getElementById("back-top").addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+    window.addEventListener("scroll", updateScrollUI, { passive: true });
+    window.addEventListener("resize", updateScrollUI, { passive: true });
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", updateThemeColor);
+
+    // Start everything. The page stays completely self-contained: no libraries or external assets.
+    setRandomAccent();
+    applyLanguage(currentLanguage);
+    updateThemeColor();
+    updateScrollUI();
+    setupReveal();
+    setupMenu();
+    setInterval(updateClock, 15000);
+  </script>
+</body>
+</html>

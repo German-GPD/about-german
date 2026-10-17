@@ -45,4 +45,32 @@
       history.replaceState(null, "", link.getAttribute("href"));
     });
   });
+
+  // Pixel-hover typography: each glyph switches to the pixel font on hover.
+  // Screen readers keep the original text through aria-label.
+  const pixelTargets = "h1, h2, h3, .logo, .section-kicker, .card-label, .device-chip, .skill-level, .case-number, .game-franchises span, .tag, .btn";
+  document.querySelectorAll(pixelTargets).forEach((element) => {
+    if (element.dataset.pixelLetters === "true") return;
+    const originalText = element.textContent;
+    if (!originalText || !originalText.trim()) return;
+    if (!element.hasAttribute("aria-label")) element.setAttribute("aria-label", originalText.replace(/\s+/g, " ").trim());
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) {
+      if (walker.currentNode.nodeValue) nodes.push(walker.currentNode);
+    }
+    nodes.forEach((node) => {
+      const fragment = document.createDocumentFragment();
+      for (const character of node.nodeValue) {
+        const glyph = document.createElement("span");
+        glyph.className = "pixel-glyph";
+        glyph.setAttribute("aria-hidden", "true");
+        glyph.textContent = character === " " ? "\u00a0" : character;
+        fragment.appendChild(glyph);
+      }
+      node.parentNode.replaceChild(fragment, node);
+    });
+    element.dataset.pixelLetters = "true";
+  });
+
 })();

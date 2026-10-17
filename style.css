@@ -385,3 +385,44 @@ section{scroll-margin-top:92px}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee-track{animation:none!important}.case-study,.project,.card,.contact{transition:none!important}}
 
 @media(max-width:430px){.status{display:none}.navbar nav{gap:8px}.navbar .btn{font-size:11px;padding:9px 10px}}
+
+
+/* Expanded device catalog, tool stack and gaming profile — original pixel GPD style */
+.device-catalog{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:18px;align-items:stretch}
+.device-catalog>.device-card{height:100%;padding:18px}
+.device-mini-icon{display:grid;place-items:center;width:56px;height:48px;margin-bottom:15px;background:var(--surface-2);border:2px solid var(--line);box-shadow:3px 3px 0 var(--violet);color:var(--amber);font:10px 'Press Start 2P',monospace}
+.device-catalog .device-chip{font-size:8px;overflow-wrap:anywhere}
+.device-catalog .device-card h3{margin:12px 0 8px;line-height:1.4}
+.device-catalog .device-card p{font-size:13px;line-height:1.65}
+.device-pills,.tool-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+.device-pills span,.tool-tags span{font-size:10px;line-height:1.4;padding:6px 8px;border:1px solid var(--line);background:var(--surface-2);color:var(--muted)}
+.spec-list.compact{width:100%;margin-top:12px}
+.spec-list.compact div{font-size:11px;padding:9px 0}
+.spec-list.compact strong{font-size:11px}
+.upgrade-build{display:grid;grid-template-columns:minmax(0,1fr) minmax(240px,.85fr);gap:22px;align-items:center;padding:22px;margin-top:18px;background:var(--surface);border:2px dashed var(--violet);box-shadow:5px 5px 0 var(--line)}
+.upgrade-build h3{font-size:18px;margin:12px 0 8px}
+.upgrade-build p{font-size:13px;line-height:1.65;color:var(--muted);margin:0;max-width:600px}
+.upgrade-specs{display:grid;gap:9px}
+.upgrade-specs span{display:flex;flex-direction:column;gap:5px;padding:11px 12px;background:var(--surface-2);border-left:3px solid var(--cyan);font-size:10px;color:var(--muted)}
+.upgrade-specs b{font-size:12px;color:var(--text);line-height:1.5}
+.toolkit-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.toolkit-grid>.card{height:100%;padding:22px;min-width:0;display:flex;flex-direction:column}
+.toolkit-grid>.card h3{font-size:17px;line-height:1.4;margin:17px 0 9px}
+.toolkit-grid>.card p{font-size:13px;line-height:1.7;color:var(--muted);margin:0}
+.toolkit-grid .tool-tags{margin-top:auto;padding-top:15px}
+.gaming-panel{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:22px;margin-top:20px;padding:22px;border:2px solid var(--line);background:var(--surface);box-shadow:5px 5px 0 var(--amber)}
+.gaming-head h3{font-size:19px;line-height:1.4;margin:14px 0 8px}
+.gaming-head p{font-size:13px;line-height:1.7;color:var(--muted);margin:0}
+.gaming-content{display:flex;flex-direction:column;gap:16px;min-width:0}
+.game-franchises{display:flex;flex-wrap:wrap;gap:8px}
+.game-franchises span{padding:8px 10px;border:1px solid var(--line);background:var(--surface-2);font:8px 'Press Start 2P',monospace;color:var(--cyan);line-height:1.7}
+.gaming-platforms{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.gaming-platforms>div{display:flex;flex-direction:column;align-items:flex-start;gap:7px;padding:14px;border:1px solid var(--line);min-width:0}
+.gaming-platforms b{font:10px 'Press Start 2P',monospace;color:var(--amber)}
+.gaming-platforms span{font-size:12px;line-height:1.55;color:var(--muted)}
+.gaming-platforms a{font-size:12px;color:var(--cyan);text-underline-offset:3px}
+.toolkit-grid .card,.device-catalog .device-card{transition:transform .18s,box-shadow .18s,border-color .18s}
+.toolkit-grid .card:hover{transform:translate(2px,2px);box-shadow:3px 3px 0 var(--cyan);border-color:var(--cyan)}
+@media(max-width:1000px){.device-catalog{grid-template-columns:repeat(2,minmax(0,1fr))}.toolkit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.gaming-panel{grid-template-columns:1fr}}
+@media(max-width:600px){.device-catalog,.toolkit-grid{grid-template-columns:1fr}.upgrade-build{grid-template-columns:1fr;padding:18px}.gaming-panel{padding:17px}.gaming-platforms{grid-template-columns:1fr}.device-catalog>.device-card{padding:17px}}
+@media(prefers-reduced-motion:reduce){.toolkit-grid .card,.device-catalog .device-card{transition:none}}

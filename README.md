@@ -14,32 +14,43 @@
 - Сохранён оригинальный GPD-стиль: пиксельные формы, резкие тени, сетка, цветные акценты и ретро-детали.
 - Отдельные `index.html`, `style.css`, `script.js`.
 - Интерфейс только на русском языке; светлая и тёмная тема подстраиваются под устройство.
-- Разделы о навыках, реальных проектах, рабочем компьютере и мониторах.
-- Описание AI-assisted workflow: ChatGPT, Claude от Anthropic, Mistral Vibe, а также Qwen, Perplexity, Gemini и Copilot.
-- Инструментальные связки: GitHub + GitHub Pages, DuckDuckGo Search, Google Fonts и социальные контакты.
+- Разделы о проектах, практическом опыте, навыках, устройствах, программах, играх и AI-assisted workflow.
+- Техника: основной ПК, MacBook Air M1, Acer Aspire A315-53G на Fedora, Samsung Galaxy S25+ и Galaxy S20 FE; также два монитора.
+- Основной ПК указан по текущей конфигурации; RTX 3060 Ti и 16 GB DDR5 вынесены отдельно как профиль желаемого апгрейда, а не как установленное железо.
+- Технологии: HTML5, CSS3, JavaScript, Vue, TypeScript (изучаю), Python, PHP (изучаю), Bash, SQL/SQLite, JSON, REST API, Canvas API, Git, GitHub, Linux/Fedora, Windows, responsive UI и основы SEO.
+- Софт: Visual Studio Code, JetBrains IDE, GitHub, Figma, Canva, Adobe, DaVinci Resolve, GIMP и Microsoft Office 2025.
+- Игры и досуг: Mafia, Grand Theft Auto, Far Cry, Just Cause и похожие open-world игры; Steam и Hydra.
 - Анимации появления и переходы с поддержкой `prefers-reduced-motion`.
 - Раздел с тремя кейсами и встроенная мини-игра GPD Pixel Run.
 - SEO-метаданные, Schema.org, `robots.txt` и `sitemap.xml`.
 
 ### Навыки и кейсы
-- **Web:** HTML, CSS, JavaScript, адаптивные интерфейсы.
-- **Изучаю и исследую:** Vue, Python, PHP, Bash, Linux.
+- **Web:** HTML5, CSS3, JavaScript, Vue и адаптивные интерфейсы.
+- **Дополнительные технологии:** TypeScript, Python, PHP, Bash, SQL/SQLite, JSON, REST API, Canvas API и Linux/Fedora — практика и изучение в разной степени.
 - **UI/UX:** структура страниц, визуальная иерархия, доступность и мобильный опыт.
-- **Релизы:** Git, GitHub, GitHub Pages, README, базовая SEO-подготовка.
+- **Релизы:** Git, GitHub, GitHub Pages, README и базовая SEO-подготовка.
+- **Инструменты:** VS Code, JetBrains, Figma, Canva, Adobe, DaVinci Resolve, GIMP, Microsoft Office 2025.
 - **School Calc:** школьный калькулятор оценок с несколькими системами оценивания и маскотом Gera.
 - **Cash Converter:** проект конвертера валют и показателей, в котором прорабатываются визуальная система и графики.
 - **GPD portfolio:** личный сайт и эксперименты с интерфейсом.
 
 Уровни навыков описаны как практика и обучение, а не как профессиональные сертификаты или выдуманный стаж.
 
-### Рабочий сетап
-- Intel Core i5-12400F
-- NVIDIA GeForce RTX 3050 8 GB
-- 16 GB DDR4
-- 1 TB NVMe SSD
-- Windows 11
-- Основной монитор: 2560×1440, 200 Hz
-- Второй вертикальный монитор: Full HD, 100 Hz
+### Устройства
+- **Основной ПК:** Intel Core i5-12400F, NVIDIA GeForce RTX 3050 8 GB, 16 GB DDR4, 1 TB NVMe SSD, Windows 11.
+- **MacBook Air M1:** Apple Silicon M1, macOS.
+- **Acer Aspire A315-53G:** Intel Core i3-7020U, 8 GB DDR4, 250 GB M.2 SSD, Fedora Linux.
+- **Смартфоны:** Samsung Galaxy S25+ и Samsung Galaxy S20 FE.
+- **Мониторы:** основной 2560×1440, 200 Hz; второй вертикальный Full HD, 100 Hz.
+
+### Профиль желаемого апгрейда
+- NVIDIA GeForce RTX 3060 Ti 8 GB.
+- 16 GB DDR5 RAM.
+- Быстрый NVMe SSD.
+- Это целевой вариант, не заявленный как установленная конфигурация текущего ПК.
+
+### Игры
+Люблю Mafia, Grand Theft Auto, Far Cry, Just Cause и похожие игры с открытым миром. Для игр использую Steam; Hydra также присутствует в моём наборе лаунчеров.
 
 ### Подход к ПО
 Предпочитаю открытое ПО, прозрачность и контроль над инструментами. При этом честно отмечаю, что иногда приходится пользоваться проприетарными сервисами или Windows, когда это необходимо.

@@ -429,7 +429,8 @@ section{scroll-margin-top:92px}
 
 
 /* Letter-by-letter pixel hover: playful, quick, and accessible. */
-.pixel-glyph{display:inline-block;white-space:pre;transition:color .12s steps(2,end),transform .12s steps(2,end),text-shadow .12s steps(2,end),font-family .12s steps(2,end);transform-origin:center bottom}
+.pixel-word{display:inline-block;white-space:nowrap}
+.pixel-glyph{display:inline-block;white-space:pre;transition:color .12s steps(2,end),transform .12s steps(2,end),text-shadow .12s steps(2,end);transform-origin:center bottom}
 @media(hover:hover) and (pointer:fine){
   .pixel-glyph:hover{font-family:'Press Start 2P',monospace;color:var(--amber);text-shadow:2px 0 var(--violet),-2px 0 var(--cyan),0 2px var(--red);transform:translateY(-2px) scale(1.12);position:relative;z-index:1}
   h1 .pixel-glyph:hover,h2 .pixel-glyph:hover,h3 .pixel-glyph:hover{color:var(--cyan);text-shadow:2px 0 var(--amber),-2px 0 var(--violet),0 2px var(--red)}

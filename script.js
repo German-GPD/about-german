@@ -64,6 +64,12 @@ skillsKicker:"04 / НАВЫКИ",
       toolDevTitle:"Разработка",toolDevCopy:"HTML, CSS, JavaScript, GitHub и IDE для написания, проверки и публикации кода.",toolVideoTitle:"Видео и контент",toolVideoCopy:"Создаю промоматериалы и монтирую видео для презентации проектов.",
       contactKicker:"05 / СВЯЗЬ",contactTitle:"Основные ссылки. Без лабиринта.",contactCopy:"Самое важное — в первом ряду. Остальные площадки не потерялись: они аккуратно собраны ниже.",
       contactTelegram:"Написать лично",moreLinks:"Ещё мои площадки (7)",discordServer:"Сервер сообщества",steamProfile:"Профиль игрока",footerMade:"MADE WITH VIBE_ · GPD PIXEL SYSTEM",licenseLink:"Лицензия",backTop:"Наверх ↑"
+,
+      caseLabel:"ЧТО ПОКАЗЫВАЕТ КЕЙС",
+      caseSchool:"Несколько шкал оценивания, релиз V2, фокус на простом UX и проморолик проекта.",
+      caseCash:"Работа над визуальной системой, несколькими источниками данных и графиками; проект развивается.",
+      casePortfolio:"Пиксельный дизайн, три языка, адаптивность, SEO-база и анимации с учётом доступности.",
+      viewSource:"Код на GitHub ↗"
     },
     en: {
       online:"online",write:"Contact ↗",badge:"LVL 99 · OBJECTIVELY TOP",taglineOld:"Learning.",heroLine1:"Building",heroLine2:"digital vibes.",
@@ -128,6 +134,12 @@ skillsKicker:"04 / SKILLS",
       toolDevTitle:"Development",toolDevCopy:"HTML, CSS, JavaScript, GitHub, and IDEs for writing, testing, and publishing code.",toolVideoTitle:"Video and content",toolVideoCopy:"I create promotional assets and edit videos to present my projects.",
       contactKicker:"05 / CONTACT",contactTitle:"The important links, up front.",contactCopy:"The main links are easy to find. The rest are still here, neatly organised below.",
       contactTelegram:"Message me directly",moreLinks:"More places to find me (7)",discordServer:"Community server",steamProfile:"Gaming profile",footerMade:"MADE WITH VIBE_ · GPD PIXEL SYSTEM",licenseLink:"License",backTop:"Back to top ↑"
+,
+      caseLabel:"WHAT THIS CASE SHOWS",
+      caseSchool:"Multiple grading scales, the V2 release, a focus on simple UX, and a project promo video.",
+      caseCash:"Work on a distinctive visual system, multiple data sources, and charts; the project is in progress.",
+      casePortfolio:"Pixel identity, three languages, responsive layout, SEO foundations, and accessibility-aware animation.",
+      viewSource:"Source on GitHub ↗"
     },
     es: {
       online:"en línea",write:"Contactar ↗",badge:"LVL 99 · OBJETIVAMENTE TOP",taglineOld:"Aprendiendo.",heroLine1:"Creo",heroLine2:"digital vibes.",
@@ -192,6 +204,12 @@ skillsKicker:"04 / HABILIDADES",
       toolDevTitle:"Desarrollo",toolDevCopy:"HTML, CSS, JavaScript, GitHub e IDE para escribir, probar y publicar código.",toolVideoTitle:"Vídeo y contenido",toolVideoCopy:"Creo materiales promocionales y edito vídeos para presentar mis proyectos.",
       contactKicker:"05 / CONTACTO",contactTitle:"Los enlaces principales, a mano.",contactCopy:"Los enlaces más importantes están arriba. Los demás siguen disponibles, organizados aquí debajo.",
       contactTelegram:"Escríbeme directamente",moreLinks:"Más redes y perfiles (7)",discordServer:"Servidor de la comunidad",steamProfile:"Perfil de juegos",footerMade:"HECHO CON VIBE_ · SISTEMA DE PÍXELES GPD",licenseLink:"Licencia",backTop:"Volver arriba ↑"
+,
+      caseLabel:"QUÉ DEMUESTRA ESTE CASO",
+      caseSchool:"Varias escalas de notas, lanzamiento de la versión 2, UX sencilla y un vídeo promocional.",
+      caseCash:"Trabajo en el sistema visual, varias fuentes de datos y gráficos; el proyecto sigue en desarrollo.",
+      casePortfolio:"Diseño pixelado, tres idiomas, adaptación móvil, fundamentos SEO y animaciones accesibles.",
+      viewSource:"Código en GitHub ↗"
     }
   };
   const applyLanguage = (lang) => {

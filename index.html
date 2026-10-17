@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#12131a">
+  <meta name="color-scheme" content="dark light">
   <meta name="description" content="German / GPD — личный сайт Германа Петраченко: веб-разработка, UI/UX, School Calc, Cash Converter, AI-assisted coding и рабочий сетап.">
   <meta name="author" content="German Petrachenko">
   <meta name="robots" content="index,follow,max-image-preview:large">
@@ -30,14 +31,9 @@
     <nav aria-label="Main navigation">
       <a class="logo px" href="#top" aria-label="German GPD home"><span>GP</span><span class="blink">_</span></a>
       <div class="nav-tools">
-        <div class="status"><i aria-hidden="true"></i><span data-i18n="online">online</span></div>
-        <button type="button" class="theme-toggle pixel" id="themeToggle" aria-label="Toggle light and dark theme" title="Theme follows your device" data-i18n-aria="themeToggle">☼ <span data-i18n="themeLabel">ТЕМА</span></button>
-        <div class="lang-switch" aria-label="Language">
-          <button type="button" data-lang="ru" aria-pressed="true">RU</button>
-          <button type="button" data-lang="en" aria-pressed="false">EN</button>
-          <button type="button" data-lang="es" aria-pressed="false">ES</button>
-        </div>
-        <a class="btn ghost pixel pixel-shadow" href="https://t.me/german_me" target="_blank" rel="noopener noreferrer" data-i18n="write">Написать ↗</a>
+        <div class="status"><i aria-hidden="true"></i><span>НА СВЯЗИ</span></div>
+        <button type="button" class="theme-toggle pixel" id="themeToggle" aria-label="Toggle light and dark theme" title="Theme follows your device" >☼ <span >ТЕМА</span></button>
+        <a class="btn ghost pixel pixel-shadow" href="https://t.me/german_me" target="_blank" rel="noopener noreferrer">Написать ↗</a>
       </div>
     </nav>
   </div>
@@ -47,16 +43,16 @@
     <div class="wrap">
       <div class="hero-grid">
         <div>
-          <div class="badge-lvl px"><span>★</span><span data-i18n="badge">LVL 99 · ОБЪЕКТИВНО ТОП</span></div>
-          <p class="struck" data-i18n="taglineOld">Изучаю.</p>
-          <h1><span data-i18n="heroLine1">Создаю</span><br><span data-i18n="heroLine2">digital vibe.</span></h1>
-          <p class="lede" data-i18n="heroCopy">Я Герман — начинающий разработчик и создатель цифровых проектов. Изучаю веб-технологии, собираю интерфейсы и превращаю идеи в работающие продукты — от первой строчки кода до публикации.</p>
+          <div class="badge-lvl px"><span>★</span><span>LVL 99 · ОБЪЕКТИВНО ТОП</span></div>
+          <p class="struck">Изучаю.</p>
+          <h1><span>Создаю</span><br><span>digital vibe.</span></h1>
+          <p class="lede">Я Герман — начинающий разработчик и создатель цифровых проектов. Изучаю веб-технологии, собираю интерфейсы и превращаю идеи в работающие продукты — от первой строчки кода до публикации.</p>
           <div class="cta-row">
-            <a class="btn pixel pixel-shadow" href="#projects" style="--shadow:#17131a" data-i18n="seeProjects">Мои проекты ↓</a>
+            <a class="btn pixel pixel-shadow" href="#projects" style="--shadow:#17131a">Мои проекты ↓</a>
             <a class="btn ghost pixel pixel-shadow" href="https://github.com/German-GPD" target="_blank" rel="noopener noreferrer" style="--shadow:var(--cyan)">GitHub ↗</a>
           </div>
           <form class="search" action="https://duckduckgo.com/" method="get" target="_blank" rel="noopener">
-            <input type="search" name="q" placeholder="Искать в сети через DuckDuckGo…" aria-label="Поиск в DuckDuckGo" data-i18n-placeholder="searchPlaceholder">
+            <input type="search" name="q" placeholder="Искать в сети через DuckDuckGo…" aria-label="Поиск в DuckDuckGo">
             <button type="submit" class="px">GO</button>
           </form>
         </div>
@@ -65,7 +61,7 @@
           <div class="screen" aria-hidden="true">
             <div class="line w1"></div><div class="line w2"></div><div class="line w3"></div><div class="line w4"></div>
             <span class="cursor blink"></span>
-            <div class="screen-caption px" data-i18n="screenCaption">BUILD / TEST / REPEAT</div>
+            <div class="screen-caption px">BUILD / TEST / REPEAT</div>
           </div>
         </div>
       </div>
@@ -77,116 +73,133 @@
       <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
     </div>
     <section id="about" class="reveal">
-      <div class="section-heading"><p class="section-kicker" data-i18n="aboutKicker">01 / ОБО МНЕ</p><h2 data-i18n="aboutTitle">Думаю. Собираю. Улучшаю.</h2></div>
+      <div class="section-heading"><p class="section-kicker">01 / ОБО МНЕ</p><h2>Думаю. Собираю. Улучшаю.</h2></div>
       <div class="about-grid" style="margin-bottom:24px">
         <div>
-          <p class="lede" style="max-width:720px;margin:0 0 14px" data-i18n="aboutCopy1">Я самостоятельно изучаю разработку и проверяю знания на собственных проектах. Мне интересны не только код и визуал, но и весь путь продукта: идея, удобство, тестирование, исправление ошибок и публикация.</p>
-          <p class="section-copy" data-i18n="aboutCopy2">Сейчас мой основной фокус — веб-разработка, интерфейсы, небольшие полезные приложения и цифровые инструменты. Использую ИИ как помощника для исследования и работы, стараясь понимать решения и доводить результат до рабочего состояния.</p>
+          <p class="lede" style="max-width:720px;margin:0 0 14px">Я самостоятельно изучаю разработку и проверяю знания на собственных проектах. Мне интересны не только код и визуал, но и весь путь продукта: идея, удобство, тестирование, исправление ошибок и публикация.</p>
+          <p class="section-copy">Сейчас мой основной фокус — веб-разработка, интерфейсы, небольшие полезные приложения и цифровые инструменты. Использую ИИ как помощника для исследования и работы, стараясь понимать решения и доводить результат до рабочего состояния.</p>
         </div>
         <div class="pixel-avatar float" aria-hidden="true"><i class="a"></i><i class="b"></i></div>
       </div>
       <div class="tags" aria-label="Technologies">
-        <span class="tag"><i style="background:var(--amber)"></i>HTML</span><span class="tag"><i style="background:var(--violet)"></i>CSS</span><span class="tag"><i style="background:var(--cyan)"></i>JavaScript</span><span class="tag"><i style="background:var(--red)"></i>Vue</span><span class="tag"><i style="background:var(--amber)"></i>Python</span><span class="tag"><i style="background:var(--violet)"></i>PHP</span><span class="tag"><i style="background:var(--cyan)"></i>Bash</span><span class="tag"><i style="background:var(--red)"></i>Linux</span><span class="tag" style="border-color:var(--cyan)"><i style="background:var(--cyan)"></i><span data-i18n="aiTag">+ ИИ в связке</span></span>
+        <span class="tag"><i style="background:var(--amber)"></i>HTML</span><span class="tag"><i style="background:var(--violet)"></i>CSS</span><span class="tag"><i style="background:var(--cyan)"></i>JavaScript</span><span class="tag"><i style="background:var(--red)"></i>Vue</span><span class="tag"><i style="background:var(--amber)"></i>Python</span><span class="tag"><i style="background:var(--violet)"></i>PHP</span><span class="tag"><i style="background:var(--cyan)"></i>Bash</span><span class="tag"><i style="background:var(--red)"></i>Linux</span><span class="tag" style="border-color:var(--cyan)"><i style="background:var(--cyan)"></i><span>+ ИИ в связке</span></span>
       </div>
     </section>
     <section id="projects" class="reveal">
-      <div class="section-heading"><p class="section-kicker" data-i18n="projectsKicker">02 / ПРОЕКТЫ</p><h2 data-i18n="projectsTitle">Идеи, которые уже работают.</h2><p class="section-copy" data-i18n="projectsCopy">Создаю, публикую и постепенно улучшаю собственные цифровые продукты.</p></div>
+      <div class="section-heading"><p class="section-kicker">02 / ПРОЕКТЫ</p><h2>Идеи, которые уже работают.</h2><p class="section-copy">Создаю, публикую и постепенно улучшаю собственные цифровые продукты.</p></div>
       <div class="project-grid">
         <article class="project project-feature pixel">
-          <div><span class="card-label" data-i18n="projectOneLabel">PROJECT 01 / RELEASED</span><h3>School Calc</h3><p data-i18n="projectOneCopy">Калькулятор школьных оценок с поддержкой нескольких систем оценивания и маскотом Gera. Проект развивается с упором на простой интерфейс и работу без сохранения списка оценок после перезагрузки.</p><div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Vue</span></div><div class="case-proof"><strong data-i18n="caseLabel">ЧТО ПОКАЗЫВАЕТ КЕЙС</strong><p data-i18n="caseSchool">Несколько шкал оценивания, релиз V2, фокус на простом UX и проморолик проекта.</p></div><div class="project-actions"><a class="project-link" href="https://german-gpd.github.io/school-calc/" target="_blank" rel="noopener noreferrer" data-i18n="openProject">Открыть проект ↗</a><a class="project-link secondary" href="https://github.com/German-GPD/school-calc" target="_blank" rel="noopener noreferrer" data-i18n="viewSource">Код на GitHub ↗</a></div></div>
+          <div><span class="card-label">PROJECT 01 / RELEASED</span><h3>School Calc</h3><p>Калькулятор школьных оценок с поддержкой нескольких систем оценивания и маскотом Gera. Проект развивается с упором на простой интерфейс и работу без сохранения списка оценок после перезагрузки.</p><div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Vue</span></div><div class="case-proof"><strong>ЧТО ПОКАЗЫВАЕТ КЕЙС</strong><p>Несколько шкал оценивания, релиз V2, фокус на простом UX и проморолик проекта.</p></div><div class="project-actions"><a class="project-link" href="https://german-gpd.github.io/school-calc/" target="_blank" rel="noopener noreferrer">Открыть проект ↗</a><a class="project-link secondary" href="https://github.com/German-GPD/school-calc" target="_blank" rel="noopener noreferrer">Код на GitHub ↗</a></div></div>
           <div class="project-mark" aria-hidden="true">SC</div>
         </article>
         <article class="project pixel">
-          <span class="card-label" data-i18n="projectTwoLabel">PROJECT 02 / IN PROGRESS</span><h3>Cash Converter</h3><p data-i18n="projectTwoCopy">Конвертер валют и других показателей с акцентом на выразительный интерфейс, данные из нескольких источников и графики динамики.</p><div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div><div class="case-proof"><strong data-i18n="caseLabel">ЧТО ПОКАЗЫВАЕТ КЕЙС</strong><p data-i18n="caseCash">Работа над визуальной системой, несколькими источниками данных и графиками; проект развивается.</p></div><a class="project-link" href="https://github.com/German-GPD/Cash-Converter" target="_blank" rel="noopener noreferrer" data-i18n="sourceCode">Исходный код ↗</a>
+          <span class="card-label">PROJECT 02 / IN PROGRESS</span><h3>Cash Converter</h3><p>Конвертер валют и других показателей с акцентом на выразительный интерфейс, данные из нескольких источников и графики динамики.</p><div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div><div class="case-proof"><strong>ЧТО ПОКАЗЫВАЕТ КЕЙС</strong><p>Работа над визуальной системой, несколькими источниками данных и графиками; проект развивается.</p></div><a class="project-link" href="https://github.com/German-GPD/Cash-Converter" target="_blank" rel="noopener noreferrer">Исходный код ↗</a>
         </article>
         <article class="project pixel">
-          <span class="card-label" data-i18n="projectThreeLabel">PROJECT 03 / PERSONAL</span><h3>German / GPD</h3><p data-i18n="projectThreeCopy">Личный сайт-портфолио: пространство для моих проектов, экспериментов с дизайном и развития цифрового бренда GPD.</p><div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub Pages</span></div><div class="case-proof"><strong data-i18n="caseLabel">ЧТО ПОКАЗЫВАЕТ КЕЙС</strong><p data-i18n="casePortfolio">Пиксельный дизайн, три языка, адаптивность, SEO-база и анимации с учётом доступности.</p></div><a class="project-link" href="https://github.com/German-GPD/about-german" target="_blank" rel="noopener noreferrer" data-i18n="sourceCode">Исходный код ↗</a>
+          <span class="card-label">PROJECT 03 / PERSONAL</span><h3>German / GPD</h3><p>Личный сайт-портфолио: пространство для моих проектов, экспериментов с дизайном и развития цифрового бренда GPD.</p><div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub Pages</span></div><div class="case-proof"><strong>ЧТО ПОКАЗЫВАЕТ КЕЙС</strong><p>Пиксельный дизайн, три языка, адаптивность, SEO-база и анимации с учётом доступности.</p></div><a class="project-link" href="https://github.com/German-GPD/about-german" target="_blank" rel="noopener noreferrer">Исходный код ↗</a>
         </article>
       </div>
     </section>
     <section id="experience" class="reveal">
-      <div class="section-heading"><p class="section-kicker" data-i18n="experienceKicker">03 / МОЙ ПУТЬ</p><h2 data-i18n="experienceTitle">Опыт через практику.</h2><p class="section-copy" data-i18n="experienceCopy">Я в начале пути, поэтому показываю реальные проекты и навыки, которые развиваю, а не выдумываю должности или стаж.</p></div>
+      <div class="section-heading"><p class="section-kicker">03 / МОЙ ПУТЬ</p><h2>Опыт через практику.</h2><p class="section-copy">Я в начале пути, поэтому показываю реальные проекты и навыки, которые развиваю, а не выдумываю должности или стаж.</p></div>
       <div class="timeline">
-        <article class="timeline-item"><h3 data-i18n="timelineOneTitle">Разработка и публикация проектов</h3><p data-i18n="timelineOneCopy">Развиваю School Calc, работаю над Cash Converter и улучшаю личный сайт. Практикую Git, GitHub Pages, структуру кода, адаптивную вёрстку и проверку ошибок.</p><div class="timeline-meta">BUILD · TEST · IMPROVE</div></article>
-        <article class="timeline-item"><h3 data-i18n="timelineTwoTitle">От идеи до релиза</h3><p data-i18n="timelineTwoCopy">Опубликовал School Calc V2 и подготовил промоматериалы. Учусь не только писать код, но и оформлять проекты, документировать функции и показывать результат пользователям.</p><div class="timeline-meta">RELEASE · DOCUMENTATION</div></article>
-        <article class="timeline-item"><h3 data-i18n="timelineThreeTitle">Самостоятельное обучение</h3><p data-i18n="timelineThreeCopy">Изучаю HTML, CSS и JavaScript, экспериментирую с Vue, Python и Linux. Постепенно углубляюсь в UI/UX, доступность и поддержку кода.</p><div class="timeline-meta">LEARN BY BUILDING</div></article>
+        <article class="timeline-item"><h3>Разработка и публикация проектов</h3><p>Развиваю School Calc, работаю над Cash Converter и улучшаю личный сайт. Практикую Git, GitHub Pages, структуру кода, адаптивную вёрстку и проверку ошибок.</p><div class="timeline-meta">BUILD · TEST · IMPROVE</div></article>
+        <article class="timeline-item"><h3>От идеи до релиза</h3><p>Опубликовал School Calc V2 и подготовил промоматериалы. Учусь не только писать код, но и оформлять проекты, документировать функции и показывать результат пользователям.</p><div class="timeline-meta">RELEASE · DOCUMENTATION</div></article>
+        <article class="timeline-item"><h3>Самостоятельное обучение</h3><p>Изучаю HTML, CSS и JavaScript, экспериментирую с Vue, Python и Linux. Постепенно углубляюсь в UI/UX, доступность и поддержку кода.</p><div class="timeline-meta">LEARN BY BUILDING</div></article>
       </div>
     </section>
     <section id="skills" class="reveal">
-      <div class="section-heading"><p class="section-kicker" data-i18n="skillsKicker">04 / НАВЫКИ</p><h2 data-i18n="skillsTitle">Не просто список технологий.</h2><p class="section-copy" data-i18n="skillsIntro">Показываю навыки через то, что уже применяю в проектах. Уровни — честно: практика, изучение и эксперименты, а не выдуманные сертификаты.</p></div>
+      <div class="section-heading"><p class="section-kicker">04 / НАВЫКИ</p><h2>Не просто список технологий.</h2><p class="section-copy">Показываю навыки через то, что уже применяю в проектах. Уровни — честно: практика, изучение и эксперименты, а не выдуманные сертификаты.</p></div>
       <div class="skills-grid">
-        <article class="skill-card pixel"><div class="skill-top"><span class="skill-icon">01</span><span class="skill-level" data-i18n="skillPractice">ПРАКТИКА</span></div><h3 data-i18n="skillWebTitle">Веб-разработка</h3><p data-i18n="skillWebCopy">Собираю интерфейсы на HTML, CSS и JavaScript, разделяю структуру, стили и логику, делаю адаптивные страницы.</p><div class="skill-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div></article>
-        <article class="skill-card pixel"><div class="skill-top"><span class="skill-icon">02</span><span class="skill-level" data-i18n="skillLearning">ИЗУЧАЮ</span></div><h3 data-i18n="skillFrameworkTitle">Фреймворки и языки</h3><p data-i18n="skillFrameworkCopy">Экспериментирую с Vue, Python, PHP и Bash; знакомлюсь с разными подходами к разработке и автоматизации.</p><div class="skill-tags"><span>Vue</span><span>Python</span><span>PHP</span><span>Bash</span></div></article>
-        <article class="skill-card pixel"><div class="skill-top"><span class="skill-icon">03</span><span class="skill-level" data-i18n="skillPractice">ПРАКТИКА</span></div><h3 data-i18n="skillProductTitle">Продукт и UX</h3><p data-i18n="skillProductCopy">Продумываю структуру страниц, визуальную иерархию, мобильный интерфейс, понятные действия и состояния компонентов.</p><div class="skill-tags"><span>UI/UX</span><span>Responsive</span><span>A11Y</span></div></article>
-        <article class="skill-card pixel"><div class="skill-top"><span class="skill-icon">04</span><span class="skill-level" data-i18n="skillBuilding">РАЗВИВАЮ</span></div><h3 data-i18n="skillReleaseTitle">Релизы и поддержка</h3><p data-i18n="skillReleaseCopy">Использую Git и GitHub, публикую сайты через GitHub Pages, исправляю ошибки, оформляю README и готовлю материалы для проектов.</p><div class="skill-tags"><span>Git</span><span>GitHub</span><span>SEO basics</span></div></article>
+        <article class="skill-card pixel"><div class="skill-top"><span class="skill-icon">01</span><span class="skill-level">ПРАКТИКА</span></div><h3>Веб-разработка</h3><p>Собираю интерфейсы на HTML, CSS и JavaScript, разделяю структуру, стили и логику, делаю адаптивные страницы.</p><div class="skill-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div></article>
+        <article class="skill-card pixel"><div class="skill-top"><span class="skill-icon">02</span><span class="skill-level">ИЗУЧАЮ</span></div><h3>Фреймворки и языки</h3><p>Экспериментирую с Vue, Python, PHP и Bash; знакомлюсь с разными подходами к разработке и автоматизации.</p><div class="skill-tags"><span>Vue</span><span>Python</span><span>PHP</span><span>Bash</span></div></article>
+        <article class="skill-card pixel"><div class="skill-top"><span class="skill-icon">03</span><span class="skill-level">ПРАКТИКА</span></div><h3>Продукт и UX</h3><p>Продумываю структуру страниц, визуальную иерархию, мобильный интерфейс, понятные действия и состояния компонентов.</p><div class="skill-tags"><span>UI/UX</span><span>Responsive</span><span>A11Y</span></div></article>
+        <article class="skill-card pixel"><div class="skill-top"><span class="skill-icon">04</span><span class="skill-level">РАЗВИВАЮ</span></div><h3>Релизы и поддержка</h3><p>Использую Git и GitHub, публикую сайты через GitHub Pages, исправляю ошибки, оформляю README и готовлю материалы для проектов.</p><div class="skill-tags"><span>Git</span><span>GitHub</span><span>SEO basics</span></div></article>
       </div>
     </section>
     <section id="devices" class="reveal">
-      <div class="section-heading"><p class="section-kicker" data-i18n="devicesKicker">05 / МОЙ СЕТАП</p><h2 data-i18n="devicesTitle">Железо, на котором собираю проекты.</h2><p class="section-copy" data-i18n="devicesIntro">Мой реальный рабочий компьютер и два монитора — не абстрактная картинка из портфолио.</p></div>
+      <div class="section-heading"><p class="section-kicker">05 / МОЙ СЕТАП</p><h2>Железо, на котором собираю проекты.</h2><p class="section-copy">Мой реальный рабочий компьютер и два монитора — не абстрактная картинка из портфолио.</p></div>
       <div class="devices-layout">
-        <article class="device-main pixel"><div class="device-top"><span class="device-chip">GPD / WORKSTATION</span><span class="device-led"></span></div><div class="device-art" aria-hidden="true"><div class="device-tower"><i></i><i></i><i></i><b></b></div><div class="device-monitor"><div class="device-screen"><span>GPD_</span><i></i><i></i><i></i></div><div class="device-stand"></div></div></div><h3 data-i18n="deviceDesktopTitle">Основной ПК</h3><div class="spec-list"><div><span data-i18n="specCpu">Процессор</span><strong>Intel Core i5-12400F</strong></div><div><span data-i18n="specGpu">Видеокарта</span><strong>NVIDIA GeForce RTX 3050 · 8 GB</strong></div><div><span data-i18n="specRam">Оперативная память</span><strong>16 GB DDR4</strong></div><div><span data-i18n="specStorage">Накопитель</span><strong>1 TB NVMe SSD</strong></div><div><span data-i18n="specOs">Система</span><strong>Windows 11</strong></div></div></article>
+        <article class="device-main pixel"><div class="device-top"><span class="device-chip">GPD / WORKSTATION</span><span class="device-led"></span></div><div class="device-art" aria-hidden="true"><div class="device-tower"><i></i><i></i><i></i><b></b></div><div class="device-monitor"><div class="device-screen"><span>GPD_</span><i></i><i></i><i></i></div><div class="device-stand"></div></div></div><h3>Основной ПК</h3><div class="spec-list"><div><span>Процессор</span><strong>Intel Core i5-12400F</strong></div><div><span>Видеокарта</span><strong>NVIDIA GeForce RTX 3050 · 8 GB</strong></div><div><span>Оперативная память</span><strong>16 GB DDR4</strong></div><div><span>Накопитель</span><strong>1 TB NVMe SSD</strong></div><div><span>Система</span><strong>Windows 11</strong></div></div></article>
         <div class="device-side">
-          <article class="device-card pixel"><div class="monitor-preview"><div class="monitor-preview-screen"><span>2560 × 1440</span><b>200 Hz</b></div></div><h3 data-i18n="deviceMainMonitor">Основной монитор</h3><p data-i18n="deviceMainMonitorCopy">2560 × 1440 · 200 Гц — основное пространство для кода, браузера и дизайна.</p></article>
-          <article class="device-card pixel"><div class="monitor-preview vertical"><div class="monitor-preview-screen"><span>1080 × 1920</span><b>100 Hz</b></div></div><h3 data-i18n="deviceSecondMonitor">Вертикальный второй монитор</h3><p data-i18n="deviceSecondMonitorCopy">Full HD · 100 Гц — для документации, чатов, справки и дополнительных окон.</p></article>
+          <article class="device-card pixel"><div class="monitor-preview"><div class="monitor-preview-screen"><span>2560 × 1440</span><b>200 Hz</b></div></div><h3>Основной монитор</h3><p>2560 × 1440 · 200 Гц — основное пространство для кода, браузера и дизайна.</p></article>
+          <article class="device-card pixel"><div class="monitor-preview vertical"><div class="monitor-preview-screen"><span>1080 × 1920</span><b>100 Hz</b></div></div><h3>Вертикальный второй монитор</h3><p>Full HD · 100 Гц — для документации, чатов, справки и дополнительных окон.</p></article>
         </div>
       </div>
     </section>
     <section id="ai-workflow" class="reveal">
-      <div class="section-heading"><p class="section-kicker" data-i18n="aiKicker">06 / ИИ И ИНТЕГРАЦИИ</p><h2 data-i18n="aiTitle">ИИ — в рабочем процессе, не вместо головы.</h2><p class="section-copy" data-i18n="aiIntro">Использую разные модели как помощников для идей, исследования, кода и проверки решений. Результат всё равно нужно понимать, проверять и доводить.</p></div>
+      <div class="section-heading"><p class="section-kicker">06 / ИИ И ИНТЕГРАЦИИ</p><h2>ИИ — в рабочем процессе, не вместо головы.</h2><p class="section-copy">Использую разные модели как помощников для идей, исследования, кода и проверки решений. Результат всё равно нужно понимать, проверять и доводить.</p></div>
       <div class="ai-grid">
-        <article class="ai-card pixel"><span class="ai-mark">GPT</span><h3>ChatGPT · OpenAI</h3><p data-i18n="aiChatgpt">Для обсуждения архитектуры, отладки, объяснения кода и итеративной доработки проектов.</p></article>
-        <article class="ai-card pixel"><span class="ai-mark">A</span><h3>Claude · Anthropic</h3><p data-i18n="aiClaude">Для альтернативного взгляда на код, длинных задач и сравнения решений.</p></article>
-        <article class="ai-card pixel"><span class="ai-mark">M</span><h3>Mistral Vibe</h3><p data-i18n="aiMistral">Для экспериментов с AI-assisted coding и новым рабочим процессом.</p></article>
-        <article class="ai-card pixel"><span class="ai-mark">+</span><h3 data-i18n="aiOtherTitle">Другие модели</h3><p data-i18n="aiOtherCopy">Также пробую Qwen, Perplexity, Gemini и Copilot — выбираю инструмент под задачу, а не одну модель на всё.</p></article>
+        <article class="ai-card pixel"><span class="ai-mark">GPT</span><h3>ChatGPT · OpenAI</h3><p>Для обсуждения архитектуры, отладки, объяснения кода и итеративной доработки проектов.</p></article>
+        <article class="ai-card pixel"><span class="ai-mark">A</span><h3>Claude · Anthropic</h3><p>Для альтернативного взгляда на код, длинных задач и сравнения решений.</p></article>
+        <article class="ai-card pixel"><span class="ai-mark">M</span><h3>Mistral Vibe</h3><p>Для экспериментов с AI-assisted coding и новым рабочим процессом.</p></article>
+        <article class="ai-card pixel"><span class="ai-mark">+</span><h3>Другие модели</h3><p>Также пробую Qwen, Perplexity, Gemini и Copilot — выбираю инструмент под задачу, а не одну модель на всё.</p></article>
       </div>
       <div class="workflow-panel pixel">
-        <div class="workflow-heading"><span class="section-kicker" data-i18n="workflowKicker">КАК СОЕДИНЯЮ ИНСТРУМЕНТЫ</span><span class="workflow-caption">IDEA → CODE → SHIP</span></div>
+        <div class="workflow-heading"><span class="section-kicker">КАК СОЕДИНЯЮ ИНСТРУМЕНТЫ</span><span class="workflow-caption">IDEA → CODE → SHIP</span></div>
         <div class="workflow-steps">
-          <div class="workflow-step"><span>01</span><strong data-i18n="workflowIdea">Идея и план</strong><small data-i18n="workflowIdeaCopy">Исследование + ИИ</small></div><i aria-hidden="true">→</i>
-          <div class="workflow-step"><span>02</span><strong data-i18n="workflowBuild">Код и проверка</strong><small data-i18n="workflowBuildCopy">HTML · CSS · JS · Git</small></div><i aria-hidden="true">→</i>
-          <div class="workflow-step"><span>03</span><strong data-i18n="workflowPublish">Публикация</strong><small data-i18n="workflowPublishCopy">GitHub Pages</small></div>
+          <div class="workflow-step"><span>01</span><strong>Идея и план</strong><small>Исследование + ИИ</small></div><i aria-hidden="true">→</i>
+          <div class="workflow-step"><span>02</span><strong>Код и проверка</strong><small>HTML · CSS · JS · Git</small></div><i aria-hidden="true">→</i>
+          <div class="workflow-step"><span>03</span><strong>Публикация</strong><small>GitHub Pages</small></div>
         </div>
         <div class="integration-tags"><span>GitHub ↔ GitHub Pages</span><span>DuckDuckGo Search</span><span>Google Fonts</span><span>Telegram / Social</span><span>AI-assisted workflow</span></div>
-        <p class="workflow-note" data-i18n="workflowNote">Это связки, реально используемые сайтом и процессом разработки, а не выдуманные серверные API. Новые интеграции добавляются, когда они нужны продукту.</p>
+        <p class="workflow-note">Это связки, реально используемые сайтом и процессом разработки, а не выдуманные серверные API. Новые интеграции добавляются, когда они нужны продукту.</p>
       </div>
-      <div class="software-note"><div class="software-symbol" aria-hidden="true">[ open ]</div><div><h3 data-i18n="softwareTitle">Открытые технологии — мой ориентир.</h3><p data-i18n="softwareCopy">Мне ближе открытое ПО, прозрачность и контроль над инструментами. Но реальность такая: иногда приходится пользоваться проприетарными сервисами и Windows, когда это практичнее или нет полноценной альтернативы. По возможности предпочитаю открытые решения — без показного «100% open source».</p></div></div>
+      <div class="software-note"><div class="software-symbol" aria-hidden="true">[ open ]</div><div><h3>Открытые технологии — мой ориентир.</h3><p>Мне ближе открытое ПО, прозрачность и контроль над инструментами. Но реальность такая: иногда приходится пользоваться проприетарными сервисами и Windows, когда это практичнее или нет полноценной альтернативы. По возможности предпочитаю открытые решения — без показного «100% open source».</p></div></div>
     </section>
     <section id="toolkit" class="reveal">
-      <div class="section-heading"><p class="section-kicker" data-i18n="toolkitKicker">07 / ИНСТРУМЕНТЫ</p><h2 data-i18n="toolkitTitle">Чем пользуюсь.</h2></div>
+      <div class="section-heading"><p class="section-kicker">07 / ИНСТРУМЕНТЫ</p><h2>Чем пользуюсь.</h2></div>
       <div class="grid3">
-        <article class="card pixel"><div class="badge px">UI</div><h3 data-i18n="toolDesignTitle">Дизайн и визуал</h3><p data-i18n="toolDesignCopy">Работаю над структурой интерфейсов, визуальными акцентами и оформлением проектов.</p></article>
-        <article class="card pixel"><div class="badge px">DEV</div><h3 data-i18n="toolDevTitle">Разработка</h3><p data-i18n="toolDevCopy">HTML, CSS, JavaScript, GitHub и IDE для написания, проверки и публикации кода.</p></article>
-        <article class="card pixel"><div class="badge px">VID</div><h3 data-i18n="toolVideoTitle">Видео и контент</h3><p data-i18n="toolVideoCopy">Создаю промоматериалы и монтирую видео для презентации проектов.</p></article>
+        <article class="card pixel"><div class="badge px">UI</div><h3>Дизайн и визуал</h3><p>Работаю над структурой интерфейсов, визуальными акцентами и оформлением проектов.</p></article>
+        <article class="card pixel"><div class="badge px">DEV</div><h3>Разработка</h3><p>HTML, CSS, JavaScript, GitHub и IDE для написания, проверки и публикации кода.</p></article>
+        <article class="card pixel"><div class="badge px">VID</div><h3>Видео и контент</h3><p>Создаю промоматериалы и монтирую видео для презентации проектов.</p></article>
       </div>
     </section>
     <div class="marquee" aria-hidden="true"><div class="marquee-track">
       <span><b>HTML</b> · CSS · JavaScript · Vue · Python · Bash · Linux · GitHub · UI/UX · <b>BUILD SOMETHING</b> ·</span>
       <span><b>HTML</b> · CSS · JavaScript · Vue · Python · Bash · Linux · GitHub · UI/UX · <b>BUILD SOMETHING</b> ·</span>
     </div></div>
+    <section id="cases" class="reveal">
+      <div class="section-heading"><p class="section-kicker">09 / КЕЙСЫ</p><h2>Не просто проекты — решения.</h2><p class="section-copy">Коротко разбираю задачу, принятые решения и то, что получилось. Без выдуманных метрик и красивых цифр из воздуха.</p></div>
+      <div class="case-grid">
+        <article class="case-study pixel"><div class="case-number">CASE / 01</div><h3>School Calc</h3><p class="case-lead">Школьные оценки — без лишнего шума.</p><div class="case-row"><span>Задача</span><p>Сделать понятный калькулятор с разными системами оценивания, чтобы результат был виден сразу.</p></div><div class="case-row"><span>Решение</span><p>Упор на короткий путь до результата, ясные состояния интерфейса и отсутствие сохранения списка оценок после перезагрузки.</p></div><div class="case-outcome"><b>Фокус</b><span>Простота · приватность · несколько шкал</span></div><a class="project-link" href="https://german-gpd.github.io/school-calc/" target="_blank" rel="noopener noreferrer">Посмотреть проект ↗</a></article>
+        <article class="case-study pixel"><div class="case-number">CASE / 02</div><h3>Cash Converter</h3><p class="case-lead">Данные, которые легко считывать.</p><div class="case-row"><span>Задача</span><p>Собрать конвертер валют и показателей в одном выразительном интерфейсе.</p></div><div class="case-row"><span>Решение</span><p>Развивать визуальную систему, читабельность чисел и графики; отдельно проверять поведение данных и состояния без результата.</p></div><div class="case-outcome"><b>Фокус</b><span>Визуальная иерархия · данные · графики</span></div><a class="project-link" href="https://github.com/German-GPD/Cash-Converter" target="_blank" rel="noopener noreferrer">Исходный код ↗</a></article>
+        <article class="case-study pixel"><div class="case-number">CASE / 03</div><h3>GPD Portfolio</h3><p class="case-lead">Портфолио с собственным характером.</p><div class="case-row"><span>Задача</span><p>Показать проекты, навыки и контакты, не превращая сайт в бесконечную стену ссылок.</p></div><div class="case-row"><span>Решение</span><p>Пиксельная система, цветные акценты, адаптивные сетки, отдельные кейсы и уважение к настройке уменьшения анимации.</p></div><div class="case-outcome"><b>Фокус</b><span>Навигация · доступность · единый стиль</span></div><a class="project-link" href="https://github.com/German-GPD/about-german" target="_blank" rel="noopener noreferrer">Как устроен сайт ↗</a></article>
+      </div>
+    </section>
+    <section id="mini-game" class="reveal">
+      <div class="section-heading"><p class="section-kicker">10 / МИНИ-ИГРА</p><h2>GPD Pixel Run</h2><p class="section-copy">Пиксельный забег в духе классических endless runner. Перепрыгивай препятствия, набирай очки и побей свой рекорд.</p></div>
+      <div class="game-shell pixel">
+        <div class="game-top"><span class="game-status" id="gameStatus" aria-live="polite">ГОТОВ К ЗАБЕГУ</span><div class="game-scores"><span>СЧЁТ <b id="gameScore">00000</b></span><span>РЕКОРД <b id="gameBest">00000</b></span></div></div>
+        <canvas id="runnerCanvas" width="900" height="260" role="img" aria-label="Игровое поле GPD Pixel Run. Нажми пробел или кнопку ниже, чтобы начать и прыгать."></canvas>
+        <div class="game-controls"><button class="btn pixel" type="button" id="gameStart">▶ НАЧАТЬ</button><p>Пробел / ↑ / W — прыжок · на телефоне — нажми на игровое поле</p><button class="btn ghost pixel" type="button" id="gameMute" aria-pressed="false">ЗВУК: ВЫКЛ</button></div>
+      </div>
+    </section>
     <section id="contact" class="reveal">
-      <div class="section-heading"><p class="section-kicker" data-i18n="contactKicker">08 / СВЯЗЬ</p><h2 data-i18n="contactTitle">Основные ссылки. Без лабиринта.</h2><p class="section-copy" data-i18n="contactCopy">Самое важное — в первом ряду. Остальные площадки не потерялись: они аккуратно собраны ниже.</p></div>
+      <div class="section-heading"><p class="section-kicker">08 / СВЯЗЬ</p><h2>Основные ссылки. Без лабиринта.</h2><p class="section-copy">Самое важное — в первом ряду. Остальные площадки не потерялись: они аккуратно собраны ниже.</p></div>
       <div class="contact-primary">
-        <a class="contact pixel" href="https://t.me/german_me" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">TG</div><div><strong>Telegram</strong><span data-i18n="contactTelegram">Написать лично</span></div></a>
+        <a class="contact pixel" href="https://t.me/german_me" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">TG</div><div><strong>Telegram</strong><span>Написать лично</span></div></a>
         <a class="contact pixel" href="https://github.com/German-GPD" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">GH</div><div><strong>GitHub</strong><span>German-GPD</span></div></a>
         <a class="contact pixel" href="https://www.youtube.com/@german_gpd" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">YT</div><div><strong>YouTube</strong><span>@german_gpd</span></div></a>
       </div>
-      <details class="extra-links"><summary data-i18n="moreLinks">Ещё мои площадки (6)</summary><div class="grid3">
+      <details class="extra-links"><summary>Ещё мои площадки (6)</summary><div class="grid3">
         <a class="contact pixel" href="https://t.me/german_gpd" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">TG</div><div><strong>Telegram</strong><span>@german_gpd</span></div></a>
         <a class="contact pixel" href="https://t.me/g_code_team" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">DEV</div><div><strong>G_Code Team</strong><span>Telegram community</span></div></a>
         <a class="contact pixel" href="https://t.me/redfox_g56" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">RF</div><div><strong>RedFox</strong><span>Telegram channel</span></div></a>
-        <a class="contact pixel" href="https://discord.gg/mTkQtrHABz" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">DC</div><div><strong>Discord</strong><span data-i18n="discordServer">Сервер сообщества</span></div></a>
+        <a class="contact pixel" href="https://discord.gg/mTkQtrHABz" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">DC</div><div><strong>Discord</strong><span>Сервер сообщества</span></div></a>
         <a class="contact pixel" href="https://www.tiktok.com/@car.german" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">TT</div><div><strong>TikTok</strong><span>@car.german</span></div></a>
         <a class="contact pixel" href="https://www.instagram.com/german_gpd" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">IG</div><div><strong>Instagram</strong><span>@german_gpd</span></div></a>
-        <a class="contact pixel" href="https://s.team/p/dpmh-htfd/qpknwmqd" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">STM</div><div><strong>Steam</strong><span data-i18n="steamProfile">Профиль игрока</span></div></a>
+        <a class="contact pixel" href="https://s.team/p/dpmh-htfd/qpknwmqd" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">STM</div><div><strong>Steam</strong><span>Профиль игрока</span></div></a>
       </div></details>
     </section>
     <footer class="site-footer">
-      <div><div class="copy px">© <span id="year">2026</span> GERMAN PETRACHENKO</div><div class="copy" style="margin-top:8px" data-i18n="footerMade">MADE WITH VIBE<span class="blink">_</span> · GPD PIXEL SYSTEM</div></div>
-      <div class="footer-links"><a href="https://github.com/German-GPD" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://t.me/german_gpd" target="_blank" rel="noopener noreferrer">Telegram ↗</a><a href="LICENSE" data-i18n="licenseLink">Лицензия</a><a href="#top" data-i18n="backTop">Наверх ↑</a></div>
+      <div><div class="copy px">© <span id="year">2026</span> GERMAN PETRACHENKO</div><div class="copy" style="margin-top:8px">MADE WITH VIBE<span class="blink">_</span> · GPD PIXEL SYSTEM</div></div>
+      <div class="footer-links"><a href="https://github.com/German-GPD" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://t.me/german_gpd" target="_blank" rel="noopener noreferrer">Telegram ↗</a><a href="LICENSE">Лицензия</a><a href="#top">Наверх ↑</a></div>
       <div class="palette" aria-hidden="true"><i style="background:var(--amber)"></i><i style="background:var(--violet)"></i><i style="background:var(--cyan)"></i><i style="background:var(--red)"></i></div>
     </footer>
   </div>
 </main>
 <script src="script.js" defer></script>
+<script src="game.js" defer></script>
 </body>
 </html>

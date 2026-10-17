@@ -16,7 +16,7 @@
 - Интерфейс только на русском языке; светлая и тёмная тема подстраиваются под устройство.
 - Разделы о проектах, практическом опыте, навыках, устройствах, программах, играх и AI-assisted workflow.
 - Техника: основной ПК, MacBook Air M1, Acer Aspire A315-53G на Fedora, Samsung Galaxy S25+ и Galaxy S20 FE; также два монитора.
-- Основной ПК указан по текущей конфигурации; RTX 3060 Ti и 16 GB DDR5 вынесены отдельно как профиль желаемого апгрейда, а не как установленное железо.
+- Основной ПК: Intel Core i5-12400F, RTX 3060 Ti 8 GB, 16 GB DDR5, 1 TB NVMe SSD и Windows 11. В планах — апгрейд видеокарты до RTX 5070.
 - Технологии: HTML5, CSS3, JavaScript, Vue, TypeScript (изучаю), Python, PHP (изучаю), Bash, SQL/SQLite, JSON, REST API, Canvas API, Git, GitHub, Linux/Fedora, Windows, responsive UI и основы SEO.
 - Софт: Visual Studio Code, JetBrains IDE, GitHub, Figma, Canva, Adobe, DaVinci Resolve, GIMP и Microsoft Office 2025.
 - Игры и досуг: Mafia, Grand Theft Auto, Far Cry, Just Cause и похожие open-world игры; Steam и Hydra.
@@ -37,20 +37,18 @@
 Уровни навыков описаны как практика и обучение, а не как профессиональные сертификаты или выдуманный стаж.
 
 ### Устройства
-- **Основной ПК:** Intel Core i5-12400F, NVIDIA GeForce RTX 3050 8 GB, 16 GB DDR4, 1 TB NVMe SSD, Windows 11.
+- **Основной ПК:** Intel Core i5-12400F, NVIDIA GeForce RTX 3060 Ti 8 GB, 16 GB DDR5, 1 TB NVMe SSD, Windows 11.
 - **MacBook Air M1:** Apple Silicon M1, macOS.
 - **Acer Aspire A315-53G:** Intel Core i3-7020U, 8 GB DDR4, 250 GB M.2 SSD, Fedora Linux.
 - **Смартфоны:** Samsung Galaxy S25+ и Samsung Galaxy S20 FE.
 - **Мониторы:** основной 2560×1440, 200 Hz; второй вертикальный Full HD, 100 Hz.
 
-### Профиль желаемого апгрейда
-- NVIDIA GeForce RTX 3060 Ti 8 GB.
-- 16 GB DDR5 RAM.
-- Быстрый NVMe SSD.
-- Это целевой вариант, не заявленный как установленная конфигурация текущего ПК.
+### Следующий апгрейд
+- Планируемая видеокарта: NVIDIA GeForce RTX 5070.
+- Остальная текущая конфигурация ПК указана выше.
 
 ### Игры
-Люблю Mafia, Grand Theft Auto, Far Cry, Just Cause и похожие игры с открытым миром. Для игр использую Steam; Hydra также присутствует в моём наборе лаунчеров.
+Люблю Mafia, Grand Theft Auto, Far Cry, Just Cause, Red Dead Redemption 2, Forza Horizon, Portal 2, Left 4 Dead 2, Minecraft, Factorio и похожие игры. Для игр использую Steam; Hydra также присутствует в моём наборе лаунчеров.
 
 ### Подход к ПО
 Предпочитаю открытое ПО, прозрачность и контроль над инструментами. При этом честно отмечаю, что иногда приходится пользоваться проприетарными сервисами или Windows, когда это необходимо.

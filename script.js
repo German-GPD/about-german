@@ -2,7 +2,7 @@
   "use strict";
   const translations = {
     ru: {
-      online:"online",write:"Написать ↗",badge:"LVL 99 · ОБЪЕКТИВНО ТОП",taglineOld:"Изучаю.",heroLine1:"Создаю",heroLine2:"digital vibe.",
+      themeLabel:"ТЕМА",themeToggle:"Переключить светлую и тёмную тему",online:"online",write:"Написать ↗",badge:"LVL 99 · ОБЪЕКТИВНО ТОП",taglineOld:"Изучаю.",heroLine1:"Создаю",heroLine2:"digital vibe.",
       heroCopy:"Я Герман — начинающий разработчик и создатель цифровых проектов. Изучаю веб-технологии, собираю интерфейсы и превращаю идеи в работающие продукты — от первой строчки кода до публикации.",
       seeProjects:"Мои проекты ↓",searchPlaceholder:"Искать в сети через DuckDuckGo…",screenCaption:"BUILD / TEST / REPEAT",
       aboutKicker:"01 / ОБО МНЕ",aboutTitle:"Думаю. Собираю. Улучшаю.",aboutCopy1:"Я самостоятельно изучаю разработку и проверяю знания на собственных проектах. Мне интересны не только код и визуал, но и весь путь продукта: идея, удобство, тестирование, исправление ошибок и публикация.",
@@ -72,7 +72,7 @@ skillsKicker:"04 / НАВЫКИ",
       viewSource:"Код на GitHub ↗"
     },
     en: {
-      online:"online",write:"Contact ↗",badge:"LVL 99 · OBJECTIVELY TOP",taglineOld:"Learning.",heroLine1:"Building",heroLine2:"digital vibes.",
+      themeLabel:"THEME",themeToggle:"Toggle light and dark theme",online:"online",write:"Contact ↗",badge:"LVL 99 · OBJECTIVELY TOP",taglineOld:"Learning.",heroLine1:"Building",heroLine2:"digital vibes.",
       heroCopy:"I'm German — a self-taught beginner developer building digital projects. I explore web technologies, craft interfaces, and turn ideas into working products, from the first line of code to publishing.",
       seeProjects:"Explore projects ↓",searchPlaceholder:"Search the web with DuckDuckGo…",screenCaption:"BUILD / TEST / REPEAT",
       aboutKicker:"01 / ABOUT ME",aboutTitle:"Think. Build. Improve.",aboutCopy1:"I'm learning development independently and testing what I learn through real projects. I'm interested in more than code and visuals: the full product journey — the idea, usability, testing, fixing issues, and publishing.",
@@ -142,7 +142,7 @@ skillsKicker:"04 / SKILLS",
       viewSource:"Source on GitHub ↗"
     },
     es: {
-      online:"en línea",write:"Contactar ↗",badge:"LVL 99 · OBJETIVAMENTE TOP",taglineOld:"Aprendiendo.",heroLine1:"Creo",heroLine2:"digital vibes.",
+      themeLabel:"TEMA",themeToggle:"Cambiar entre tema claro y oscuro",online:"en línea",write:"Contactar ↗",badge:"LVL 99 · OBJETIVAMENTE TOP",taglineOld:"Aprendiendo.",heroLine1:"Creo",heroLine2:"digital vibes.",
       heroCopy:"Soy German, desarrollador principiante autodidacta y creador de proyectos digitales. Exploro tecnologías web, diseño interfaces y convierto ideas en productos funcionales, desde la primera línea de código hasta su publicación.",
       seeProjects:"Ver proyectos ↓",searchPlaceholder:"Buscar en la web con DuckDuckGo…",screenCaption:"CREAR / PROBAR / REPETIR",
       aboutKicker:"01 / SOBRE MÍ",aboutTitle:"Pensar. Crear. Mejorar.",aboutCopy1:"Aprendo desarrollo por mi cuenta y pongo en práctica lo que aprendo mediante proyectos reales. Me interesan tanto el código y lo visual como todo el proceso: idea, usabilidad, pruebas, corrección de errores y publicación.",
@@ -238,19 +238,33 @@ skillsKicker:"04 / HABILIDADES",
     document.title = titles[chosen];
     const description = document.querySelector('meta[name="description"]');
     if (description) description.content = descriptions[chosen];
-    try { localStorage.setItem("gpd-language", chosen); } catch (_) {}
+    document.querySelectorAll("[data-i18n-aria]").forEach((el) => {
+      const value = translations[chosen][el.dataset.i18nAria];
+      if (value) el.setAttribute("aria-label", value);
+    });
+  };
+  const deviceLanguage = () => {
+    const browser = (navigator.language || "en").slice(0,2).toLowerCase();
+    return translations[browser] ? browser : "en";
   };
   document.querySelectorAll("[data-lang]").forEach((button) => button.addEventListener("click", () => applyLanguage(button.dataset.lang)));
-  let initial = "ru";
-  try {
-    const saved = localStorage.getItem("gpd-language");
-    const browser = (navigator.language || "ru").slice(0,2).toLowerCase();
-    initial = saved || (translations[browser] ? browser : "en");
-  } catch (_) {
-    const browser = (navigator.language || "ru").slice(0,2).toLowerCase();
-    initial = translations[browser] ? browser : "en";
-  }
-  applyLanguage(initial);
+  applyLanguage(deviceLanguage());
+  window.addEventListener("languagechange", () => applyLanguage(deviceLanguage()));
+
+  const themeQuery = window.matchMedia("(prefers-color-scheme: light)");
+  const themeToggle = document.getElementById("themeToggle");
+  const setTheme = (theme) => {
+    document.documentElement.dataset.theme = theme;
+    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "light" ? "#f4f2ec" : "#12131a");
+    if (themeToggle) {
+      themeToggle.firstChild.textContent = theme === "light" ? "☾ " : "☼ ";
+      themeToggle.setAttribute("aria-pressed", String(theme === "light"));
+      themeToggle.title = theme === "light" ? "Light theme" : "Dark theme";
+    }
+  };
+  setTheme(themeQuery.matches ? "light" : "dark");
+  themeToggle?.addEventListener("click", () => setTheme(document.documentElement.dataset.theme === "light" ? "dark" : "light"));
+  themeQuery.addEventListener?.("change", (event) => setTheme(event.matches ? "light" : "dark"));
   const year = document.getElementById("year");
   if (year) year.textContent = new Date().getFullYear();
   const revealItems = document.querySelectorAll(".reveal");

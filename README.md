@@ -2,104 +2,143 @@
 
 [Русский](#русский) · [English](#english) · [Español](#español)
 
-**Live site:** https://german-gpd.github.io/about-german/  
-**GitHub:** https://github.com/German-GPD
+**Live:** https://german-gpd.github.io/about-german/  
+**Source:** https://github.com/German-GPD/about-german
 
 ---
 
 <a id="русский"></a>
 ## Русский
 
-Личный сайт-портфолио Германа Петраченко (German / GPD). Здесь собраны мои проекты, направления обучения, технологии и способы связи.
+Личный сайт-портфолио German / GPD — место, где собраны проекты, навыки, рабочий сетап, инструменты и контакты.
 
 ### Что внутри
-- Сохранённый оригинальный GPD-стиль: пиксельные углы, резкие тени, сетка, цветные акценты и ретро-атмосфера.
-- Отдельные файлы: `index.html`, `style.css`, `script.js`.
-- Три языка интерфейса: русский, английский и испанский; язык выбирается вручную и может запоминаться в браузере.
-- Адаптивная вёрстка для компьютеров, планшетов и телефонов.
-- Разделы «Обо мне», проекты, путь обучения, инструменты и контакты.
-- Анимации появления, плавающие пиксельные детали и плавные переходы.
-- Поддержка `prefers-reduced-motion` для пользователей, которым нужны уменьшенные анимации.
-- SEO-метаданные, canonical URL, структурированные данные Schema.org, `robots.txt` и `sitemap.xml`.
+- Сохранён оригинальный GPD-стиль: пиксельные формы, резкие тени, сетка, цветные акценты и ретро-детали.
+- Отдельные `index.html`, `style.css`, `script.js`.
+- Русский, английский и испанский языки.
+- Разделы о навыках, реальных проектах, рабочем компьютере и мониторах.
+- Описание AI-assisted workflow: ChatGPT, Claude от Anthropic, Mistral Vibe, а также Qwen, Perplexity, Gemini и Copilot.
+- Инструментальные связки: GitHub + GitHub Pages, DuckDuckGo Search, Google Fonts и социальные контакты.
+- Анимации появления и переходы с поддержкой `prefers-reduced-motion`.
+- SEO-метаданные, Schema.org, `robots.txt` и `sitemap.xml`.
 
-### Технологии
-HTML · CSS · JavaScript · GitHub Pages · Google Fonts
+### Навыки и кейсы
+- **Web:** HTML, CSS, JavaScript, адаптивные интерфейсы.
+- **Изучаю и исследую:** Vue, Python, PHP, Bash, Linux.
+- **UI/UX:** структура страниц, визуальная иерархия, доступность и мобильный опыт.
+- **Релизы:** Git, GitHub, GitHub Pages, README, базовая SEO-подготовка.
+- **School Calc:** школьный калькулятор оценок с несколькими системами оценивания и маскотом Gera.
+- **Cash Converter:** проект конвертера валют и показателей, в котором прорабатываются визуальная система и графики.
+- **GPD portfolio:** личный сайт и эксперименты с интерфейсом.
 
-### Запуск локально
-Откройте `index.html` в браузере. Сборка и установка зависимостей не нужны.
+Уровни навыков описаны как практика и обучение, а не как профессиональные сертификаты или выдуманный стаж.
 
-### Публикация
-GitHub → **Settings → Pages** → **Deploy from a branch** → ветка `main`, папка `/(root)`.
+### Рабочий сетап
+- Intel Core i5-12400F
+- NVIDIA GeForce RTX 3050 8 GB
+- 16 GB DDR4
+- 1 TB NVMe SSD
+- Windows 11
+- Основной монитор: 2560×1440, 200 Hz
+- Второй вертикальный монитор: Full HD, 100 Hz
 
-### Поисковая индексация
-Сайт подготовлен для индексации, но добавление в результаты Google не гарантируется автоматически. Откройте [Google Search Console](https://search.google.com/search-console), добавьте URL-префикс `https://german-gpd.github.io/about-german/`, проверьте доступность и отправьте `sitemap.xml`. После публикации можно использовать URL Inspection → **Request indexing**.
+### Подход к ПО
+Предпочитаю открытое ПО, прозрачность и контроль над инструментами. При этом честно отмечаю, что иногда приходится пользоваться проприетарными сервисами или Windows, когда это необходимо.
+
+### Запуск и публикация
+Откройте `index.html` в браузере. Для GitHub Pages выберите **Settings → Pages → Deploy from a branch → main → /(root)**.
+
+### Google и SEO
+Сайт подготовлен для сканирования поисковыми роботами, но попадание в Google не гарантируется. Добавьте адрес сайта в [Google Search Console](https://search.google.com/search-console), отправьте `sitemap.xml` и запросите индексацию опубликованной страницы.
 
 ### Лицензия
-См. [LICENSE](LICENSE). Оригинальные материалы сайта распространяются по **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**. Это разрешает повторное использование с указанием авторства для некоммерческих целей; для коммерческого использования нужно отдельное разрешение.
+См. [LICENSE](LICENSE): CC BY-NC 4.0 для оригинальных материалов сайта.
 
 ---
 
 <a id="english"></a>
 ## English
 
-The personal portfolio of German Petrachenko (German / GPD), featuring selected projects, learning areas, technologies, and contact links.
+The personal portfolio of German / GPD, featuring projects, practical skills, a real development setup, tools, and contact links.
 
 ### Features
-- Original GPD identity preserved: pixel corners, hard shadows, grid texture, colourful accents, and retro-inspired details.
-- Separate `index.html`, `style.css`, and `script.js` files.
-- Russian, English, and Spanish interface; the language can be selected manually and remembered in the browser.
-- Responsive desktop, tablet, and mobile layout.
-- About, Projects, Learning Journey, Toolkit, and Contact sections.
-- Entrance animations, floating pixel details, and smooth transitions.
-- Respects `prefers-reduced-motion`.
-- SEO metadata, canonical URL, Schema.org structured data, `robots.txt`, and `sitemap.xml`.
+- Original pixel-inspired GPD design with hard shadows, grid texture, and colourful accents.
+- Separate `index.html`, `style.css`, and `script.js`.
+- Russian, English, and Spanish interface.
+- Skills, project case studies, desktop hardware, and monitor setup.
+- AI-assisted workflow: ChatGPT, Claude by Anthropic, Mistral Vibe, plus Qwen, Perplexity, Gemini, and Copilot.
+- Workflow connections: GitHub + GitHub Pages, DuckDuckGo Search, Google Fonts, and social links.
+- Entrance animations and `prefers-reduced-motion` support.
+- SEO metadata, Schema.org structured data, `robots.txt`, and `sitemap.xml`.
 
-### Built with
-HTML · CSS · JavaScript · GitHub Pages · Google Fonts
+### Skills and case studies
+- **Web:** HTML, CSS, JavaScript, responsive interfaces.
+- **Learning and exploration:** Vue, Python, PHP, Bash, Linux.
+- **UI/UX:** page structure, visual hierarchy, accessibility, and mobile experience.
+- **Shipping:** Git, GitHub, GitHub Pages, README documentation, basic SEO preparation.
+- **School Calc:** school-grade calculator with multiple grading scales and the Gera mascot.
+- **Cash Converter:** currency and indicator converter project with a focus on visual design and charts.
+- **GPD portfolio:** personal website and interface experiments.
 
-### Run locally
-Open `index.html` in a browser. No build tools or dependencies are required.
+Skill labels describe hands-on practice and learning, not invented certificates or professional tenure.
 
-### Deploy
-GitHub → **Settings → Pages** → **Deploy from a branch** → `main`, folder `/(root)`.
+### Development setup
+Intel Core i5-12400F · NVIDIA RTX 3050 8 GB · 16 GB DDR4 · 1 TB NVMe SSD · Windows 11. Main display: 2560×1440 at 200 Hz; secondary vertical display: Full HD at 100 Hz.
+
+### Software philosophy
+I prefer open-source software, transparency, and control over my tools. Sometimes proprietary services or Windows are necessary in practice, and I say so honestly.
+
+### Run and deploy
+Open `index.html` in a browser. For GitHub Pages, choose **Settings → Pages → Deploy from a branch → main → /(root)**.
 
 ### Search indexing
-The site is prepared for crawling, but Google inclusion cannot be guaranteed. Add `https://german-gpd.github.io/about-german/` to [Google Search Console](https://search.google.com/search-console), inspect the URL, submit `sitemap.xml`, and use **Request indexing** after deployment.
+The site is prepared for crawling, but Google inclusion is not guaranteed. Add the site to [Google Search Console](https://search.google.com/search-console), submit `sitemap.xml`, and request indexing after deployment.
 
 ### License
-See [LICENSE](LICENSE). Original website content and design are licensed under **Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)**. Attribution is required and reuse is limited to non-commercial purposes; commercial use requires separate permission.
+See [LICENSE](LICENSE): CC BY-NC 4.0 for original website materials.
 
 ---
 
 <a id="español"></a>
 ## Español
 
-Portafolio personal de German Petrachenko (German / GPD), con proyectos, áreas de aprendizaje, tecnologías y formas de contacto.
+Portafolio personal de German / GPD con proyectos, habilidades prácticas, equipo de desarrollo, herramientas y enlaces de contacto.
 
 ### Características
-- Se conserva la identidad visual original de GPD: esquinas pixeladas, sombras marcadas, cuadrícula, acentos de color y ambiente retro.
+- Diseño pixelado original de GPD, sombras marcadas, cuadrícula y acentos de color.
 - Archivos separados: `index.html`, `style.css` y `script.js`.
-- Interfaz en ruso, inglés y español; el idioma se puede elegir y guardar en el navegador.
-- Diseño adaptable a ordenador, tableta y móvil.
-- Secciones sobre mí, proyectos, aprendizaje, herramientas y contacto.
-- Animaciones de entrada, detalles pixelados flotantes y transiciones suaves.
-- Respeta `prefers-reduced-motion`.
-- Metadatos SEO, URL canónica, datos estructurados Schema.org, `robots.txt` y `sitemap.xml`.
+- Interfaz en ruso, inglés y español.
+- Secciones de habilidades, casos de proyectos, ordenador y monitores.
+- Flujo de trabajo con IA: ChatGPT, Claude de Anthropic, Mistral Vibe, además de Qwen, Perplexity, Gemini y Copilot.
+- Conexiones del flujo: GitHub + GitHub Pages, búsqueda de DuckDuckGo, Google Fonts y redes sociales.
+- Animaciones con soporte para `prefers-reduced-motion`.
+- Metadatos SEO, Schema.org, `robots.txt` y `sitemap.xml`.
 
-### Tecnologías
-HTML · CSS · JavaScript · GitHub Pages · Google Fonts
+### Habilidades y proyectos
+- **Web:** HTML, CSS, JavaScript e interfaces adaptables.
+- **Aprendizaje y experimentación:** Vue, Python, PHP, Bash y Linux.
+- **UI/UX:** estructura de páginas, jerarquía visual, accesibilidad y experiencia móvil.
+- **Publicación:** Git, GitHub, GitHub Pages, documentación README y preparación SEO básica.
+- **School Calc:** calculadora de notas escolares con varias escalas y la mascota Gera.
+- **Cash Converter:** proyecto de conversión de divisas e indicadores, con atención al diseño visual y los gráficos.
+- **Portafolio GPD:** sitio personal y experimentos de interfaz.
 
-### Ejecución local
-Abre `index.html` en el navegador. No se necesitan dependencias ni compilación.
+Las etiquetas describen práctica y aprendizaje, no certificaciones ni experiencia profesional inventada.
 
-### Publicación
-GitHub → **Settings → Pages** → **Deploy from a branch** → rama `main`, carpeta `/(root)`.
+### Equipo de desarrollo
+Intel Core i5-12400F · NVIDIA RTX 3050 de 8 GB · 16 GB DDR4 · SSD NVMe de 1 TB · Windows 11. Monitor principal: 2560×1440 a 200 Hz; segundo monitor vertical: Full HD a 100 Hz.
 
-### Indexación en buscadores
-El sitio está preparado para el rastreo, pero no se puede garantizar su inclusión en Google. Añade `https://german-gpd.github.io/about-german/` a [Google Search Console](https://search.google.com/search-console), inspecciona la URL, envía `sitemap.xml` y solicita la indexación después de publicar.
+### Filosofía de software
+Prefiero el software de código abierto, la transparencia y el control de mis herramientas. A veces necesito servicios propietarios o Windows por razones prácticas, y lo digo con honestidad.
+
+### Ejecución y publicación
+Abre `index.html` en el navegador. Para GitHub Pages, selecciona **Settings → Pages → Deploy from a branch → main → /(root)**.
+
+### Indexación en Google
+El sitio está preparado para el rastreo, pero Google no garantiza su inclusión. Añade el sitio a [Google Search Console](https://search.google.com/search-console), envía `sitemap.xml` y solicita la indexación después de publicar.
 
 ### Licencia
-Consulta [LICENSE](LICENSE). El contenido original y el diseño se publican bajo **Creative Commons Atribución-NoComercial 4.0 Internacional (CC BY-NC 4.0)**. Se exige atribución y el uso debe ser no comercial; para uso comercial hace falta autorización aparte.
+Consulta [LICENSE](LICENSE): CC BY-NC 4.0 para los materiales originales del sitio.
 
 ---
 

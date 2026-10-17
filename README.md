@@ -21,7 +21,7 @@
 - Софт: Visual Studio Code, JetBrains IDE, GitHub, Figma, Canva, Adobe, DaVinci Resolve, GIMP и Microsoft Office 2025.
 - Игры и досуг: Mafia, Grand Theft Auto, Far Cry, Just Cause и похожие open-world игры; Steam и Hydra.
 - Анимации появления и переходы с поддержкой `prefers-reduced-motion`.
-- Раздел с тремя кейсами и встроенная мини-игра GPD Pixel Run.
+- Раздел с тремя кейсами, встроенная мини-игра GPD Pixel Run и эффект пиксельных букв при наведении на компьютере.
 - SEO-метаданные, Schema.org, `robots.txt` и `sitemap.xml`.
 
 ### Навыки и кейсы

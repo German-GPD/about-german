@@ -1,6 +1,4 @@
-# German / GPD — Personal Website
-
-**Русская версия сайта**
+# German / GPD — личный сайт-портфолио
 
 **Live:** https://german-gpd.github.io/about-german/  
 **Source:** https://github.com/German-GPD/about-german

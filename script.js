@@ -61,13 +61,23 @@
     }
     nodes.forEach((node) => {
       const fragment = document.createDocumentFragment();
-      for (const character of node.nodeValue) {
-        const glyph = document.createElement("span");
-        glyph.className = "pixel-glyph";
-        glyph.setAttribute("aria-hidden", "true");
-        glyph.textContent = character === " " ? "\u00a0" : character;
-        fragment.appendChild(glyph);
-      }
+      const tokens = node.nodeValue.match(/\\s+|[^\\s]+/gu) || [];
+      tokens.forEach((token) => {
+        if (/^\\s+$/u.test(token)) {
+          fragment.appendChild(document.createTextNode(token));
+          return;
+        }
+        const word = document.createElement("span");
+        word.className = "pixel-word";
+        word.setAttribute("aria-hidden", "true");
+        for (const character of token) {
+          const glyph = document.createElement("span");
+          glyph.className = "pixel-glyph";
+          glyph.textContent = character;
+          word.appendChild(glyph);
+        }
+        fragment.appendChild(word);
+      });
       node.parentNode.replaceChild(fragment, node);
     });
     element.dataset.pixelLetters = "true";

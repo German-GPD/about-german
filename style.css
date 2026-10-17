@@ -14,18 +14,16 @@
     --scan:rgba(255,255,255,.025);
     --grain:.05;
   }
-  @media (prefers-color-scheme:light){
-    :root{
-      color-scheme:light;
-      --bg:#f4f2ec;
-      --surface:#ffffff;
-      --surface-2:#edeadf;
-      --line:#d8d3c4;
-      --text:#17161a;
-      --muted:#6d6c63;
-      --scan:rgba(0,0,0,.03);
-      --grain:.035;
-    }
+  :root[data-theme="light"]{
+    color-scheme:light;
+    --bg:#f4f2ec;
+    --surface:#ffffff;
+    --surface-2:#edeadf;
+    --line:#d8d3c4;
+    --text:#17161a;
+    --muted:#6d6c63;
+    --scan:rgba(0,0,0,.03);
+    --grain:.035;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
@@ -345,3 +343,9 @@ section .section-copy { margin-top:0; }
 .project-actions .project-link{margin-top:0}
 .project-link.secondary{color:var(--muted)}
 .project-link.secondary:hover{color:var(--cyan)}
+
+/* Device-aware theme control; keep the original pixel-art identity. */
+.theme-toggle{display:inline-flex;align-items:center;gap:6px;padding:8px 9px;border:2px solid var(--line);background:var(--surface);color:var(--text);font:9px 'Press Start 2P',monospace;cursor:pointer;box-shadow:3px 3px 0 var(--line);white-space:nowrap}
+.theme-toggle:hover{border-color:var(--cyan);color:var(--cyan)}
+.theme-toggle:focus-visible,.lang-switch button:focus-visible{outline:3px solid var(--cyan);outline-offset:3px}
+@media(max-width:620px){.theme-toggle{font-size:8px;padding:7px 6px}.theme-toggle span{display:none}.nav-tools{gap:8px}}

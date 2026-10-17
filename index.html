@@ -3,265 +3,154 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#08090b">
-  <meta name="description" content="German / GPD — личное портфолио Германа Петраченко: веб-разработка, интерфейсы и собственные цифровые проекты.">
-  <meta property="og:title" content="German / GPD — разработчик">
-  <meta property="og:description" content="Создаю цифровые проекты, изучаю веб-разработку и превращаю идеи в работающие продукты.">
+  <meta name="theme-color" content="#12131a">
+  <meta name="description" content="German / GPD — личный сайт Германа Петраченко: веб-разработка, интерфейсы, программирование и собственные цифровые проекты School Calc и Cash Converter.">
+  <meta name="author" content="German Petrachenko">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://german-gpd.github.io/about-german/">
+  <link rel="alternate" hreflang="ru" href="https://german-gpd.github.io/about-german/">
+  <link rel="alternate" hreflang="en" href="https://german-gpd.github.io/about-german/">
+  <link rel="alternate" hreflang="es" href="https://german-gpd.github.io/about-german/">
+  <link rel="alternate" hreflang="x-default" href="https://german-gpd.github.io/about-german/">
   <meta property="og:type" content="website">
-  <title>German / GPD — разработчик и создатель проектов</title>
+  <meta property="og:url" content="https://german-gpd.github.io/about-german/">
+  <meta property="og:title" content="German / GPD — разработчик и создатель проектов">
+  <meta property="og:description" content="Изучаю веб-разработку, создаю интерфейсы и развиваю собственные цифровые проекты.">
+  <meta property="og:site_name" content="German / GPD">
+  <meta name="twitter:card" content="summary">
+  <title>German / GPD — разработчик и цифровые проекты</title>
+  <link rel="icon" href="data:,">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{color-scheme:dark;--bg:#08090b;--panel:#101215;--panel-2:#15181c;--line:#252a2e;--text:#f5f7f6;--muted:#9ba39f;--accent:#b4f36b;--accent-2:#d5ff9e;--glass:rgba(17,20,21,.72);--shadow:rgba(0,0,0,.24);--max:1120px}
-    @media(prefers-color-scheme:light){:root{color-scheme:light;--bg:#f5f7f4;--panel:#fff;--panel-2:#edf1eb;--line:#dce2d9;--text:#141814;--muted:#59635b;--accent:#437b20;--accent-2:#315f18;--glass:rgba(255,255,255,.78);--shadow:rgba(32,48,24,.08)}}
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth;scroll-padding-top:100px}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-    body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 78% 4%,color-mix(in srgb,var(--accent) 9%,transparent),transparent 34%),radial-gradient(ellipse at 0% 38%,rgba(100,130,255,.045),transparent 34%)}
-    a{color:inherit;text-decoration:none}
-    button,a{-webkit-tap-highlight-color:transparent}
-    a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
-    .container{width:min(var(--max),calc(100% - 44px));margin-inline:auto}
-    .mono,.eyebrow,.nav-label,.project-index,.timeline-date,.footer-mark{font-family:"DM Mono",monospace}
-    .mono,.eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase}
-    .site-header{position:sticky;top:0;z-index:20;border-bottom:1px solid color-mix(in srgb,var(--line) 76%,transparent);background:var(--glass);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
-    .nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand{display:inline-flex;align-items:center;gap:11px;font-weight:800;letter-spacing:-.04em}
-    .brand-mark{width:34px;height:34px;display:grid;place-items:center;background:var(--accent);color:#10150b;border-radius:10px;font-size:13px;letter-spacing:-.08em}
-    .brand small{display:block;font:10px "DM Mono",monospace;letter-spacing:.12em;color:var(--muted);font-weight:400;margin-top:1px}
-    .nav-links{display:flex;align-items:center;gap:27px}
-    .nav-links a{font-size:12px;color:var(--muted);transition:color .2s}
-    .nav-links a:hover{color:var(--text)}
-    .nav-cta,.button{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:44px;padding:0 17px;border:1px solid var(--line);border-radius:12px;font-size:12px;font-weight:700;transition:transform .2s,border-color .2s,background .2s}
-    .nav-cta{background:var(--panel);white-space:nowrap}
-    .button.primary{background:var(--accent);border-color:var(--accent);color:#11170b}
-    .button.secondary{background:var(--panel);color:var(--text)}
-    .button:hover,.nav-cta:hover{transform:translateY(-2px);border-color:var(--accent)}
-    .hero{padding:100px 0 78px;position:relative;overflow:hidden}
-    .hero-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);align-items:center;gap:64px}
-    .availability{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:999px;background:var(--glass);padding:7px 12px;color:var(--muted);font:10px "DM Mono",monospace;letter-spacing:.04em;margin-bottom:28px}
-    .dot{width:7px;height:7px;border-radius:50%;background:var(--accent);box-shadow:0 0 13px color-mix(in srgb,var(--accent) 65%,transparent)}
-    h1{font-size:clamp(45px,7.2vw,88px);line-height:.99;letter-spacing:-.075em;margin:0;max-width:760px;font-weight:800}
-    h1 .accent{color:var(--accent)}
-    .hero-copy{max-width:550px;color:var(--muted);font-size:15px;line-height:1.85;margin:25px 0 29px}
-    .hero-actions{display:flex;gap:11px;flex-wrap:wrap}
-    .micro-note{margin-top:22px;color:var(--muted);font:10px "DM Mono",monospace;letter-spacing:.035em}
-    .visual{position:relative;min-height:330px;border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,color-mix(in srgb,var(--panel-2) 88%,transparent),color-mix(in srgb,var(--bg) 88%,transparent));overflow:hidden;box-shadow:0 24px 90px var(--shadow)}
-    .visual:before{content:"";position:absolute;inset:0;background-image:linear-gradient(color-mix(in srgb,var(--line) 48%,transparent) 1px,transparent 1px),linear-gradient(90deg,color-mix(in srgb,var(--line) 48%,transparent) 1px,transparent 1px);background-size:30px 30px;mask-image:linear-gradient(to bottom,black,transparent 90%);opacity:.55}
-    .visual-orbit{position:absolute;width:220px;height:220px;left:50%;top:48%;transform:translate(-50%,-50%);border:1px solid color-mix(in srgb,var(--accent) 35%,var(--line));border-radius:50%;box-shadow:0 0 55px color-mix(in srgb,var(--accent) 8%,transparent),inset 0 0 55px color-mix(in srgb,var(--accent) 6%,transparent)}
-    .visual-orbit:before,.visual-orbit:after{content:"";position:absolute;border:1px solid color-mix(in srgb,var(--accent) 22%,var(--line));border-radius:50%;inset:24px}
-    .visual-orbit:after{inset:53px}
-    .visual-core{position:absolute;left:50%;top:48%;transform:translate(-50%,-50%);width:94px;height:94px;border-radius:25px;background:var(--accent);color:#10150b;display:grid;place-items:center;font-size:29px;font-weight:800;letter-spacing:-.09em;box-shadow:0 0 65px color-mix(in srgb,var(--accent) 25%,transparent);rotate:-7deg}
-    .float-label{position:absolute;border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--glass);backdrop-filter:blur(12px);font:10px "DM Mono",monospace;color:var(--muted)}
-    .float-label strong{display:block;color:var(--text);font-size:11px;font-weight:500;margin-bottom:2px}
-    .fl-one{left:17px;top:22px}.fl-two{right:15px;top:92px}.fl-three{left:25px;bottom:24px}.fl-four{right:16px;bottom:22px}
-    .scroll-hint{display:flex;align-items:center;gap:12px;color:var(--muted);font:10px "DM Mono",monospace;margin-top:72px}
-    .scroll-hint:before{content:"";height:1px;width:32px;background:var(--accent)}
-    .section{padding:70px 0}
-    .section-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:30px}
-    .eyebrow{color:var(--accent);margin:0 0 12px}
-    h2{font-size:clamp(28px,4vw,43px);letter-spacing:-.06em;line-height:1.1;margin:0;font-weight:800}
-    .section-intro{max-width:420px;color:var(--muted);font-size:13px;line-height:1.8;margin:0}
-    .about-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .surface{background:var(--panel);border:1px solid var(--line);border-radius:19px}
-    .about-main{padding:28px}
-    .about-main p{font-size:14px;line-height:1.9;color:var(--muted);margin:0 0 15px}
-    .about-main p:last-child{margin-bottom:0}
-    .about-main strong{color:var(--text);font-weight:700}
-    .principles{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:15px}
-    .principle{padding:17px;border-radius:13px;background:var(--panel-2);min-height:120px}
-    .principle-number{font:11px "DM Mono",monospace;color:var(--accent)}
-    .principle h3{font-size:13px;margin:14px 0 5px;letter-spacing:-.02em}
-    .principle p{font-size:11px;line-height:1.7;color:var(--muted);margin:0}
-    .project-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-    .project{padding:24px;min-height:280px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .22s,border-color .22s}
-    .project:hover{transform:translateY(-4px);border-color:color-mix(in srgb,var(--accent) 55%,var(--line))}
-    .project-top{display:flex;justify-content:space-between;align-items:center;gap:15px}
-    .project-index{color:var(--muted);font-size:10px}
-    .project-icon{width:43px;height:43px;border-radius:13px;display:grid;place-items:center;background:var(--panel-2);color:var(--accent);font:700 15px "DM Mono",monospace;border:1px solid var(--line)}
-    .project h3{font-size:23px;letter-spacing:-.05em;margin:24px 0 9px}
-    .project p{font-size:12px;line-height:1.8;color:var(--muted);margin:0;max-width:440px}
-    .project-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:19px}
-    .project-tags span,.skill-chip{font:10px "DM Mono",monospace;border:1px solid var(--line);border-radius:7px;padding:6px 8px;color:var(--muted)}
-    .project-link{display:inline-flex;align-items:center;gap:8px;margin-top:auto;padding-top:24px;font-size:12px;font-weight:700;color:var(--accent)}
-    .project-link span{transition:transform .2s}.project:hover .project-link span{transform:translate(3px,-3px)}
-    .project-feature{grid-column:span 2;min-height:220px;background:linear-gradient(115deg,var(--panel),color-mix(in srgb,var(--accent) 7%,var(--panel)))}
-    .project-feature .project-content{max-width:70%}
-    .project-feature:after{content:"SC";position:absolute;right:5%;bottom:-65px;font-size:clamp(130px,22vw,245px);font-weight:800;letter-spacing:-.12em;line-height:1;color:color-mix(in srgb,var(--accent) 8%,transparent);pointer-events:none}
-    .project-feature .project-link,.project-feature .project-tags,.project-feature h3,.project-feature p,.project-feature .project-top{position:relative;z-index:1}
-    .timeline{position:relative}
-    .timeline:before{content:"";position:absolute;left:135px;top:10px;bottom:12px;width:1px;background:var(--line)}
-    .timeline-item{display:grid;grid-template-columns:112px 1fr;gap:48px;padding:0 0 30px;position:relative}
-    .timeline-item:last-child{padding-bottom:0}
-    .timeline-item:before{content:"";position:absolute;left:130px;top:5px;width:9px;height:9px;border:2px solid var(--accent);border-radius:50%;background:var(--bg);box-shadow:0 0 0 5px var(--bg)}
-    .timeline-date{font-size:10px;color:var(--accent);padding-top:3px}
-    .timeline-content{padding:0 0 25px;border-bottom:1px solid var(--line)}
-    .timeline-item:last-child .timeline-content{border-bottom:0}
-    .timeline-content h3{font-size:16px;letter-spacing:-.025em;margin:0 0 7px}
-    .timeline-content p{font-size:12px;color:var(--muted);line-height:1.8;max-width:690px;margin:0}
-    .timeline-meta{font:10px "DM Mono",monospace;color:var(--muted);margin-top:11px}
-    .skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .skill-group{padding:24px}
-    .skill-group h3{font-size:14px;margin:0 0 17px}
-    .skill-list{display:flex;flex-wrap:wrap;gap:8px}
-    .skill-chip{font-size:11px;padding:8px 10px;color:var(--text);background:var(--panel-2)}
-    .skill-note{font-size:11px;color:var(--muted);line-height:1.7;margin:16px 0 0}
-    .contact-panel{padding:clamp(25px,5vw,48px);display:flex;align-items:center;justify-content:space-between;gap:30px;background:linear-gradient(120deg,var(--panel),color-mix(in srgb,var(--accent) 8%,var(--panel)));position:relative;overflow:hidden}
-    .contact-panel:after{content:"";position:absolute;width:260px;height:260px;right:-90px;top:-130px;border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line));border-radius:50%;box-shadow:0 0 0 35px color-mix(in srgb,var(--accent) 3%,transparent),0 0 0 70px color-mix(in srgb,var(--accent) 2%,transparent);pointer-events:none}
-    .contact-panel h2{font-size:clamp(27px,4vw,42px);max-width:540px}
-    .contact-panel p{font-size:12px;color:var(--muted);margin:13px 0 0}
-    .contact-panel .button{flex:none;position:relative;z-index:1}
-    footer{padding:27px 0 35px;margin-top:55px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;color:var(--muted);font-size:10px}
-    .footer-mark{color:var(--text);letter-spacing:.08em}
-    .footer-links{display:flex;gap:18px;flex-wrap:wrap}
-    .footer-links a:hover{color:var(--accent)}
-    .reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease,transform .6s ease}
-    .reveal.visible{opacity:1;transform:translateY(0)}
-    @media(max-width:800px){.hero{padding-top:70px}.hero-grid{grid-template-columns:1fr;gap:38px}.visual{min-height:300px}.scroll-hint{margin-top:45px}.about-layout{grid-template-columns:1fr}.project-feature .project-content{max-width:85%}.timeline:before{left:105px}.timeline-item{grid-template-columns:82px 1fr;gap:44px}.timeline-item:before{left:100px}}
-    @media(max-width:600px){.container{width:min(var(--max),calc(100% - 30px))}.nav{min-height:66px}.nav-links{display:none}.nav-cta{min-height:39px;padding:0 12px;font-size:11px}.hero{padding:58px 0 50px}h1{font-size:clamp(45px,13vw,70px)}.hero-copy{font-size:13px}.visual{min-height:275px}.visual-orbit{width:190px;height:190px}.visual-core{width:78px;height:78px;border-radius:21px}.float-label{padding:8px 9px;font-size:9px}.fl-one{left:10px;top:12px}.fl-two{right:9px;top:75px}.fl-three{left:12px;bottom:13px}.fl-four{right:10px;bottom:13px}.section{padding:49px 0}.section-head{display:block}.section-intro{margin-top:14px}.about-main{padding:21px}.principles{padding:10px;gap:8px}.principle{padding:13px;min-height:115px}.project-grid{grid-template-columns:1fr}.project-feature{grid-column:auto;min-height:260px}.project-feature .project-content{max-width:100%}.project-feature:after{right:-2%;bottom:-30px;font-size:160px}.project{min-height:260px;padding:21px}.timeline:before{left:7px}.timeline-item{grid-template-columns:1fr;gap:10px;padding-left:28px;padding-bottom:26px}.timeline-item:before{left:2px;top:0}.timeline-date{padding-top:0}.timeline-content{padding-bottom:20px}.skills-layout{grid-template-columns:1fr}.skill-group{padding:20px}.contact-panel{align-items:flex-start;flex-direction:column;gap:22px}.contact-panel:after{right:-170px}footer{align-items:flex-start;flex-direction:column;gap:14px}}
-    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"German Petrachenko","alternateName":["German","GPD","German-GPD"],"url":"https://german-gpd.github.io/about-german/","sameAs":["https://github.com/German-GPD","https://t.me/german_gpd","https://www.youtube.com/@german_gpd"],"knowsAbout":["Web development","HTML","CSS","JavaScript","Vue","Python","Linux","UI design"]}
+  </script>
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="#top" aria-label="German GPD — наверх">
-        <span class="brand-mark">G/</span>
-        <span>German <small>GPD · DIGITAL BUILDER</small></span>
-      </a>
-      <nav class="nav-links" aria-label="Основная навигация">
-        <a href="#about">Обо мне</a><a href="#projects">Проекты</a><a href="#experience">Опыт</a><a href="#skills">Навыки</a>
-      </nav>
-      <a class="nav-cta" href="https://t.me/german_me" target="_blank" rel="noopener noreferrer">Связаться <span aria-hidden="true">↗</span></a>
+<div class="navbar">
+  <div class="wrap">
+    <nav aria-label="Main navigation">
+      <a class="logo px" href="#top" aria-label="German GPD home"><span>GP</span><span class="blink">_</span></a>
+      <div class="nav-tools">
+        <div class="status"><i aria-hidden="true"></i><span data-i18n="online">online</span></div>
+        <div class="lang-switch" aria-label="Language">
+          <button type="button" data-lang="ru" aria-pressed="true">RU</button>
+          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+          <button type="button" data-lang="es" aria-pressed="false">ES</button>
+        </div>
+        <a class="btn ghost pixel pixel-shadow" href="https://t.me/german_me" target="_blank" rel="noopener noreferrer" data-i18n="write">Написать ↗</a>
+      </div>
+    </nav>
+  </div>
+</div>
+<main id="top">
+  <header class="hero dots">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="badge-lvl px"><span>★</span><span data-i18n="badge">LVL 99 · ОБЪЕКТИВНО ТОП</span></div>
+          <p class="struck" data-i18n="taglineOld">Изучаю.</p>
+          <h1><span data-i18n="heroLine1">Создаю</span><br><span data-i18n="heroLine2">digital vibe.</span></h1>
+          <p class="lede" data-i18n="heroCopy">Я Герман — начинающий разработчик и создатель цифровых проектов. Изучаю веб-технологии, собираю интерфейсы и превращаю идеи в работающие продукты — от первой строчки кода до публикации.</p>
+          <div class="cta-row">
+            <a class="btn pixel pixel-shadow" href="#projects" style="--shadow:#17131a" data-i18n="seeProjects">Мои проекты ↓</a>
+            <a class="btn ghost pixel pixel-shadow" href="https://github.com/German-GPD" target="_blank" rel="noopener noreferrer" style="--shadow:var(--cyan)">GitHub ↗</a>
+          </div>
+          <form class="search" action="https://duckduckgo.com/" method="get" target="_blank" rel="noopener">
+            <input type="search" name="q" placeholder="Искать в сети через DuckDuckGo…" aria-label="Поиск в DuckDuckGo" data-i18n-placeholder="searchPlaceholder">
+            <button type="submit" class="px">GO</button>
+          </form>
+        </div>
+        <div class="monitor pixel pixel-shadow" role="img" aria-label="Pixel art computer illustration">
+          <div class="bar"><span></span><span></span><span></span></div>
+          <div class="screen" aria-hidden="true">
+            <div class="line w1"></div><div class="line w2"></div><div class="line w3"></div><div class="line w4"></div>
+            <span class="cursor blink"></span>
+            <div class="screen-caption px" data-i18n="screenCaption">BUILD / TEST / REPEAT</div>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
-
-  <main id="top">
-    <section class="hero">
-      <div class="container hero-grid">
+  <div class="wrap">
+    <div class="divider" aria-hidden="true">
+      <i style="background:var(--amber)"></i><i style="background:var(--violet)"></i><i style="background:var(--cyan)"></i><i style="background:var(--red)"></i>
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+    <section id="about" class="reveal">
+      <div class="section-heading"><p class="section-kicker" data-i18n="aboutKicker">01 / ОБО МНЕ</p><h2 data-i18n="aboutTitle">Думаю. Собираю. Улучшаю.</h2></div>
+      <div class="about-grid" style="margin-bottom:24px">
         <div>
-          <div class="availability"><span class="dot"></span> УЧУСЬ · СОЗДАЮ · УЛУЧШАЮ</div>
-          <p class="eyebrow">Портфолио / 2026</p>
-          <h1>Идеи становятся<br><span class="accent">цифровыми.</span></h1>
-          <p class="hero-copy">Я Герман — начинающий разработчик и создатель собственных проектов. Изучаю веб-технологии, продумываю интерфейсы и довожу идеи до работающих продуктов.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="#projects">Смотреть проекты <span aria-hidden="true">↘</span></a>
-            <a class="button secondary" href="https://github.com/German-GPD" target="_blank" rel="noopener noreferrer">Мой GitHub <span aria-hidden="true">↗</span></a>
-          </div>
-          <div class="micro-note">HTML · CSS · JAVASCRIPT · СОБСТВЕННЫЕ ПРОЕКТЫ</div>
+          <p class="lede" style="max-width:720px;margin:0 0 14px" data-i18n="aboutCopy1">Я самостоятельно изучаю разработку и проверяю знания на собственных проектах. Мне интересны не только код и визуал, но и весь путь продукта: идея, удобство, тестирование, исправление ошибок и публикация.</p>
+          <p class="section-copy" data-i18n="aboutCopy2">Сейчас мой основной фокус — веб-разработка, интерфейсы, небольшие полезные приложения и цифровые инструменты. Использую ИИ как помощника для исследования и работы, стараясь понимать решения и доводить результат до рабочего состояния.</p>
         </div>
-        <div class="visual" aria-label="Абстрактная графика бренда GPD" role="img">
-          <div class="visual-orbit"></div><div class="visual-core">GPD</div>
-          <div class="float-label fl-one"><strong>01 / BUILD</strong>Создаю</div>
-          <div class="float-label fl-two"><strong>02 / LEARN</strong>Изучаю</div>
-          <div class="float-label fl-three"><strong>03 / ITERATE</strong>Улучшаю</div>
-          <div class="float-label fl-four"><strong>STATUS</strong>В процессе</div>
-        </div>
+        <div class="pixel-avatar float" aria-hidden="true"><i class="a"></i><i class="b"></i></div>
       </div>
-      <div class="container"><div class="scroll-hint">ЛИСТАЙ НИЖЕ — ТАМ МОИ ПРОЕКТЫ</div></div>
-    </section>
-
-    <section class="section" id="about">
-      <div class="container">
-        <div class="section-head reveal"><div><p class="eyebrow">01 / Коротко обо мне</p><h2>Не просто изучаю.<br>Пробую на практике.</h2></div><p class="section-intro">Мой путь в разработке строится на экспериментах, самостоятельном обучении и реальных задачах.</p></div>
-        <div class="about-layout reveal">
-          <article class="surface about-main">
-            <p>Мне интересны <strong>веб-разработка, интерфейсы, автоматизация и цифровые продукты.</strong> Я не хочу останавливаться на учебных примерах — мне важнее придумать идею, собрать первую версию и постепенно сделать её лучше.</p>
-            <p>В работе использую документацию, тестирование и ИИ-инструменты как помощников. При этом цель — понимать, как устроен проект, а не просто получить готовый код.</p>
-          </article>
-          <div class="surface principles">
-            <article class="principle"><span class="principle-number">01</span><h3>Практика</h3><p>Учусь, создавая собственные проекты.</p></article>
-            <article class="principle"><span class="principle-number">02</span><h3>Понятный UX</h3><p>Интерфейс должен быть удобным, не только красивым.</p></article>
-            <article class="principle"><span class="principle-number">03</span><h3>Итерации</h3><p>Исправляю ошибки и улучшаю результат.</p></article>
-            <article class="principle"><span class="principle-number">04</span><h3>Любопытство</h3><p>Изучаю новые инструменты и подходы.</p></article>
-          </div>
-        </div>
+      <div class="tags" aria-label="Technologies">
+        <span class="tag"><i style="background:var(--amber)"></i>HTML</span><span class="tag"><i style="background:var(--violet)"></i>CSS</span><span class="tag"><i style="background:var(--cyan)"></i>JavaScript</span><span class="tag"><i style="background:var(--red)"></i>Vue</span><span class="tag"><i style="background:var(--amber)"></i>Python</span><span class="tag"><i style="background:var(--violet)"></i>PHP</span><span class="tag"><i style="background:var(--cyan)"></i>Bash</span><span class="tag"><i style="background:var(--red)"></i>Linux</span><span class="tag" style="border-color:var(--cyan)"><i style="background:var(--cyan)"></i><span data-i18n="aiTag">+ ИИ в связке</span></span>
       </div>
     </section>
-
-    <section class="section" id="projects">
-      <div class="container">
-        <div class="section-head reveal"><div><p class="eyebrow">02 / Избранное</p><h2>Проекты в работе.</h2></div><p class="section-intro">Не список идей, а проекты, которым я уделяю время: от логики и интерфейса до публикации.</p></div>
-        <div class="project-grid">
-          <article class="surface project project-feature reveal">
-            <div class="project-content">
-              <div class="project-top"><span class="project-index">PROJECT / 001</span><span class="project-icon">SC</span></div>
-              <h3>School Calc</h3>
-              <p>Калькулятор школьных оценок с выбором системы оценивания и реакциями маскота Gera. Проект развивается с упором на простоту, приватность и удобство использования.</p>
-              <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Vue</span><span>GitHub Pages</span></div>
-              <a class="project-link" href="https://german-gpd.github.io/school-calc/" target="_blank" rel="noopener noreferrer">Открыть приложение <span aria-hidden="true">↗</span></a>
-            </div>
-          </article>
-          <article class="surface project reveal">
-            <div class="project-top"><span class="project-index">PROJECT / 002</span><span class="project-icon">CC</span></div>
-            <h3>Cash Converter</h3>
-            <p>Проект конвертера валют с акцентом на визуальную систему, понятное отображение значений и развитие графиков курсов.</p>
-            <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-            <a class="project-link" href="https://github.com/German-GPD/Cash-Converter" target="_blank" rel="noopener noreferrer">Репозиторий <span aria-hidden="true">↗</span></a>
-          </article>
-          <article class="surface project reveal">
-            <div class="project-top"><span class="project-index">PROJECT / 003</span><span class="project-icon">G/</span></div>
-            <h3>German / GPD</h3>
-            <p>Мой личный сайт и цифровая визитка. Экспериментирую с визуальным стилем, структурой контента и тем, как представить работу разработчика.</p>
-            <div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Responsive UI</span></div>
-            <a class="project-link" href="https://github.com/German-GPD/about-german" target="_blank" rel="noopener noreferrer">Исходный код <span aria-hidden="true">↗</span></a>
-          </article>
-        </div>
+    <section id="projects" class="reveal">
+      <div class="section-heading"><p class="section-kicker" data-i18n="projectsKicker">02 / ПРОЕКТЫ</p><h2 data-i18n="projectsTitle">Идеи, которые уже работают.</h2><p class="section-copy" data-i18n="projectsCopy">Создаю, публикую и постепенно улучшаю собственные цифровые продукты.</p></div>
+      <div class="project-grid">
+        <article class="project project-feature pixel">
+          <div><span class="card-label" data-i18n="projectOneLabel">PROJECT 01 / RELEASED</span><h3>School Calc</h3><p data-i18n="projectOneCopy">Калькулятор школьных оценок с поддержкой нескольких систем оценивания и маскотом Gera. Проект развивается с упором на простой интерфейс и работу без сохранения списка оценок после перезагрузки.</p><div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Vue</span></div><a class="project-link" href="https://german-gpd.github.io/school-calc/" target="_blank" rel="noopener noreferrer" data-i18n="openProject">Открыть проект ↗</a></div>
+          <div class="project-mark" aria-hidden="true">SC</div>
+        </article>
+        <article class="project pixel">
+          <span class="card-label" data-i18n="projectTwoLabel">PROJECT 02 / IN PROGRESS</span><h3>Cash Converter</h3><p data-i18n="projectTwoCopy">Конвертер валют и других показателей с акцентом на выразительный интерфейс, данные из нескольких источников и графики динамики.</p><div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div><a class="project-link" href="https://github.com/German-GPD/Cash-Converter" target="_blank" rel="noopener noreferrer" data-i18n="sourceCode">Исходный код ↗</a>
+        </article>
+        <article class="project pixel">
+          <span class="card-label" data-i18n="projectThreeLabel">PROJECT 03 / PERSONAL</span><h3>German / GPD</h3><p data-i18n="projectThreeCopy">Личный сайт-портфолио: пространство для моих проектов, экспериментов с дизайном и развития цифрового бренда GPD.</p><div class="project-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub Pages</span></div><a class="project-link" href="https://github.com/German-GPD/about-german" target="_blank" rel="noopener noreferrer" data-i18n="sourceCode">Исходный код ↗</a>
+        </article>
       </div>
     </section>
-
-    <section class="section" id="experience">
-      <div class="container">
-        <div class="section-head reveal"><div><p class="eyebrow">03 / Путь</p><h2>Опыт через практику.</h2></div><p class="section-intro">Я в начале профессионального пути, поэтому показываю конкретные этапы обучения и разработки, а не придумываю стаж работы.</p></div>
-        <div class="timeline reveal">
-          <article class="timeline-item"><div class="timeline-date">2026 — СЕЙЧАС</div><div class="timeline-content"><h3>Разработка и улучшение собственных проектов</h3><p>Развиваю School Calc, работаю над Cash Converter и личным сайтом. Практикую публикацию через GitHub Pages, структуру проектов, работу с интерфейсом и исправление ошибок.</p><div class="timeline-meta">PROJECT BUILDING · FRONTEND · ITERATION</div></div></article>
-          <article class="timeline-item"><div class="timeline-date">2026</div><div class="timeline-content"><h3>От идеи к публичному релизу</h3><p>Опубликовал School Calc V2 и подготовил промоматериалы. Учусь не только писать код, но и оформлять проект, описывать его возможности и делать его доступным пользователям.</p><div class="timeline-meta">RELEASE · DOCUMENTATION · GITHUB</div></div></article>
-          <article class="timeline-item"><div class="timeline-date">В ПРОЦЕССЕ</div><div class="timeline-content"><h3>Самостоятельное обучение</h3><p>Изучаю HTML, CSS и JavaScript, пробую Vue и другие инструменты. Постепенно углубляюсь в UX, адаптивную вёрстку, доступность и поддержку кода.</p><div class="timeline-meta">LEARNING BY BUILDING</div></div></article>
-        </div>
+    <section id="experience" class="reveal">
+      <div class="section-heading"><p class="section-kicker" data-i18n="experienceKicker">03 / МОЙ ПУТЬ</p><h2 data-i18n="experienceTitle">Опыт через практику.</h2><p class="section-copy" data-i18n="experienceCopy">Я в начале пути, поэтому показываю реальные проекты и навыки, которые развиваю, а не выдумываю должности или стаж.</p></div>
+      <div class="timeline">
+        <article class="timeline-item"><h3 data-i18n="timelineOneTitle">Разработка и публикация проектов</h3><p data-i18n="timelineOneCopy">Развиваю School Calc, работаю над Cash Converter и улучшаю личный сайт. Практикую Git, GitHub Pages, структуру кода, адаптивную вёрстку и проверку ошибок.</p><div class="timeline-meta">BUILD · TEST · IMPROVE</div></article>
+        <article class="timeline-item"><h3 data-i18n="timelineTwoTitle">От идеи до релиза</h3><p data-i18n="timelineTwoCopy">Опубликовал School Calc V2 и подготовил промоматериалы. Учусь не только писать код, но и оформлять проекты, документировать функции и показывать результат пользователям.</p><div class="timeline-meta">RELEASE · DOCUMENTATION</div></article>
+        <article class="timeline-item"><h3 data-i18n="timelineThreeTitle">Самостоятельное обучение</h3><p data-i18n="timelineThreeCopy">Изучаю HTML, CSS и JavaScript, экспериментирую с Vue, Python и Linux. Постепенно углубляюсь в UI/UX, доступность и поддержку кода.</p><div class="timeline-meta">LEARN BY BUILDING</div></article>
       </div>
     </section>
-
-    <section class="section" id="skills">
-      <div class="container">
-        <div class="section-head reveal"><div><p class="eyebrow">04 / Инструментарий</p><h2>Технологии и инструменты.</h2></div><p class="section-intro">Навыки продолжают развиваться. Здесь — направления, с которыми я экспериментирую и работаю над проектами.</p></div>
-        <div class="skills-layout reveal">
-          <article class="surface skill-group"><h3>Веб-разработка</h3><div class="skill-list"><span class="skill-chip">HTML</span><span class="skill-chip">CSS</span><span class="skill-chip">JavaScript</span><span class="skill-chip">Vue</span><span class="skill-chip">Git / GitHub</span><span class="skill-chip">GitHub Pages</span></div><p class="skill-note">Разметка, стилизация, интерактивность и публикация веб-проектов.</p></article>
-          <article class="surface skill-group"><h3>Другие направления</h3><div class="skill-list"><span class="skill-chip">Python</span><span class="skill-chip">Bash</span><span class="skill-chip">Linux</span><span class="skill-chip">Figma</span><span class="skill-chip">Canva</span><span class="skill-chip">DaVinci Resolve</span><span class="skill-chip">AI-assisted workflow</span></div><p class="skill-note">Дополнительные языки, дизайн-инструменты, монтаж и ИИ-помощники — в зависимости от задачи.</p></article>
-        </div>
+    <section id="toolkit" class="reveal">
+      <div class="section-heading"><p class="section-kicker" data-i18n="toolkitKicker">04 / ИНСТРУМЕНТЫ</p><h2 data-i18n="toolkitTitle">Чем пользуюсь.</h2></div>
+      <div class="grid3">
+        <article class="card pixel"><div class="badge px">UI</div><h3 data-i18n="toolDesignTitle">Дизайн и визуал</h3><p data-i18n="toolDesignCopy">Работаю над структурой интерфейсов, визуальными акцентами и оформлением проектов.</p></article>
+        <article class="card pixel"><div class="badge px">DEV</div><h3 data-i18n="toolDevTitle">Разработка</h3><p data-i18n="toolDevCopy">HTML, CSS, JavaScript, GitHub и IDE для написания, проверки и публикации кода.</p></article>
+        <article class="card pixel"><div class="badge px">VID</div><h3 data-i18n="toolVideoTitle">Видео и контент</h3><p data-i18n="toolVideoCopy">Создаю промоматериалы и монтирую видео для презентации проектов.</p></article>
       </div>
     </section>
-
-    <section class="section" id="contact">
-      <div class="container">
-        <div class="surface contact-panel reveal">
-          <div><p class="eyebrow">05 / На связи</p><h2>Есть идея? Давай обсудим.</h2><p>Открыт к общению о проектах, веб-разработке и технологиях.</p></div>
-          <a class="button primary" href="https://t.me/german_me" target="_blank" rel="noopener noreferrer">Написать в Telegram <span aria-hidden="true">↗</span></a>
-        </div>
+    <div class="marquee" aria-hidden="true"><div class="marquee-track">
+      <span><b>HTML</b> · CSS · JavaScript · Vue · Python · Bash · Linux · GitHub · UI/UX · <b>BUILD SOMETHING</b> ·</span>
+      <span><b>HTML</b> · CSS · JavaScript · Vue · Python · Bash · Linux · GitHub · UI/UX · <b>BUILD SOMETHING</b> ·</span>
+    </div></div>
+    <section id="contact" class="reveal">
+      <div class="section-heading"><p class="section-kicker" data-i18n="contactKicker">05 / СВЯЗЬ</p><h2 data-i18n="contactTitle">Основные ссылки. Без лабиринта.</h2><p class="section-copy" data-i18n="contactCopy">Самое важное — в первом ряду. Остальные площадки не потерялись: они аккуратно собраны ниже.</p></div>
+      <div class="contact-primary">
+        <a class="contact pixel" href="https://t.me/german_me" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">TG</div><div><strong>Telegram</strong><span data-i18n="contactTelegram">Написать лично</span></div></a>
+        <a class="contact pixel" href="https://github.com/German-GPD" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">GH</div><div><strong>GitHub</strong><span>German-GPD</span></div></a>
+        <a class="contact pixel" href="https://www.youtube.com/@german_gpd" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">YT</div><div><strong>YouTube</strong><span>@german_gpd</span></div></a>
       </div>
+      <details class="extra-links"><summary data-i18n="moreLinks">Ещё мои площадки (6)</summary><div class="grid3">
+        <a class="contact pixel" href="https://t.me/german_gpd" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">TG</div><div><strong>Telegram</strong><span>@german_gpd</span></div></a>
+        <a class="contact pixel" href="https://t.me/g_code_team" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">DEV</div><div><strong>G_Code Team</strong><span>Telegram community</span></div></a>
+        <a class="contact pixel" href="https://t.me/redfox_g56" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">RF</div><div><strong>RedFox</strong><span>Telegram channel</span></div></a>
+        <a class="contact pixel" href="https://discord.gg/mTkQtrHABz" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">DC</div><div><strong>Discord</strong><span data-i18n="discordServer">Сервер сообщества</span></div></a>
+        <a class="contact pixel" href="https://www.tiktok.com/@car.german" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">TT</div><div><strong>TikTok</strong><span>@car.german</span></div></a>
+        <a class="contact pixel" href="https://www.instagram.com/german_gpd" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">IG</div><div><strong>Instagram</strong><span>@german_gpd</span></div></a>
+        <a class="contact pixel" href="https://s.team/p/dpmh-htfd/qpknwmqd" target="_blank" rel="noopener noreferrer"><div class="badge px" style="margin:0">STM</div><div><strong>Steam</strong><span data-i18n="steamProfile">Профиль игрока</span></div></a>
+      </div></details>
     </section>
-  </main>
-
-  <footer class="container">
-    <div><div class="footer-mark">GERMAN / GPD</div><div style="margin-top:5px">© <span id="year">2026</span> · Создано с интересом к деталям.</div></div>
-    <div class="footer-links"><a href="https://github.com/German-GPD" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://t.me/german_gpd" target="_blank" rel="noopener noreferrer">Telegram ↗</a><a href="#top">Наверх ↑</a></div>
-  </footer>
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-    const items = document.querySelectorAll(".reveal");
-    if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12 });
-      items.forEach((item) => observer.observe(item));
-    } else {
-      items.forEach((item) => item.classList.add("visible"));
-    }
-  </script>
+    <footer class="site-footer">
+      <div><div class="copy px">© <span id="year">2026</span> GERMAN PETRACHENKO</div><div class="copy" style="margin-top:8px" data-i18n="footerMade">MADE WITH VIBE<span class="blink">_</span> · GPD PIXEL SYSTEM</div></div>
+      <div class="footer-links"><a href="https://github.com/German-GPD" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://t.me/german_gpd" target="_blank" rel="noopener noreferrer">Telegram ↗</a><a href="LICENSE" data-i18n="licenseLink">Лицензия</a><a href="#top" data-i18n="backTop">Наверх ↑</a></div>
+      <div class="palette" aria-hidden="true"><i style="background:var(--amber)"></i><i style="background:var(--violet)"></i><i style="background:var(--cyan)"></i><i style="background:var(--red)"></i></div>
+    </footer>
+  </div>
+</main>
+<script src="script.js" defer></script>
 </body>
 </html>

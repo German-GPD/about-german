@@ -1,42 +1,81 @@
-# about-german
+# German / GPD — Personal Portfolio
 
-Личный сайт-портфолио German Petrachenko. Один файл, без сборки — чистый HTML/CSS.
+[Русский](#русский) · [English](#english)
 
-🔗 **Демо:** включи GitHub Pages (см. ниже) и сайт будет на `https://german-gpd.github.io/about-german`
+<a id="русский"></a>
+## Русский
 
-## Стек
+Личный сайт-портфолио Германа Петраченко (German / GPD). Здесь собраны мои проекты, направления обучения, используемые технологии и способы связи.
 
-- HTML + CSS (без фреймворков и зависимостей, кроме шрифтов Google Fonts)
-- Шрифты: `Space Grotesk` (основной), `Press Start 2P` (пиксельные акценты)
+**Сайт:** https://german-gpd.github.io/about-german/  
+**GitHub:** https://github.com/German-GPD
 
-## Фичи
+### Что есть на сайте
 
-- Пиксель/ретро-стиль: ступенчатые уголки, жёсткие «8-бит» тени, CRT-скан-линии, film-grain
-- Светлая и тёмная тема — переключаются автоматически по теме устройства (`prefers-color-scheme`)
-- Пиксель-арт спрайт-аватар, собранный на чистом CSS (`box-shadow`, без картинок)
-- Бегущая строка со стеком технологий
-- Поиск через DuckDuckGo прямо на странице
-- Блоки: обо мне, железо, инструменты, связь (10+ ссылок на соцсети и мессенджеры)
-- Адаптив под мобильные, уважает `prefers-reduced-motion`
+- Современный тёмный интерфейс с автоматической светлой темой по настройкам устройства.
+- Адаптивная вёрстка для компьютеров, планшетов и телефонов.
+- Разделы «Обо мне», «Проекты», «Опыт», «Навыки» и «Контакты».
+- Карточки проектов со ссылками на демо и исходный код.
+- Временная шкала развития через собственные проекты и самостоятельное обучение.
+- Ненавязчивые анимации с поддержкой `prefers-reduced-motion`.
+- Базовые метаданные для поисковых систем и превью ссылок.
 
-## Структура
+### Технологии
 
-```
-.
-└── index.html   # весь сайт — разметка, стили и скрипты в одном файле
-```
+- HTML
+- CSS
+- JavaScript
+- Google Fonts: Manrope и DM Mono
 
-## Как запустить локально
+### Запуск
 
-Просто открой `index.html` в браузере — зависимостей и сборки нет.
+Сборка и установка зависимостей не нужны. Откройте `index.html` в браузере.
 
-## Как задеплоить (GitHub Pages)
+### Публикация на GitHub Pages
 
-1. Settings → Pages
-2. Source: `Deploy from a branch`
-3. Branch: `main` / `root`
-4. Сохранить — через пару минут сайт будет доступен по ссылке репозитория
+1. Откройте **Settings → Pages**.
+2. Выберите **Deploy from a branch**.
+3. Укажите ветку `main` и папку `/ (root)`.
+4. Сохраните настройки.
 
-## Связь
+---
 
-Все актуальные ссылки — в блоке «Связь» на сайте и в `links.txt`.
+<a id="english"></a>
+## English
+
+A personal portfolio by German Petrachenko (German / GPD), featuring selected projects, learning areas, technologies, and contact links.
+
+**Website:** https://german-gpd.github.io/about-german/  
+**GitHub:** https://github.com/German-GPD
+
+### Features
+
+- Modern dark interface with automatic light mode based on system preferences.
+- Responsive layout for desktop, tablet, and mobile.
+- About, Projects, Experience, Skills, and Contact sections.
+- Project cards linking to live demos and source repositories.
+- A learning timeline based on personal projects and hands-on practice.
+- Subtle motion with `prefers-reduced-motion` support.
+- Essential metadata for search engines and link previews.
+
+### Built with
+
+- HTML
+- CSS
+- JavaScript
+- Google Fonts: Manrope and DM Mono
+
+### Run locally
+
+No build tools or package installation are required. Open `index.html` in a browser.
+
+### Deploy with GitHub Pages
+
+1. Open **Settings → Pages**.
+2. Choose **Deploy from a branch**.
+3. Select the `main` branch and `/ (root)` folder.
+4. Save your settings.
+
+---
+
+Made by German / GPD.

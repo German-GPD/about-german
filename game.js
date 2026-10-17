@@ -77,7 +77,7 @@
   startButton.addEventListener("click",()=>{if(!started||dead)reset();else reset();});
   canvas.addEventListener("pointerdown",e=>{e.preventDefault();doJump();});
   window.addEventListener("keydown",e=>{
-    if(["Space","ArrowUp","KeyW"].includes(e.code)&&!e.repeat&&!/INPUT|TEXTAREA|BUTTON/.test(document.activeElement?.tagName||"")){e.preventDefault();doJump();}
+    if(["Space","ArrowUp","KeyW"].includes(e.code)&&!e.repeat&&!/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName||"")){e.preventDefault();doJump();}
   });
   muteButton.addEventListener("click",()=>{muted=!muted;muteButton.textContent=muted?"ЗВУК: ВЫКЛ":"ЗВУК: ВКЛ";muteButton.setAttribute("aria-pressed",String(!muted));if(!muted)sound();});
   drawScene();

@@ -61,7 +61,7 @@
     }
     nodes.forEach((node) => {
       const fragment = document.createDocumentFragment();
-      const tokens = node.nodeValue.match(/\\s+|[^\\s]+/gu) || [];
+      const tokens = node.nodeValue.match(/\s+|[^\s]+/gu) || [];
       tokens.forEach((token) => {
         if (/^\\s+$/u.test(token)) {
           fragment.appendChild(document.createTextNode(token));

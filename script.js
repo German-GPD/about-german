@@ -24,6 +24,7 @@
   document.getElementById("year")?.replaceChildren(String(new Date().getFullYear()));
   const revealItems = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    root.classList.add("motion-ready");
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -63,7 +64,7 @@
       const fragment = document.createDocumentFragment();
       const tokens = node.nodeValue.match(/\s+|[^\s]+/gu) || [];
       tokens.forEach((token) => {
-        if (/^\\s+$/u.test(token)) {
+        if (/^\s+$/u.test(token)) {
           fragment.appendChild(document.createTextNode(token));
           return;
         }

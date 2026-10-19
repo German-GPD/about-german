@@ -480,3 +480,97 @@ section{scroll-margin-top:92px}
 .game-cover-card:focus-visible,.contact:focus-visible,.project-link:focus-visible{outline-offset:5px;}
 @media(max-width:600px){.device-catalog{grid-template-columns:1fr;}}
 @media(prefers-reduced-motion:reduce){.reveal,.hero .monitor,.float{transition:none!important;animation:none!important;transform:none!important;}}
+
+
+/* GPD motion layer — ambient particles, spotlight, and tactile interactions */
+:root { --pointer-x:50%; --pointer-y:18%; --scroll-progress:0; }
+body {
+  background-image:
+    radial-gradient(650px circle at var(--pointer-x) var(--pointer-y), color-mix(in srgb,var(--violet) 11%,transparent), transparent 72%),
+    linear-gradient(rgba(139,123,255,.055) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(139,123,255,.055) 1px,transparent 1px);
+}
+#ambientCanvas {
+  position:fixed;inset:0;width:100%;height:100%;pointer-events:none;
+  z-index:0;opacity:.56;mix-blend-mode:screen;
+}
+:root[data-theme="light"] #ambientCanvas { opacity:.25;mix-blend-mode:multiply; }
+.navbar, main, footer, .site-footer { position:relative;z-index:1; }
+#scrollProgress {
+  position:fixed;top:0;left:0;width:100%;height:3px;z-index:1001;
+  pointer-events:none;background:var(--line);
+}
+#scrollProgress span {
+  display:block;height:100%;width:100%;transform:scaleX(var(--scroll-progress));
+  transform-origin:left;background:linear-gradient(90deg,var(--cyan),var(--violet),var(--amber));
+  box-shadow:0 0 12px color-mix(in srgb,var(--cyan) 55%,transparent);
+}
+#backToTop {
+  position:fixed;right:22px;bottom:22px;z-index:60;width:46px;height:46px;
+  display:grid;place-items:center;border:2px solid var(--cyan);background:var(--surface);
+  color:var(--text);font:16px 'Press Start 2P',monospace;cursor:pointer;
+  box-shadow:4px 4px 0 var(--violet);opacity:0;visibility:hidden;
+  transform:translateY(12px) rotate(8deg);
+  transition:opacity .22s,visibility .22s,transform .22s,background .22s;
+}
+#backToTop.is-visible { opacity:1;visibility:visible;transform:translateY(0) rotate(0); }
+#backToTop:hover { background:var(--cyan);color:#101116;transform:translateY(-3px); }
+.project,.skill-card,.device-card,.ai-card,.contact,.tag,.btn,.monitor,.device-main {
+  position:relative;isolation:isolate;
+}
+.project::before,.skill-card::before,.device-card::before,.ai-card::before,.contact::before,.monitor::before,.device-main::before {
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;opacity:0;
+  background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--cyan) 13%,transparent),transparent 72%);
+  transition:opacity .2s;
+}
+.project:hover::before,.skill-card:hover::before,.device-card:hover::before,.ai-card:hover::before,.contact:hover::before,.monitor:hover::before,.device-main:hover::before { opacity:1; }
+.project,.skill-card,.device-card,.ai-card,.device-main,.contact,.tag,.btn,.monitor {
+  will-change:transform;
+}
+.project,.skill-card,.device-card,.ai-card,.device-main,.contact {
+  transition:transform .24s cubic-bezier(.2,.75,.25,1),box-shadow .24s,border-color .24s;
+}
+.hero .badge-lvl { animation:badge-arrive .7s .12s both; }
+.hero h1 { animation:hero-text-in .8s .2s both; }
+.hero .lede { animation:hero-text-in .8s .32s both; }
+.hero .cta-row { animation:hero-text-in .8s .42s both; }
+.hero .search { animation:hero-text-in .8s .5s both; }
+.hero .monitor { transform-origin:center; }
+@keyframes badge-arrive { from{opacity:0;transform:translateY(12px);filter:blur(5px)}to{opacity:1;transform:translateY(0);filter:blur(0)} }
+@keyframes hero-text-in { from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)} }
+@keyframes pixel-glow { 0%,100%{filter:drop-shadow(0 0 0 transparent)}50%{filter:drop-shadow(0 0 7px color-mix(in srgb,var(--cyan) 55%,transparent))} }
+.logo:hover .blink { animation-duration:.24s; }
+.logo:hover { color:var(--cyan); }
+.project:hover,.skill-card:hover,.device-card:hover,.ai-card:hover,.device-main:hover,.contact:hover {
+  transform:translateY(-4px);box-shadow:0 12px 0 color-mix(in srgb,var(--violet) 28%,var(--line)),0 20px 38px color-mix(in srgb,#000 18%,transparent);
+}
+.project-feature:hover { transform:translateY(-4px); }
+.tag:hover { border-color:var(--cyan);color:var(--text); }
+.btn { transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s,filter .18s; }
+.btn:hover { transform:translateY(-3px) scale(1.015);filter:saturate(1.18); }
+.search:focus-within { border-color:var(--cyan);box-shadow:0 0 0 4px color-mix(in srgb,var(--cyan) 13%,transparent); }
+.monitor:hover .screen { box-shadow:inset 0 0 35px color-mix(in srgb,var(--violet) 17%,transparent); }
+.monitor .line { animation:code-line 3.8s ease-in-out infinite alternate; }
+.monitor .line.w2 { animation-delay:.25s; }
+.monitor .line.w3 { animation-delay:.5s; }
+.monitor .line.w4 { animation-delay:.75s; }
+@keyframes code-line { from{transform:scaleX(.82);transform-origin:left;opacity:.45}to{transform:scaleX(1);transform-origin:left;opacity:.95} }
+.divider i { animation:pixel-twinkle 2.6s steps(2,end) infinite; }
+.divider i:nth-child(3n) { animation-delay:.4s; }
+.divider i:nth-child(4n) { animation-delay:.9s; }
+@keyframes pixel-twinkle { 0%,100%{opacity:.42;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)} }
+.tag { transition:transform .18s,box-shadow .18s,border-color .18s,color .18s; }
+.skill-icon,.device-mini-icon { transition:transform .25s cubic-bezier(.2,.8,.2,1),background .25s,color .25s; }
+.skill-card:hover .skill-icon,.device-card:hover .device-mini-icon { transform:rotate(-7deg) scale(1.08);background:var(--cyan);color:var(--bg); }
+.timeline-item::before { transition:transform .25s,box-shadow .25s; }
+.timeline-item:hover::before { transform:rotate(45deg) scale(1.18);box-shadow:0 0 0 5px color-mix(in srgb,var(--amber) 15%,transparent); }
+@media(max-width:760px) {
+  #backToTop { right:14px;bottom:14px;width:42px;height:42px; }
+  #ambientCanvas { opacity:.34; }
+}
+@media(prefers-reduced-motion:reduce) {
+  #ambientCanvas { display:none; }
+  #backToTop { transition:none; }
+  .hero .badge-lvl,.hero h1,.hero .lede,.hero .cta-row,.hero .search,.monitor .line,.divider i { animation:none !important; }
+  .project,.skill-card,.device-card,.ai-card,.device-main,.contact,.tag,.btn,.monitor { will-change:auto; }
+}

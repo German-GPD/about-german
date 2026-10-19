@@ -574,3 +574,40 @@ body {
   .hero .badge-lvl,.hero h1,.hero .lede,.hero .cta-row,.hero .search,.monitor .line,.divider i { animation:none !important; }
   .project,.skill-card,.device-card,.ai-card,.device-main,.contact,.tag,.btn,.monitor { will-change:auto; }
 }
+
+
+/* Standalone GPD game library — large cinematic franchise covers */
+.gpd-games{--game-accent:var(--cyan);border:2px solid var(--line);background:linear-gradient(145deg,color-mix(in srgb,var(--violet) 7%,var(--surface)),var(--surface) 45%);padding:24px;box-shadow:6px 6px 0 var(--amber);position:relative;overflow:hidden}
+.gpd-games::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;background-image:linear-gradient(90deg,transparent 49.8%,var(--line) 50%,transparent 50.2%),linear-gradient(transparent 49.8%,var(--line) 50%,transparent 50.2%);background-size:36px 36px;mask-image:linear-gradient(135deg,#000,transparent 65%)}
+.gpd-games-top{position:relative;display:flex;justify-content:space-between;align-items:center;gap:24px;margin-bottom:24px}
+.gpd-games-top h3{font-size:clamp(24px,3.4vw,38px);letter-spacing:-.04em;line-height:1.2;margin:14px 0 9px}
+.gpd-games-top p{font-size:14px;line-height:1.7;color:var(--muted);margin:0;max-width:600px}
+.gpd-games-stamp{flex:none;width:106px;height:106px;border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;background:color-mix(in srgb,var(--surface-2) 70%,transparent);transform:rotate(3deg)}
+.gpd-games-stamp span{font:7px 'Press Start 2P',monospace;color:var(--muted)}
+.gpd-games-stamp strong{font:27px 'Press Start 2P',monospace;color:var(--amber)}
+.gpd-games-grid{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.gpd-game-card{min-width:0;display:block;overflow:hidden;text-decoration:none;background:var(--surface-2);border:1px solid var(--line);transition:transform .24s cubic-bezier(.2,.8,.2,1),border-color .24s,box-shadow .24s}
+.gpd-game-art{position:relative;aspect-ratio:460/215;overflow:hidden;background:linear-gradient(135deg,var(--surface-2),#101116)}
+.gpd-game-art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,7,12,.3),transparent 28%,transparent 48%,rgba(6,7,12,.82));pointer-events:none}
+.gpd-game-art img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .55s cubic-bezier(.2,.8,.2,1),filter .35s;filter:saturate(.86) contrast(1.04)}
+.gpd-game-index{position:absolute;z-index:2;left:11px;top:11px;padding:7px 8px;background:rgba(8,9,14,.78);border:1px solid rgba(255,255,255,.2);color:#fff;font:7px 'Press Start 2P',monospace;line-height:1.7}
+.gpd-game-open{position:absolute;z-index:2;right:11px;top:11px;width:30px;height:30px;display:grid;place-items:center;background:rgba(8,9,14,.8);border:1px solid rgba(255,255,255,.28);color:#fff;transform:translateY(-5px);opacity:0;transition:opacity .2s,transform .2s}
+.gpd-game-overlay{position:absolute;z-index:2;left:12px;right:12px;bottom:12px;color:#fff;font:8px 'Press Start 2P',monospace;line-height:1.8;letter-spacing:.02em;text-shadow:0 2px 8px #000;transform:translateY(4px);transition:transform .25s}
+.gpd-game-info{padding:15px 15px 17px;border-top:1px solid color-mix(in srgb,var(--line) 65%,transparent)}
+.gpd-game-info h3{font-size:16px;line-height:1.35;margin:0 0 7px;color:var(--text);transition:color .2s}
+.gpd-game-info p{font-size:12px;line-height:1.6;color:var(--muted);margin:0}
+.gpd-game-card:hover{transform:translateY(-5px);border-color:var(--cyan);box-shadow:4px 5px 0 var(--cyan),0 16px 34px rgba(0,0,0,.2)}
+.gpd-game-card:hover .gpd-game-art img{transform:scale(1.07);filter:saturate(1.15) contrast(1.05)}
+.gpd-game-card:hover .gpd-game-open{opacity:1;transform:translateY(0);background:var(--cyan);color:#101116;border-color:var(--cyan)}
+.gpd-game-card:hover .gpd-game-overlay{transform:translateY(0);color:var(--cyan)}
+.gpd-game-card:hover .gpd-game-info h3{color:var(--cyan)}
+.gpd-game-card:focus-visible{outline:3px solid var(--amber);outline-offset:4px}
+.gpd-games-bottom{position:relative;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);margin-top:22px;padding-top:17px}
+.gpd-games-bottom span,.gpd-games-bottom a{font:8px 'Press Start 2P',monospace;line-height:1.9}
+.gpd-games-bottom span{display:flex;align-items:center;gap:9px;color:var(--muted)}
+.gpd-games-bottom i{width:7px;height:7px;background:var(--cyan);box-shadow:0 0 0 4px color-mix(in srgb,var(--cyan) 17%,transparent)}
+.gpd-games-bottom a{color:var(--amber);text-decoration:none}
+.gpd-games-bottom a:hover{color:var(--cyan)}
+@media(max-width:850px){.gpd-games-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.gpd-games{padding:19px}}
+@media(max-width:540px){.gpd-games{padding:13px;box-shadow:4px 4px 0 var(--amber)}.gpd-games-top{align-items:flex-start;gap:12px}.gpd-games-top h3{font-size:24px}.gpd-games-top p{font-size:13px}.gpd-games-stamp{width:70px;height:70px;gap:4px}.gpd-games-stamp strong{font-size:18px}.gpd-games-stamp span{font-size:6px}.gpd-games-grid{grid-template-columns:1fr;gap:14px}.gpd-game-art{aspect-ratio:460/215}.gpd-game-info{padding:13px}.gpd-game-info h3{font-size:16px}.gpd-game-open{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.gpd-game-card,.gpd-game-art img,.gpd-game-open,.gpd-game-overlay,.gpd-game-info h3{transition:none!important}.gpd-game-card:hover{transform:none}}

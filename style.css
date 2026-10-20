@@ -909,3 +909,30 @@ main::before {
   .gpd-game-card.game-minecraft .gpd-game-art { aspect-ratio:1.9/1; }
   .gpd-game-card.game-minecraft .gpd-game-info { display:block; }
 }
+
+/* Final composition fixes */
+main { isolation:isolate; }
+main::before { z-index:-1; }
+.gpd-game-art:has(img.is-broken)::before {
+  background-image:
+    linear-gradient(135deg,transparent 0 54%,rgba(28,59,29,.78) 54% 69%,transparent 69%),
+    linear-gradient(45deg,transparent 0 35%,#4b8238 35% 58%,transparent 58%),
+    linear-gradient(#8bd0f2 0 48%,#78b65c 48% 68%,#548c3b 68%);
+  background-size:100% 100%;
+}
+.gpd-game-card:not(.game-minecraft):nth-child(3n + 2) { border-radius:13px 3px 11px 4px; }
+.gpd-game-card:not(.game-minecraft):nth-child(3n) { border-radius:3px 11px 4px 13px; }
+.gpd-game-card:nth-child(4n + 1) .gpd-game-art img { object-position:center 38%; }
+.gpd-game-card:nth-child(4n + 2) .gpd-game-art img { object-position:center 44%; }
+.gpd-game-card.game-minecraft { border-color:color-mix(in srgb,#80d85c 52%,var(--line)); }
+.gpd-game-card.game-minecraft .gpd-game-art { position:relative; }
+.gpd-game-card.game-minecraft .gpd-game-art::before {
+  content:""; position:absolute; z-index:1; width:90px; height:90px; right:8%; top:12%;
+  border:1px solid rgba(255,255,255,.22); transform:rotate(45deg);
+  background:linear-gradient(135deg,rgba(255,255,255,.14),transparent 55%);
+  pointer-events:none;
+}
+.gpd-game-card.game-minecraft .gpd-game-art img { object-position:center 46%; }
+@media(max-width:540px) {
+  .gpd-game-card.game-minecraft .gpd-game-art::before { width:48px;height:48px; }
+}

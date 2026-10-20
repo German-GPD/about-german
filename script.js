@@ -85,64 +85,7 @@
   });
 
 
-  // Ambient particle field with lightweight connecting lines.
-  const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!reducedMotion) {
-    const canvas = document.createElement("canvas");
-    canvas.id = "ambientCanvas";
-    canvas.setAttribute("aria-hidden", "true");
-    document.body.prepend(canvas);
-    const ctx = canvas.getContext("2d", { alpha: true });
-    if (ctx) {
-      let width = 0, height = 0, dpr = 1, particles = [], frame = 0;
-      const pointer = { x: -1000, y: -1000 };
-      const resize = () => {
-        dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-        width = window.innerWidth; height = window.innerHeight;
-        canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        const count = Math.min(58, Math.max(22, Math.floor(width / 24)));
-        particles = Array.from({length:count}, () => ({
-          x:Math.random()*width,y:Math.random()*height,
-          vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,
-          size:Math.random()>.86?2.6:1.2,
-          hue:[174,250,39,350][Math.floor(Math.random()*4)],
-          phase:Math.random()*Math.PI*2
-        }));
-      };
-      const draw = () => {
-        frame = requestAnimationFrame(draw);
-        ctx.clearRect(0,0,width,height);
-        const dark = root.dataset.theme !== "light";
-        particles.forEach((p,i) => {
-          p.x += p.vx; p.y += p.vy; p.phase += .012;
-          if(p.x < -8) p.x=width+8; if(p.x>width+8) p.x=-8;
-          if(p.y < -8) p.y=height+8; if(p.y>height+8) p.y=-8;
-          const alpha = (0.22 + (Math.sin(p.phase)+1)*.18) * (dark?1:.7);
-          ctx.fillStyle = `hsla(${p.hue},85%,${dark?70:42}%,${alpha})`;
-          ctx.fillRect(p.x,p.y,p.size,p.size);
-          for(let j=i+1;j<particles.length;j++){
-            const q=particles[j], dx=p.x-q.x, dy=p.y-q.y, dist=Math.hypot(dx,dy);
-            if(dist<105){
-              ctx.strokeStyle=`hsla(${p.hue},75%,${dark?65:42}%,${(1-dist/105)*.13})`;
-              ctx.lineWidth=.7;ctx.beginPath();ctx.moveTo(p.x,p.y);ctx.lineTo(q.x,q.y);ctx.stroke();
-            }
-          }
-        });
-      };
-      resize(); draw();
-      window.addEventListener("resize",resize,{passive:true});
-      document.addEventListener("visibilitychange",()=> {
-        if(document.hidden) cancelAnimationFrame(frame);
-        else { cancelAnimationFrame(frame); draw(); }
-      });
-      window.addEventListener("pointermove",event=>{
-        pointer.x=event.clientX;pointer.y=event.clientY;
-        root.style.setProperty("--pointer-x",pointer.x+"px");
-        root.style.setProperty("--pointer-y",pointer.y+"px");
-      },{passive:true});
-    }
-  }
+  // Decorative floating background particles removed: keep rendering light and the page calm.
 
   // Reading progress and a compact back-to-top control.
   const progress = document.createElement("div");

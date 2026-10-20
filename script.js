@@ -24,24 +24,6 @@
   });
   document.getElementById("year")?.replaceChildren(String(new Date().getFullYear()));
 
-  // Curved side dock: keep the active section in sync with scrolling.
-  const orbitLinks = [...document.querySelectorAll(".orbit-links a[data-section]")];
-  const orbitTargets = orbitLinks.map(link => document.getElementById(link.dataset.section)).filter(Boolean);
-  if ("IntersectionObserver" in window && orbitTargets.length) {
-    const activeObserver = new IntersectionObserver(entries => {
-      const visible = entries.filter(entry => entry.isIntersecting).sort((a,b) => b.intersectionRatio-a.intersectionRatio)[0];
-      if (!visible) return;
-      orbitLinks.forEach(link => {
-        if (link.dataset.section === visible.target.id) link.setAttribute("aria-current","location");
-        else link.removeAttribute("aria-current");
-      });
-    }, { rootMargin:"-22% 0px -58% 0px", threshold:[0,.1,.25,.5] });
-    orbitTargets.forEach(section => activeObserver.observe(section));
-  }
-  orbitLinks.forEach(link => link.addEventListener("click", () => {
-    orbitLinks.forEach(item => item.removeAttribute("aria-current"));
-    link.setAttribute("aria-current","location");
-  }));
   // Broken remote art should never leave a blank card.
   document.querySelectorAll(".gpd-game-art img").forEach(img => {
     img.addEventListener("error", () => {

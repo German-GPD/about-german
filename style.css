@@ -645,7 +645,7 @@ body {
 body::before { display: none; }
 body::after { opacity: calc(var(--grain) * .35); }
 #ambientCanvas { display: none !important; }
-.wrap { width: min(100%, calc(var(--content-width) + var(--page-gutter) * 2)); padding-inline: var(--page-gutter); }
+.wrap { width: 100%; max-width: calc(var(--content-width) + 68px); margin-inline: auto; padding-inline: var(--page-gutter); }
 img, canvas, svg, video { max-width: 100%; }
 button, input, textarea, select { font: inherit; }
 button, a { touch-action: manipulation; }

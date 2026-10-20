@@ -936,3 +936,19 @@ main::before { z-index:-1; }
 @media(max-width:540px) {
   .gpd-game-card.game-minecraft .gpd-game-art::before { width:48px;height:48px; }
 }
+
+/* Tablet and tiny-screen navigation safety */
+@media (min-width:761px) and (max-width:1100px) {
+  .wrap { padding-left:70px; padding-right:var(--page-gutter); }
+  .hero-grid { grid-template-columns:minmax(0,1fr); }
+}
+.orbit-nav { max-height:min(82vh,680px); overflow-y:auto; scrollbar-width:none; }
+.orbit-nav::-webkit-scrollbar { display:none; }
+@media(max-width:760px) {
+  .orbit-nav { overflow-x:auto; overflow-y:hidden; }
+  .orbit-links { flex:0 0 auto; }
+}
+@media(max-width:390px) {
+  .orbit-nav { overflow-x:auto; }
+  .orbit-links { flex:0 0 auto; }
+}

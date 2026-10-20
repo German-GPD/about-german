@@ -952,3 +952,35 @@ main::before { z-index:-1; }
   .orbit-nav { overflow-x:auto; }
   .orbit-links { flex:0 0 auto; }
 }
+
+/* Hotfix: the site's global nav rule also styles the orbit dock's inner nav.
+   Reset inherited padding/alignment so the dock is compact and centered. */
+.orbit-nav nav.orbit-links {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  gap:4px;
+  width:100%;
+  min-width:0;
+  padding:0;
+  margin:0;
+}
+.orbit-nav .orbit-links a {
+  flex:0 0 auto;
+  margin:0;
+}
+@media(max-width:760px) {
+  .orbit-nav nav.orbit-links {
+    flex-direction:row;
+    justify-content:flex-start;
+    width:auto;
+    padding:0;
+    gap:2px;
+  }
+  .orbit-nav .orbit-links a { flex:0 0 35px; }
+}
+@media(max-width:390px) {
+  .orbit-nav .orbit-links a { flex-basis:32px; }
+  .orbit-nav .orbit-links a:nth-child(n+9) { display:none; }
+}

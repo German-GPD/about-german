@@ -979,3 +979,37 @@ h1,h2,h3,.section-heading h2{font-family:var(--font-display);letter-spacing:-.04
 @media(max-width:760px){.games-showcase{grid-template-columns:1fr;gap:24px}.games-art-wall{min-height:270px;max-width:560px;width:100%;margin:0 auto}.games-showcase-foot{grid-column:auto}.case-grid{grid-template-columns:1fr}}
 @media(max-width:420px){.games-art-wall{min-height:220px;gap:7px}.games-art span{font-size:7px;left:7px;bottom:7px}.games-art-note{right:-3px;top:-8px;padding:8px}.games-showcase-actions{align-items:flex-start;flex-direction:column;gap:10px}}
 @media(prefers-reduced-motion:reduce){.games-art img,.games-primary-link{transition:none}}
+
+
+/* Wishlist: hardware cards */
+.wishlist-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch}
+.wishlist-card{min-width:0;padding:18px;background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;box-shadow:0 12px 34px rgba(0,0,0,.07)}
+.wishlist-card-top{display:flex;justify-content:space-between;align-items:center;gap:8px;font:9px 'IBM Plex Mono',monospace;letter-spacing:.06em;color:var(--muted)}
+.wishlist-status{color:var(--cyan);border:1px solid color-mix(in srgb,var(--cyan) 40%,var(--line));padding:5px 7px;white-space:nowrap}
+.wishlist-status.wishlist-alt{color:var(--amber);border-color:color-mix(in srgb,var(--amber) 45%,var(--line))}
+.wishlist-visual{height:155px;margin:18px 0;display:flex;align-items:center;justify-content:center;overflow:hidden;background:linear-gradient(135deg,var(--surface-2),color-mix(in srgb,var(--surface) 60%,var(--bg)));border:1px solid var(--line);position:relative}
+.keyboard-board{width:88%;padding:10px 8px;background:#17191c;border:1px solid #42464b;box-shadow:0 12px 20px #0005;transform:perspective(420px) rotateX(13deg) rotateZ(-5deg)}
+.key-row{display:flex;justify-content:center;gap:4px;margin:4px 0}.key-row.offset{padding-left:8px}
+.key-row i{display:block;flex:1;min-width:0;height:15px;background:linear-gradient(#454a50,#272a2f);border:1px solid #5b6066;border-radius:2px;box-shadow:0 2px 0 #101113}
+.key-row i:nth-child(3n){box-shadow:0 0 5px #fff2,0 2px 0 #101113}.key-row i.wide{flex:2.8}
+.wishlist-brand{font:9px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:var(--cyan);margin-bottom:8px}.wishlist-brand span{color:var(--muted)}
+.wishlist-card h3{font:600 19px 'Space Grotesk',sans-serif;letter-spacing:-.03em;margin:0 0 9px}.wishlist-card>p{font-size:12px;line-height:1.7;color:var(--muted);margin:0 0 16px}
+.wishlist-specs{display:grid;gap:0;margin-top:auto;border-top:1px solid var(--line)}
+.wishlist-specs span{display:flex;justify-content:space-between;gap:10px;padding:9px 0;border-bottom:1px solid var(--line);font-size:10px;color:var(--muted)}
+.wishlist-specs b{color:var(--text);font-weight:600;text-align:right}
+.wishlist-link{display:flex;justify-content:space-between;gap:8px;margin-top:16px;padding-top:12px;color:var(--text);font-size:11px;text-decoration:none;border-top:1px solid var(--line)}
+.wishlist-link:hover{color:var(--cyan)}
+.handheld-device{position:relative;width:78%;height:92px;border-radius:24px;background:linear-gradient(150deg,#30363b,#111416);border:2px solid #596168;box-shadow:0 12px 24px #0005;display:flex;align-items:center;justify-content:center}
+.handheld-screen{width:48%;height:70%;background:#0b1518;border:3px solid #454d52;display:flex;flex-direction:column;justify-content:center;gap:5px;padding:8px;box-shadow:0 0 14px #63d9d022}
+.handheld-screen span{font:6px 'IBM Plex Mono',monospace;color:#9ae8dc}.handheld-screen i{height:3px;background:#4f8c80;width:80%}.handheld-screen i:nth-child(3){width:60%}.handheld-screen i:nth-child(4){width:70%}
+.handheld-stick{position:absolute;width:13px;height:13px;border-radius:50%;background:#090b0d;border:2px solid #626a70;top:27px}.handheld-stick.left{left:12px}.handheld-stick.right{right:12px}
+.handheld-button{position:absolute;right:15px;bottom:21px;width:7px;height:7px;border-radius:50%;background:#6f8580;box-shadow:-10px 0 #8b7770,0 -10px #758b77}
+.ps4-console{position:relative;width:65%;height:66px;transform:skewY(-7deg);filter:drop-shadow(0 10px 9px #0005)}
+.ps4-top,.ps4-bottom{position:absolute;left:0;width:100%;height:43px;background:linear-gradient(145deg,#34373b,#121416);border:1px solid #555a60;clip-path:polygon(0 18%,100% 0,100% 76%,0 100%)}
+.ps4-bottom{top:30px;background:linear-gradient(145deg,#202327,#090a0c);clip-path:polygon(0 0,100% 0,100% 80%,0 100%);height:28px}
+.ps4-light{position:absolute;right:8%;top:15px;width:28%;height:2px;background:#9bdfff;box-shadow:0 0 8px #9bdfff}
+.ps4-controller{position:absolute;right:16%;bottom:20px;width:66px;height:30px;background:#24272b;border:1px solid #52565b;border-radius:12px 12px 16px 16px;transform:rotate(-12deg);box-shadow:0 5px 10px #0005}
+.ps4-controller i{position:absolute;left:12px;top:8px;width:9px;height:9px;border-radius:50%;background:#090a0b;border:2px solid #5b6065}
+.ps4-controller b{position:absolute;right:11px;top:7px;width:5px;height:5px;border-radius:50%;background:#8aa7a2;box-shadow:-7px 4px #8b9ac1,0 8px #a4a5a7,7px 4px #9b8a8a}
+@media(max-width:900px){.wishlist-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.wishlist-card:last-child{grid-column:1/-1}}
+@media(max-width:560px){.wishlist-grid{grid-template-columns:1fr}.wishlist-card:last-child{grid-column:auto}.wishlist-visual{height:175px}}

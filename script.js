@@ -165,8 +165,10 @@
       const rect=goose.getBoundingClientRect(),shape=Math.floor(Math.random()*4);
       const width=9+Math.random()*13,height=7+Math.random()*8;
       const mark=document.createElement("span");mark.className="goose-poop-mark shape-"+shape;mark.setAttribute("aria-hidden","true");
-      mark.style.left=Math.round(rect.left+rect.width*(.36+Math.random()*.2))+"px";
-      mark.style.top=Math.round(rect.top+rect.height*(.78+Math.random()*.08))+"px";
+      // Drop the souvenir at a random horizontal position across the whole viewport.
+      const maxLeft=Math.max(12,window.innerWidth-width-12);
+      mark.style.left=Math.round(12+Math.random()*(maxLeft-12))+"px";
+      mark.style.top=Math.round(Math.max(8,Math.min(window.innerHeight-height-8,rect.top+rect.height*(.72+Math.random()*.22))))+"px";
       mark.style.setProperty("--poop-w",Math.round(width)+"px");mark.style.setProperty("--poop-h",Math.round(height)+"px");
       mark.style.setProperty("--poop-base",Math.max(3,Math.round(height*.55))+"px");
       mark.style.setProperty("--poop-top-x",Math.round(width*(.35+Math.random()*.2))+"px");

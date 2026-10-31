@@ -1212,3 +1212,44 @@ h1,h2,h3,.section-heading h2{font-family:var(--font-display);letter-spacing:-.04
 #inspiration .source-art.source-photo img{z-index:0}
 #inspiration .source-art.source-photo:before{pointer-events:none}
 @media(prefers-reduced-motion:reduce){#inspiration .source-art.source-photo img{transition:none}}
+
+
+/* Unified colorful source covers — one visual language across the entire board */
+#inspiration .inspiration-card .source-art{
+  height:158px;min-height:158px;max-height:158px;margin:0 0 17px;padding:18px;
+  display:flex;align-items:flex-start;justify-content:center;flex-direction:column;gap:7px;
+  position:relative;isolation:isolate;overflow:hidden;border:0;border-bottom:1px solid var(--line);
+  color:#fff;box-shadow:inset 0 -4px 0 #ffffff35;
+}
+#inspiration .inspiration-card .source-art:before{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(90deg,transparent 49.5%,#ffffff20 50%,transparent 50.5%),
+    linear-gradient(0deg,transparent 49.5%,#ffffff20 50%,transparent 50.5%);
+  background-size:30px 30px;opacity:.42;
+}
+#inspiration .inspiration-card .source-art:after{
+  content:"";position:absolute;z-index:-1;right:-36px;top:-66px;width:180px;height:180px;
+  border:1px solid #ffffff55;transform:rotate(35deg);
+  box-shadow:0 0 0 15px #ffffff0d,0 0 0 31px #ffffff0a,0 0 0 48px #ffffff08;
+}
+#inspiration .inspiration-card .source-art>span,
+#inspiration .inspiration-card .source-art>b,
+#inspiration .inspiration-card .source-art>i{position:relative;z-index:1;color:#fff;text-shadow:0 2px 14px #0003}
+#inspiration .inspiration-card .source-art>span{font:700 29px 'Space Grotesk',sans-serif;letter-spacing:-.07em;line-height:1}
+#inspiration .inspiration-card .source-art>b{font:700 34px 'Space Grotesk',sans-serif;letter-spacing:-.08em;line-height:1}
+#inspiration .inspiration-card .source-art>i{font:8px 'IBM Plex Mono',monospace;letter-spacing:.12em;font-style:normal;opacity:.84}
+#inspiration .source-freelstep{background:linear-gradient(125deg,#5426a5 0%,#a52d91 58%,#ed7946 100%)}
+#inspiration .source-danya{background:linear-gradient(125deg,#075985 0%,#087eae 55%,#22b8c7 100%)}
+#inspiration .source-mutim{background:linear-gradient(125deg,#075e62 0%,#087f83 55%,#43b6a1 100%)}
+#inspiration .source-vladilen{background:linear-gradient(125deg,#075b91 0%,#176bd1 55%,#52b8d8 100%)}
+#inspiration .source-timofey{background:linear-gradient(125deg,#263c9b 0%,#5148bd 58%,#8a72dc 100%)}
+#inspiration .source-itproger{background:linear-gradient(125deg,#236b37 0%,#39964c 58%,#8dbd43 100%)}
+#inspiration .source-marty-mark{background:linear-gradient(125deg,#542b9a 0%,#873cba 58%,#d45d9e 100%)}
+#inspiration .source-marion{background:linear-gradient(125deg,#34318e 0%,#5550bd 58%,#8c83df 100%)}
+#inspiration .source-howdy{background:linear-gradient(125deg,#9a3d19 0%,#d45b28 58%,#f0a33d 100%)}
+#inspiration .source-habr{background:linear-gradient(125deg,#8c263b 0%,#c33b4e 58%,#e97869 100%)}
+#inspiration .inspiration-card .source-art.source-photo{padding:18px;justify-content:center}
+#inspiration .inspiration-card .source-art.source-photo img{display:none}
+@media(max-width:520px){
+  #inspiration .inspiration-card .source-art{height:150px;min-height:150px;max-height:150px}
+}

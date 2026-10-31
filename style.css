@@ -1126,3 +1126,5 @@ h1,h2,h3,.section-heading h2{font-family:var(--font-display);letter-spacing:-.04
 @media(max-width:760px){.book-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.legend-image{height:190px}}
 @media(max-width:520px){.book-library>summary{padding:14px;align-items:flex-start}.book-library-action{font-size:9px;gap:7px}.book-library>summary small{font-size:8px;line-height:1.6}.book-grid{grid-template-columns:1fr;padding:0 10px 10px}.book-card{min-height:0}.legend-image{height:210px}.source-marty-mark>b,.source-marion>b{font-size:48px}}
 @media(prefers-reduced-motion:reduce){.legend-portrait,.book-library-action i{transition:none}}
+
+.book-card[hidden]{display:none!important}

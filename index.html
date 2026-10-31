@@ -20,15 +20,14 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261101g">
+  <link rel="stylesheet" href="style.css?v=20261101h">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"German Petrachenko","alternateName":["German","GPD","German-GPD"],"url":"https://german-gpd.github.io/about-german/","sameAs":["https://github.com/German-GPD","https://t.me/german_gpd","https://www.youtube.com/@german_gpd","https://open.spotify.com/user/3122jc3ee3bcca6lar2jmgo3tmwe"],"knowsAbout":["Web development","HTML","CSS","JavaScript","Vue","TypeScript","Python","PHP","Bash","SQL","SQLite","JSON","REST APIs","Canvas API","Linux","Fedora","Windows","UI/UX design","Responsive design","Accessibility","Git","GitHub","GitHub Pages","AI-assisted coding","Ollama","Local AI models","Video editing","Image editing","Open-source software"]}
   </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <script src="script.js?v=20261101g" defer></script>
+  <script src="script.js?v=20261101h" defer></script>
 </head>
 <body>
-<canvas id="pixelAtmosphere" class="pixel-atmosphere" aria-hidden="true"></canvas>
 <div class="navbar">
   <div class="wrap">
     <nav aria-label="Основная навигация">
@@ -62,10 +61,12 @@
         </div>
         <div class="monitor pixel pixel-shadow" role="img" aria-label="Пиксельная иллюстрация компьютера">
           <div class="bar"><span></span><span></span><span></span></div>
-          <div class="screen" aria-hidden="true">
-            <div class="line w1"></div><div class="line w2"></div><div class="line w3"></div><div class="line w4"></div>
-            <span class="cursor blink"></span>
-            <div class="screen-caption px">BUILD / TEST / REPEAT</div>
+          <div class="screen robot-screen">
+            <div class="robot-console">
+              <div class="robot-face" aria-hidden="true"><i></i><i></i><b></b></div>
+              <div class="robot-copy"><span class="robot-label px">GPD BOT / ONLINE</span><p id="robotMessage" aria-live="polite">Проверяю код. Пока код проверяет моё терпение.</p></div>
+            </div>
+            <div class="robot-terminal"><span>SYS</span><i></i><span>BUILD / TEST / REPEAT</span><b class="cursor blink"></b></div>
           </div>
         </div>
       </div>

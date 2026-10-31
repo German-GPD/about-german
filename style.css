@@ -1042,3 +1042,11 @@ h1,h2,h3,.section-heading h2{font-family:var(--font-display);letter-spacing:-.04
 @media(max-width:760px){.inspiration-grid,.legend-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.book-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.inspiration-grid,.legend-grid,.book-grid{grid-template-columns:1fr}.ecosystem-note{grid-template-columns:54px minmax(0,1fr);gap:14px;padding:16px}.ecosystem-mark{font-size:16px}.inspiration-card,.legend-card,.book-card{padding:15px}}
 @media(prefers-reduced-motion:reduce){.inspiration-card,.legend-card,.book-card{transition:none}.inspiration-card:hover,.legend-card:hover,.book-card:hover{transform:none}}
+
+
+/* Compact source links in the inspiration section */
+.inspiration-links{display:flex;flex-wrap:wrap;gap:7px 14px;margin-top:14px;padding-top:11px;border-top:1px solid var(--line)}
+.inspiration-links a{color:var(--text);font:10px 'IBM Plex Mono',monospace;text-decoration:none;opacity:.78;transition:color .2s,opacity .2s}
+.inspiration-links a:hover{color:var(--cyan);opacity:1}
+.channel-grid{margin-top:0}
+@media(prefers-reduced-motion:reduce){.inspiration-links a{transition:none}}

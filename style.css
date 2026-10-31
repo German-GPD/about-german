@@ -1515,4 +1515,4 @@ body{background-color:var(--bg)!important;background-image:linear-gradient(rgba(
 .goose-poop-mark:after{content:"";position:absolute;left:45%;bottom:55%;width:22%;height:38%;background:var(--poop-tone)}
 .goose-notice{position:fixed;z-index:2147483000;max-width:180px;padding:7px 10px;background:#20232b;color:#f5f2e9;border:1px solid #8d897f;border-left:3px solid #d5a85d;box-shadow:2px 2px 0 #0003;font:500 11px/1.4 "IBM Plex Mono",monospace;pointer-events:none;opacity:0;visibility:hidden;transform:translateY(4px);transition:opacity .14s ease,transform .14s ease,visibility .14s}
 .goose-notice.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
-@media(prefers-reduced-motion:reduce){.pixel-goose{display:none}}
+/* Goose routine remains enabled even when reduced-motion is preferred. */

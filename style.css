@@ -1199,3 +1199,16 @@ h1,h2,h3,.section-heading h2{font-family:var(--font-display);letter-spacing:-.04
 @media(max-width:760px){#inspiration .legend-image{height:258px;min-height:258px}}
 @media(max-width:520px){#inspiration .legend-image{height:242px;min-height:242px}#inspiration .legend-portrait{padding:8px 12px 0}}
 @media(prefers-reduced-motion:reduce){#inspiration .source-art.source-photo img{transition:none}}
+
+
+/* Colorful creator banners — retain portraits, add a vivid branded treatment */
+#inspiration .source-art.source-photo{background:#24213b;isolation:isolate}
+#inspiration .source-art.source-photo img{filter:saturate(1.16) contrast(1.05);opacity:1}
+#inspiration .source-art.source-photo:before{z-index:1;opacity:.48;background:linear-gradient(90deg,transparent 49.5%,#ffffff20 50%,transparent 50.5%),linear-gradient(0deg,transparent 49.5%,#ffffff20 50%,transparent 50.5%);background-size:30px 30px}
+#inspiration .source-art.source-photo:after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none}
+#inspiration .source-art.source-freelstep.source-photo:after{background:linear-gradient(118deg,#7c3aed66 0%,#ec489966 48%,#f59e0b55 100%),linear-gradient(0deg,#08090de0 0%,transparent 72%)}
+#inspiration .source-art.source-vladilen.source-photo:after{background:linear-gradient(118deg,#06b6d466 0%,#2563eb66 48%,#a3e63555 100%),linear-gradient(0deg,#08090de0 0%,transparent 72%)}
+#inspiration .source-art.source-photo>span{position:relative;z-index:2;text-shadow:0 2px 12px #000a}
+#inspiration .source-art.source-photo img{z-index:0}
+#inspiration .source-art.source-photo:before{pointer-events:none}
+@media(prefers-reduced-motion:reduce){#inspiration .source-art.source-photo img{transition:none}}

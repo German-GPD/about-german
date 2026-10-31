@@ -142,11 +142,25 @@
     });
   }
 
+  // The pixel goose makes one short, non-interactive visit, then leaves a temporary pixel.
   const goose=document.querySelector(".pixel-goose");
   if(goose&&!reducedMotion){
-    const runGoose=()=>{goose.classList.remove("is-running");void goose.offsetWidth;goose.classList.add("is-running");};
-    window.setTimeout(runGoose,9000);
-    window.setInterval(runGoose,42000);
+    let nextVisit;
+    const scheduleVisit=()=>{nextVisit=window.setTimeout(startVisit,36000+Math.random()*24000);};
+    const startVisit=()=>{
+      goose.classList.remove("is-running","is-paused","is-pooping");
+      void goose.offsetWidth;
+      goose.classList.add("is-running");
+      window.setTimeout(()=>goose.classList.add("is-paused"),3150);
+      window.setTimeout(()=>goose.classList.add("is-pooping"),4050);
+      window.setTimeout(()=>goose.classList.remove("is-paused"),4750);
+    };
+    goose.addEventListener("animationend",event=>{
+      if(event.animationName!=="goose-wander")return;
+      goose.classList.remove("is-running","is-paused","is-pooping");
+      scheduleVisit();
+    });
+    window.setTimeout(startVisit,6500);
   }
 
 })();

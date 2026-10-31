@@ -1128,3 +1128,55 @@ h1,h2,h3,.section-heading h2{font-family:var(--font-display);letter-spacing:-.04
 @media(prefers-reduced-motion:reduce){.legend-portrait,.book-library-action i{transition:none}}
 
 .book-card[hidden]{display:none!important}
+
+
+/* Unified German'$ Team inspiration card system */
+#inspiration .inspiration-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;align-items:stretch}
+#inspiration .inspiration-card{display:flex;flex-direction:column;min-width:0;padding:0;overflow:hidden;background:var(--surface);border:1px solid var(--line);border-top:1px solid var(--line);border-radius:0;transform:none;transition:border-color .2s,background .2s}
+#inspiration .inspiration-card:hover{border-color:var(--cyan);background:color-mix(in srgb,var(--surface) 92%,var(--cyan));transform:none}
+#inspiration .inspiration-card .source-art{height:158px;min-height:158px;max-height:158px;margin:0 0 17px;padding:18px;display:flex;align-items:flex-start;justify-content:center;flex-direction:column;gap:7px;position:relative;overflow:hidden;background:linear-gradient(135deg,var(--surface-2),color-mix(in srgb,var(--surface-2) 78%,var(--cyan)));color:var(--text);border-bottom:1px solid var(--line)}
+#inspiration .inspiration-card .source-art:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 49.5%,color-mix(in srgb,var(--cyan) 12%,transparent) 50%,transparent 50.5%),linear-gradient(0deg,transparent 49.5%,color-mix(in srgb,var(--cyan) 12%,transparent) 50%,transparent 50.5%);background-size:32px 32px;opacity:.38;pointer-events:none}
+#inspiration .inspiration-card .source-art:after{content:"";position:absolute;inset:auto 0 0;height:3px;background:linear-gradient(90deg,var(--cyan),color-mix(in srgb,var(--cyan) 10%,transparent) 75%,transparent)}
+#inspiration .inspiration-card .source-art>span,#inspiration .inspiration-card .source-art>b,#inspiration .inspiration-card .source-art>i{position:relative;z-index:1;color:var(--text)}
+#inspiration .inspiration-card .source-art>span{font:700 29px 'Space Grotesk',sans-serif;letter-spacing:-.07em;line-height:1}
+#inspiration .inspiration-card .source-art>b{font:700 34px 'Space Grotesk',sans-serif;letter-spacing:-.08em;line-height:1}
+#inspiration .inspiration-card .source-art>i{font:8px 'IBM Plex Mono',monospace;letter-spacing:.12em;font-style:normal;color:var(--muted)}
+#inspiration .inspiration-card .source-art.source-photo{padding:0;justify-content:flex-end;background:var(--surface-2)}
+#inspiration .inspiration-card .source-art.source-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 34%;z-index:0;filter:grayscale(.2) saturate(.72);opacity:.82}
+#inspiration .inspiration-card .source-art.source-photo:before{z-index:1;background:linear-gradient(0deg,#08090de8,transparent 65%)}
+#inspiration .inspiration-card .source-art.source-photo>span{z-index:2;width:100%;padding:12px 16px;color:#fff;font:8px 'IBM Plex Mono',monospace;letter-spacing:.12em}
+#inspiration .inspiration-card .inspiration-type,#inspiration .inspiration-card>h4,#inspiration .inspiration-card>p,#inspiration .inspiration-card>.inspiration-links{margin-left:17px;margin-right:17px}
+#inspiration .inspiration-card .inspiration-type{font-size:8px;letter-spacing:.1em;margin-bottom:9px}
+#inspiration .inspiration-card>h4{font:600 16px 'Space Grotesk',sans-serif;line-height:1.35;margin-top:0;margin-bottom:8px}
+#inspiration .inspiration-card>p{font-size:11px;line-height:1.65;flex:1;margin-bottom:16px}
+#inspiration .inspiration-card>.inspiration-links{margin-top:auto;margin-bottom:16px;padding-top:11px;gap:7px 13px}
+#inspiration .inspiration-card .source-marty-mark>b,#inspiration .inspiration-card .source-marion>b{font-size:48px}
+#inspiration .inspiration-card .source-marty-mark>span{font-size:8px}
+#inspiration .inspiration-card .source-marty-mark>i,#inspiration .inspiration-card .source-marion>i{font-size:8px}
+#inspiration .book-library{border:1px solid var(--line);background:var(--surface);border-radius:0}
+#inspiration .book-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;padding:0 14px 15px}
+#inspiration .book-card{padding:0;overflow:hidden;display:flex;flex-direction:column;min-height:0;background:var(--surface);border:1px solid var(--line);border-radius:0;transform:none;transition:border-color .2s}
+#inspiration .book-card:hover{transform:none;border-color:var(--cyan)}
+#inspiration .book-card[hidden]{display:none!important}
+#inspiration .book-cover{height:226px;min-height:226px;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;padding:16px;background:linear-gradient(145deg,#171c27,#222d3b);color:#f5f7fa;border-bottom:1px solid var(--line);isolation:isolate}
+#inspiration .book-cover:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,transparent 49.5%,#ffffff12 50%,transparent 50.5%),linear-gradient(0deg,transparent 49.5%,#ffffff12 50%,transparent 50.5%);background-size:28px 28px;opacity:.35}
+#inspiration .book-cover:after{content:"";position:absolute;right:-35px;bottom:-60px;width:170px;height:170px;border:1px solid #ffffff2b;transform:rotate(35deg);box-shadow:0 0 0 16px #ffffff08,0 0 0 32px #ffffff06}
+#inspiration .book-cover[data-tone="cyan"]{background:linear-gradient(145deg,#10252d,#174451)}
+#inspiration .book-cover[data-tone="violet"]{background:linear-gradient(145deg,#201b31,#39345d)}
+#inspiration .book-cover[data-tone="amber"]{background:linear-gradient(145deg,#2c2418,#51402a)}
+#inspiration .book-cover[data-tone="blue"]{background:linear-gradient(145deg,#172438,#29476b)}
+#inspiration .book-cover[data-tone="mint"]{background:linear-gradient(145deg,#172923,#315244)}
+#inspiration .book-cover[data-tone="rose"]{background:linear-gradient(145deg,#2b1d2b,#51364b)}
+#inspiration .book-cover-code{font:8px 'IBM Plex Mono',monospace;letter-spacing:.13em;color:#c5d0dc;opacity:.8}
+#inspiration .book-cover-mark{position:absolute;left:16px;top:64px;font:700 56px 'Space Grotesk',sans-serif;letter-spacing:-.1em;color:#ffffff18}
+#inspiration .book-cover strong{position:relative;z-index:1;max-width:95%;font:600 18px/1.18 'Space Grotesk',sans-serif;letter-spacing:-.04em;overflow-wrap:anywhere}
+#inspiration .book-cover small{position:relative;z-index:1;font:8px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:#d0d8e2;opacity:.8}
+#inspiration .book-card>span{margin:14px 14px 7px;color:var(--cyan);font-size:8px}
+#inspiration .book-card h4{font-size:14px;margin:0 14px 7px}
+#inspiration .book-card p{font-size:11px;line-height:1.55;margin:0 14px 12px;flex:1}
+#inspiration .book-card>a{margin:auto 14px 14px;padding-top:10px;border-top:1px solid var(--line);font:9px 'IBM Plex Mono',monospace;color:var(--text);text-decoration:none}
+#inspiration .book-card>a:hover{color:var(--cyan)}
+#inspiration .book-library-note{margin:0 14px;padding:12px 0 15px;border-top:1px solid var(--line)}
+@media(max-width:760px){#inspiration .inspiration-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#inspiration .book-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:520px){#inspiration .inspiration-grid{grid-template-columns:1fr}#inspiration .book-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}#inspiration .book-cover{height:190px;min-height:190px;padding:12px}#inspiration .book-cover strong{font-size:15px}#inspiration .book-cover-mark{left:12px;font-size:46px}#inspiration .book-card>span,#inspiration .book-card h4,#inspiration .book-card p{margin-left:11px;margin-right:11px}#inspiration .book-card>a{margin-left:11px;margin-right:11px}#inspiration .inspiration-card .source-art{height:150px;min-height:150px;max-height:150px}}
+@media(prefers-reduced-motion:reduce){#inspiration .inspiration-card,#inspiration .book-card{transition:none}}

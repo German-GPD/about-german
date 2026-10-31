@@ -1253,3 +1253,35 @@ h1,h2,h3,.section-heading h2{font-family:var(--font-display);letter-spacing:-.04
 @media(max-width:520px){
   #inspiration .inspiration-card .source-art{height:150px;min-height:150px;max-height:150px}
 }
+
+
+/* Stronger, unmistakably colorful palette for the inspiration shelf */
+#inspiration .inspiration-card{border-color:color-mix(in srgb,var(--source-accent,#28c7e8) 42%,var(--line))}
+#inspiration .inspiration-card .source-art{
+  background-image:radial-gradient(ellipse at 82% 18%,#ffffff55 0%,transparent 35%),
+    linear-gradient(128deg,var(--source-a),var(--source-b) 56%,var(--source-c))!important;
+  box-shadow:inset 0 -5px 0 #ffffff45,inset 0 0 34px #ffffff12;
+}
+#inspiration .inspiration-card .source-art:before{
+  opacity:.72;background-size:25px 25px;
+  background-image:linear-gradient(90deg,transparent 49%,#ffffff35 50%,transparent 51%),
+    linear-gradient(0deg,transparent 49%,#ffffff35 50%,transparent 51%);
+}
+#inspiration .inspiration-card .source-art:after{
+  border:2px solid #ffffff65;box-shadow:0 0 0 14px #ffffff18,0 0 0 30px #ffffff10,0 0 48px #ffffff30;
+}
+#inspiration .inspiration-card>h4{color:var(--text)}
+#inspiration .inspiration-card .inspiration-type{color:var(--source-accent)}
+#inspiration .inspiration-card>.inspiration-links a{color:var(--source-accent)}
+#inspiration .inspiration-card>.inspiration-links{border-top-color:color-mix(in srgb,var(--source-accent) 38%,var(--line))}
+#inspiration .inspiration-card:has(.source-freelstep){--source-a:#7028d8;--source-b:#d629a8;--source-c:#ff8b35;--source-accent:#d879ff}
+#inspiration .inspiration-card:has(.source-danya){--source-a:#0066cf;--source-b:#00a7d8;--source-c:#25d6c7;--source-accent:#20bde7}
+#inspiration .inspiration-card:has(.source-mutim){--source-a:#007d72;--source-b:#00b89b;--source-c:#a0d83b;--source-accent:#26c6a5}
+#inspiration .inspiration-card:has(.source-vladilen){--source-a:#0754c9;--source-b:#168de0;--source-c:#48d5e8;--source-accent:#28bce8}
+#inspiration .inspiration-card:has(.source-timofey){--source-a:#3735c8;--source-b:#7654e8;--source-c:#c05ce0;--source-accent:#9b79ff}
+#inspiration .inspiration-card:has(.source-itproger){--source-a:#16853c;--source-b:#62b82b;--source-c:#d1d936;--source-accent:#78c94a}
+#inspiration .inspiration-card:has(.source-marty-mark){--source-a:#5522b7;--source-b:#a33bcb;--source-c:#ef62a4;--source-accent:#bd76ef}
+#inspiration .inspiration-card:has(.source-marion){--source-a:#3831b9;--source-b:#6856df;--source-c:#a78bfa;--source-accent:#8877ed}
+#inspiration .inspiration-card:has(.source-howdy){--source-a:#bd3d16;--source-b:#f07822;--source-c:#ffd04a;--source-accent:#ef873e}
+#inspiration .inspiration-card:has(.source-habr){--source-a:#a91f3d;--source-b:#e34a55;--source-c:#ff9470;--source-accent:#e85a65}
+#inspiration .inspiration-card:hover{border-color:var(--source-accent)}

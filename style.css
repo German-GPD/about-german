@@ -1502,17 +1502,10 @@ body{background-color:var(--bg)!important;background-image:linear-gradient(rgba(
 .hero-quote>span,.hero-quote>i{font:9px 'IBM Plex Mono',monospace;letter-spacing:.13em;color:var(--muted);font-style:normal}
 .hero-quote p{margin:9px 0 7px;font:500 clamp(14px,1.6vw,17px)/1.55 'Space Grotesk',sans-serif;color:var(--text)}
 
-/* Goose: compact pixel bird, with varied little pixel souvenirs. */
-.pixel-goose{position:fixed;left:0;top:0;width:64px;height:48px;z-index:90;pointer-events:none;visibility:hidden;will-change:transform;image-rendering:pixelated;transform-origin:50% 75%}
-.pixel-goose.is-running{visibility:visible}
-.goose-art{display:block;width:64px;height:48px;overflow:visible;shape-rendering:crispEdges}
-.pixel-goose.is-running .leg-a{animation:goose-step-a .22s steps(2,end) infinite}
-.pixel-goose.is-running .leg-b{animation:goose-step-b .22s steps(2,end) infinite}
-@keyframes goose-step-a{0%,100%{transform:translateY(0)}50%{transform:translateY(-1px)}}
-@keyframes goose-step-b{0%,100%{transform:translateY(-1px)}50%{transform:translateY(0)}}
-.goose-poop-mark{position:fixed;z-index:89;width:var(--poop-w);height:var(--poop-h);pointer-events:none;image-rendering:pixelated;transform:rotate(-8deg)}
-.goose-poop-mark:before{content:"";position:absolute;left:1px;bottom:0;width:calc(100% - 2px);height:65%;background:var(--poop-tone);clip-path:polygon(0 45%,20% 10%,40% 25%,58% 0,80% 25%,100% 55%,85% 100%,12% 100%)}
-.goose-poop-mark:after{content:"";position:absolute;left:45%;bottom:55%;width:22%;height:38%;background:var(--poop-tone)}
-.goose-notice{position:fixed;z-index:2147483000;max-width:180px;padding:7px 10px;background:#20232b;color:#f5f2e9;border:1px solid #8d897f;border-left:3px solid #d5a85d;box-shadow:2px 2px 0 #0003;font:500 11px/1.4 "IBM Plex Mono",monospace;pointer-events:none;opacity:0;visibility:hidden;transform:translateY(4px);transition:opacity .14s ease,transform .14s ease,visibility .14s}
-.goose-notice.is-visible{opacity:1;visibility:visible;transform:translateY(0)}
-/* Goose routine remains enabled even when reduced-motion is preferred. */
+
+/* Ambient pixel scene: quiet details behind the content, never competing with it. */
+.pixel-atmosphere{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;display:block;opacity:.78;image-rendering:pixelated}
+body{isolation:isolate}
+.navbar,main{position:relative;z-index:1}
+@media (max-width:700px){.pixel-atmosphere{opacity:.58}}
+@media (prefers-reduced-motion:reduce){.pixel-atmosphere{opacity:.38}}

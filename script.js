@@ -142,66 +142,41 @@
     });
   }
 
-  // A wandering pixel goose. Its little "gift" stays until the page is reloaded.
+  // Goose patrol: crosses the whole visible screen and leaves a souvenir.
   const goose=document.querySelector(".pixel-goose");
   if(goose&&!reducedMotion){
-    let visitTimer;
-    let noticeTimer;
-    const scheduleGoose=()=>{visitTimer=window.setTimeout(startGoose,26000+Math.random()*22000);};
-    const dropPoop=()=>{
-      const rect=goose.getBoundingClientRect();
-      const mark=document.createElement("span");
-      mark.className="goose-poop-mark";
-      mark.setAttribute("aria-hidden","true");
-      mark.style.left=Math.round(rect.left+rect.width*.42)+"px";
-      mark.style.top=Math.round(rect.top+rect.height*.76)+"px";
-      document.body.appendChild(mark);
-      const notice=document.createElement("div");
-      notice.className="goose-notice";
-      notice.setAttribute("role","status");
-      notice.innerHTML="<strong>НОВОЕ СОБЫТИЕ / GOOSE.EXE</strong>Гусь накакал. История сохранится до перезагрузки страницы. Не благодарите.";
-      document.body.appendChild(notice);
-      requestAnimationFrame(()=>notice.classList.add("is-visible"));
-      window.clearTimeout(noticeTimer);
-      noticeTimer=window.setTimeout(()=>{notice.classList.remove("is-visible");window.setTimeout(()=>notice.remove(),250);},8500);
+    let nextVisit,noticeTimer;
+    const scheduleGoose=()=>{nextVisit=window.setTimeout(startGoose,18000+Math.random()*16000);};
+    const showNotice=()=>{
+      let notice=document.querySelector(".goose-notice");
+      if(!notice){
+        notice=document.createElement("aside");notice.className="goose-notice";notice.setAttribute("role","status");
+        notice.innerHTML='<strong>ГУСЬ / СООБЩЕНИЕ С СЕРВЕРА</strong>Гусь накакал. Перезагрузите страницу, чтобы убрать улики.<br><button type="button">Ладно, перезагружаю</button>';
+        notice.querySelector("button").addEventListener("click",()=>window.location.reload());document.body.appendChild(notice);
+      }
+      notice.hidden=false;window.clearTimeout(noticeTimer);noticeTimer=window.setTimeout(()=>{notice.hidden=true;},9000);
     };
-    const startGoose=()=>{
-      goose.classList.remove("is-running");
-      const width=window.innerWidth;
-      const height=window.innerHeight;
-      const startY=Math.max(90,Math.min(height-150,height*(.25+Math.random()*.5)));
-      const endY=Math.max(80,Math.min(height-140,startY+(Math.random()-.5)*Math.min(230,height*.35)));
-      goose.style.top=startY+"px";
-      goose.style.left="0px";
-      goose.style.transform="translateX(-125px) scaleX(1)";
-      void goose.offsetWidth;
-      goose.classList.add("is-running");
-      const rightward=Math.random()>.5;
-      const from=rightward?-125:width+125;
-      const to=rightward?width+125:-125;
-      const direction=rightward?1:-1;
-      goose.style.left=from+"px";
-      goose.animate([
-        {transform:`translate(0,0) rotate(-4deg) scaleX(${direction})`,offset:0},
-        {transform:`translate(${(to-from)*.16}px,-28px) rotate(9deg) scaleX(${direction})`,offset:.16},
-        {transform:`translate(${(to-from)*.31}px,12px) rotate(-8deg) scaleX(${direction})`,offset:.31},
-        {transform:`translate(${(to-from)*.46}px,-18px) rotate(5deg) scaleX(${direction})`,offset:.46},
-        {transform:`translate(${(to-from)*.53}px,0) rotate(-2deg) scaleX(${direction})`,offset:.54},
-        {transform:`translate(${(to-from)*.61}px,-9px) rotate(12deg) scaleX(${direction})`,offset:.67},
-        {transform:`translate(${(to-from)*.78}px,15px) rotate(-10deg) scaleX(${direction})`,offset:.82},
-        {transform:`translate(${to-from}px,-4px) rotate(3deg) scaleX(${direction})`,offset:1}
-      ],{duration:7800,easing:"linear",fill:"forwards"}).pause();
-      const motion=goose.getAnimations().at(-1);
-      motion.play();
-      window.setTimeout(()=>{motion.pause();dropPoop();},4300);
-      window.setTimeout(()=>motion.play(),5350);
-      motion.onfinish=()=>{
-        goose.classList.remove("is-running");
-        goose.getAnimations().forEach(animation=>animation.cancel());
-        scheduleGoose();
-      };
+    const leaveMark=()=>{
+      const rect=goose.getBoundingClientRect();const mark=document.createElement("span");mark.className="goose-poop-mark";mark.setAttribute("aria-hidden","true");
+      mark.style.left=Math.round(rect.left+rect.width*.38)+"px";mark.style.top=Math.round(rect.top+rect.height*.78)+"px";document.body.appendChild(mark);showNotice();
     };
-    window.setTimeout(startGoose,5200);
+    function startGoose(){
+      const w=window.innerWidth,h=window.innerHeight;const y=Math.max(105,Math.min(h-115,Math.round(h*(.18+Math.random()*.58))));
+      const right=Math.random()>.5,start=right?-150:w+150,finish=right?w+150:-150,face=right?1:-1,distance=finish-start;
+      goose.style.top=y+"px";goose.style.left=start+"px";goose.style.transform="translate(0,0)";goose.classList.add("is-running");
+      const move=(part,vertical,angle)=>"translate("+part+"px,"+vertical+"px) rotate("+angle+"deg) scaleX("+face+")";
+      const motion=goose.animate([
+        {transform:move(0,0,-5),offset:0},{transform:move(distance*.12,-24,9),offset:.12},
+        {transform:move(distance*.25,15,-8),offset:.25},{transform:move(distance*.39,-12,5),offset:.39},
+        {transform:move(distance*.5,3,-3),offset:.5},{transform:move(distance*.62,-22,11),offset:.62},
+        {transform:move(distance*.76,12,-9),offset:.76},{transform:move(distance*.9,-8,6),offset:.9},
+        {transform:move(distance,0,0),offset:1}
+      ],{duration:6500,easing:"ease-in-out",fill:"forwards"});
+      const poopTimer=window.setTimeout(()=>{motion.pause();leaveMark();},3300);
+      const resumeTimer=window.setTimeout(()=>motion.play(),4300);
+      motion.onfinish=()=>{clearTimeout(poopTimer);clearTimeout(resumeTimer);goose.classList.remove("is-running");scheduleGoose();};
+    }
+    window.setTimeout(startGoose,2200);
   }
 
 })();

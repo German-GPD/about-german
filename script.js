@@ -54,42 +54,43 @@
     });
   });
 
-  // Pixel-hover typography: each glyph switches to the pixel font on hover.
-  // Screen readers keep the original text through aria-label.
-  const pixelTargets = "h1, h2, h3, .logo, .section-kicker, .card-label, .device-chip, .skill-level, .case-number, .game-franchises span, .tag, .btn";
-  document.querySelectorAll(pixelTargets).forEach((element) => {
-    if (element.dataset.pixelLetters === "true") return;
-    const originalText = element.textContent;
-    if (!originalText || !originalText.trim()) return;
-    if (!element.hasAttribute("aria-label")) element.setAttribute("aria-label", originalText.replace(/\s+/g, " ").trim());
-    const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
-    const nodes = [];
-    while (walker.nextNode()) {
-      if (walker.currentNode.nodeValue) nodes.push(walker.currentNode);
-    }
-    nodes.forEach((node) => {
-      const fragment = document.createDocumentFragment();
-      const tokens = node.nodeValue.match(/\s+|[^\s]+/gu) || [];
-      tokens.forEach((token) => {
-        if (/^\s+$/u.test(token)) {
-          fragment.appendChild(document.createTextNode(token));
-          return;
-        }
-        const word = document.createElement("span");
-        word.className = "pixel-word";
-        word.setAttribute("aria-hidden", "true");
-        for (const character of token) {
-          const glyph = document.createElement("span");
-          glyph.className = "pixel-glyph";
-          glyph.textContent = character;
-          word.appendChild(glyph);
-        }
-        fragment.appendChild(word);
+  // Pixel-hover typography only on desktop pointers; skip DOM rewriting on phones and reduced-motion devices.
+  if (window.matchMedia("(hover: hover) and (pointer: fine)").matches && !reducedMotion) {
+    const pixelTargets = "h1, h2, h3, .logo, .section-kicker, .card-label, .device-chip, .skill-level, .case-number, .game-franchises span, .tag, .btn";
+    document.querySelectorAll(pixelTargets).forEach((element) => {
+      if (element.dataset.pixelLetters === "true") return;
+      const originalText = element.textContent;
+      if (!originalText || !originalText.trim()) return;
+      if (!element.hasAttribute("aria-label")) element.setAttribute("aria-label", originalText.replace(/\s+/g, " ").trim());
+      const walker = document.createTreeWalker(element, NodeFilter.SHOW_TEXT);
+      const nodes = [];
+      while (walker.nextNode()) {
+        if (walker.currentNode.nodeValue) nodes.push(walker.currentNode);
+      }
+      nodes.forEach((node) => {
+        const fragment = document.createDocumentFragment();
+        const tokens = node.nodeValue.match(/\s+|[^\s]+/gu) || [];
+        tokens.forEach((token) => {
+          if (/^\s+$/u.test(token)) {
+            fragment.appendChild(document.createTextNode(token));
+            return;
+          }
+          const word = document.createElement("span");
+          word.className = "pixel-word";
+          word.setAttribute("aria-hidden", "true");
+          for (const character of token) {
+            const glyph = document.createElement("span");
+            glyph.className = "pixel-glyph";
+            glyph.textContent = character;
+            word.appendChild(glyph);
+          }
+          fragment.appendChild(word);
+        });
+        node.parentNode.replaceChild(fragment, node);
       });
-      node.parentNode.replaceChild(fragment, node);
+      element.dataset.pixelLetters = "true";
     });
-    element.dataset.pixelLetters = "true";
-  });
+  }
 
 
   // Decorative floating background particles removed: keep rendering light and the page calm.

@@ -142,25 +142,66 @@
     });
   }
 
-  // The pixel goose makes one short, non-interactive visit, then leaves a temporary pixel.
+  // A wandering pixel goose. Its little "gift" stays until the page is reloaded.
   const goose=document.querySelector(".pixel-goose");
   if(goose&&!reducedMotion){
-    let nextVisit;
-    const scheduleVisit=()=>{nextVisit=window.setTimeout(startVisit,36000+Math.random()*24000);};
-    const startVisit=()=>{
-      goose.classList.remove("is-running","is-paused","is-pooping");
+    let visitTimer;
+    let noticeTimer;
+    const scheduleGoose=()=>{visitTimer=window.setTimeout(startGoose,26000+Math.random()*22000);};
+    const dropPoop=()=>{
+      const rect=goose.getBoundingClientRect();
+      const mark=document.createElement("span");
+      mark.className="goose-poop-mark";
+      mark.setAttribute("aria-hidden","true");
+      mark.style.left=Math.round(rect.left+rect.width*.42)+"px";
+      mark.style.top=Math.round(rect.top+rect.height*.76)+"px";
+      document.body.appendChild(mark);
+      const notice=document.createElement("div");
+      notice.className="goose-notice";
+      notice.setAttribute("role","status");
+      notice.innerHTML="<strong>НОВОЕ СОБЫТИЕ / GOOSE.EXE</strong>Гусь накакал. История сохранится до перезагрузки страницы. Не благодарите.";
+      document.body.appendChild(notice);
+      requestAnimationFrame(()=>notice.classList.add("is-visible"));
+      window.clearTimeout(noticeTimer);
+      noticeTimer=window.setTimeout(()=>{notice.classList.remove("is-visible");window.setTimeout(()=>notice.remove(),250);},8500);
+    };
+    const startGoose=()=>{
+      goose.classList.remove("is-running");
+      const width=window.innerWidth;
+      const height=window.innerHeight;
+      const startY=Math.max(90,Math.min(height-150,height*(.25+Math.random()*.5)));
+      const endY=Math.max(80,Math.min(height-140,startY+(Math.random()-.5)*Math.min(230,height*.35)));
+      goose.style.top=startY+"px";
+      goose.style.left="0px";
+      goose.style.transform="translateX(-125px) scaleX(1)";
       void goose.offsetWidth;
       goose.classList.add("is-running");
-      window.setTimeout(()=>goose.classList.add("is-paused"),3150);
-      window.setTimeout(()=>goose.classList.add("is-pooping"),4050);
-      window.setTimeout(()=>goose.classList.remove("is-paused"),4750);
+      const rightward=Math.random()>.5;
+      const from=rightward?-125:width+125;
+      const to=rightward?width+125:-125;
+      const direction=rightward?1:-1;
+      goose.style.left=from+"px";
+      goose.animate([
+        {transform:`translate(0,0) rotate(-4deg) scaleX(${direction})`,offset:0},
+        {transform:`translate(${(to-from)*.16}px,-28px) rotate(9deg) scaleX(${direction})`,offset:.16},
+        {transform:`translate(${(to-from)*.31}px,12px) rotate(-8deg) scaleX(${direction})`,offset:.31},
+        {transform:`translate(${(to-from)*.46}px,-18px) rotate(5deg) scaleX(${direction})`,offset:.46},
+        {transform:`translate(${(to-from)*.53}px,0) rotate(-2deg) scaleX(${direction})`,offset:.54},
+        {transform:`translate(${(to-from)*.61}px,-9px) rotate(12deg) scaleX(${direction})`,offset:.67},
+        {transform:`translate(${(to-from)*.78}px,15px) rotate(-10deg) scaleX(${direction})`,offset:.82},
+        {transform:`translate(${to-from}px,-4px) rotate(3deg) scaleX(${direction})`,offset:1}
+      ],{duration:7800,easing:"linear",fill:"forwards"}).pause();
+      const motion=goose.getAnimations().at(-1);
+      motion.play();
+      window.setTimeout(()=>{motion.pause();dropPoop();},4300);
+      window.setTimeout(()=>motion.play(),5350);
+      motion.onfinish=()=>{
+        goose.classList.remove("is-running");
+        goose.getAnimations().forEach(animation=>animation.cancel());
+        scheduleGoose();
+      };
     };
-    goose.addEventListener("animationend",event=>{
-      if(event.animationName!=="goose-wander")return;
-      goose.classList.remove("is-running","is-paused","is-pooping");
-      scheduleVisit();
-    });
-    window.setTimeout(startVisit,6500);
+    window.setTimeout(startGoose,5200);
   }
 
 })();

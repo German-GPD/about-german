@@ -1050,3 +1050,30 @@ h1,h2,h3,.section-heading h2{font-family:var(--font-display);letter-spacing:-.04
 .inspiration-links a:hover{color:var(--cyan);opacity:1}
 .channel-grid{margin-top:0}
 @media(prefers-reduced-motion:reduce){.inspiration-links a{transition:none}}
+
+
+/* Editorial image treatment for the inspiration board */
+.inspiration-grid{align-items:stretch}
+.inspiration-card.has-art{padding-top:0;overflow:hidden}
+.source-art,.source-marty{height:142px;margin:0 -17px 16px;position:relative;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:20px;overflow:hidden;isolation:isolate}
+.source-art:after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg,transparent 35%,#ffffff12 36%,transparent 37%),linear-gradient(145deg,transparent 60%,#ffffff0d 61%,transparent 62%);background-size:100% 100%,100% 100%}
+.source-art span{font:700 28px 'Space Grotesk',sans-serif;letter-spacing:-.08em;line-height:1}
+.source-art b{font:700 34px 'Space Grotesk',sans-serif;letter-spacing:-.07em;line-height:1}
+.source-art i{font:9px 'IBM Plex Mono',monospace;letter-spacing:.12em;font-style:normal;margin-top:10px;opacity:.72}
+.source-freelstep{background:linear-gradient(125deg,#21172f,#563c83 58%,#b28aff);color:#fff}
+.source-danya{background:linear-gradient(125deg,#111923,#254d66 60%,#6ca7b6);color:#f3fbff}
+.source-mutim{background:linear-gradient(125deg,#191a20,#48414e 60%,#b1a0b8);color:#fff}
+.source-itproger{background:linear-gradient(125deg,#111d1d,#17645a 60%,#77c6aa);color:#f3fffa}
+.source-marty{background:linear-gradient(125deg,#18152c,#403b88 60%,#9c8cff);color:#fff;align-items:center;gap:10px}
+.source-marty img{width:82px;height:82px;object-fit:cover;border:1px solid #ffffff55}
+.source-marty span{font:9px 'IBM Plex Mono',monospace;letter-spacing:.1em;opacity:.8}
+.legend-card.legend-photo{padding:0 0 16px;overflow:hidden}
+.legend-portrait{display:block;width:100%;height:188px;object-fit:cover;object-position:center 28%;margin-bottom:15px;filter:saturate(.78) contrast(1.04);transition:filter .25s,transform .4s}
+.legend-card.legend-photo:hover .legend-portrait{filter:saturate(1) contrast(1.02);transform:scale(1.025)}
+.legend-card.legend-photo>span,.legend-card.legend-photo>h4,.legend-card.legend-photo>p,.legend-card.legend-photo>.inspiration-links{margin-left:16px;margin-right:16px}
+.legend-card.legend-photo>span{margin-bottom:10px}
+.legend-card.legend-photo>h4{margin-top:0}
+.legend-card.legend-photo>p{margin-bottom:0}
+.legend-card.legend-photo>.inspiration-links{margin-top:13px}
+@media(max-width:520px){.source-art,.source-marty{height:128px;margin-left:-15px;margin-right:-15px}.legend-portrait{height:210px}}
+@media(prefers-reduced-motion:reduce){.legend-portrait{transition:none}.legend-card.legend-photo:hover .legend-portrait{transform:none}}

@@ -1502,38 +1502,16 @@ body{background-color:var(--bg)!important;background-image:linear-gradient(rgba(
 .hero-quote>span,.hero-quote>i{font:9px 'IBM Plex Mono',monospace;letter-spacing:.13em;color:var(--muted);font-style:normal}
 .hero-quote p{margin:9px 0 7px;font:500 clamp(14px,1.6vw,17px)/1.55 'Space Grotesk',sans-serif;color:var(--text)}
 
-/* A tiny pixel goose wanders through the reader's current viewport. */
-.pixel-goose{position:fixed;left:0;top:54vh;width:58px;height:48px;z-index:80;pointer-events:none;opacity:0;transform:translateX(-90px);will-change:transform;filter:drop-shadow(2px 3px 0 #0005)}
-.goose-sprite{position:absolute;left:0;top:0;width:6px;height:6px;background:#f3eee0;
-  box-shadow:
-  6px 0 #f3eee0,12px 0 #f3eee0,18px 0 #f3eee0,
-  0 6px #f3eee0,6px 6px #f3eee0,12px 6px #f3eee0,18px 6px #f3eee0,24px 6px #f3eee0,30px 6px #e6a83d,
-  0 12px #f3eee0,6px 12px #f3eee0,12px 12px #f3eee0,18px 12px #f3eee0,24px 12px #f3eee0,30px 12px #e6a83d,
-  6px 18px #f3eee0,12px 18px #f3eee0,18px 18px #f3eee0,24px 18px #f3eee0,
-  12px 24px #f3eee0,18px 24px #f3eee0,
-  6px 30px #d9a33c,18px 30px #d9a33c,
-  6px 36px #d9a33c,18px 36px #d9a33c;
-}
-.goose-sprite:before{content:"";position:absolute;left:18px;top:9px;width:3px;height:3px;background:#24232a;box-shadow:12px 6px #24232a}
-.goose-sprite:after{content:"";position:absolute;left:-5px;top:14px;width:6px;height:6px;background:#e6a83d}
-.goose-poop{position:absolute;left:17px;top:37px;width:6px;height:4px;background:#9a704e;opacity:0}
-.goose-poop:before{content:"";position:absolute;left:2px;top:-3px;width:4px;height:3px;background:#9a704e}
-.pixel-goose.is-running{opacity:1;animation:goose-wander 8.5s cubic-bezier(.42,0,.58,1) forwards}\n.pixel-goose.is-paused{animation-play-state:paused}
-.pixel-goose.is-running .goose-sprite{animation:goose-bob .34s steps(2,end) infinite}
-.pixel-goose.is-paused .goose-sprite{animation:none;transform:rotate(-7deg)}
-.pixel-goose.is-pooping .goose-poop{opacity:1;animation:poop-pop 1.5s steps(3,end) forwards}
-@keyframes goose-wander{
-  0%{transform:translate(-90px,0) rotate(-5deg);opacity:0}
-  5%{opacity:1}
-  18%{transform:translate(18vw,-12px) rotate(5deg)}
-  28%{transform:translate(29vw,5px) rotate(-4deg)}
-  38%{transform:translate(39vw,-3px) rotate(7deg)}
-  55%{transform:translate(55vw,-17px) rotate(-8deg)}
-  72%{transform:translate(73vw,3px) rotate(5deg)}
-  90%{transform:translate(94vw,-10px) rotate(-5deg)}
-  100%{transform:translate(calc(100vw + 80px),0) rotate(3deg);opacity:0}
-}
-@keyframes goose-bob{0%{margin-top:0}100%{margin-top:-3px}}
-@keyframes poop-pop{0%{transform:translateY(-3px);opacity:0}20%{opacity:1}100%{transform:translateY(3px);opacity:0}}
-@media(prefers-reduced-motion:reduce){.motion-ready .reveal,.motion-ready .reveal.is-visible{opacity:1;transform:none;transition:none}.pixel-goose{display:none}}
-
+/* Pixel goose: clear silhouette, lively movement, no fade-out. */
+.pixel-goose{position:fixed;left:0;top:0;width:112px;height:80px;z-index:90;pointer-events:none;visibility:hidden;will-change:transform;filter:drop-shadow(2px 3px 0 #0005);transform-origin:50% 75%}
+.pixel-goose.is-running{visibility:visible}
+.goose-art{display:block;width:100%;height:100%;overflow:visible}
+.goose-poop-mark{position:fixed;z-index:89;width:17px;height:13px;pointer-events:none;image-rendering:pixelated;filter:drop-shadow(1px 2px 0 #0004)}
+.goose-poop-mark:before,.goose-poop-mark:after{content:"";position:absolute;bottom:0;background:#98704f}
+.goose-poop-mark:before{left:2px;width:13px;height:6px;box-shadow:3px -4px 0 -1px #98704f}
+.goose-poop-mark:after{left:6px;bottom:6px;width:5px;height:4px}
+.goose-notice{position:fixed;right:22px;bottom:22px;z-index:120;max-width:min(360px,calc(100vw - 32px));padding:15px 18px;background:#20232b;color:#f5f2e9;border:1px solid #d6a45c;border-left:4px solid #d6a45c;box-shadow:5px 5px 0 #0005;font:500 13px/1.5 "IBM Plex Mono",monospace;transform:translateY(12px);opacity:0;transition:opacity .2s ease,transform .2s ease}
+.goose-notice.is-visible{opacity:1;transform:translateY(0)}
+.goose-notice strong{display:block;margin-bottom:4px;color:#f0bd70;font-size:11px;letter-spacing:.08em}
+@media(max-width:600px){.goose-notice{right:12px;bottom:12px;padding:12px 14px}}
+@media(prefers-reduced-motion:reduce){.pixel-goose,.goose-notice{display:none}}

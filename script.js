@@ -142,12 +142,21 @@
     });
   }
 
-  // Goose patrol: a true pixel sprite, smooth staged movement, and viewport-local reactions.
+  // Goose patrol: leave the mark first, cross the viewport, then face the visitor and quack.
   const goose=document.querySelector(".pixel-goose");
   if(goose&&!reducedMotion){
     document.body.appendChild(goose);
     let timer=0,animation=null,noticeTimer=0,audioContext=null,notice=null,stopped=false,runId=0;
     const W=64,H=48,clamp=(v,min,max)=>Math.max(min,Math.min(max,v));
+    const profileMarkup=goose.innerHTML;
+    const frontMarkup=`<svg class="goose-art" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
+      <path fill="#eeeae0" d="M4 2h2V1h4v1h2v2h1v4h-1v1H4V8H3V4h1z"/>
+      <path fill="#c9c5bb" d="M4 7h2v1h4V7h2v2H4z"/>
+      <path fill="#25252b" d="M5 3h1v1H5zM10 3h1v1h-1z"/>
+      <path fill="#d99b42" d="M7 4h2v2H7zM6 10h1v1H6zM9 10h1v1H9z"/>
+      <rect class="goose-leg leg-a" x="5" y="9" width="1" height="2" fill="#d99b42"/>
+      <rect class="goose-leg leg-b" x="10" y="9" width="1" height="2" fill="#d99b42"/>
+    </svg>`;
     const wait=ms=>new Promise(resolve=>window.setTimeout(resolve,ms));
     const makeAudio=()=>{
       const Audio=window.AudioContext||window.webkitAudioContext;
@@ -159,57 +168,52 @@
     const quack=()=>{
       if(!audioContext||audioContext.state!=="running")return;
       const t=audioContext.currentTime;
-      [0,.14].forEach((delay,i)=>{
-        const osc=audioContext.createOscillator(),gain=audioContext.createGain();
-        osc.type="triangle";
-        osc.frequency.setValueAtTime(i?520:660,t+delay);
-        osc.frequency.exponentialRampToValueAtTime(i?270:330,t+delay+.12);
+      [0,.13].forEach((delay,i)=>{
+        const osc=audioContext.createOscillator(),gain=audioContext.createGain(),filter=audioContext.createBiquadFilter();
+        osc.type="sawtooth";filter.type="lowpass";filter.frequency.setValueAtTime(1050,t+delay);
+        osc.frequency.setValueAtTime(i?470:610,t+delay);
+        osc.frequency.exponentialRampToValueAtTime(i?210:285,t+delay+.16);
         gain.gain.setValueAtTime(.0001,t+delay);
-        gain.gain.exponentialRampToValueAtTime(.045,t+delay+.015);
-        gain.gain.exponentialRampToValueAtTime(.0001,t+delay+.14);
-        osc.connect(gain);gain.connect(audioContext.destination);
-        osc.start(t+delay);osc.stop(t+delay+.15);
+        gain.gain.exponentialRampToValueAtTime(.035,t+delay+.018);
+        gain.gain.exponentialRampToValueAtTime(.0001,t+delay+.18);
+        osc.connect(filter);filter.connect(gain);gain.connect(audioContext.destination);
+        osc.start(t+delay);osc.stop(t+delay+.19);
       });
     };
-    const showNotice=()=>{
+    const showNotice=(x,y)=>{
       if(!notice){
-        notice=document.createElement("div");
-        notice.className="goose-notice";
-        notice.setAttribute("role","status");
-        notice.setAttribute("aria-live","polite");
+        notice=document.createElement("div");notice.className="goose-notice";
+        notice.setAttribute("role","status");notice.setAttribute("aria-live","polite");
         document.body.appendChild(notice);
       }
       notice.textContent="Гусь оставил улику.";
-      const r=goose.getBoundingClientRect(),vw=window.innerWidth,vh=window.innerHeight;
-      const left=clamp(r.left+W/2-90,8,Math.max(8,vw-188));
-      const top=r.top>58?r.top-48:clamp(r.bottom+8,8,Math.max(8,vh-46));
-      notice.style.left=left+"px";notice.style.top=top+"px";
+      notice.style.left=clamp(x-82,8,Math.max(8,innerWidth-180))+"px";
+      notice.style.top=clamp(y-42,8,Math.max(8,innerHeight-42))+"px";
       notice.classList.remove("is-visible");void notice.offsetWidth;notice.classList.add("is-visible");
-      clearTimeout(noticeTimer);noticeTimer=setTimeout(()=>notice?.classList.remove("is-visible"),2400);
+      clearTimeout(noticeTimer);noticeTimer=setTimeout(()=>notice?.classList.remove("is-visible"),2200);
     };
-    const leaveMark=()=>{
-      const w=12+Math.floor(Math.random()*7),h=8+Math.floor(Math.random()*5);
-      const r=goose.getBoundingClientRect();
-      const protectedNodes=document.querySelectorAll("img,picture,video,.legend-card,.legend-image,.inspiration-card,.source-art,.book-card,.project-card,.case-card,.device-card,.game-card,.hero-quote,.pixel-avatar");
-      const protectedRects=[...protectedNodes].map(node=>node.getBoundingClientRect()).filter(box=>box.width&&box.height);
-      for(let attempt=0;attempt<30;attempt++){
-        const x=clamp(r.left+W/2-w/2+(Math.random()-.5)*22,8,Math.max(8,innerWidth-w-8));
-        const y=clamp(r.bottom-5+(Math.random()-.5)*8,8,Math.max(8,innerHeight-h-8));
-        const collision=protectedRects.some(box=>x<box.right+8&&x+w>box.left-8&&y<box.bottom+8&&y+h>box.top-8);
-        if(collision)continue;
-        const mark=document.createElement("i");
-        mark.className="goose-poop-mark";
-        mark.setAttribute("aria-hidden","true");
-        mark.style.left=x+"px";mark.style.top=y+"px";
-        mark.style.setProperty("--poop-w",w+"px");mark.style.setProperty("--poop-h",h+"px");
-        mark.style.setProperty("--poop-tone",["#887052","#9a7a57","#786044"][Math.floor(Math.random()*3)]);
-        document.body.appendChild(mark);showNotice();return;
-      }
+    const leaveMarkAtCenter=()=>{
+      const w=18,h=13,x=Math.round((innerWidth-w)/2),y=Math.round((innerHeight-h)/2);
+      const mark=document.createElement("i");
+      mark.className="goose-poop-mark";mark.setAttribute("aria-hidden","true");
+      mark.style.left=x+"px";mark.style.top=y+"px";
+      mark.style.setProperty("--poop-w",w+"px");mark.style.setProperty("--poop-h",h+"px");
+      mark.style.setProperty("--poop-tone",["#887052","#9a7a57","#786044"][Math.floor(Math.random()*3)]);
+      document.body.appendChild(mark);
+      const marks=document.querySelectorAll(".goose-poop-mark");
+      if(marks.length>8)marks[0].remove();
+      showNotice(x+w/2,y);
+    };
+    const setProfile=(face)=>{
+      goose.innerHTML=profileMarkup;
+      goose.style.transform="translate3d(0,0,0) scaleX("+face+")";
+    };
+    const faceVisitor=()=>{
+      goose.innerHTML=frontMarkup;
+      goose.style.transform="translate3d(0,0,0)";
     };
     const move=async(from,to,duration,face,id)=>{
-      goose.style.left="0px";
-      goose.style.top=goose.dataset.y+"px";
-      goose.style.transform="translate3d(0,0,0) scaleX("+face+")";
+      setProfile(face);
       const keyframes=[
         {transform:"translate3d("+from+"px,0,0) scaleX("+face+")"},
         {transform:"translate3d("+to+"px,0,0) scaleX("+face+")"}
@@ -217,39 +221,34 @@
       animation=goose.animate(keyframes,{duration,easing:"cubic-bezier(.36,.02,.18,1)",fill:"forwards"});
       try{await animation.finished;}catch(_){}
       if(id!==runId)return;
-      if(animation){
-        goose.style.transform="translate3d("+to+"px,0,0) scaleX("+face+")";
-        animation.cancel();animation=null;
-      }
+      goose.style.transform="translate3d("+to+"px,0,0) scaleX("+face+")";
+      animation.cancel();animation=null;
     };
     const patrol=async()=>{
       if(stopped||document.hidden)return;
-      const id=++runId;
-      const vw=innerWidth,vh=innerHeight;
+      const id=++runId,vw=innerWidth,vh=innerHeight;
       const face=Math.random()<.5?1:-1;
-      const startX=face===1?-W-8:vw+8,endX=face===1?vw+8:-W-8;
-      const stopX=face===1?vw*(.46+Math.random()*.08):vw*(.46+Math.random()*.08);
-      const y=clamp(vh*(.32+Math.random()*.28),72,Math.max(72,vh-H-64));
-      goose.dataset.y=y;goose.style.top=y+"px";goose.style.left="0px";
+      const startX=face===1?-W-8:vw+8,exitX=face===1?vw+8:-W-8;
+      const centerX=(vw-W)/2;
+      const y=clamp(vh*.58,72,Math.max(72,vh-H-56));
+      goose.dataset.y=String(y);goose.style.left="0px";goose.style.top=y+"px";
+      goose.style.transform="translate3d("+startX+"px,0,0) scaleX("+face+")";
       goose.classList.add("is-running");
-      await move(startX,stopX,Math.max(2600,Math.abs(stopX-startX)*10),face,id);
+      leaveMarkAtCenter();
+      await wait(450);
       if(id!==runId)return;
-      await wait(650);
+      await move(startX,centerX,Math.max(2200,Math.abs(centerX-startX)*7.5),face,id);
       if(id!==runId)return;
-      if(Math.random()<.48){
-        leaveMark();
-        await wait(420);
-        if(id!==runId)return;
-        await move(stopX,endX,Math.max(2400,Math.abs(endX-stopX)*10),face,id);
-      }else{
-        // Pause, turn in place, quack, then continue back the way it came.
-        goose.style.transform="translate3d("+stopX+"px,0,0) scaleX("+(-face)+")";
-        quack();await wait(650);
-        if(id!==runId)return;
-        await move(stopX,face===1?-W-8:vw+8,Math.max(2600,Math.abs((face===1?-W-8:vw+8)-stopX)*10),-face,id);
-      }
+      await wait(450);
+      if(id!==runId)return;
+      faceVisitor();
+      quack();
+      await wait(850);
+      if(id!==runId)return;
+      await move(centerX,exitX,Math.max(2200,Math.abs(exitX-centerX)*7.5),-face,id);
+      if(id!==runId)return;
       goose.classList.remove("is-running");
-      timer=setTimeout(patrol,9000+Math.random()*7000);
+      timer=setTimeout(patrol,10500+Math.random()*5000);
     };
     const pause=()=>{
       runId++;
@@ -260,7 +259,9 @@
       if(document.hidden){stopped=true;clearTimeout(timer);pause();}
       else{stopped=false;clearTimeout(timer);timer=setTimeout(patrol,1200);}
     });
-    window.addEventListener("resize",()=>{if(animation){pause();stopped=true;clearTimeout(timer);timer=setTimeout(()=>{stopped=false;patrol();},500);}});
+    window.addEventListener("resize",()=>{
+      if(animation){pause();stopped=true;clearTimeout(timer);timer=setTimeout(()=>{stopped=false;patrol();},500);}
+    });
     timer=setTimeout(patrol,1400);
   }
 })();

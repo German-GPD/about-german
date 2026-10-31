@@ -208,9 +208,9 @@
       goose.innerHTML=profileMarkup;
       goose.style.transform="translate3d(0,0,0) scaleX("+face+")";
     };
-    const faceVisitor=()=>{
+    const faceVisitor=(x)=>{
       goose.innerHTML=frontMarkup;
-      goose.style.transform="translate3d(0,0,0)";
+      goose.style.transform="translate3d("+x+"px,0,0)";
     };
     const move=async(from,to,duration,face,id)=>{
       setProfile(face);
@@ -241,7 +241,7 @@
       if(id!==runId)return;
       await wait(450);
       if(id!==runId)return;
-      faceVisitor();
+      faceVisitor(centerX);
       quack();
       await wait(850);
       if(id!==runId)return;

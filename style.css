@@ -1023,7 +1023,7 @@ h1,h2,h3,.section-heading h2{font-family:var(--font-display);letter-spacing:-.04
 .inspiration-heading p{margin:0;color:var(--muted);font-size:12px;line-height:1.65}
 .inspiration-grid,.legend-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
 .inspiration-card,.legend-card,.book-card{min-width:0;padding:17px;background:var(--surface);border:1px solid var(--line);position:relative;transition:border-color .2s,transform .2s}
-.inspiration-card:hover,.legend-card:hover,.book-card:hover{border-color:color-mix(in srgb,var(--cyan) 65%,var(--line));transform:translateY(-2px)}
+.inspiration-card:hover,.legend-card:hover,.book-card:hover{border-color:color-mix(in srgb,var(--cyan) 65%,var(--line));transform:translateY(-1px)}
 .inspiration-type,.inspiration-card .inspiration-type{display:block;color:var(--cyan);font:9px 'IBM Plex Mono',monospace;letter-spacing:.09em;margin-bottom:12px}
 .inspiration-card h4,.legend-card h4,.book-card h4{font:600 16px 'Space Grotesk',sans-serif;line-height:1.35;margin:0 0 8px;overflow-wrap:anywhere}
 .inspiration-card h4 span{display:block;color:var(--muted);font:11px 'DM Sans',sans-serif;margin-top:4px}
@@ -1373,7 +1373,7 @@ footer{margin-top:0;padding:30px 0 52px}
   transition:background .18s,border-color .18s,transform .18s,color .18s;
 }
 .quick-nav a i{font:9px 'IBM Plex Mono',monospace;color:var(--cyan);font-style:normal}
-.quick-nav a:hover{background:var(--accent-soft);border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
+.quick-nav a:hover{background:var(--accent-soft);border-color:var(--cyan);color:var(--cyan);transform:translateY(-1px)}
 .quick-nav a:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
 .reveal{opacity:1;transform:none;clip-path:none}
 .motion-ready .reveal{
@@ -1462,7 +1462,7 @@ footer{margin-top:0;padding:30px 0 52px}
   .pixel-glyph:hover{
     color:var(--amber);
     text-shadow:2px 0 var(--violet),-2px 0 var(--cyan),0 2px var(--red);
-    transform:translateY(-2px) scale(1.12)!important;
+    transform:translateY(-1px) scale(1.12)!important;
     z-index:2;
   }
   h1 .pixel-glyph:hover,h2 .pixel-glyph:hover,h3 .pixel-glyph:hover{
@@ -1508,8 +1508,8 @@ body{background-color:var(--bg)!important;background-image:linear-gradient(rgba(
 .goose-art{display:block;width:64px;height:48px;overflow:visible;shape-rendering:crispEdges}
 .pixel-goose.is-running .leg-a{animation:goose-step-a .22s steps(2,end) infinite}
 .pixel-goose.is-running .leg-b{animation:goose-step-b .22s steps(2,end) infinite}
-@keyframes goose-step-a{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
-@keyframes goose-step-b{0%,100%{transform:translateY(-2px)}50%{transform:translateY(0)}}
+@keyframes goose-step-a{0%,100%{transform:translateY(0)}50%{transform:translateY(-1px)}}
+@keyframes goose-step-b{0%,100%{transform:translateY(-1px)}50%{transform:translateY(0)}}
 .goose-poop-mark{position:fixed;z-index:89;width:var(--poop-w);height:var(--poop-h);pointer-events:none;image-rendering:pixelated;transform:rotate(-8deg)}
 .goose-poop-mark:before{content:"";position:absolute;left:1px;bottom:0;width:calc(100% - 2px);height:65%;background:var(--poop-tone);clip-path:polygon(0 45%,20% 10%,40% 25%,58% 0,80% 25%,100% 55%,85% 100%,12% 100%)}
 .goose-poop-mark:after{content:"";position:absolute;left:45%;bottom:55%;width:22%;height:38%;background:var(--poop-tone)}

@@ -151,7 +151,7 @@
     if (!ctx) return;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const rand = (min, max) => min + Math.random() * (max - min);
-    let width = 0, height = 0, dpr = 1, frame = 0, last = 0;
+    let width = 0, height = 0, dpr = 1, last = 0;
     let rocket = null, ducks = null, raf = 0;
     const stars = [];
     const threads = [];
@@ -253,14 +253,13 @@
     resize();
     if(!reduced) raf=requestAnimationFrame(render);
     else {ctx.clearRect(0,0,width,height);stars.forEach(s=>drawStar(s,0));drawThreads(0);}
-    window.addEventListener("resize",resize,{passive:true});
+    window.addEventListener("resize",()=>{resize();if(reduced){ctx.clearRect(0,0,width,height);stars.forEach(s=>drawStar(s,0));drawThreads(0);}},{passive:true});
     document.addEventListener("visibilitychange",()=>{
       if(document.hidden){if(raf)cancelAnimationFrame(raf);raf=0;}
       else if(!reduced&&!raf){last=performance.now();raf=requestAnimationFrame(render);}
     });
   })();
-;
-
+})();
 
 /* Book library: shuffled six-book preview and bespoke typographic covers. */
 (() => {

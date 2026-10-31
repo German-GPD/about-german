@@ -162,21 +162,46 @@
       window.clearTimeout(noticeTimer);noticeTimer=window.setTimeout(()=>{notice.hidden=true;},12000);
     };
     const leaveMark=()=>{
-      const rect=goose.getBoundingClientRect(),shape=Math.floor(Math.random()*4);
+      const shape=Math.floor(Math.random()*4);
       const width=9+Math.random()*13,height=7+Math.random()*8;
-      const mark=document.createElement("span");mark.className="goose-poop-mark shape-"+shape;mark.setAttribute("aria-hidden","true");
-      // Drop the souvenir at a random horizontal position across the whole viewport.
-      const maxLeft=Math.max(12,window.innerWidth-width-12);
-      mark.style.left=Math.round(12+Math.random()*(maxLeft-12))+"px";
-      mark.style.top=Math.round(Math.max(8,Math.min(window.innerHeight-height-8,rect.top+rect.height*(.72+Math.random()*.22))))+"px";
-      mark.style.setProperty("--poop-w",Math.round(width)+"px");mark.style.setProperty("--poop-h",Math.round(height)+"px");
+      const sectionRect=currentSection?.getBoundingClientRect();
+      const minY=sectionRect?Math.max(8,sectionRect.top+8):8;
+      const maxY=sectionRect?Math.min(window.innerHeight-height-8,sectionRect.bottom-height-8):window.innerHeight-height-8;
+      if(maxY<=minY)return;
+      // Never place droppings over portraits, people, artwork, or content cards.
+      const protectedElements=[...document.querySelectorAll(
+        "img, picture, video, .legend-card, .legend-image, .legend-portrait, .inspiration-card, .source-art, .book-card, .project-card, .case-card, .device-card, .game-card, .hero-quote, .pixel-avatar"
+      )];
+      const safeRects=protectedElements.map(element=>{
+        const rect=element.getBoundingClientRect();
+        return {left:rect.left-10,right:rect.right+10,top:rect.top-10,bottom:rect.bottom+10};
+      }).filter(rect=>rect.right>0&&rect.left<window.innerWidth&&rect.bottom>minY&&rect.top<maxY);
+      let left=0,top=0,found=false;
+      for(let attempt=0;attempt<60;attempt++){
+        const candidateLeft=12+Math.random()*Math.max(1,window.innerWidth-width-24);
+        const candidateTop=minY+Math.random()*(maxY-minY);
+        const overlaps=safeRects.some(rect=>
+          candidateLeft<rect.right&&candidateLeft+width>rect.left&&
+          candidateTop<rect.bottom&&candidateTop+height>rect.top
+        );
+        if(!overlaps){left=candidateLeft;top=candidateTop;found=true;break;}
+      }
+      if(!found)return;
+      const mark=document.createElement("span");
+      mark.className="goose-poop-mark shape-"+shape;
+      mark.setAttribute("aria-hidden","true");
+      mark.style.left=Math.round(left)+"px";
+      mark.style.top=Math.round(top)+"px";
+      mark.style.setProperty("--poop-w",Math.round(width)+"px");
+      mark.style.setProperty("--poop-h",Math.round(height)+"px");
       mark.style.setProperty("--poop-base",Math.max(3,Math.round(height*.55))+"px");
       mark.style.setProperty("--poop-top-x",Math.round(width*(.35+Math.random()*.2))+"px");
       mark.style.setProperty("--poop-top-w",Math.round(width*(.2+Math.random()*.2))+"px");
       mark.style.setProperty("--poop-top-h",Math.max(3,Math.round(height*.35))+"px");
       mark.style.setProperty("--poop-rotate",Math.round(-18+Math.random()*36)+"deg");
       mark.style.setProperty("--poop-color",["#98704f","#a27a58","#806044","#ad8662"][shape]);
-      document.body.appendChild(mark);showNotice();
+      document.body.appendChild(mark);
+      showNotice();
     };
     function startGoose(){
       if(running)return;

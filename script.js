@@ -210,8 +210,6 @@
       goose.style.left="0px";
       goose.style.top=goose.dataset.y+"px";
       goose.style.transform="translate3d(0,0,0) scaleX("+face+")";
-      const dx=from;
-      goose.style.setProperty("--goose-x",dx+"px");
       const keyframes=[
         {transform:"translate3d("+from+"px,0,0) scaleX("+face+")"},
         {transform:"translate3d("+to+"px,0,0) scaleX("+face+")"}

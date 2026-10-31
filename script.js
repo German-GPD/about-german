@@ -242,7 +242,7 @@
       drawThreads(t);
       if(!reduced){
         if(!rocket && t>=nextRocketAt) rocket={x:-60,y:rand(height*.12,height*.46),speed:rand(70,105)};
-        if(!ducks && t>=nextDucksAt) ducks={x:-90,y:Math.min(height-58,Math.max(height*.72,150)),speed:rand(34,47)};
+        if(!ducks && t>=nextDucksAt) ducks={x:-90,y:Math.min(height-58,Math.max(height*.72,150)),speed:rand(70,95)};
         if(rocket)drawRocket(t);
         if(ducks)drawDucks(t);
       }

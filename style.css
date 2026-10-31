@@ -1506,6 +1506,10 @@ body{background-color:var(--bg)!important;background-image:linear-gradient(rgba(
 .pixel-goose{position:fixed;left:0;top:0;width:64px;height:48px;z-index:90;pointer-events:none;visibility:hidden;will-change:transform;image-rendering:pixelated;transform-origin:50% 75%}
 .pixel-goose.is-running{visibility:visible}
 .goose-art{display:block;width:64px;height:48px;overflow:visible;shape-rendering:crispEdges}
+.pixel-goose.is-running .leg-a{animation:goose-step-a .22s steps(2,end) infinite}
+.pixel-goose.is-running .leg-b{animation:goose-step-b .22s steps(2,end) infinite}
+@keyframes goose-step-a{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+@keyframes goose-step-b{0%,100%{transform:translateY(-2px)}50%{transform:translateY(0)}}
 .goose-poop-mark{position:fixed;z-index:89;width:var(--poop-w);height:var(--poop-h);pointer-events:none;image-rendering:pixelated;transform:rotate(-8deg)}
 .goose-poop-mark:before{content:"";position:absolute;left:1px;bottom:0;width:calc(100% - 2px);height:65%;background:var(--poop-tone);clip-path:polygon(0 45%,20% 10%,40% 25%,58% 0,80% 25%,100% 55%,85% 100%,12% 100%)}
 .goose-poop-mark:after{content:"";position:absolute;left:45%;bottom:55%;width:22%;height:38%;background:var(--poop-tone)}

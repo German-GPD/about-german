@@ -146,3 +146,22 @@
   }
 
 })();
+
+
+/* Book library: three shuffled picks in the closed state, full shelf on demand. */
+(() => {
+  const library = document.getElementById("bookLibrary");
+  const grid = document.getElementById("bookGrid");
+  if (!library || !grid) return;
+  const books = [...grid.querySelectorAll(".book-card")];
+  const shuffled = [...books];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  const preview = new Set(shuffled.slice(0, 3));
+  books.forEach(book => { book.hidden = !preview.has(book); });
+  library.addEventListener("toggle", () => {
+    books.forEach(book => { book.hidden = !library.open && !preview.has(book); });
+  });
+})();

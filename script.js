@@ -142,41 +142,80 @@
     });
   }
 
-  // Goose patrol: crosses the whole visible screen and leaves a souvenir.
+  // Goose patrol: a small, clearly recognizable bird crosses the viewport.
   const goose=document.querySelector(".pixel-goose");
   if(goose&&!reducedMotion){
-    let nextVisit,noticeTimer;
-    const scheduleGoose=()=>{nextVisit=window.setTimeout(startGoose,18000+Math.random()*16000);};
+    let noticeTimer;
     const showNotice=()=>{
       let notice=document.querySelector(".goose-notice");
       if(!notice){
-        notice=document.createElement("aside");notice.className="goose-notice";notice.setAttribute("role","status");
-        notice.innerHTML='<strong>ГУСЬ / СООБЩЕНИЕ С СЕРВЕРА</strong>Гусь накакал. Перезагрузите страницу, чтобы убрать улики.<br><button type="button">Ладно, перезагружаю</button>';
-        notice.querySelector("button").addEventListener("click",()=>window.location.reload());document.body.appendChild(notice);
+        notice=document.createElement("aside");
+        notice.className="goose-notice";
+        notice.setAttribute("role","status");
+        const heading=document.createElement("strong");
+        heading.textContent="ГУСЬ / СИСТЕМНОЕ УВЕДОМЛЕНИЕ";
+        const message=document.createElement("div");
+        message.textContent="Гусь оставил сюрприз. Улики останутся до перезагрузки страницы.";
+        const button=document.createElement("button");
+        button.type="button";
+        button.textContent="Понятно";
+        button.addEventListener("click",()=>{notice.hidden=true;});
+        notice.append(heading,message,button);
+        document.body.appendChild(notice);
       }
-      notice.hidden=false;window.clearTimeout(noticeTimer);noticeTimer=window.setTimeout(()=>{notice.hidden=true;},9000);
+      notice.hidden=false;
+      notice.style.display="block";
+      window.clearTimeout(noticeTimer);
+      noticeTimer=window.setTimeout(()=>{notice.hidden=true;},12000);
     };
     const leaveMark=()=>{
-      const rect=goose.getBoundingClientRect();const mark=document.createElement("span");mark.className="goose-poop-mark";mark.setAttribute("aria-hidden","true");
-      mark.style.left=Math.round(rect.left+rect.width*.38)+"px";mark.style.top=Math.round(rect.top+rect.height*.78)+"px";document.body.appendChild(mark);showNotice();
+      const rect=goose.getBoundingClientRect();
+      const mark=document.createElement("span");
+      const shape=Math.floor(Math.random()*4);
+      const width=9+Math.random()*13;
+      const height=7+Math.random()*8;
+      mark.className="goose-poop-mark shape-"+shape;
+      mark.setAttribute("aria-hidden","true");
+      mark.style.left=Math.round(rect.left+rect.width*(.36+Math.random()*.2))+"px";
+      mark.style.top=Math.round(rect.top+rect.height*(.78+Math.random()*.08))+"px";
+      mark.style.setProperty("--poop-w",Math.round(width)+"px");
+      mark.style.setProperty("--poop-h",Math.round(height)+"px");
+      mark.style.setProperty("--poop-base",Math.max(3,Math.round(height*.55))+"px");
+      mark.style.setProperty("--poop-top-x",Math.round(width*(.35+Math.random()*.2))+"px");
+      mark.style.setProperty("--poop-top-w",Math.round(width*(.2+Math.random()*.2))+"px");
+      mark.style.setProperty("--poop-top-h",Math.max(3,Math.round(height*.35))+"px");
+      mark.style.setProperty("--poop-rotate",Math.round(-18+Math.random()*36)+"deg");
+      mark.style.setProperty("--poop-color",["#98704f","#a27a58","#806044","#ad8662"][shape]);
+      document.body.appendChild(mark);
+      showNotice();
     };
     function startGoose(){
-      const w=window.innerWidth,h=window.innerHeight;const y=Math.max(105,Math.min(h-115,Math.round(h*(.18+Math.random()*.58))));
-      const right=Math.random()>.5,start=right?-150:w+150,finish=right?w+150:-150,face=right?1:-1,distance=finish-start;
-      goose.style.top=y+"px";goose.style.left=start+"px";goose.style.transform="translate(0,0)";goose.classList.add("is-running");
-      const move=(part,vertical,angle)=>"translate("+part+"px,"+vertical+"px) rotate("+angle+"deg) scaleX("+face+")";
+      const w=window.innerWidth,h=window.innerHeight;
+      const y=Math.max(70,Math.min(h-80,Math.round(h*(.18+Math.random()*.58))));
+      const leftToRight=Math.random()>.5;
+      const start=leftToRight?-95:w+95;
+      const distance=leftToRight?w+190:-(w+190);
+      const facing=leftToRight?1:-1;
+      goose.style.top=y+"px";
+      goose.style.left=start+"px";
+      goose.classList.add("is-running");
+      const move=(x,dy,angle)=>"translate("+x+"px,"+dy+"px) rotate("+angle+"deg) scaleX("+facing+")";
       const motion=goose.animate([
-        {transform:move(0,0,-5),offset:0},{transform:move(distance*.12,-24,9),offset:.12},
-        {transform:move(distance*.25,15,-8),offset:.25},{transform:move(distance*.39,-12,5),offset:.39},
-        {transform:move(distance*.5,3,-3),offset:.5},{transform:move(distance*.62,-22,11),offset:.62},
-        {transform:move(distance*.76,12,-9),offset:.76},{transform:move(distance*.9,-8,6),offset:.9},
+        {transform:move(0,0,-3),offset:0},
+        {transform:move(distance*.2,-8,3),offset:.2},
+        {transform:move(distance*.4,4,-2),offset:.4},
+        {transform:move(distance*.6,-7,3),offset:.6},
+        {transform:move(distance*.8,3,-2),offset:.8},
         {transform:move(distance,0,0),offset:1}
-      ],{duration:6500,easing:"ease-in-out",fill:"forwards"});
-      const poopTimer=window.setTimeout(()=>{motion.pause();leaveMark();},3300);
-      const resumeTimer=window.setTimeout(()=>motion.play(),4300);
-      motion.onfinish=()=>{clearTimeout(poopTimer);clearTimeout(resumeTimer);goose.classList.remove("is-running");scheduleGoose();};
+      ],{duration:8500,easing:"linear",fill:"forwards"});
+      const poopTimer=window.setTimeout(()=>leaveMark(),Math.round(2800+Math.random()*2600));
+      motion.onfinish=()=>{
+        window.clearTimeout(poopTimer);
+        goose.classList.remove("is-running");
+        window.setTimeout(startGoose,18000+Math.random()*16000);
+      };
     }
-    window.setTimeout(startGoose,2200);
+    window.setTimeout(startGoose,2500);
   }
 
 })();

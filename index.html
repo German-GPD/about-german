@@ -20,14 +20,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=20261101f">
+  <link rel="stylesheet" href="style.css?v=20261101g">
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Person","name":"German Petrachenko","alternateName":["German","GPD","German-GPD"],"url":"https://german-gpd.github.io/about-german/","sameAs":["https://github.com/German-GPD","https://t.me/german_gpd","https://www.youtube.com/@german_gpd","https://open.spotify.com/user/3122jc3ee3bcca6lar2jmgo3tmwe"],"knowsAbout":["Web development","HTML","CSS","JavaScript","Vue","TypeScript","Python","PHP","Bash","SQL","SQLite","JSON","REST APIs","Canvas API","Linux","Fedora","Windows","UI/UX design","Responsive design","Accessibility","Git","GitHub","GitHub Pages","AI-assisted coding","Ollama","Local AI models","Video editing","Image editing","Open-source software"]}
   </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <script src="script.js?v=20261101f" defer></script>
+  <script src="script.js?v=20261101g" defer></script>
 </head>
 <body>
+<canvas id="pixelAtmosphere" class="pixel-atmosphere" aria-hidden="true"></canvas>
 <div class="navbar">
   <div class="wrap">
     <nav aria-label="Основная навигация">
@@ -359,18 +360,7 @@
       <div class="footer-links"><a href="https://github.com/German-GPD" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://t.me/german_gpd" target="_blank" rel="noopener noreferrer">Telegram ↗</a><a href="LICENSE">Лицензия</a><a href="#top">Наверх ↑</a></div>
       <div class="palette" aria-hidden="true"><i style="background:var(--amber)"></i><i style="background:var(--violet)"></i><i style="background:var(--cyan)"></i><i style="background:var(--red)"></i></div>
     </footer>
-  </div>
-  <div class="pixel-goose" aria-hidden="true">
-    <svg class="goose-art" viewBox="0 0 16 12" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges">
-      <path fill="#eeeae0" d="M1 7h1V6h2V5h5V4h1V3h1V1h2v1h1v2h-1v2h-1v1h2v1h1v2H5V9H3V8H1z"/>
-      <path fill="#c9c5bb" d="M3 7h2V6h4v1H8v1H4V8H3z"/>
-      <path fill="#25252b" d="M12 2h1v1h-1z"/>
-      <path fill="#d99b42" d="M14 4h2v1h-2z"/>
-      <rect class="goose-leg leg-a" x="5" y="9" width="1" height="2" fill="#d99b42"/>
-      <rect class="goose-leg leg-b" x="10" y="9" width="1" height="2" fill="#d99b42"/>
-    </svg>
-  </div>
-</main>
+  </div></main>
 
 <script src="game.js" defer></script>
 </body>

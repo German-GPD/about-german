@@ -1180,3 +1180,22 @@ h1,h2,h3,.section-heading h2{font-family:var(--font-display);letter-spacing:-.04
 @media(max-width:760px){#inspiration .inspiration-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#inspiration .book-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){#inspiration .inspiration-grid{grid-template-columns:1fr}#inspiration .book-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}#inspiration .book-cover{height:190px;min-height:190px;padding:12px}#inspiration .book-cover strong{font-size:15px}#inspiration .book-cover-mark{left:12px;font-size:46px}#inspiration .book-card>span,#inspiration .book-card h4,#inspiration .book-card p{margin-left:11px;margin-right:11px}#inspiration .book-card>a{margin-left:11px;margin-right:11px}#inspiration .inspiration-card .source-art{height:150px;min-height:150px;max-height:150px}}
 @media(prefers-reduced-motion:reduce){#inspiration .inspiration-card,#inspiration .book-card{transition:none}}
+
+
+/* Inspiration refinements: visible creator artwork and larger, treated portraits */
+#inspiration .source-art.source-photo{isolation:isolate;background:linear-gradient(125deg,#171b2b,#3a5267 58%,#8b9ca8)}
+#inspiration .source-art.source-photo img{display:block;object-fit:cover;object-position:center 30%;opacity:1;filter:grayscale(.16) saturate(.82) contrast(1.08);transition:filter .3s,transform .45s}
+#inspiration .inspiration-card:hover .source-art.source-photo img{filter:grayscale(0) saturate(1) contrast(1.04);transform:scale(1.035)}
+#inspiration .source-art.source-photo:after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,#0a111b55,transparent 55%),linear-gradient(0deg,#08090de8,transparent 68%)}
+#inspiration .source-art.source-photo>span{position:relative;z-index:2}
+#inspiration .source-vladilen{background:linear-gradient(125deg,#14232e,#276477 60%,#83b7b0);color:#fff}
+#inspiration .source-timofey{background:linear-gradient(125deg,#171d2b,#344b6d 60%,#7f9ec2);color:#fff}
+#inspiration .source-howdy{background:linear-gradient(125deg,#231a18,#7d3d26 60%,#e4a45d);color:#fff}
+#inspiration .source-habr{background:linear-gradient(125deg,#241719,#73313a 60%,#d45b5e);color:#fff}
+#inspiration .legend-image{height:286px;min-height:286px;background:linear-gradient(135deg,color-mix(in srgb,var(--cyan) 12%,var(--surface-2)),var(--surface-2))}
+#inspiration .legend-portrait{object-fit:contain;object-position:center bottom;padding:8px 16px 0;filter:grayscale(.22) saturate(.72) contrast(1.12) brightness(.94)}
+#inspiration .legend-image:after{height:42%;background:linear-gradient(transparent,color-mix(in srgb,var(--cyan) 9%,transparent) 45%,color-mix(in srgb,var(--surface) 60%,transparent))}
+#inspiration .legend-card.legend-photo:hover .legend-portrait{filter:grayscale(0) saturate(.96) contrast(1.06) brightness(1);transform:scale(1.015)}
+@media(max-width:760px){#inspiration .legend-image{height:258px;min-height:258px}}
+@media(max-width:520px){#inspiration .legend-image{height:242px;min-height:242px}#inspiration .legend-portrait{padding:8px 12px 0}}
+@media(prefers-reduced-motion:reduce){#inspiration .source-art.source-photo img{transition:none}}

@@ -33,41 +33,16 @@
   });
 
   const revealItems = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  if ("IntersectionObserver" in window && !reducedMotion) {
     root.classList.add("motion-ready");
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-          observer.unobserve(entry.target);
-        }
+        if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); }
       });
-    }, { threshold: 0.08, rootMargin: "0px 0px -24px 0px" });
-    revealItems.forEach((item) => observer.observe(item));
-  } else {
-    revealItems.forEach((item) => item.classList.add("is-visible"));
-  }
-  // Pixel reveal for individual cards as they enter the viewport.
-  const pixelRevealTargets = document.querySelectorAll(".project,.card,.skill-card,.device-card,.ai-card,.device-main,.case-card,.wishlist-card,.contact,.inspiration-card,.legend-card,.ecosystem-note,.game-cover-card,.book-card");
-  if (!reducedMotion && "IntersectionObserver" in window) {
-    root.classList.add("pixel-motion-ready");
-    const pixelObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-pixel-visible");
-          pixelObserver.unobserve(entry.target);
-        }
-      });
-    }, {threshold:0.06,rootMargin:"0px 0px -28px 0px"});
-    pixelRevealTargets.forEach((element) => {
-      element.classList.add("pixel-reveal");
-      const siblingIndex = [...element.parentElement.children].indexOf(element);
-      element.style.transitionDelay = Math.min(siblingIndex % 4,3) * 55 + "ms";
-      pixelObserver.observe(element);
-    });
-  } else {
-    pixelRevealTargets.forEach(element=>element.classList.add("is-pixel-visible"));
-  }
+    }, {threshold:0.01,rootMargin:"0px 0px 40px 0px"});
+    revealItems.forEach(item=>observer.observe(item));
+  } else revealItems.forEach(item=>item.classList.add("is-visible"));
+
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (event) => {
@@ -165,6 +140,13 @@
         card.style.removeProperty("--my");
       });
     });
+  }
+
+  const goose=document.querySelector(".pixel-goose");
+  if(goose&&!reducedMotion){
+    const runGoose=()=>{goose.classList.remove("is-running");void goose.offsetWidth;goose.classList.add("is-running");};
+    window.setTimeout(runGoose,9000);
+    window.setInterval(runGoose,42000);
   }
 
 })();

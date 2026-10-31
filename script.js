@@ -153,6 +153,8 @@
     const rand = (min, max) => min + Math.random() * (max - min);
     let width = 0, height = 0, dpr = 1, last = 0;
     let rocket = null, ducks = null, raf = 0;
+    let nextRocketAt = performance.now() + 6500;
+    let nextDucksAt = performance.now() + 10500;
     const stars = [];
     const threads = [];
     const pixel = (x,y,w,h,color) => { ctx.fillStyle=color; ctx.fillRect(Math.round(x),Math.round(y),w,h); };
@@ -194,7 +196,6 @@
       });
     };
     const drawRocket = t => {
-      if(!rocket) rocket={x:-60,y:rand(height*.12,height*.46),speed:rand(70,105),last:0};
       const dt=Math.min(.04,(t-last)/1000||0);
       rocket.x+=rocket.speed*dt;
       const x=Math.round(rocket.x),y=Math.round(rocket.y);
@@ -209,7 +210,7 @@
       pixel(x-2,y-3,5,4,"#ff7186");pixel(x-2,y+9,5,4,"#ff7186");
       pixel(x+6,y+2,4,4,"#182338");pixel(x+7,y+3,2,2,"#72dce1");
       pixel(x-17,y+3,4,2,"#f4b75e");pixel(x-22,y+5,4,2,Math.sin(t*.025)>0?"#ff7186":"#f4b75e");
-      if(x>width+70) rocket=null;
+      if(x>width+70){rocket=null;nextRocketAt=t+rand(18000,26000);}
     };
     const drawDuck = (x,y,scale,shade,step) => {
       const s=scale, body=shade?"#e7bd58":"#f2d36f", wing=shade?"#c9993f":"#d9ad4c";
@@ -225,7 +226,6 @@
       if(step){pixel(x+3*s,y+11*s,3*s,1*s,"#d68e48");pixel(x+8*s,y+11*s,3*s,1*s,"#d68e48");}
     };
     const drawDucks = t => {
-      if(!ducks) ducks={x:-90,y:Math.min(height-58,Math.max(height*.72,150)),speed:rand(34,47),last:0};
       const x=Math.round(ducks.x),y=Math.round(ducks.y),step=Math.floor(t/170)%2;
       ctx.globalAlpha=.94;
       drawDuck(x,y,2,0,step);
@@ -233,7 +233,7 @@
       drawDuck(x-56,y+9,1,0,1-step);
       drawDuck(x-78,y+7,1,1,step);
       ducks.x+=ducks.speed*Math.min(.04,(t-last)/1000||0);
-      if(ducks.x>width+100)ducks=null;
+      if(ducks.x>width+100){ducks=null;nextDucksAt=t+rand(24000,34000);}
     };
     const render = t => {
       if(document.hidden){raf=0;return;}
@@ -241,10 +241,10 @@
       stars.forEach(s=>drawStar(s,t*.001));
       drawThreads(t);
       if(!reduced){
-        if(!rocket && t%19000<24) rocket={x:-60,y:rand(height*.12,height*.46),speed:rand(70,105)};
-        if(!ducks && t%27000<24) ducks={x:-90,y:Math.min(height-58,Math.max(height*.72,150)),speed:rand(34,47)};
-        drawRocket(t);
-        drawDucks(t);
+        if(!rocket && t>=nextRocketAt) rocket={x:-60,y:rand(height*.12,height*.46),speed:rand(70,105)};
+        if(!ducks && t>=nextDucksAt) ducks={x:-90,y:Math.min(height-58,Math.max(height*.72,150)),speed:rand(34,47)};
+        if(rocket)drawRocket(t);
+        if(ducks)drawDucks(t);
       }
       ctx.globalAlpha=1;
       last=t;

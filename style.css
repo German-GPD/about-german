@@ -1518,7 +1518,7 @@ body{background-color:var(--bg)!important;background-image:linear-gradient(rgba(
 .goose-sprite:after{content:"";position:absolute;left:-5px;top:14px;width:6px;height:6px;background:#e6a83d}
 .goose-poop{position:absolute;left:17px;top:37px;width:6px;height:4px;background:#9a704e;opacity:0}
 .goose-poop:before{content:"";position:absolute;left:2px;top:-3px;width:4px;height:3px;background:#9a704e}
-.pixel-goose.is-running{opacity:1;animation:goose-wander 8.5s cubic-bezier(.42,0,.58,1) forwards}
+.pixel-goose.is-running{opacity:1;animation:goose-wander 8.5s cubic-bezier(.42,0,.58,1) forwards}\n.pixel-goose.is-paused{animation-play-state:paused}
 .pixel-goose.is-running .goose-sprite{animation:goose-bob .34s steps(2,end) infinite}
 .pixel-goose.is-paused .goose-sprite{animation:none;transform:rotate(-7deg)}
 .pixel-goose.is-pooping .goose-poop{opacity:1;animation:poop-pop 1.5s steps(3,end) forwards}

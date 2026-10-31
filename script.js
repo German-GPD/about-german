@@ -148,20 +148,40 @@
 })();
 
 
-/* Book library: three shuffled picks in the closed state, full shelf on demand. */
+/* Book library: shuffled six-book preview and bespoke typographic covers. */
 (() => {
   const library = document.getElementById("bookLibrary");
   const grid = document.getElementById("bookGrid");
   if (!library || !grid) return;
   const books = [...grid.querySelectorAll(".book-card")];
+  const palette = ["cyan", "violet", "amber", "blue", "mint", "rose"];
+  books.forEach((book, index) => {
+    const category = book.querySelector(":scope > span")?.textContent?.trim() || "TECHNICAL BOOK";
+    const title = book.querySelector("h4")?.textContent?.trim() || "Technical reference";
+    const cover = document.createElement("div");
+    cover.className = "book-cover";
+    cover.setAttribute("aria-hidden", "true");
+    const code = document.createElement("span");
+    code.className = "book-cover-code";
+    code.textContent = String(index + 1).padStart(2, "0") + " / GPD LIBRARY";
+    const mark = document.createElement("span");
+    mark.className = "book-cover-mark";
+    mark.textContent = category.split(/[ /]+/).filter(Boolean).slice(0, 2).map(x => x[0]).join("").toUpperCase();
+    const name = document.createElement("strong");
+    name.textContent = title;
+    const foot = document.createElement("small");
+    foot.textContent = category;
+    cover.dataset.tone = palette[index % palette.length];
+    cover.append(code, mark, name, foot);
+    book.prepend(cover);
+  });
   const shuffled = [...books];
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
   }
-  const preview = new Set(shuffled.slice(0, 3));
-  books.forEach(book => { book.hidden = !preview.has(book); });
-  library.addEventListener("toggle", () => {
-    books.forEach(book => { book.hidden = !library.open && !preview.has(book); });
-  });
+  const preview = new Set(shuffled.slice(0, 6));
+  const render = () => books.forEach(book => { book.hidden = !library.open && !preview.has(book); });
+  render();
+  library.addEventListener("toggle", render);
 })();

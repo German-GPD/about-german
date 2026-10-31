@@ -143,122 +143,25 @@
   }
 
 
-  // Ambient pixel scene: stars, stepped light trails, a rocket and a family of ducks.
-  (() => {
-    const canvas = document.getElementById("pixelAtmosphere");
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d", { alpha: true });
-    if (!ctx) return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const rand = (min, max) => min + Math.random() * (max - min);
-    let width = 0, height = 0, dpr = 1, last = 0;
-    let rocket = null, ducks = null, raf = 0;
-    let nextRocketAt = performance.now() + 6500;
-    let nextDucksAt = performance.now() + 10500;
-    const stars = [];
-    const threads = [];
-    const pixel = (x,y,w,h,color) => { ctx.fillStyle=color; ctx.fillRect(Math.round(x),Math.round(y),w,h); };
-    const resize = () => {
-      width = Math.max(1, window.innerWidth);
-      height = Math.max(1, window.innerHeight);
-      dpr = Math.min(window.devicePixelRatio || 1, 1.5);
-      canvas.width = Math.round(width*dpr);
-      canvas.height = Math.round(height*dpr);
-      ctx.setTransform(dpr,0,0,dpr,0,0);
-      stars.length = 0; threads.length = 0;
-      const count = Math.min(100, Math.max(34, Math.round(width*height/14500)));
-      for(let i=0;i<count;i++) stars.push({x:rand(0,width),y:rand(0,height),size:Math.random()<.82?2:3,phase:rand(0,6.28),speed:rand(.45,1.4),tone:Math.random()});
-      for(let i=0;i<7;i++){
-        const x=rand(20,width-20), y=rand(30,height*.82);
-        const length=rand(34,100), rise=rand(-22,22);
-        threads.push({x,y,length,rise,phase:rand(0,6.28)});
-      }
-    };
-    const drawStar = (s,t) => {
-      const pulse = reduced ? .55 : .28 + (Math.sin(t*s.speed+s.phase)+1)*.24;
-      ctx.globalAlpha=pulse;
-      const color=s.tone<.18?"#8be9df":s.tone<.38?"#b7a1ff":s.tone<.48?"#ffd88a":"#d9e5ff";
-      pixel(s.x,s.y,s.size,s.size,color);
-      if(s.size>2){pixel(s.x+1,s.y-2,1,2,color);pixel(s.x+1,s.y+3,1,2,color);}
-    };
-    const drawThreads = t => {
-      threads.forEach((p,i)=>{
-        const alpha=.10+(.05*Math.sin(t*.0005+p.phase));
-        ctx.globalAlpha=alpha;
-        const x=p.x+Math.sin(t*.00018+p.phase)*5;
-        const y=p.y+Math.cos(t*.0002+p.phase)*4;
-        ctx.fillStyle=i%2?"#a98bff":"#65dcd4";
-        for(let n=0;n<p.length;n+=6){
-          const yy=y+(n/p.length)*p.rise;
-          ctx.fillRect(Math.round(x+n),Math.round(yy),3,1);
-          if(n%24===0)ctx.fillRect(Math.round(x+n),Math.round(yy)-2,1,5);
-        }
-      });
-    };
-    const drawRocket = t => {
-      const dt=Math.min(.04,(t-last)/1000||0);
-      rocket.x+=rocket.speed*dt;
-      const x=Math.round(rocket.x),y=Math.round(rocket.y);
-      ctx.globalAlpha=.9;
-      // Short, stepped exhaust trail.
-      pixel(x-18,y+5,8,2,"#8b5cf6");pixel(x-27,y+7,7,2,"#4fcacb");
-      pixel(x-34,y+9,5,2,"#e4a44b");
-      pixel(x-10,y+3,5,4,"#f6f1e8");
-      pixel(x-5,y+1,11,8,"#b9b4ff");
-      pixel(x+5,y-1,7,12,"#d9d7ff");
-      pixel(x+11,y+2,5,6,"#ff7186");
-      pixel(x-2,y-3,5,4,"#ff7186");pixel(x-2,y+9,5,4,"#ff7186");
-      pixel(x+6,y+2,4,4,"#182338");pixel(x+7,y+3,2,2,"#72dce1");
-      pixel(x-17,y+3,4,2,"#f4b75e");pixel(x-22,y+5,4,2,Math.sin(t*.025)>0?"#ff7186":"#f4b75e");
-      if(x>width+70){rocket=null;nextRocketAt=t+rand(18000,26000);}
-    };
-    const drawDuck = (x,y,scale,shade,step) => {
-      const s=scale, body=shade?"#e7bd58":"#f2d36f", wing=shade?"#c9993f":"#d9ad4c";
-      // Tiny side-facing duck, deliberately simple and readable at pixel scale.
-      pixel(x+2*s,y+5*s,8*s,5*s,body);
-      pixel(x+4*s,y+3*s,5*s,3*s,body);
-      pixel(x+8*s,y+1*s,4*s,4*s,body);
-      pixel(x+11*s,y+3*s,4*s,2*s,"#e99a45");
-      pixel(x+5*s,y+6*s,4*s,2*s,wing);
-      pixel(x+10*s,y+2*s,1*s,1*s,"#202638");
-      pixel(x+4*s,y+10*s,2*s,2*s,"#d68e48");
-      pixel(x+9*s,y+10*s,2*s,2*s,"#d68e48");
-      if(step){pixel(x+3*s,y+11*s,3*s,1*s,"#d68e48");pixel(x+8*s,y+11*s,3*s,1*s,"#d68e48");}
-    };
-    const drawDucks = t => {
-      const x=Math.round(ducks.x),y=Math.round(ducks.y),step=Math.floor(t/170)%2;
-      ctx.globalAlpha=.94;
-      drawDuck(x,y,2,0,step);
-      drawDuck(x-34,y+7,1,1,step);
-      drawDuck(x-56,y+9,1,0,1-step);
-      drawDuck(x-78,y+7,1,1,step);
-      ducks.x+=ducks.speed*Math.min(.04,(t-last)/1000||0);
-      if(ducks.x>width+100){ducks=null;nextDucksAt=t+rand(24000,34000);}
-    };
-    const render = t => {
-      if(document.hidden){raf=0;return;}
-      ctx.clearRect(0,0,width,height);
-      stars.forEach(s=>drawStar(s,t*.001));
-      drawThreads(t);
-      if(!reduced){
-        if(!rocket && t>=nextRocketAt) rocket={x:-60,y:rand(height*.12,height*.46),speed:rand(70,105)};
-        if(!ducks && t>=nextDucksAt) ducks={x:-90,y:Math.min(height-58,Math.max(height*.72,150)),speed:rand(70,95)};
-        if(rocket)drawRocket(t);
-        if(ducks)drawDucks(t);
-      }
-      ctx.globalAlpha=1;
-      last=t;
-      raf=requestAnimationFrame(render);
-    };
-    resize();
-    if(!reduced) raf=requestAnimationFrame(render);
-    else {ctx.clearRect(0,0,width,height);stars.forEach(s=>drawStar(s,0));drawThreads(0);}
-    window.addEventListener("resize",()=>{resize();if(reduced){ctx.clearRect(0,0,width,height);stars.forEach(s=>drawStar(s,0));drawThreads(0);}},{passive:true});
-    document.addEventListener("visibilitychange",()=>{
-      if(document.hidden){if(raf)cancelAnimationFrame(raf);raf=0;}
-      else if(!reduced&&!raf){last=performance.now();raf=requestAnimationFrame(render);}
-    });
-  })();
+  // Tiny robot companion: one text update at a time, no animation loop.
+  const robotMessage = document.getElementById("robotMessage");
+  if (robotMessage && !reducedMotion) {
+    const messages = [
+      "Проверяю код. Пока код проверяет моё терпение.",
+      "Нашёл баг. Он сказал, что вообще-то это фича.",
+      "Компилирую идеи. Кофе в системных требованиях.",
+      "404: вдохновение не найдено. Перезапуск через пять минут.",
+      "Оптимизация завершена. Теперь тормозит только дедлайн.",
+      "Я не завис. Я глубоко обдумываю архитектуру.",
+      "Резервная копия создана. Можно снова нажимать не туда.",
+      "Проверка адаптива: даже холодильник должен открыть сайт."
+    ];
+    let messageIndex = 0;
+    window.setInterval(() => {
+      messageIndex = (messageIndex + 1) % messages.length;
+      robotMessage.textContent = messages[messageIndex];
+    }, 6500);
+  }
 })();
 
 /* Book library: shuffled six-book preview and bespoke typographic covers. */

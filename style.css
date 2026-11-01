@@ -1947,3 +1947,82 @@ section:nth-of-type(even){--section-accent:var(--orange)}
  #pageDock .page-dock-chapter{padding:5px 8px!important}
  #pageDock #backToTop{min-height:34px!important}
 }
+
+ 
+/* Section 10 — proper editorial covers: deep cobalt and violet, no muddy tones or boxy ornament. */
+#inspiration .inspiration-cover{
+  min-height:208px;
+  grid-template-columns:minmax(0,1fr) 260px;
+  border:1px solid rgba(255,255,255,.12);
+  border-left:3px solid var(--cover-accent);
+  background:var(--cover-bg)!important;
+  box-shadow:0 16px 38px rgba(0,0,0,.16),inset 0 1px 0 rgba(255,255,255,.08);
+}
+#inspiration .inspiration-cover-copy{padding:30px 34px}
+#inspiration .inspiration-cover-copy>span{
+  color:var(--cover-label);font-size:9px;letter-spacing:.2em;
+}
+#inspiration .inspiration-cover-copy h3{
+  color:#fff;font-size:clamp(24px,3.2vw,34px);letter-spacing:-.055em;
+}
+#inspiration .inspiration-cover-copy p{color:rgba(245,248,255,.72);font-size:13px;max-width:470px}
+#inspiration .inspiration-cover-art{
+  color:var(--cover-glow);
+  background:linear-gradient(110deg,transparent,rgba(255,255,255,.035))!important;
+}
+#inspiration .inspiration-cover-art b{
+  top:50%;right:22px;transform:translateY(-54%);
+  color:#fff;font-size:174px;line-height:1;letter-spacing:-.13em;
+  opacity:.12;font-weight:700;
+}
+#inspiration .inspiration-cover-art i{
+  width:220px;height:142px;border:1px solid var(--cover-glow);
+  border-radius:50%;transform:rotate(-28deg);
+  opacity:.75;
+}
+#inspiration .inspiration-cover-art i:before{
+  inset:13px -19px;border:1px solid color-mix(in srgb,var(--cover-glow) 70%,transparent);
+  border-radius:50%;transform:rotate(34deg);
+}
+#inspiration .inspiration-cover-art i:after{
+  inset:27px 6px;border:1px solid rgba(255,255,255,.18);
+  border-radius:50%;transform:rotate(-18deg);
+}
+#inspiration .inspiration-cover-art span{
+  z-index:2;padding:8px 11px;color:#fff;
+  background:rgba(9,14,32,.34);border:1px solid rgba(255,255,255,.2);
+  font-size:8px;letter-spacing:.19em;line-height:1.9;
+}
+#inspiration .inspiration-cover-authors{
+  --cover-accent:#70a7ff;--cover-glow:#9dc8ff;--cover-label:#9dc8ff;
+  --cover-bg:linear-gradient(112deg,#172b50 0%,#244a82 54%,#315f9a 100%);
+}
+#inspiration .inspiration-cover-channels{
+  --cover-accent:#b49aff;--cover-glow:#d4baff;--cover-label:#d4baff;
+  --cover-bg:linear-gradient(112deg,#292044 0%,#49366f 55%,#654b8e 100%);
+}
+#inspiration .inspiration-cover-authors .inspiration-cover-art:before,
+#inspiration .inspiration-cover-channels .inspiration-cover-art:before{
+  content:"";position:absolute;inset:0;pointer-events:none;opacity:.42;
+  background:radial-gradient(circle at 72% 48%,var(--cover-glow),transparent 2px);
+  background-size:22px 22px;
+  mask-image:linear-gradient(90deg,transparent,#000 35%);
+}
+#inspiration .inspiration-cover-authors .inspiration-cover-art:after,
+#inspiration .inspiration-cover-channels .inspiration-cover-art:after{
+  content:"";position:absolute;width:8px;height:8px;right:42px;top:42px;
+  border-radius:50%;background:#fff;box-shadow:0 0 18px 5px var(--cover-glow),-116px 93px 0 -2px #fff;
+  opacity:.85;
+}
+:root[data-theme="light"] #inspiration .inspiration-cover{
+  border-color:rgba(30,42,68,.15);box-shadow:0 14px 32px rgba(30,42,68,.13);
+}
+@media(max-width:600px){
+ #inspiration .inspiration-cover{grid-template-columns:minmax(0,1fr) 116px;min-height:166px}
+ #inspiration .inspiration-cover-copy{padding:20px 17px}
+ #inspiration .inspiration-cover-copy h3{font-size:21px}
+ #inspiration .inspiration-cover-copy p{font-size:11px}
+ #inspiration .inspiration-cover-art b{font-size:112px;right:5px}
+ #inspiration .inspiration-cover-art i{width:112px;height:82px}
+ #inspiration .inspiration-cover-art span{font-size:7px;padding:6px}
+}

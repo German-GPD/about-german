@@ -1,128 +1,83 @@
-# German / GPD — личный сайт и портфолио
+<div align="center">
 
-<p align="center">
-  <a href="https://german-gpd.github.io/about-german/"><strong>Открыть сайт ↗</strong></a>
-  ·
-  <a href="https://github.com/German-GPD/about-german"><strong>Исходный код</strong></a>
-</p>
+<img src="https://capsule-render.vercel.app/api?type=rect&color=0:10131c,55:182b32,100:253b43&height=190&section=header&text=GERMAN%20%2F%20GPD&fontSize=48&fontColor=edf7f2&fontAlignY=48&desc=PERSONAL%20WEBSITE%20%E2%80%A2%20PROJECTS%20%E2%80%A2%20EXPERIMENTS&descSize=13&descAlignY=72&animation=fadeIn" width="100%" alt="German / GPD — personal website">
 
-Личный сайт Германа Петраченко (German / GPD). Здесь собраны мои проекты, практический опыт, навыки, техника, инструменты, игровая библиотека, заметки о том, чему я учусь, и способы связи.
+[![Live website](https://img.shields.io/badge/🌐_LIVE_WEBSITE-german--gpd.github.io-168477?style=for-the-badge)](https://german-gpd.github.io/about-german/)
+[![Source](https://img.shields.io/badge/SOURCE-GitHub-24292f?style=for-the-badge&logo=github)](https://github.com/German-GPD/about-german)
+[![License](https://img.shields.io/badge/LICENSE-CC_BY--NC_4.0-7057b8?style=for-the-badge)](LICENSE)
 
-Сайт — не коммерческое резюме и не заявление о профессиональном стаже. Я самостоятельно изучаю разработку, делаю собственные проекты, участвую в open-source и показываю их реальное состояние: готовые работы отдельно от прототипов, планов и архивных идей.
+**Личное пространство Германа Петраченко — German / GPD.**
+
+*Не шаблонное резюме, а площадка для проектов, экспериментов и всего, что я создаю.*
+
+</div>
 
 ---
 
-## Что есть на сайте
+### ✦ О проекте
 
-| Раздел | Содержание |
-| --- | --- |
-| Обо мне | Кратко о моём подходе к разработке и текущем фокусе |
-| Проекты | School Calc, Cash Converter, портфолио, Hydra Launcher, игровой лаунчер в планах, German Music Sync и AERO7 GRAM |
-| Мой путь | Практика, публикация проектов, интерфейсы, open-source и текущие учебные цели |
-| Навыки | Веб-разработка, языки и данные, UX, локальный ИИ, Git и публикация |
-| Сетап | ПК, два монитора, MacBook Air M1, Acer Aspire на Fedora и смартфоны Samsung |
-| ИИ и инструменты | Используемые AI-помощники, IDE, графические, видео- и офисные программы |
-| Игры | Встроенный фрагмент моей отдельной игровой библиотеки |
-| Кейсы | Семь разборов проектов, включая архивные концепции и прототип |
-| Моя среда | Авторы, каналы, книги и материалы, у которых я учусь |
-| Мини-игра | Небольшая браузерная игра GPD Pixel Run |
-| Контакты | GitHub, Telegram, YouTube, Pinterest и другие площадки |
-| Wishlist | Техника, которую я рассматриваю к покупке |
-| Математика | График любимой функции обратной пропорциональности (y = k/x) и её свойства |
+Одностраничный сайт-портфолио, который я проектирую и развиваю сам. Здесь собраны мои работы, технические интересы, сетап, игровая библиотека, заметки и небольшие интерактивные эксперименты.
 
-## Проекты и их статус
+### 🚀 Что внутри
 
-Статусы ниже соответствуют описаниям на сайте. Наличие проекта в портфолио не означает, что все перечисленные идеи уже выпущены.
+- **Проекты и кейсы** — релизы, прототипы и идеи с честно обозначенным статусом.
+- **Технологии и инструменты** — то, что использую и изучаю.
+- **Мой сетап** — устройства и рабочая среда.
+- **Games Library** — отдельный каталог игровой коллекции.
+- **GPD Pixel Run** — небольшая браузерная мини-игра.
+- **Math corner** — график функции обратной пропорциональности.
+- **Темы и адаптивность** — светлый и тёмный режимы, мобильные экраны и reduced motion.
 
-- **School Calc — опубликован.** Калькулятор школьных оценок с несколькими шкалами оценивания и маскотом Gera. Список оценок не сохраняется после перезагрузки страницы. [Открыть сайт](https://german-gpd.github.io/school-calc/) · [Репозиторий](https://github.com/German-GPD/school-calc).
-- **Cash Converter — в разработке.** Конвертер валют и других показателей; работа над интерфейсом, источниками данных и графиками. [Репозиторий](https://github.com/German-GPD/Cash-Converter).
-- **German / GPD — этот сайт.** Личное портфолио и площадка для веб-экспериментов. [Репозиторий](https://github.com/German-GPD/about-german).
-- **Hydra Launcher — open-source участие.** На сайте указано, что я помогаю развивать открытый проект. [Репозиторий Hydra](https://github.com/hydralauncher/hydra).
-- **Собственный игровой лаунчер — план.** Идея будущего самостоятельного продукта, а не готовый релиз.
-- **German Music Sync — архивированная концепция.** Идея облачной синхронизации плейлистов Spotify и Яндекс Музыки. Проект остановлен из-за ограничений и нестабильности API платформ; публичного репозитория и релиза нет.
-- **AERO7 GRAM — прототип.** Концепция Telegram-клиента в стиле Windows 7 Aero, ориентированного на Windows 7 SP1 x86/x64. На текущем этапе есть начальная основа интерфейса и структура проекта; авторизация и полноценная работа с чатами не реализованы. [Репозиторий](https://github.com/German-GPD/aero7-gram).
+### 🧰 Стек
 
-В разделе кейсов также описан **Games Tracker** — архивная идея приложения для сбора игровой статистики из разных лаунчеров и передачи её в German's Games Library. Это не действующий трекер.
+![HTML5](https://img.shields.io/badge/HTML5-e65b32?style=flat-square&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-286fc5?style=flat-square&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-e4c341?style=flat-square&logo=javascript&logoColor=171717)
+![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222?style=flat-square&logo=githubpages&logoColor=white)
 
-## Технологии
+Без фреймворка и обязательной сборки: HTML, CSS и JavaScript. Сайт статический.
 
-Основу сайта составляют обычные веб-технологии:
+### ⚙️ Запуск локально
 
-- **HTML5** — структура и содержание страниц.
-- **CSS3** — оформление, сетки, адаптивность, темы и анимации.
-- **JavaScript** — переключение темы, навигационные эффекты, GPD Bot, мини-игра и интерактивные элементы.
-- **Canvas API** — отрисовка GPD Pixel Run.
-- **Git и GitHub Pages** — хранение исходников и публикация.
-
-В профиле также указаны технологии и направления, которые я изучаю или использую в других проектах: Vue, TypeScript, Python, PHP, Bash, SQL/SQLite, JSON, REST API, Linux/Fedora и Ollama. Это не означает, что каждая из них используется в коде именно этого сайта.
-
-## Возможности сайта
-
-- Русскоязычный одностраничный интерфейс.
-- Светлая и тёмная темы: начальный вариант учитывает системную настройку, тему также можно переключить вручную.
-- Адаптивная компоновка для широких и узких экранов.
-- Плавное появление секций и переходы; предусмотрена настройка `prefers-reduced-motion`.
-- Терминал в первом экране и GPD Bot с меняющимися репликами.
-- Индикатор прокрутки, текущий раздел и кнопка возврата наверх.
-- Каталог проектов и подробные кейсы с обозначением статусов.
-- Встроенная мини-игра GPD Pixel Run. Лучший результат сохраняется локально в браузере через `localStorage`; звук изначально выключен.
-- Ссылки на отдельную German's Games Library.
-- Математический блок с графиком (y = k/x), таблицей свойств и пояснениями.
-- Базовая SEO-разметка: title, description, canonical URL, Open Graph, Schema.org Person, `robots.txt` и `sitemap.xml`.
-
-## Структура репозитория
-
-```text
-about-german/
-├── index.html      # разметка и содержимое сайта
-├── style.css       # оформление, темы и адаптивные стили
-├── script.js       # интерфейс, тема, навигация и GPD Bot
-├── game.js         # логика мини-игры GPD Pixel Run
-├── robots.txt      # правила для поисковых роботов
-├── sitemap.xml     # карта сайта
-├── LICENSE         # условия лицензии
-└── README.md       # описание проекта
-```
-
-Сайт статический: для его основной работы не нужны сервер приложения, база данных, аккаунт пользователя или сборка через Node.js. Шрифты загружаются из Google Fonts; при недоступности внешнего сервиса браузер использует системные запасные шрифты.
-
-## Запуск локально
-
-Самый простой способ — открыть `index.html` в браузере.
-
-Для локального HTTP-сервера можно использовать Python:
-
-```bash
+\`\`\`bash
+git clone https://github.com/German-GPD/about-german.git
+cd about-german
 python -m http.server 8000
-```
+\`\`\`
 
-Затем открыть [http://localhost:8000](http://localhost:8000).
+Открой [http://localhost:8000](http://localhost:8000).
 
-## Публикация
+### 📁 Структура
 
-Сайт размещается на **GitHub Pages**: [german-gpd.github.io/about-german](https://german-gpd.github.io/about-german/).
+\`\`\`text
+about-german/
+├── index.html   # страница и контент
+├── style.css    # визуальная система и адаптивность
+├── script.js    # интерфейс и интерактивность
+├── game.js      # логика мини-игры
+├── LICENSE
+└── README.md
+\`\`\`
 
-Публикация настроена через GitHub Pages. После отправки изменений в основную ветку GitHub запускает сборку и развёртывание Pages. Успешный commit сам по себе ещё не означает, что публикация завершилась: итоговый статус нужно проверять во вкладке [Actions](https://github.com/German-GPD/about-german/actions).
+### 🔗 Ссылки
 
-## Контакты
+- 🌐 **Сайт:** https://german-gpd.github.io/about-german/
+- 💻 **GitHub:** https://github.com/German-GPD
+- ✈️ **Telegram:** https://t.me/german_gpd
+- ▶️ **YouTube:** https://www.youtube.com/@german_gpd
 
-- **GitHub:** [German-GPD](https://github.com/German-GPD)
-- **Telegram:** [@german_gpd](https://t.me/german_gpd)
-- **YouTube:** [@german_gpd](https://www.youtube.com/@german_gpd)
-- **Pinterest:** [@german_gpd](https://www.pinterest.com/german_gpd/)
-- **Сайт:** [German / GPD](https://german-gpd.github.io/about-german/)
+### 📄 Лицензия
 
-Остальные площадки и ссылки собраны в разделе «Связь» на сайте.
+Оригинальные тексты, дизайн и творческие материалы сайта распространяются по **CC BY-NC 4.0**. Указание авторства обязательно, коммерческое использование не разрешено. Сторонние материалы и товарные знаки остаются собственностью правообладателей.
 
-## Лицензия
-
-Оригинальные тексты, визуальный дизайн и творческие материалы сайта распространяются по лицензии **CC BY-NC 4.0** — с указанием авторства и без коммерческого использования. Лицензия не распространяется автоматически на сторонние товарные знаки, сервисы и материалы других авторов.
-
-Подробнее: [LICENSE](LICENSE) · [Creative Commons BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/).
+[Читать LICENSE](LICENSE) · [Условия CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
 
 ---
 
-<p align="center">
-  <sub>Сделано самостоятельно, с помощью экспериментов, ошибок и большого количества итераций.</sub><br>
-  <strong>German / GPD</strong>
-</p>
+<div align="center">
+
+**Made with curiosity, code & too many iterations.**
+
+<sub>German / GPD · 2026</sub>
+
+</div>

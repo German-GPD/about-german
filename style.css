@@ -1637,7 +1637,7 @@ section:nth-of-type(even){--section-accent:var(--orange)}
 .page-dock-chapter b{font:10px 'IBM Plex Mono',monospace;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:185px}
 .page-dock-track{height:2px;background:var(--line);display:block;margin-top:3px}
 .page-dock-track i{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--green),var(--cyan),var(--violet));transition:width .12s linear}
-#backToTop{display:flex;align-items:center;gap:8px;padding:0 14px;min-height:43px;border:0;background:var(--cyan);color:#101519;font:700 10px 'IBM Plex Mono',monospace;cursor:pointer;transition:transform .2s,background .2s}
+#backToTop{position:static;right:auto;bottom:auto;z-index:auto;width:auto;height:auto;display:flex;align-items:center;gap:8px;padding:0 14px;min-height:43px;opacity:1;visibility:visible;transform:none;box-shadow:none;border:0;background:var(--cyan);color:#101519;font:700 10px 'IBM Plex Mono',monospace;cursor:pointer;transition:transform .2s,background .2s}
 #backToTop span{font-size:19px;line-height:1}
 #backToTop:hover{transform:translateY(-3px);background:var(--yellow)}
 /* Bot's pupils follow the pointer from anywhere on screen; eyelids close briefly. */

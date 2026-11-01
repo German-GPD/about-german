@@ -25,7 +25,7 @@
   {"@context":"https://schema.org","@type":"Person","name":"German Petrachenko","alternateName":["German","GPD","German-GPD"],"url":"https://german-gpd.github.io/about-german/","sameAs":["https://github.com/German-GPD","https://t.me/german_gpd","https://www.youtube.com/@german_gpd","https://open.spotify.com/user/3122jc3ee3bcca6lar2jmgo3tmwe"],"knowsAbout":["Web development","HTML","CSS","JavaScript","Vue","TypeScript","Python","PHP","Bash","SQL","SQLite","JSON","REST APIs","Canvas API","Linux","Fedora","Windows","UI/UX design","Responsive design","Accessibility","Git","GitHub","GitHub Pages","AI-assisted coding","Ollama","Local AI models","Video editing","Image editing","Open-source software"]}
   </script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <script src="script.js?v=20261101h" defer></script>
+  <script src="script.js?v=20261101i" defer></script>
 </head>
 <body>
 <div class="navbar">
@@ -87,7 +87,7 @@
       <a href="#devices"><i>04</i> Техника</a>
       <a href="#games"><i>05</i> Игры</a>
       <a href="#cases"><i>06</i> Кейсы</a>
-      <a href="#inspiration"><i>07</i> Моя среда</a>
+      <a href="#inspiration"><i>07</i> Моя среда</a><a href="#math-lab"><i>13</i> Математика</a>
       <a href="#contact"><i>08</i> Контакты</a>
     </nav>
     <div class="divider" aria-hidden="true">
@@ -368,6 +368,43 @@
           <div class="wishlist-specs"><span>Тип <b>Домашняя консоль</b></span><span>Цель <b>Игры / эксперименты</b></span><span>Важно <b>Версия ПО</b></span></div>
           <a class="wishlist-link" href="https://www.playstation.com/en-us/support/hardware/ps4/" target="_blank" rel="noopener noreferrer">Информация о PS4 ↗</a>
         </article>
+      </div>
+    </section>
+    <section id="math-lab" class="reveal math-lab-section">
+      <div class="section-heading"><p class="section-kicker">13 / МАТЕМАТИЧЕСКИЙ УГОЛОК</p><h2>У меня есть любимая функция. Да, это гипербола.</h2><p class="section-copy">Пока другие выбирают любимый цвет, я выбрал y = k/x. У каждого свои странности.</p></div>
+      <div class="math-lab pixel">
+        <div class="math-lab-intro"><span class="math-stamp">GPD / MATH.EXE</span><div><span class="math-eyebrow">ОСОБАЯ СИМПАТИЯ</span><div class="math-equation">y = <span>k</span>/<span class="math-x">x</span></div><p>Обратная пропорциональность. Простая формула — узнаваемый характер.</p></div><span class="math-doodle" aria-hidden="true">∿</span></div>
+        <div class="math-lab-grid">
+          <div class="math-plot-wrap">
+            <div class="math-plot-head"><b>ГРАФИК ФУНКЦИИ</b><span>ПРИМЕР: k = 4</span></div>
+            <svg class="math-plot" viewBox="0 0 440 300" role="img" aria-label="График гиперболы y равно 4 делить на x с двумя ветвями в первой и третьей четвертях">
+              <defs><pattern id="mathGrid" width="22" height="22" patternUnits="userSpaceOnUse"><path d="M22 0H0V22" fill="none" stroke="currentColor" stroke-opacity=".12" stroke-width="1"/></pattern><linearGradient id="mathCurve" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#58d6b0"/><stop offset="1" stop-color="#a18aff"/></linearGradient></defs>
+              <rect x="16" y="12" width="408" height="276" fill="url(#mathGrid)"/>
+              <path d="M16 150H424 M220 12V288" class="math-axis"/>
+              <path d="M416 145L424 150L416 155 M215 20L220 12L225 20" class="math-axis"/>
+              <text x="408" y="139" class="math-axis-label">x</text><text x="230" y="24" class="math-axis-label">y</text><text x="228" y="166" class="math-axis-label">0</text>
+              <path d="M238 18 C246 66 258 105 278 119 S337 139 414 145" class="math-curve"/>
+              <path d="M26 155 C103 161 162 181 182 201 S214 250 218 282" class="math-curve"/>
+              <circle cx="264" cy="116" r="4" class="math-point"/><circle cx="176" cy="194" r="4" class="math-point"/>
+              <text x="292" y="102" class="math-curve-label">y = 4/x</text>
+              <text x="25" y="278" class="math-note">III ЧЕТВЕРТЬ</text><text x="329" y="34" class="math-note">I ЧЕТВЕРТЬ</text>
+            </svg>
+            <div class="math-legend"><span><i></i> График y = 4/x</span><span><i></i> Оси — асимптоты</span></div>
+          </div>
+          <div class="math-facts"><div class="math-facts-title"><b>СВОЙСТВА</b><span>КОРОТКО И ПО ДЕЛУ</span></div>
+            <table><tbody>
+              <tr><th>Область определения</th><td>x ≠ 0</td></tr>
+              <tr><th>Область значений</th><td>y ≠ 0</td></tr>
+              <tr><th>График</th><td>Гипербола</td></tr>
+              <tr><th>Центр симметрии</th><td>(0; 0)</td></tr>
+              <tr><th>Асимптоты</th><td>Оси Ox и Oy</td></tr>
+              <tr><th>При k &gt; 0</th><td>I и III четверти</td></tr>
+              <tr><th>При k &lt; 0</th><td>II и IV четверти</td></tr>
+            </tbody></table>
+            <p class="math-footnote">При k ≠ 0 функция нечётная. При k &gt; 0 убывает на каждом промежутке области определения, при k &lt; 0 — возрастает.</p>
+          </div>
+        </div>
+        <div class="math-bottomline"><span>НЕ ВСЕ ГЕРОИ НОСЯТ ПИШУЩИЕ РУЧКИ</span><span>y = k/x <b>♥</b></span></div>
       </div>
     </section>
     <footer class="site-footer">

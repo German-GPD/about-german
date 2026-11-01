@@ -1923,3 +1923,27 @@ section:nth-of-type(even){--section-accent:var(--orange)}
 @media(max-width:1000px){.quick-nav-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.quick-nav-grid a:nth-child(7n){border-right:1px solid var(--line)}.quick-nav-grid a:nth-child(4n){border-right:0}.quick-nav-grid a:nth-last-child(-n+7){border-bottom:1px solid var(--line)}.quick-nav-grid a:nth-last-child(-n+2){border-bottom:0}}
 @media(max-width:600px){.quick-nav-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.quick-nav-grid a:nth-child(4n){border-right:1px solid var(--line)}.quick-nav-grid a:nth-child(2n){border-right:0}.quick-nav-grid a:nth-last-child(-n+2){border-bottom:0}.quick-nav-head{padding:11px 12px}.quick-nav-grid a{min-height:43px;padding:8px}.inspiration-cover{grid-template-columns:minmax(0,1fr) 105px;min-height:150px}.inspiration-cover-copy{padding:19px 17px}.inspiration-cover-art b{font-size:112px;right:3px;top:-15px}.inspiration-cover-art i{width:100px;height:100px}.inspiration-cover-copy>span{font-size:8px}.inspiration-cover-copy h3{font-size:20px}.inspiration-cover-copy p{font-size:11px}}
 @media(prefers-reduced-motion:reduce){.quick-nav-grid a,.quick-nav-grid a b{transition:none}}
+
+/* Orbit dock: pinned to the viewport beside the user's current reading position. */
+#pageDock,.page-dock{
+ position:fixed!important;top:50%!important;right:clamp(12px,1.8vw,24px)!important;
+ bottom:auto!important;left:auto!important;z-index:2147483000!important;
+ transform:translate3d(0,-50%,0)!important;margin:0!important;
+ visibility:visible!important;opacity:1!important;pointer-events:auto!important;
+ display:flex!important;align-items:stretch!important;flex-direction:column!important;
+ width:max-content!important;max-width:min(240px,calc(100vw - 24px))!important;
+ isolation:isolate;box-shadow:0 12px 34px rgba(0,0,0,.2),0 0 0 1px color-mix(in srgb,var(--cyan) 12%,transparent)!important;
+ will-change:transform;
+}
+#pageDock .page-dock-chapter{min-width:160px!important;padding:9px 11px!important}
+#pageDock .page-dock-track{margin-top:5px!important}
+#pageDock #backToTop{width:100%!important;justify-content:center!important;min-height:42px!important}
+@media(max-width:760px){
+ #pageDock,.page-dock{top:auto!important;right:10px!important;bottom:12px!important;left:auto!important;transform:none!important;max-width:calc(100vw - 20px)!important}
+ #pageDock .page-dock-chapter{min-width:120px!important;padding:5px 7px!important}
+ #pageDock #backToTop{min-height:38px!important}
+}
+@media(max-height:520px) and (min-width:761px){
+ #pageDock .page-dock-chapter{padding:5px 8px!important}
+ #pageDock #backToTop{min-height:34px!important}
+}

@@ -2062,3 +2062,47 @@ section:nth-of-type(even){--section-accent:var(--orange)}
   background:transparent!important;background-image:none!important;
   box-shadow:none!important;border-color:var(--cyan)!important;
 }
+
+
+/* Creator and channel covers: use the same editorial cover language as the book shelf.
+   Keep section headings (01 / 02 / 03) untouched. */
+#inspiration .inspiration-card .source-art{
+  height:226px;min-height:226px;max-height:226px;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;
+  padding:16px;background:linear-gradient(145deg,#171c27,#222d3b);
+  color:#f5f7fa;border:0;border-bottom:1px solid var(--line);border-radius:0;
+  isolation:isolate;box-sizing:border-box;
+}
+#inspiration .inspiration-card .source-art:before{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(90deg,transparent 49.5%,#ffffff12 50%,transparent 50.5%),
+             linear-gradient(0deg,transparent 49.5%,#ffffff12 50%,transparent 50.5%);
+  background-size:28px 28px;opacity:.35;
+}
+#inspiration .inspiration-card .source-art:after{
+  content:"";position:absolute;right:-35px;bottom:-60px;width:170px;height:170px;
+  border:1px solid #ffffff2b;transform:rotate(35deg);
+  box-shadow:0 0 0 16px #ffffff08,0 0 0 32px #ffffff06;pointer-events:none;
+}
+#inspiration .inspiration-card .source-art>span,
+#inspiration .inspiration-card .source-art>b,
+#inspiration .inspiration-card .source-art>i{position:relative;z-index:1;color:#f5f7fa}
+#inspiration .inspiration-card .source-art>span{font:8px 'IBM Plex Mono',monospace;letter-spacing:.13em;opacity:.82}
+#inspiration .inspiration-card .source-art>b{font:600 25px/1.08 'Space Grotesk',sans-serif;letter-spacing:-.055em}
+#inspiration .inspiration-card .source-art>i{font:8px 'IBM Plex Mono',monospace;letter-spacing:.1em;opacity:.78;font-style:normal}
+#inspiration .inspiration-card .source-freelstep{background:linear-gradient(145deg,#17232d,#245364)}
+#inspiration .inspiration-card .source-danya{background:linear-gradient(145deg,#201b31,#39345d)}
+#inspiration .inspiration-card .source-mutim{background:linear-gradient(145deg,#2c2418,#51402a)}
+#inspiration .inspiration-card .source-vladilen{background:linear-gradient(145deg,#172438,#29476b)}
+#inspiration .inspiration-card .source-timofey{background:linear-gradient(145deg,#172923,#315244)}
+#inspiration .inspiration-card .source-itproger{background:linear-gradient(145deg,#172438,#29476b)}
+#inspiration .inspiration-card .source-marty{background:linear-gradient(145deg,#201b31,#39345d)}
+#inspiration .inspiration-card .source-marion{background:linear-gradient(145deg,#172923,#315244)}
+#inspiration .inspiration-card .source-howdy{background:linear-gradient(145deg,#2c2418,#51402a)}
+#inspiration .inspiration-card .source-habr{background:linear-gradient(145deg,#2b1d2b,#51364b)}
+@media(max-width:520px){
+  #inspiration .inspiration-card .source-art{height:190px;min-height:190px;max-height:190px;padding:12px}
+  #inspiration .inspiration-card .source-art>b{font-size:22px}
+}
+/* The opening quote stays; only its decorative gradient/panel is removed. */
+.hero-quote{background:transparent!important;background-image:none!important;box-shadow:none!important}

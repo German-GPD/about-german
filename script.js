@@ -95,41 +95,7 @@
 
   // Decorative floating background particles removed: keep rendering light and the page calm.
 
-  // Reading progress and a compact back-to-top control.
-  const progress = document.createElement("div");
-  progress.id = "scrollProgress";
-  progress.setAttribute("aria-hidden","true");
-  progress.innerHTML = "<span></span>";
-  document.body.appendChild(progress);
-  const bottomDock = document.createElement("div");
-  bottomDock.id = "pageDock";
-  bottomDock.className = "page-dock";
-  bottomDock.innerHTML = '<div class="page-dock-chapter"><span class="page-dock-kicker">СЕЙЧАС ВЫ</span><b id="currentChapter">01 / ОБО МНЕ</b><span class="page-dock-track"><i id="chapterProgress"></i></span></div><button id="backToTop" type="button" aria-label="Вернуться наверх" title="Плавно вернуться к началу"><span>↑</span><b>НАВЕРХ</b></button>';
-  document.body.appendChild(bottomDock);
-  const topButton = document.getElementById("backToTop");
-  const chapterLabel = document.getElementById("currentChapter");
-  const chapterProgress = document.getElementById("chapterProgress");
-  topButton.addEventListener("click",()=>window.scrollTo({top:0,behavior:reducedMotion?"auto":"smooth"}));
-  const chapters = [...document.querySelectorAll("main section[id]")].map((section,index)=>{
-    const heading=section.querySelector("h1,h2");
-    const raw=section.querySelector(".section-kicker")?.textContent?.trim() || heading?.textContent?.trim() || "РАЗДЕЛ";
-    return {section,label:raw.replace(/^\d+\s*\/\s*/,"").slice(0,24),index};
-  });
-  let scrollTick = false;
-  const updateScrollUI = () => {
-    const max = document.documentElement.scrollHeight - window.innerHeight;
-    const amount = max > 0 ? window.scrollY / max : 0;
-    root.style.setProperty("--scroll-progress",String(Math.max(0,Math.min(1,amount))));
-    let active=chapters[0];
-    for(const chapter of chapters){if(chapter.section.getBoundingClientRect().top<=window.innerHeight*.38)active=chapter;else break;}
-    if(active&&chapterLabel) chapterLabel.textContent=String(active.index+1).padStart(2,"0")+" / "+active.label;
-    if(chapterProgress) chapterProgress.style.width=(Math.max(0,Math.min(1,amount))*100)+"%";
-    scrollTick = false;
-  };
-  window.addEventListener("scroll",()=>{
-    if(!scrollTick){requestAnimationFrame(updateScrollUI);scrollTick=true;}
-  },{passive:true});
-  updateScrollUI();
+  // Floating chapter dock, reading progress and back-to-top control intentionally removed.
 
   // Subtle pointer tilt and spotlight, disabled for touch-only devices.
   if (window.matchMedia("(hover:hover) and (pointer:fine)").matches && !reducedMotion) {

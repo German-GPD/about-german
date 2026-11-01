@@ -59,14 +59,19 @@
             <button type="submit" class="px">GO</button>
           </form>
         </div>
-        <div class="monitor pixel pixel-shadow" role="img" aria-label="Пиксельная иллюстрация компьютера">
-          <div class="bar"><span></span><span></span><span></span></div>
-          <div class="screen robot-screen">
-            <div class="robot-console">
-              <div class="robot-face" aria-hidden="true"><i></i><i></i><b></b></div>
-              <div class="robot-copy"><span class="robot-label px">GPD BOT / ONLINE</span><p id="robotMessage" aria-live="polite">Проверяю код. Пока код проверяет моё терпение.</p></div>
+        <div class="monitor terminal-window pixel pixel-shadow" aria-label="Рабочий терминал GPD">
+          <div class="bar terminal-titlebar"><span></span><span></span><span></span><b>GPD SYSTEM / TERMINAL</b><em>● ONLINE</em></div>
+          <div class="screen terminal-screen">
+            <div class="terminal-topline"><span>GERMAN@GPD:~</span><span>SESSION 001 · LOCAL</span></div>
+            <div class="terminal-output" aria-label="Вывод терминала">
+              <p><i>01</i><b class="term-green">[ OK ]</b> Initializing creative workspace...</p>
+              <p><i>02</i><b class="term-yellow">[ RUN ]</b> Loading ideas, coffee and questionable decisions</p>
+              <p><i>03</i><b class="term-green">[ OK ]</b> Projects directory mounted</p>
+              <p><i>04</i><b class="term-red">[ WARN ]</b> Sleep schedule not found</p>
+              <p><i>05</i><b class="term-cyan">[ GPD ]</b> Build something worth opening.</p>
             </div>
-            <div class="robot-terminal"><span>SYS</span><i></i><span>BUILD / TEST / REPEAT</span><b class="cursor blink"></b></div>
+            <div class="terminal-prompt"><span>german@gpd</span><b>:</b><span>~</span><b>$</b><span class="terminal-command">_</span><span class="terminal-cursor blink"></span></div>
+            <div class="terminal-status"><span><i></i> SYSTEM READY</span><span>HTML · CSS · JS · IDEAS</span><span>LOCAL / 100%</span></div>
           </div>
         </div>
       </div>
@@ -141,6 +146,15 @@
         <article class="timeline-item"><h3>Участвую в open-source-разработке</h3><p>Помогаю развивать Hydra Launcher — открытый проект игрового лаунчера. Параллельно хочу набраться опыта и со временем сделать собственный игровой лаунчер.</p><div class="timeline-meta">HYDRA LAUNCHER · OPEN SOURCE · NEXT PROJECT</div></article>
         <article class="timeline-item"><h3>Главный квест на ближайшее время</h3><p>Очень хочу сдать ЦТ и ЦЭ и перейти в 10-й класс. В общем, сейчас прокачиваю не только навыки разработчика, но и навык выживания в школьной сюжетной линии. Финальный босс — экзамены.</p><div class="timeline-meta">QUEST STATUS: PLEASE LET ME PASS</div></article>
       </div>
+      <aside class="bot-dock pixel" aria-label="GPD Bot — цифровой напарник">
+        <div class="bot-dock-head"><span class="bot-live"><i></i> GPD BOT / ONLINE</span><span class="bot-tag">BUILD 0.∞</span></div>
+        <div class="bot-dock-body">
+          <div class="robot-face bot-face" aria-hidden="true"><i class="bot-eye"></i><i class="bot-eye"></i><b></b></div>
+          <div class="robot-copy"><span class="robot-label">СООБЩЕНИЕ ОТ СИСТЕМЫ</span><p id="robotMessage" aria-live="polite">Я не торможу. Я загружаю следующий уровень реальности.</p></div>
+          <span class="bot-speech-mark" aria-hidden="true">“</span>
+        </div>
+        <div class="bot-dock-foot"><span>МОЗГ: 2 БАЙТА, ОБА ЗАНЯТЫ</span><span class="bot-mood">MOOD: UNSTABLE</span></div>
+      </aside>
     </section>
     <section id="skills" class="reveal">
       <div class="section-heading"><p class="section-kicker">04 / НАВЫКИ</p><h2>Не просто список технологий.</h2><p class="section-copy">Показываю навыки через то, что уже применяю в проектах. Уровни — честно: практика, изучение и эксперименты, а не выдуманные сертификаты.</p></div>
@@ -242,7 +256,7 @@
 
     
     <section id="inspiration" class="reveal">
-      <div class="section-heading"><p class="section-kicker">10 / МОЯ СРЕДА</p><h2>Люди, каналы и книги, у которых я учусь.</h2><p class="section-copy">Не рейтинг и не попытка казаться экспертом. Это моя личная полка источников, идей и людей, за которыми интересно наблюдать, чтобы расти в разработке и технологиях.</p></div>
+      <div class="section-heading"><p class="section-kicker">10 / МОЯ СРЕДА</p><h2>Люди, каналы и книги, у которых я учусь.</h2><p class="section-copy">Моя личная подборка источников, авторов и идей. Здесь не рейтинг: просто то, что помогает смотреть на разработку, дизайн и цифровые продукты шире.</p></div>
       <div class="inspiration-block">
         <div class="inspiration-heading"><span class="inspiration-index">01</span><div><h3>Авторы и разработчики</h3><p>За контентом, опытом и подходом к созданию цифровых продуктов.</p></div></div>
         <div class="inspiration-grid">

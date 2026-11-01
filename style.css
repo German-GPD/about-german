@@ -1722,3 +1722,84 @@ section:nth-of-type(even){--section-accent:var(--orange)}
 }
 @media(max-width:390px){.page-dock-chapter{min-width:95px}.page-dock-chapter b{max-width:105px}#backToTop b{display:none}.math-bottomline{font-size:7px;padding:10px 14px}}
 @media(prefers-reduced-motion:reduce){.page-dock,#backToTop,.bot-copy p,.math-curve{transition:none!important;animation:none!important}}
+
+
+/* GPD refinement pass · distinct inspiration identities and a complete light palette */
+.inspiration-authors{--inspiration-a:#56c9b2;--inspiration-b:#6b7ee8}
+.inspiration-channels{--inspiration-a:#e0a34d;--inspiration-b:#d56c83}
+.inspiration-authors .inspiration-index,.inspiration-authors .source-art{--art-a:var(--inspiration-a);--art-b:var(--inspiration-b)}
+.inspiration-channels .inspiration-index,.inspiration-channels .source-art{--art-a:var(--inspiration-a);--art-b:var(--inspiration-b)}
+.inspiration-authors .inspiration-index{color:var(--inspiration-a);border-color:color-mix(in srgb,var(--inspiration-a) 55%,var(--line))}
+.inspiration-channels .inspiration-index{color:var(--inspiration-a);border-color:color-mix(in srgb,var(--inspiration-a) 55%,var(--line))}
+.inspiration-authors .source-art{background:linear-gradient(135deg,color-mix(in srgb,var(--art-a) 22%,var(--surface)),color-mix(in srgb,var(--art-b) 20%,var(--surface)))!important;border-color:color-mix(in srgb,var(--art-a) 42%,var(--line))}
+.inspiration-channels .source-art{background:linear-gradient(135deg,color-mix(in srgb,var(--art-a) 22%,var(--surface)),color-mix(in srgb,var(--art-b) 20%,var(--surface)))!important;border-color:color-mix(in srgb,var(--art-b) 42%,var(--line))}
+.inspiration-authors .source-art b,.inspiration-authors .source-art span{color:var(--inspiration-a)}
+.inspiration-channels .source-art b,.inspiration-channels .source-art span{color:var(--inspiration-a)}
+.bot-face i.bot-eye{width:7px;height:8px;box-shadow:none!important;background:#71e5d7}
+.bot-face i.bot-eye:nth-of-type(1){left:21px}
+.bot-face i.bot-eye:nth-of-type(2){left:44px}
+.bot-face.is-blinking .bot-eye{transform:scaleY(.08)!important}
+
+/* Light mode is a full palette, not dark components sitting on a pale page. */
+:root[data-theme="light"]{
+ --bg:#f4f5f2;--surface:#ffffff;--surface-2:#e9eeeb;--line:#d2dbd5;
+ --text:#202a27;--muted:#68736e;--amber:#9a610d;--violet:#6552aa;
+ --cyan:#087e79;--red:#b84450;--green:#24764c;--yellow:#98620b;
+ --orange:#ad542b;--blue:#356aa8;--scan:rgba(30,60,48,.018);--grain:.008;
+}
+:root[data-theme="light"] body{color:var(--text);background-color:var(--bg);background-image:linear-gradient(rgba(54,95,75,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(54,95,75,.045) 1px,transparent 1px)}
+:root[data-theme="light"] body::before{opacity:.18}
+:root[data-theme="light"] .hero,:root[data-theme="light"] main,:root[data-theme="light"] .wrap{color:var(--text)}
+:root[data-theme="light"] .navbar,:root[data-theme="light"] .quick-nav{background:rgba(250,252,249,.94);border-color:var(--line);color:var(--text)}
+:root[data-theme="light"] .hero h1,:root[data-theme="light"] h2,:root[data-theme="light"] h3,:root[data-theme="light"] h4,
+:root[data-theme="light"] .lede,:root[data-theme="light"] .section-copy,:root[data-theme="light"] .about-grid p,
+:root[data-theme="light"] .timeline-item p,:root[data-theme="light"] .project p,:root[data-theme="light"] .skill-card p,
+:root[data-theme="light"] .device-card p,:root[data-theme="light"] .contact strong,:root[data-theme="light"] .wishlist-card p{color:var(--text)}
+:root[data-theme="light"] .card,:root[data-theme="light"] .project,:root[data-theme="light"] .skill-card,
+:root[data-theme="light"] .device-card,:root[data-theme="light"] .ai-card,:root[data-theme="light"] .case-study,
+:root[data-theme="light"] .wishlist-card,:root[data-theme="light"] .contact,:root[data-theme="light"] .timeline-item,
+:root[data-theme="light"] .inspiration-card,:root[data-theme="light"] .legend-card,:root[data-theme="light"] .book-card,
+:root[data-theme="light"] .inspiration-block,:root[data-theme="light"] .math-lab{
+ background:var(--surface);color:var(--text);border-color:var(--line);
+}
+:root[data-theme="light"] .project,:root[data-theme="light"] .skill-card,:root[data-theme="light"] .device-card,
+:root[data-theme="light"] .ai-card,:root[data-theme="light"] .case-study,:root[data-theme="light"] .wishlist-card,
+:root[data-theme="light"] .contact,:root[data-theme="light"] .inspiration-card,:root[data-theme="light"] .legend-card{
+ box-shadow:0 5px 18px rgba(34,55,44,.055),2px 2px 0 rgba(34,55,44,.045)
+}
+:root[data-theme="light"] .tag,:root[data-theme="light"] .search,:root[data-theme="light"] .book-card,
+:root[data-theme="light"] .quick-nav a,:root[data-theme="light"] .game-filter,:root[data-theme="light"] .filter-btn{
+ background:#f7faf7;color:#34423b;border-color:#d4ddd6
+}
+:root[data-theme="light"] .btn,:root[data-theme="light"] .games-primary-link{
+ background:var(--cyan);color:#fff;border-color:var(--cyan)
+}
+:root[data-theme="light"] .btn.ghost,:root[data-theme="light"] .theme-toggle{
+ background:#fff;color:#34423b;border-color:#cbd5ce
+}
+:root[data-theme="light"] .project-link,:root[data-theme="light"] .inspiration-links a,
+:root[data-theme="light"] .footer-links a,:root[data-theme="light"] .wishlist-link{color:#176e68}
+:root[data-theme="light"] .section-kicker,:root[data-theme="light"] .card-label,
+:root[data-theme="light"] .inspiration-type,:root[data-theme="light"] .skill-level{color:#8a5a13}
+:root[data-theme="light"] .terminal-window,:root[data-theme="light"] .monitor-preview-screen,
+:root[data-theme="light"] .device-screen,:root[data-theme="light"] .handheld-screen,
+:root[data-theme="light"] .keyboard-board{background:#202a29;color:#d9eee5}
+:root[data-theme="light"] .terminal-screen,:root[data-theme="light"] .monitor .screen,
+:root[data-theme="light"] .monitor .robot-screen{background:#202a29!important;color:#e7f0ea}
+:root[data-theme="light"] #runnerCanvas{background:#e9eee9;border-color:#cbd5ce}
+:root[data-theme="light"] .gpd-game-art{background:#e8ede9}
+:root[data-theme="light"] .math-plot-wrap,:root[data-theme="light"] .math-facts{background:#fbfcfa}
+:root[data-theme="light"] .math-plot{color:#aab8ae}
+:root[data-theme="light"] .math-axis{stroke:#52635a}
+:root[data-theme="light"] .math-axis-label,:root[data-theme="light"] .math-note{fill:#52635a}
+:root[data-theme="light"] .math-facts th{color:#65716a}
+:root[data-theme="light"] .math-facts td{color:#25342d}
+:root[data-theme="light"] .bot-dock{background:#fff;border-color:var(--line)}
+:root[data-theme="light"] .bot-copy p,:root[data-theme="light"] .robot-copy p{color:#26352e}
+:root[data-theme="light"] .site-footer,:root[data-theme="light"] .footer-links{color:#5d6962}
+:root[data-theme="light"] .copy,:root[data-theme="light"] .muted,:root[data-theme="light"] small{color:#68736e}
+:root[data-theme="light"] .extra-links summary{color:#34423b}
+:root[data-theme="light"] input,:root[data-theme="light"] textarea,:root[data-theme="light"] select{background:#fff;color:#202a27;border-color:#cbd5ce}
+:root[data-theme="light"] .page-dock{background:rgba(255,255,255,.96);border-color:#cbd5ce;color:#26352e}
+:root[data-theme="light"] #backToTop{background:#176f69;color:#fff}
+:root[data-theme="light"] .divider{opacity:.5}

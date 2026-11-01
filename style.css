@@ -1628,3 +1628,97 @@ section:nth-of-type(even){--section-accent:var(--orange)}
 @media(prefers-reduced-motion:reduce){
   .bot-face,.bot-face i,.bot-copy p,.project:before,.skill-card:before,.device-card:before,.ai-card:before,.case-study:before,.wishlist-card:before{transition:none!important}
 }
+
+
+/* Persistent chapter dock */
+.page-dock{position:fixed;z-index:1200;right:22px;bottom:18px;display:flex;align-items:stretch;gap:8px;padding:7px;background:color-mix(in srgb,var(--surface) 92%,transparent);border:1px solid var(--line);box-shadow:5px 5px 0 color-mix(in srgb,var(--cyan) 24%,transparent);backdrop-filter:blur(14px);max-width:calc(100vw - 24px);transition:background .25s,border-color .25s}
+.page-dock-chapter{display:flex;flex-direction:column;justify-content:center;gap:4px;min-width:138px;padding:3px 9px}
+.page-dock-kicker{font:8px 'IBM Plex Mono',monospace;letter-spacing:.14em;color:var(--muted)}
+.page-dock-chapter b{font:10px 'IBM Plex Mono',monospace;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:185px}
+.page-dock-track{height:2px;background:var(--line);display:block;margin-top:3px}
+.page-dock-track i{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--green),var(--cyan),var(--violet));transition:width .12s linear}
+#backToTop{display:flex;align-items:center;gap:8px;padding:0 14px;min-height:43px;border:0;background:var(--cyan);color:#101519;font:700 10px 'IBM Plex Mono',monospace;cursor:pointer;transition:transform .2s,background .2s}
+#backToTop span{font-size:19px;line-height:1}
+#backToTop:hover{transform:translateY(-3px);background:var(--yellow)}
+/* Bot's pupils follow the pointer from anywhere on screen; eyelids close briefly. */
+.bot-face .bot-eye{transform-origin:center;transition:transform .12s ease-out}
+.bot-face.is-blinking .bot-eye{transform:scaleY(.08)!important}
+.bot-face.is-blinking{filter:brightness(1.22)}
+.bot-copy p{min-height:3.1em;display:flex;align-items:center;position:relative}
+.bot-copy p.is-changing{opacity:0;transform:translateY(9px) scale(.985);filter:blur(3px)}
+.bot-copy p.has-arrived{animation:botQuoteArrive .65s cubic-bezier(.2,.8,.2,1) both}
+@keyframes botQuoteArrive{0%{opacity:0;transform:translateY(8px);filter:blur(3px)}65%{opacity:1;transform:translateY(-2px);filter:blur(0)}100%{opacity:1;transform:translateY(0)}}
+/* Mathematics easter egg */
+.math-lab{background:linear-gradient(135deg,var(--surface),color-mix(in srgb,var(--violet) 8%,var(--surface)));border:1px solid color-mix(in srgb,var(--violet) 40%,var(--line));box-shadow:7px 7px 0 color-mix(in srgb,var(--violet) 22%,transparent);overflow:hidden}
+.math-lab-intro{display:flex;align-items:center;gap:22px;padding:24px 28px;border-bottom:1px solid var(--line);position:relative}
+.math-stamp{align-self:flex-start;padding:8px 9px;border:1px solid var(--green);color:var(--green);font:8px 'IBM Plex Mono',monospace;letter-spacing:.1em;white-space:nowrap}
+.math-eyebrow{font:9px 'IBM Plex Mono',monospace;letter-spacing:.15em;color:var(--yellow)}
+.math-equation{font:clamp(34px,6vw,58px) 'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.06em;color:var(--text);line-height:1.2;margin:5px 0}
+.math-equation span:first-child{color:var(--green)}.math-x{color:var(--violet)}
+.math-lab-intro p{margin:0;color:var(--muted);font-size:13px}
+.math-doodle{margin-left:auto;color:var(--cyan);font:100px Georgia,serif;line-height:.7;transform:rotate(-18deg)}
+.math-lab-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:0}
+.math-plot-wrap{padding:20px 24px;border-right:1px solid var(--line);min-width:0}
+.math-plot-head,.math-facts-title{display:flex;align-items:center;justify-content:space-between;gap:10px;font:9px 'IBM Plex Mono',monospace;letter-spacing:.1em}
+.math-plot-head b,.math-facts-title b{color:var(--cyan)}.math-plot-head span,.math-facts-title span{color:var(--muted);font-size:8px}
+.math-plot{display:block;width:100%;height:auto;margin:14px 0 4px;color:var(--line);overflow:visible}
+.math-axis{stroke:currentColor;stroke-width:1.5;fill:none}.math-axis-label{fill:var(--muted);font:12px 'IBM Plex Mono',monospace}
+.math-curve{fill:none;stroke:url(#mathCurve);stroke-width:3.5;stroke-linecap:round;filter:drop-shadow(0 0 5px #58d6b066)}
+.math-point{fill:var(--yellow);stroke:var(--surface);stroke-width:2}
+.math-curve-label{fill:var(--green);font:12px 'IBM Plex Mono',monospace}.math-note{fill:var(--muted);font:8px 'IBM Plex Mono',monospace;letter-spacing:.08em}
+.math-legend{display:flex;flex-wrap:wrap;gap:16px;font:9px 'IBM Plex Mono',monospace;color:var(--muted)}
+.math-legend span{display:flex;align-items:center;gap:6px}.math-legend i{width:7px;height:7px;background:var(--green);display:inline-block}.math-legend span+span i{background:var(--violet)}
+.math-facts{padding:20px 24px;min-width:0}
+.math-facts-title{margin-bottom:12px}
+.math-facts table{width:100%;border-collapse:collapse;font-size:12px}
+.math-facts th,.math-facts td{padding:9px 7px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.math-facts th{font-weight:500;color:var(--muted);width:58%}
+.math-facts td{font-weight:700;color:var(--text)}
+.math-facts tr:nth-child(odd) td{color:var(--green)}
+.math-footnote{margin:14px 0 0;color:var(--muted);font-size:11px;line-height:1.55}
+.math-bottomline{display:flex;justify-content:space-between;gap:12px;padding:12px 24px;border-top:1px solid var(--line);font:8px 'IBM Plex Mono',monospace;letter-spacing:.12em;color:var(--muted)}
+.math-bottomline span:last-child{color:var(--violet)}.math-bottomline b{color:var(--red)}
+/* Light theme: warm paper surfaces, readable muted text, clear controls and softer grid. */
+:root[data-theme="light"]{
+  --bg:#f3f1e9;--surface:#fffdf7;--surface-2:#ece9de;--line:#d2cdbf;
+  --text:#22242a;--muted:#666b70;--amber:#a9670c;--violet:#6651b5;
+  --cyan:#087f83;--red:#c44454;--green:#237d4c;--yellow:#a56c08;
+  --orange:#b65d2e;--blue:#356db5;--scan:rgba(35,40,45,.012);--grain:.018;
+}
+:root[data-theme="light"] body{background-image:linear-gradient(rgba(76,102,104,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(76,102,104,.045) 1px,transparent 1px)}
+:root[data-theme="light"] body::before{opacity:.42}
+:root[data-theme="light"] .navbar{background:rgba(249,247,239,.88);border-color:#d5d0c3}
+:root[data-theme="light"] .monitor{box-shadow:8px 8px 0 rgba(39,116,82,.15),0 16px 40px rgba(45,42,32,.09)}
+:root[data-theme="light"] .terminal-screen{background:linear-gradient(145deg,#172321,#202e30)!important}
+:root[data-theme="light"] .card,:root[data-theme="light"] .project,:root[data-theme="light"] .skill-card,:root[data-theme="light"] .device-card,:root[data-theme="light"] .ai-card,:root[data-theme="light"] .case-study,:root[data-theme="light"] .wishlist-card,:root[data-theme="light"] .contact{background:var(--surface);border-color:var(--line);box-shadow:4px 4px 0 rgba(38,50,43,.09)}
+:root[data-theme="light"] .tag,:root[data-theme="light"] .search,:root[data-theme="light"] .book-card{background:#fffdf8;border-color:#d7d1c4}
+:root[data-theme="light"] .btn.ghost{color:var(--text);background:rgba(255,255,255,.42);border-color:#bdb8ac}
+:root[data-theme="light"] .theme-toggle{background:#fffdf7;color:#4c3e20;border-color:#d1c5a9}
+:root[data-theme="light"] .section-kicker{color:#8b5a0b}
+:root[data-theme="light"] .hero-quote{background:#fffdf7;border-color:#d6d0c3}
+:root[data-theme="light"] .inspiration-card,:root[data-theme="light"] .inspiration-block{background:var(--surface);border-color:var(--line)}
+:root[data-theme="light"] .page-dock{background:rgba(255,253,247,.94);border-color:#cfc9bb;box-shadow:4px 4px 0 rgba(37,108,81,.14)}
+:root[data-theme="light"] .math-lab{background:linear-gradient(135deg,#fffdf7,#f1effb);border-color:#cfc7e4;box-shadow:6px 6px 0 rgba(102,81,181,.12)}
+:root[data-theme="light"] .math-plot{color:#b9b4a8}
+:root[data-theme="light"] .math-stamp{background:#eff8ef}
+:root[data-theme="light"] .math-equation{color:#20242a}
+:root[data-theme="light"] .math-curve{filter:drop-shadow(0 0 3px #238b7550)}
+:root[data-theme="light"] .math-facts tr:nth-child(odd) td{color:#237d4c}
+:root[data-theme="light"] .terminal-status,:root[data-theme="light"] .terminal-topline{color:#b3c9bf}
+:root[data-theme="light"] .terminal-output p{color:#e4eee8}
+:root[data-theme="light"] .bot-dock{background:linear-gradient(115deg,#fffdf7,#f1effb);border-color:#cfc7e4;box-shadow:4px 4px 0 rgba(102,81,181,.12)}
+:root[data-theme="light"] .bot-copy p{color:#24252b}
+:root[data-theme="light"] .bot-dock-foot,:root[data-theme="light"] .bot-dock-head{color:#64666c}
+@media(max-width:700px){
+ .page-dock{right:10px;bottom:10px;gap:5px;padding:5px}
+ .page-dock-chapter{min-width:112px;padding:2px 6px}
+ .page-dock-kicker{font-size:7px}.page-dock-chapter b{font-size:9px;max-width:132px}
+ #backToTop{min-height:40px;padding:0 10px;gap:5px;font-size:9px}
+ .math-lab-grid{grid-template-columns:1fr}
+ .math-plot-wrap{border-right:0;border-bottom:1px solid var(--line);padding:18px}
+ .math-facts{padding:18px}
+ .math-lab-intro{padding:18px;gap:12px}
+ .math-stamp{font-size:7px}.math-doodle{font-size:66px}
+}
+@media(max-width:390px){.page-dock-chapter{min-width:95px}.page-dock-chapter b{max-width:105px}#backToTop b{display:none}.math-bottomline{font-size:7px;padding:10px 14px}}
+@media(prefers-reduced-motion:reduce){.page-dock,#backToTop,.bot-copy p,.math-curve{transition:none!important;animation:none!important}}

@@ -39,17 +39,17 @@
 
 ### ⚙️ Запуск локально
 
-\`\`\`bash
+```bash
 git clone https://github.com/German-GPD/about-german.git
 cd about-german
 python -m http.server 8000
-\`\`\`
+```
 
 Открой [http://localhost:8000](http://localhost:8000).
 
 ### 📁 Структура
 
-\`\`\`text
+```text
 about-german/
 ├── index.html   # страница и контент
 ├── style.css    # визуальная система и адаптивность
@@ -57,7 +57,7 @@ about-german/
 ├── game.js      # логика мини-игры
 ├── LICENSE
 └── README.md
-\`\`\`
+```
 
 ### 🔗 Ссылки
 

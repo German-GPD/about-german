@@ -110,9 +110,9 @@
   const chapterLabel = document.getElementById("currentChapter");
   const chapterProgress = document.getElementById("chapterProgress");
   topButton.addEventListener("click",()=>window.scrollTo({top:0,behavior:reducedMotion?"auto":"smooth"}));
-  const chapters = [...document.querySelectorAll("main section[id], main header.hero")].map((section,index)=>{
+  const chapters = [...document.querySelectorAll("main section[id]")].map((section,index)=>{
     const heading=section.querySelector("h1,h2");
-    const raw=section.querySelector(".section-kicker")?.textContent?.trim() || (section.matches("header") ? "СТАРТ / GPD" : heading?.textContent?.trim() || "РАЗДЕЛ");
+    const raw=section.querySelector(".section-kicker")?.textContent?.trim() || heading?.textContent?.trim() || "РАЗДЕЛ";
     return {section,label:raw.replace(/^\d+\s*\/\s*/,"").slice(0,24),index};
   });
   let scrollTick = false;

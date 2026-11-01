@@ -2026,3 +2026,7 @@ section:nth-of-type(even){--section-accent:var(--orange)}
  #inspiration .inspiration-cover-art i{width:112px;height:82px}
  #inspiration .inspiration-cover-art span{font-size:7px;padding:6px}
 }
+
+
+/* The floating chapter dock and back-to-top UI are intentionally removed. */
+#pageDock,.page-dock,#backToTop,#scrollProgress{display:none!important;visibility:hidden!important;pointer-events:none!important}

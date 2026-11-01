@@ -213,14 +213,15 @@
         framePending=false;
         const rect=botFace.getBoundingClientRect();
         const cx=rect.left+rect.width/2,cy=rect.top+rect.height/2;
-        const dx=Math.max(-1,Math.min(1,(pointerX-cx)/(window.innerWidth*.42)));
-        const dy=Math.max(-1,Math.min(1,(pointerY-cy)/(window.innerHeight*.42)));
-        eyes.forEach(eye=>{eye.style.transform=`translate(${dx*6}px,${dy*5}px)`;});
+        const vx=(pointerX-cx)/Math.max(90,rect.width*1.8);
+        const vy=(pointerY-cy)/Math.max(70,rect.height*1.8);
+        const length=Math.hypot(vx,vy)||1;
+        const dx=vx/Math.max(1,length),dy=vy/Math.max(1,length);
+        eyes.forEach(eye=>{eye.style.transform=`translate3d(${dx*4.2}px,${dy*3.4}px,0)`;});
       };
       const queueFollow=()=>{if(!framePending){framePending=true;requestAnimationFrame(followPointer);}};
       const trackPointer=event=>{pointerX=event.clientX;pointerY=event.clientY;queueFollow();};
       document.addEventListener("pointermove",trackPointer,{passive:true});
-      document.addEventListener("mousemove",trackPointer,{passive:true});
       window.addEventListener("scroll",queueFollow,{passive:true});
       window.addEventListener("resize",queueFollow,{passive:true});
       queueFollow();
@@ -270,4 +271,27 @@
   const render = () => books.forEach(book => { book.hidden = !library.open && !preview.has(book); });
   render();
   library.addEventListener("toggle", render);
+})();
+/* Draw the hyperbola once, when its panel enters view. */
+(() => {
+  const plot=document.querySelector(".math-plot");
+  if(!plot)return;
+  const curves=[...plot.querySelectorAll(".math-curve")];
+  const reducedMotion=window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  curves.forEach(curve=>{
+    curve.setAttribute("pathLength","1");
+    curve.style.strokeDasharray="1";
+    curve.style.strokeDashoffset=reducedMotion?"0":"1";
+  });
+  const draw=()=>{
+    curves.forEach((curve,index)=>{
+      curve.style.transition=reducedMotion?"none":`stroke-dashoffset 1.35s cubic-bezier(.22,.75,.22,1) ${index*180}ms`;
+      requestAnimationFrame(()=>{curve.style.strokeDashoffset="0";});
+    });
+  };
+  if(reducedMotion||!("IntersectionObserver" in window)){draw();return;}
+  const observer=new IntersectionObserver(entries=>{
+    if(entries.some(entry=>entry.isIntersecting)){draw();observer.disconnect();}
+  },{threshold:.28});
+  observer.observe(plot);
 })();

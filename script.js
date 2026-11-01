@@ -205,27 +205,31 @@
       messageTimer=window.setTimeout(showNextMessage,11000+Math.random()*5000);
     };
     messageTimer=window.setTimeout(showNextMessage,12500);
-    // Track the pointer anywhere in the viewport, not only when it enters the robot.
+    // Eyes follow the pointer across the whole viewport, with a larger and clearer range.
     if(botFace&&!reducedMotion){
-      const eyes=botFace.querySelectorAll(".bot-eye");
-      let pointerX=window.innerWidth*.5,pointerY=window.innerHeight*.45;
+      const eyes=[...botFace.querySelectorAll(".bot-eye")];
+      let pointerX=window.innerWidth*.5,pointerY=window.innerHeight*.45,framePending=false;
       const followPointer=()=>{
+        framePending=false;
         const rect=botFace.getBoundingClientRect();
         const cx=rect.left+rect.width/2,cy=rect.top+rect.height/2;
-        const dx=Math.max(-1,Math.min(1,(pointerX-cx)/(window.innerWidth*.48)));
-        const dy=Math.max(-1,Math.min(1,(pointerY-cy)/(window.innerHeight*.48)));
-        eyes.forEach(eye=>eye.style.transform=`translate(${dx*4}px,${dy*3}px)`);
+        const dx=Math.max(-1,Math.min(1,(pointerX-cx)/(window.innerWidth*.42)));
+        const dy=Math.max(-1,Math.min(1,(pointerY-cy)/(window.innerHeight*.42)));
+        eyes.forEach(eye=>{eye.style.transform=`translate(${dx*6}px,${dy*5}px)`;});
       };
-      document.addEventListener("pointermove",event=>{pointerX=event.clientX;pointerY=event.clientY;followPointer();},{passive:true});
-      window.addEventListener("scroll",followPointer,{passive:true});
-      window.addEventListener("resize",followPointer,{passive:true});
-      followPointer();
+      const queueFollow=()=>{if(!framePending){framePending=true;requestAnimationFrame(followPointer);}};
+      const trackPointer=event=>{pointerX=event.clientX;pointerY=event.clientY;queueFollow();};
+      document.addEventListener("pointermove",trackPointer,{passive:true});
+      document.addEventListener("mousemove",trackPointer,{passive:true});
+      window.addEventListener("scroll",queueFollow,{passive:true});
+      window.addEventListener("resize",queueFollow,{passive:true});
+      queueFollow();
       const blink=()=>{
         botFace.classList.add("is-blinking");
-        window.setTimeout(()=>botFace.classList.remove("is-blinking"),150);
-        window.setTimeout(blink,2600+Math.random()*3900);
+        window.setTimeout(()=>botFace.classList.remove("is-blinking"),145);
+        window.setTimeout(blink,2400+Math.random()*3600);
       };
-      window.setTimeout(blink,1800+Math.random()*2200);
+      window.setTimeout(blink,1400+Math.random()*1800);
     }
   }
 })();

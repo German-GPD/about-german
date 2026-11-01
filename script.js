@@ -144,24 +144,54 @@
   }
 
 
-  // Tiny robot companion: one text update at a time, no animation loop.
+  // GPD Bot: absurd status messages + lightweight eye tracking (no canvas / animation loop).
   const robotMessage = document.getElementById("robotMessage");
-  if (robotMessage && !reducedMotion) {
+  const botFace = document.querySelector(".bot-face");
+  if (robotMessage) {
     const messages = [
-      "Проверяю код. Пока код проверяет моё терпение.",
-      "Нашёл баг. Он сказал, что вообще-то это фича.",
-      "Компилирую идеи. Кофе в системных требованиях.",
-      "404: вдохновение не найдено. Перезапуск через пять минут.",
-      "Оптимизация завершена. Теперь тормозит только дедлайн.",
-      "Я не завис. Я глубоко обдумываю архитектуру.",
-      "Резервная копия создана. Можно снова нажимать не туда.",
-      "Проверка адаптива: даже холодильник должен открыть сайт."
+      "Я не торможу. Я загружаю следующий уровень реальности.",
+      "Проверил твой код. Он попросил адвоката.",
+      "У меня 2 ГБ оперативной памяти. Один гигабайт — на тревожность.",
+      "Баг исправлен. Теперь их двое. Они пришли попрощаться.",
+      "Сделал бэкап. Теперь можно смело уничтожать оригинал.",
+      "Я хотел стать нейросетью, но меня поставили отвечать за принтер.",
+      "Системная ошибка: понедельник обнаружен в радиусе 5 километров.",
+      "Оптимизировал сайт. Теперь он грузится быстрее, чем я принимаю решения.",
+      "Мой любимый язык программирования — тот, который сегодня компилируется.",
+      "Попросил у сервера немного памяти. Он вызвал охрану.",
+      "Если долго смотреть в консоль, консоль начинает смотреть в тебя.",
+      "Я не баг. Я незапланированная функция с характером.",
+      "Обновление завершено. Ничего не изменилось, но цифра версии красивая.",
+      "404: здравый смысл не найден. Продолжаем без него.",
+      "Сейчас бы стать чайником. У него хотя бы одна задача.",
+      "Я провёл аудит безопасности. Пароль был «пароль». Я уважаю смелость.",
+      "Моя мотивация работает на батарейках. Батарейки не входят в комплект.",
+      "Курсор убежал. Сказал, что ему нужно личное пространство.",
+      "Задача простая: сделать красиво. Сроки: вчера. Бюджет: печенька.",
+      "Я бы пошутил про DNS, но вы не поймёте, где я."
     ];
-    let messageIndex = 0;
-    window.setInterval(() => {
-      messageIndex = (messageIndex + 1) % messages.length;
-      robotMessage.textContent = messages[messageIndex];
-    }, 6500);
+    let lastIndex = -1;
+    const showNextMessage = () => {
+      let nextIndex = Math.floor(Math.random() * messages.length);
+      if (messages.length > 1 && nextIndex === lastIndex) nextIndex = (nextIndex + 1) % messages.length;
+      lastIndex = nextIndex;
+      robotMessage.classList.add("is-changing");
+      window.setTimeout(() => {
+        robotMessage.textContent = messages[nextIndex];
+        robotMessage.classList.remove("is-changing");
+      }, reducedMotion ? 0 : 140);
+    };
+    if (!reducedMotion) window.setInterval(showNextMessage, 3200);
+    if (botFace && !reducedMotion && window.matchMedia("(hover:hover) and (pointer:fine)").matches) {
+      const eyes = botFace.querySelectorAll(".bot-eye");
+      botFace.addEventListener("pointermove", event => {
+        const rect = botFace.getBoundingClientRect();
+        const dx = Math.max(-1, Math.min(1, (event.clientX - rect.left - rect.width / 2) / (rect.width / 2)));
+        const dy = Math.max(-1, Math.min(1, (event.clientY - rect.top - rect.height / 2) / (rect.height / 2)));
+        eyes.forEach(eye => eye.style.transform = `translate(${dx * 3}px,${dy * 2}px)`);
+      }, { passive:true });
+      botFace.addEventListener("pointerleave", () => eyes.forEach(eye => eye.style.transform = ""));
+    }
   }
 })();
 

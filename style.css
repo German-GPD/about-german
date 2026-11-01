@@ -2030,3 +2030,35 @@ section:nth-of-type(even){--section-accent:var(--orange)}
 
 /* The floating chapter dock and back-to-top UI are intentionally removed. */
 #pageDock,.page-dock,#backToTop,#scrollProgress{display:none!important;visibility:hidden!important;pointer-events:none!important}
+
+
+/* Inspiration 01–02: use the same quiet editorial heading system as the book library. */
+#inspiration .inspiration-authors>.inspiration-heading,
+#inspiration .inspiration-channels>.inspiration-heading{
+  display:flex;align-items:flex-start;gap:14px;margin:0 0 17px;
+}
+#inspiration .inspiration-authors .inspiration-index,
+#inspiration .inspiration-channels .inspiration-index{
+  display:grid;place-items:center;flex:0 0 38px;height:38px;
+  border:1px solid var(--cyan);color:var(--cyan);
+  font:11px 'IBM Plex Mono',monospace;background:transparent;
+}
+#inspiration .inspiration-authors .inspiration-heading h3,
+#inspiration .inspiration-channels .inspiration-heading h3{
+  margin:0 0 5px;font:600 20px 'Space Grotesk',sans-serif;letter-spacing:-.03em;
+}
+#inspiration .inspiration-authors .inspiration-heading p,
+#inspiration .inspiration-channels .inspiration-heading p{
+  margin:0;color:var(--muted);font-size:12px;line-height:1.65;
+}
+
+/* Keep the opening quote clean: no gradient panel or decorative shadow. */
+.hero-quote{
+  background:transparent!important;background-image:none!important;
+  box-shadow:none!important;border-radius:0!important;
+  border-left:2px solid var(--cyan)!important;
+}
+:root[data-theme="light"] .hero-quote{
+  background:transparent!important;background-image:none!important;
+  box-shadow:none!important;border-color:var(--cyan)!important;
+}

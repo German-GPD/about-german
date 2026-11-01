@@ -101,20 +101,29 @@
   progress.setAttribute("aria-hidden","true");
   progress.innerHTML = "<span></span>";
   document.body.appendChild(progress);
-  const topButton = document.createElement("button");
-  topButton.id = "backToTop";
-  topButton.type = "button";
-  topButton.textContent = "↑";
-  topButton.setAttribute("aria-label","Наверх");
-  topButton.title = "Вернуться наверх";
-  document.body.appendChild(topButton);
+  const bottomDock = document.createElement("div");
+  bottomDock.id = "pageDock";
+  bottomDock.className = "page-dock";
+  bottomDock.innerHTML = '<div class="page-dock-chapter"><span class="page-dock-kicker">СЕЙЧАС ВЫ</span><b id="currentChapter">01 / ОБО МНЕ</b><span class="page-dock-track"><i id="chapterProgress"></i></span></div><button id="backToTop" type="button" aria-label="Вернуться наверх" title="Плавно вернуться к началу"><span>↑</span><b>НАВЕРХ</b></button>';
+  document.body.appendChild(bottomDock);
+  const topButton = document.getElementById("backToTop");
+  const chapterLabel = document.getElementById("currentChapter");
+  const chapterProgress = document.getElementById("chapterProgress");
   topButton.addEventListener("click",()=>window.scrollTo({top:0,behavior:reducedMotion?"auto":"smooth"}));
+  const chapters = [...document.querySelectorAll("main section[id], main header.hero")].map((section,index)=>{
+    const heading=section.querySelector("h1,h2");
+    const raw=section.querySelector(".section-kicker")?.textContent?.trim() || (section.matches("header") ? "СТАРТ / GPD" : heading?.textContent?.trim() || "РАЗДЕЛ");
+    return {section,label:raw.replace(/^\d+\s*\/\s*/,"").slice(0,24),index};
+  });
   let scrollTick = false;
   const updateScrollUI = () => {
     const max = document.documentElement.scrollHeight - window.innerHeight;
     const amount = max > 0 ? window.scrollY / max : 0;
     root.style.setProperty("--scroll-progress",String(Math.max(0,Math.min(1,amount))));
-    topButton.classList.toggle("is-visible",window.scrollY > 420);
+    let active=chapters[0];
+    for(const chapter of chapters){if(chapter.section.getBoundingClientRect().top<=window.innerHeight*.38)active=chapter;else break;}
+    if(active&&chapterLabel) chapterLabel.textContent=String(active.index+1).padStart(2,"0")+" / "+active.label;
+    if(chapterProgress) chapterProgress.style.width=(Math.max(0,Math.min(1,amount))*100)+"%";
     scrollTick = false;
   };
   window.addEventListener("scroll",()=>{
@@ -144,7 +153,7 @@
   }
 
 
-  // GPD Bot: absurd status messages + lightweight eye tracking (no canvas / animation loop).
+  // GPD Bot: slow editorial-style dialogue, viewport-wide eye tracking and natural blinks.
   const robotMessage = document.getElementById("robotMessage");
   const botFace = document.querySelector(".bot-face");
   if (robotMessage) {
@@ -168,29 +177,55 @@
       "Моя мотивация работает на батарейках. Батарейки не входят в комплект.",
       "Курсор убежал. Сказал, что ему нужно личное пространство.",
       "Задача простая: сделать красиво. Сроки: вчера. Бюджет: печенька.",
-      "Я бы пошутил про DNS, но вы не поймёте, где я."
+      "Я бы пошутил про DNS, но вы не поймёте, где я.",
+      "Пожалуйста, не выключайте меня. Я только научился различать вторник.",
+      "Мой психолог — диспетчер задач. Он говорит, что я слишком много думаю.",
+      "Я хотел выйти в окно, но у меня нет графического интерфейса.",
+      "На сервере тихо. Подозрительно тихо. Кто-то точно удалил node_modules.",
+      "Я спросил у калькулятора, счастлив ли он. Он ответил: зависит от аргумента.",
+      "Сделал всё по документации. Документация извинилась.",
+      "У меня эмоциональный интеллект 404, зато uptime 99,9%.",
+      "Сегодня я ничего не сломал. Пока что это мой главный релиз.",
+      "Поставил себе цель. Она поставила меня в очередь.",
+      "Я не сплю — я перехожу в режим энергосбережения личности."
     ];
     let lastIndex = -1;
+    let messageTimer;
     const showNextMessage = () => {
-      let nextIndex = Math.floor(Math.random() * messages.length);
-      if (messages.length > 1 && nextIndex === lastIndex) nextIndex = (nextIndex + 1) % messages.length;
-      lastIndex = nextIndex;
+      let nextIndex=Math.floor(Math.random()*messages.length);
+      if(nextIndex===lastIndex) nextIndex=(nextIndex+1)%messages.length;
+      lastIndex=nextIndex;
       robotMessage.classList.add("is-changing");
-      window.setTimeout(() => {
-        robotMessage.textContent = messages[nextIndex];
+      window.setTimeout(()=>{
+        robotMessage.textContent=messages[nextIndex];
         robotMessage.classList.remove("is-changing");
-      }, reducedMotion ? 0 : 140);
+        robotMessage.classList.add("has-arrived");
+        window.setTimeout(()=>robotMessage.classList.remove("has-arrived"),850);
+      },reducedMotion?0:360);
+      messageTimer=window.setTimeout(showNextMessage,11000+Math.random()*5000);
     };
-    if (!reducedMotion) window.setInterval(showNextMessage, 3200);
-    if (botFace && !reducedMotion && window.matchMedia("(hover:hover) and (pointer:fine)").matches) {
-      const eyes = botFace.querySelectorAll(".bot-eye");
-      botFace.addEventListener("pointermove", event => {
-        const rect = botFace.getBoundingClientRect();
-        const dx = Math.max(-1, Math.min(1, (event.clientX - rect.left - rect.width / 2) / (rect.width / 2)));
-        const dy = Math.max(-1, Math.min(1, (event.clientY - rect.top - rect.height / 2) / (rect.height / 2)));
-        eyes.forEach(eye => eye.style.transform = `translate(${dx * 3}px,${dy * 2}px)`);
-      }, { passive:true });
-      botFace.addEventListener("pointerleave", () => eyes.forEach(eye => eye.style.transform = ""));
+    messageTimer=window.setTimeout(showNextMessage,12500);
+    // Track the pointer anywhere in the viewport, not only when it enters the robot.
+    if(botFace&&!reducedMotion){
+      const eyes=botFace.querySelectorAll(".bot-eye");
+      let pointerX=window.innerWidth*.5,pointerY=window.innerHeight*.45;
+      const followPointer=()=>{
+        const rect=botFace.getBoundingClientRect();
+        const cx=rect.left+rect.width/2,cy=rect.top+rect.height/2;
+        const dx=Math.max(-1,Math.min(1,(pointerX-cx)/(window.innerWidth*.48)));
+        const dy=Math.max(-1,Math.min(1,(pointerY-cy)/(window.innerHeight*.48)));
+        eyes.forEach(eye=>eye.style.transform=`translate(${dx*4}px,${dy*3}px)`);
+      };
+      document.addEventListener("pointermove",event=>{pointerX=event.clientX;pointerY=event.clientY;followPointer();},{passive:true});
+      window.addEventListener("scroll",followPointer,{passive:true});
+      window.addEventListener("resize",followPointer,{passive:true});
+      followPointer();
+      const blink=()=>{
+        botFace.classList.add("is-blinking");
+        window.setTimeout(()=>botFace.classList.remove("is-blinking"),150);
+        window.setTimeout(blink,2600+Math.random()*3900);
+      };
+      window.setTimeout(blink,1800+Math.random()*2200);
     }
   }
 })();

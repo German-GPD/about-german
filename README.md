@@ -28,6 +28,21 @@
 - **Math corner** — график функции обратной пропорциональности.
 - **Темы и адаптивность** — светлый и тёмный режимы, мобильные экраны и reduced motion.
 
+### 🧩 Проекты в портфолио
+
+На сайте собраны собственные продукты и эксперименты с честно обозначенными статусами:
+
+- [School Calc](https://german-gpd.github.io/school-calc/) — веб-калькулятор школьных оценок.
+- [German OS Backup](https://german-gpd.github.io/German-OS-Backup/) — локальная утилита резервного копирования для Windows.
+- [ChatGPT Desktop](https://github.com/German-GPD/AI-Desktop-App-Chat-GPT) и [Claude Desktop](https://github.com/German-GPD/AI-Desktop-App-Claude) — отдельные Windows-приложения для официальных веб-сервисов.
+- [Cash Converter](https://german-gpd.github.io/Cash-Converter/) — конвертер валют, Bitcoin и золота.
+- [G_Tweaker](https://github.com/German-GPD/g_tweaker) — утилита настройки Windows в разработке.
+- [Calculator](https://github.com/German-GPD/calculator) — веб- и Android-калькулятор.
+- [SuperLuxCalc](https://github.com/German-GPD/SuperLuxCalc) — коллекция калькуляторов на разных языках программирования.
+- You Daily — приватная концепция персональной ИИ-газеты на раннем этапе планирования.
+- [German'$ Games Library](https://german-gpd.github.io/german-games-library-/) — личный каталог игровой коллекции.
+- [AERO7 GRAM](https://github.com/German-GPD/aero7-gram) — ранняя разработка Telegram-клиента в стиле Windows 7 Aero.
+
 ### 🧰 Стек
 
 ![HTML5](https://img.shields.io/badge/HTML5-e65b32?style=flat-square&logo=html5&logoColor=white)

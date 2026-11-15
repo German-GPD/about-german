@@ -2253,3 +2253,32 @@ main>.wrap>section{
 @media(prefers-reduced-motion:reduce){
   .wishlist-visual.product-photo img{transition:none}
 }
+
+
+/* 2026-11-15 — GPD desktop AI applications */
+.desktop-app-suite{margin-top:30px;padding:clamp(22px,3.4vw,38px);border:1px solid color-mix(in srgb,var(--cyan) 38%,var(--line));background:linear-gradient(125deg,color-mix(in srgb,var(--cyan) 7%,var(--surface)),var(--surface) 55%);box-shadow:5px 5px 0 var(--line);position:relative;overflow:hidden}
+.desktop-app-heading{display:flex;justify-content:space-between;align-items:flex-start;gap:22px;margin-bottom:22px}
+.desktop-app-heading h3{font:600 clamp(22px,3vw,30px)/1.2 'Space Grotesk',sans-serif;letter-spacing:-.045em;margin:9px 0}
+.desktop-app-heading p{font-size:13px;line-height:1.75;color:var(--muted);max-width:720px;margin:0}
+.desktop-app-count{font:9px 'IBM Plex Mono',monospace;color:var(--cyan);white-space:nowrap;border:1px solid var(--line);padding:8px 10px}
+.desktop-app-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.desktop-app-card{--app-accent:#10a37f;padding:clamp(20px,2.6vw,28px);border:1px solid var(--line);background:var(--bg);min-width:0;display:flex;flex-direction:column}
+.desktop-app-card.claude-app{--app-accent:#d97757}
+.desktop-app-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:22px}
+.desktop-app-icon{display:grid;place-items:center;width:46px;height:46px;background:color-mix(in srgb,var(--app-accent) 10%,var(--surface));border:1px solid color-mix(in srgb,var(--app-accent) 55%,var(--line));color:var(--app-accent);font:600 23px 'Space Grotesk',sans-serif}
+.desktop-app-platform{font:8px 'IBM Plex Mono',monospace;color:var(--muted);letter-spacing:.08em;text-align:right}
+.desktop-app-label{font:9px 'IBM Plex Mono',monospace;color:var(--app-accent);letter-spacing:.13em}
+.desktop-app-card h4{font:600 24px 'Space Grotesk',sans-serif;letter-spacing:-.045em;margin:7px 0 9px}
+.desktop-app-card p{font-size:12px;line-height:1.75;color:var(--muted);margin:0 0 18px;flex:1}
+.desktop-app-tech{display:flex;flex-wrap:wrap;gap:7px;margin:0 0 20px}
+.desktop-app-tech span{font:8px 'IBM Plex Mono',monospace;padding:7px 8px;border:1px solid var(--line);color:var(--muted)}
+.desktop-app-actions{display:flex;align-items:center;flex-wrap:wrap;gap:13px;padding-top:15px;border-top:1px solid var(--line)}
+.desktop-app-actions a{font:9px 'IBM Plex Mono',monospace;color:var(--muted);text-decoration:none}
+.desktop-app-actions a:hover{color:var(--app-accent)}
+.desktop-app-actions .desktop-app-download{display:inline-flex;align-items:center;gap:9px;padding:11px 13px;background:var(--app-accent);color:#fff;font-weight:600}
+.desktop-app-actions .desktop-app-download:hover{filter:brightness(1.1);color:#fff}
+.desktop-app-actions .desktop-app-download b{font-size:13px}
+.desktop-app-footnote{font-size:10px;line-height:1.7;color:var(--muted);margin:18px 0 0}
+:root[data-theme="light"] .desktop-app-suite{background:linear-gradient(125deg,#f0f8f5,#fff 60%)}
+@media(max-width:650px){.desktop-app-grid{grid-template-columns:1fr}.desktop-app-heading{flex-direction:column}.desktop-app-count{align-self:flex-start}}
+@media(prefers-reduced-motion:reduce){.desktop-app-actions a{transition:none}}

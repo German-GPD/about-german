@@ -2282,3 +2282,14 @@ main>.wrap>section{
 :root[data-theme="light"] .desktop-app-suite{background:linear-gradient(125deg,#f0f8f5,#fff 60%)}
 @media(max-width:650px){.desktop-app-grid{grid-template-columns:1fr}.desktop-app-heading{flex-direction:column}.desktop-app-count{align-self:flex-start}}
 @media(prefers-reduced-motion:reduce){.desktop-app-actions a{transition:none}}
+
+/* 2026-11-15b — refreshed portfolio details */
+.device-storage-note{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0 22px;padding:17px;border:1px solid var(--line);background:var(--surface)}
+.device-storage-note>.device-chip{grid-column:1/-1}
+.device-storage-note>div{display:flex;flex-direction:column;gap:5px;min-width:0}
+.device-storage-note b{font:600 12px 'Space Grotesk',sans-serif;color:var(--text)}
+.device-storage-note small{font-size:10px;line-height:1.5;color:var(--muted)}
+.felt-mat-visual{display:flex;align-items:center;justify-content:center;min-height:150px;overflow:hidden;background:linear-gradient(145deg,#d7d7d2,#aeb0aa)}
+.felt-mat-shape{width:76%;height:90px;display:flex;align-items:flex-end;justify-content:flex-end;padding:12px;background:linear-gradient(135deg,#777b78,#555b58);border:1px solid #929793;box-shadow:0 12px 24px rgba(0,0,0,.18);transform:rotate(-4deg)}
+.felt-mat-shape span{font:8px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#d8ddd9}
+@media(max-width:700px){.device-storage-note{grid-template-columns:1fr}.device-storage-note>.device-chip{grid-column:auto}}

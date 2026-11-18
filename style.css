@@ -2364,3 +2364,7 @@ input,textarea,select{line-height:1.5}
  html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
  .motion-ready .reveal,.reveal{opacity:1!important;transform:none!important;clip-path:none!important}
 }
+
+/* Preserve the featured project's two-column composition within the shared card system. */
+.project-feature{display:grid;grid-template-columns:minmax(0,1fr) auto}
+@media(max-width:760px){.project-feature{display:grid;grid-template-columns:1fr}}

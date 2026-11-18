@@ -5,7 +5,7 @@ import io
 import re
 import unicodedata
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, parse_qs, unquote, urlparse
 import requests
 from PIL import Image, ImageOps
 
@@ -25,7 +25,13 @@ def safe_name(alt: str, url: str) -> str:
 
 def download(url: str) -> bytes:
     candidates = [url]
-    if "wsrv.nl" not in url:
+    if "wsrv.nl" in url:
+        nested = parse_qs(urlparse(url).query).get("url", [])
+        if nested:
+            origin = unquote(nested[0])
+            candidates.append(origin)
+            candidates.append("https://wsrv.nl/?url=" + quote(origin, safe="") + "&output=webp&w=1400&q=82")
+    else:
         candidates.append("https://wsrv.nl/?url=" + quote(url, safe="") + "&output=webp&w=1400&q=82")
     last_error = None
     for candidate in candidates:

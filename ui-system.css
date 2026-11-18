@@ -41,7 +41,7 @@ button,.btn,.project-link,.games-primary-link,.quick-nav-grid a,.theme-toggle{tr
 .quick-nav{margin:0 0 clamp(28px,3vw,38px)}.quick-nav-head{min-height:48px}.quick-nav-grid{gap:0}
 .quick-nav-grid a{min-width:0;min-height:48px;padding:11px 13px;line-height:1.35}.quick-nav-grid a span{min-width:0;text-wrap:balance}
 .project-grid,.skills-grid,.devices-layout,.ai-grid,.toolkit-grid,.case-grid,.contact-primary,.contact-grid,.wishlist-grid,.inspiration-grid,.legend-grid,.book-grid,.grid3{min-width:0;gap:var(--ui-gap)!important;align-items:stretch}
-.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.project-feature{grid-column:1/-1;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:24px}.project-feature>div:first-child{min-width:0}
+.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.project-feature{grid-column:1/-1;align-items:center;gap:24px}.project-feature>div:first-child{min-width:0}
 .skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.devices-layout{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}.device-side{grid-template-columns:repeat(2,minmax(0,1fr))}
 .ai-grid,.toolkit-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.case-grid{grid-template-columns:1fr}.contact-primary{grid-template-columns:repeat(3,minmax(0,1fr))}
 .wishlist-grid,.inspiration-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.legend-grid,.grid3{grid-template-columns:repeat(3,minmax(0,1fr))}.book-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
@@ -64,14 +64,15 @@ input,textarea,select{font:inherit;line-height:1.5}
 .reveal{opacity:1;transform:none}
 .motion-ready .reveal{opacity:0;transform:translate3d(0,18px,0);transition:opacity 560ms var(--ui-ease),transform 560ms var(--ui-ease);will-change:opacity,transform}
 .motion-ready .reveal.is-visible{opacity:1;transform:translate3d(0,0,0);will-change:auto}
-.project,.skill-card,.device-card,.ai-card,.device-main,.monitor{transform-style:preserve-3d;will-change:transform}
-.ui-tilt-active{transform:perspective(1100px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) translateY(-3px)!important}
+.project,.skill-card,.device-card,.ai-card,.device-main,.monitor{transform-style:preserve-3d}
+.ui-tilt-active{will-change:transform;transform:perspective(1100px) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) translateY(-3px)!important}
 @media(hover:hover) and (pointer:fine){
- .project:hover,.card:hover,.skill-card:hover,.device-card:hover,.ai-card:hover,.device-main:hover,.case-study:hover,.contact:hover,.wishlist-card:hover{border-color:var(--cyan);box-shadow:var(--ui-shadow-hover)}
+ .project:hover,.card:hover,.skill-card:hover,.device-card:hover,.ai-card:hover,.device-main:hover,.case-study:hover,.contact:hover,.wishlist-card:hover{transform:translateY(-2px);border-color:var(--cyan);box-shadow:var(--ui-shadow-hover)}
  .inspiration-card:hover,.legend-card:hover,.book-card:hover{border-color:var(--cyan)}
  .quick-nav-grid a:hover{background:color-mix(in srgb,var(--cyan) 9%,var(--surface));color:var(--text)}
  .tag:hover{transform:translateY(-2px);border-color:var(--cyan)}
 }
+.project-feature{display:grid;grid-template-columns:minmax(0,1fr) auto}
 @media(max-width:1000px){.ai-grid,.toolkit-grid,.legend-grid,.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}.book-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.devices-layout{grid-template-columns:1fr}}
 @media(max-width:760px){
  :root{--ui-section:62px;--ui-gap:17px}html{scroll-padding-top:76px}section[id]{scroll-margin-top:82px}
@@ -98,3 +99,5 @@ input,textarea,select{font:inherit;line-height:1.5}
  html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
  .motion-ready .reveal,.reveal{opacity:1!important;transform:none!important;will-change:auto!important}.ui-tilt-active{transform:none!important}
 }
+
+@media(max-width:760px){.project-feature{grid-template-columns:1fr}}

@@ -14,10 +14,15 @@
     }
   };
   let manualTheme = false;
-  setTheme(themeQuery.matches ? "light" : "dark");
+  let savedTheme = null;
+  try { savedTheme = localStorage.getItem("gpd-theme"); } catch {}
+  if (savedTheme === "light" || savedTheme === "dark") manualTheme = true;
+  setTheme(savedTheme || (themeQuery.matches ? "light" : "dark"));
   themeToggle?.addEventListener("click", () => {
     manualTheme = true;
-    setTheme(root.dataset.theme === "light" ? "dark" : "light");
+    const nextTheme = root.dataset.theme === "light" ? "dark" : "light";
+    setTheme(nextTheme);
+    try { localStorage.setItem("gpd-theme", nextTheme); } catch {}
   });
   themeQuery.addEventListener?.("change", (event) => {
     if (!manualTheme) setTheme(event.matches ? "light" : "dark");
@@ -97,25 +102,7 @@
 
   // Floating chapter dock, reading progress and back-to-top control intentionally removed.
 
-  // Restrained pointer tilt: CSS owns the transition; JS only updates motion variables.
-  if (window.matchMedia("(hover:hover) and (pointer:fine)").matches && !reducedMotion) {
-    const tiltTargets = document.querySelectorAll(".project,.skill-card,.device-card,.ai-card,.device-main,.monitor");
-    tiltTargets.forEach(card=>{
-      card.addEventListener("pointermove",event=>{
-        const rect=card.getBoundingClientRect();
-        const x=(event.clientX-rect.left)/Math.max(1,rect.width);
-        const y=(event.clientY-rect.top)/Math.max(1,rect.height);
-        card.style.setProperty("--tilt-x",((.5-y)*1.7).toFixed(2)+"deg");
-        card.style.setProperty("--tilt-y",((x-.5)*2.1).toFixed(2)+"deg");
-        card.classList.add("ui-tilt-active");
-      },{passive:true});
-      card.addEventListener("pointerleave",()=>{
-        card.classList.remove("ui-tilt-active");
-        card.style.removeProperty("--tilt-x");
-        card.style.removeProperty("--tilt-y");
-      });
-    });
-  }
+  // Cards stay on a crisp 2D plane: no perspective transforms that soften text on hover.
 
 
   // GPD Bot: slow editorial-style dialogue, viewport-wide eye tracking and natural blinks.

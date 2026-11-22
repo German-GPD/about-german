@@ -33,8 +33,8 @@ onMounted(() => {
     try { saved = localStorage.getItem('gpd-theme') } catch {}
     if (saved !== 'light' && saved !== 'dark') applyTheme(event.matches ? 'light' : 'dark')
   }
-  themeQuery.addEventListener?.('change', handleSystemThemeChange)
-  themeQuery.addListener?.(handleSystemThemeChange)
+  if (themeQuery.addEventListener) themeQuery.addEventListener('change', handleSystemThemeChange)
+  else themeQuery.addListener?.(handleSystemThemeChange)
 
   // Initialize the existing interactions after Vue renders the page.
   import('./legacy.js')
@@ -43,8 +43,8 @@ onMounted(() => {
 
 onBeforeUnmount(() => {
   if (!themeQuery || !handleSystemThemeChange) return
-  themeQuery.removeEventListener?.('change', handleSystemThemeChange)
-  themeQuery.removeListener?.(handleSystemThemeChange)
+  if (themeQuery.removeEventListener) themeQuery.removeEventListener('change', handleSystemThemeChange)
+  else themeQuery.removeListener?.(handleSystemThemeChange)
 })
 </script>
 

@@ -1,0 +1,36 @@
+name: Vue build check
+
+on:
+  push:
+    branches:
+      - feature/vue-migration
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'src/**'
+      - 'index.html'
+      - 'package.json'
+      - 'vite.config.js'
+      - 'style.css'
+      - 'ui-system.css'
+      - '.github/workflows/vue-build.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm install
+      - name: Build production site
+        run: npm run build

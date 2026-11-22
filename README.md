@@ -63,6 +63,11 @@ npm run dev
 
 Для production-сборки: `npm run build`. Проверить собранную версию: `npm run preview`.
 
+
+### 🚀 Публикация на GitHub Pages
+
+Production-сборка создаётся командой `npm run build` в папку `dist`. Для публикации через GitHub Actions выбери **Settings → Pages → Build and deployment → Source → GitHub Actions**. Workflow `.github/workflows/deploy-pages.yml` публикует `dist` после обновления `main`.
+
 ### 📁 Структура
 
 ```text

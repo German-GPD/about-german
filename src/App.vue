@@ -1,5 +1,6 @@
 <script setup>
 import { onMounted, onBeforeUnmount, ref } from 'vue'
+import ThemeToggle from './components/ThemeToggle.vue'
 
 const theme = ref('dark')
 let themeQuery
@@ -55,7 +56,7 @@ onBeforeUnmount(() => {
       <a class="logo px" href="#top" aria-label="German GPD home"><span>GP</span><span class="blink">_</span></a>
       <div class="nav-tools">
         <div class="status"><i aria-hidden="true"></i><span>НА СВЯЗИ</span></div>
-        <button type="button" class="theme-toggle pixel" id="themeToggle" aria-label="Переключить светлую и тёмную тему" title="Тема по настройкам устройства" :aria-pressed="theme === 'light'" @click="toggleTheme" >{{ theme === 'light' ? '☾' : '☼' }} <span>ТЕМА</span></button>
+        <ThemeToggle :theme="theme" @toggle="toggleTheme" />
         <a class="btn ghost pixel pixel-shadow" href="https://t.me/german_gpd" target="_blank" rel="noopener noreferrer">Написать ↗</a>
       </div>
     </nav>

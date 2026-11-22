@@ -2,31 +2,6 @@
   "use strict";
   const root = document.documentElement;
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const themeToggle = document.getElementById("themeToggle");
-  const themeQuery = window.matchMedia("(prefers-color-scheme: light)");
-  const setTheme = (theme) => {
-    root.dataset.theme = theme;
-    document.querySelector('meta[name="theme-color"]')?.setAttribute("content", theme === "light" ? "#f4f2ec" : "#12131a");
-    if (themeToggle) {
-      themeToggle.firstChild.textContent = theme === "light" ? "☾ " : "☼ ";
-      themeToggle.setAttribute("aria-pressed", String(theme === "light"));
-      themeToggle.title = theme === "light" ? "Сейчас светлая тема" : "Сейчас тёмная тема";
-    }
-  };
-  let manualTheme = false;
-  let savedTheme = null;
-  try { savedTheme = localStorage.getItem("gpd-theme"); } catch {}
-  if (savedTheme === "light" || savedTheme === "dark") manualTheme = true;
-  setTheme(savedTheme || (themeQuery.matches ? "light" : "dark"));
-  themeToggle?.addEventListener("click", () => {
-    manualTheme = true;
-    const nextTheme = root.dataset.theme === "light" ? "dark" : "light";
-    setTheme(nextTheme);
-    try { localStorage.setItem("gpd-theme", nextTheme); } catch {}
-  });
-  themeQuery.addEventListener?.("change", (event) => {
-    if (!manualTheme) setTheme(event.matches ? "light" : "dark");
-  });
   document.getElementById("year")?.replaceChildren(String(new Date().getFullYear()));
 
   // Broken remote art should never leave a blank card.

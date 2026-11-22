@@ -16,7 +16,7 @@
 
 ### ✦ О проекте
 
-Одностраничный сайт-портфолио, который я проектирую и развиваю сам. Здесь собраны мои работы, технические интересы, сетап, игровая библиотека, заметки и небольшие интерактивные эксперименты.
+Одностраничный сайт-портфолио на Vue 3, который я проектирую и развиваю сам. Здесь собраны мои работы, технические интересы, сетап, игровая библиотека, заметки и интерактивные эксперименты.
 
 ### 🚀 Что внутри
 
@@ -50,26 +50,34 @@
 ![JavaScript](https://img.shields.io/badge/JavaScript-e4c341?style=flat-square&logo=javascript&logoColor=171717)
 ![GitHub Pages](https://img.shields.io/badge/GitHub_Pages-222?style=flat-square&logo=githubpages&logoColor=white)
 
-Без фреймворка и обязательной сборки: HTML, CSS и JavaScript. Сайт статический.
+Frontend: Vue 3 + JavaScript, сборка Vite. Сайт остаётся статическим и может размещаться на GitHub Pages.
 
 ### ⚙️ Запуск локально
 
 ```bash
 git clone https://github.com/German-GPD/about-german.git
 cd about-german
-python -m http.server 8000
+npm install
+npm run dev
 ```
 
-Открой [http://localhost:8000](http://localhost:8000).
+Для production-сборки: `npm run build`. Проверить собранную версию: `npm run preview`.
 
 ### 📁 Структура
 
 ```text
 about-german/
-├── index.html   # страница и контент
-├── style.css    # визуальная система и адаптивность
-├── script.js    # интерфейс и интерактивность
-├── game.js      # логика мини-игры
+├── index.html          # HTML shell, SEO и метаданные
+├── src/
+│   ├── App.vue         # Vue-приложение и страница
+│   ├── main.js         # точка входа
+│   ├── legacy.js       # сохранённые DOM-интеракции
+│   └── game.js         # логика мини-игры
+├── assets/             # изображения WebP
+├── style.css           # визуальная система
+├── ui-system.css       # дополнительные UI-правила
+├── package.json
+├── vite.config.js
 ├── LICENSE
 └── README.md
 ```

@@ -247,3 +247,21 @@
   },{threshold:.28});
   observer.observe(plot);
 })();
+
+/* Temporary birthday event: visible through 2026-11-26, removed automatically from 2026-11-27. */
+(() => {
+  const modal=document.getElementById("birthdayEvent");
+  if(!modal)return;
+  const now=new Date();
+  const today=[now.getFullYear(),String(now.getMonth()+1).padStart(2,"0"),String(now.getDate()).padStart(2,"0")].join("-");
+  if(today>="2026-11-27")return;
+  try{if(sessionStorage.getItem("gpd-birthday-event-dismissed")==="1")return;}catch{}
+  const close=()=>{
+    modal.hidden=true;
+    try{sessionStorage.setItem("gpd-birthday-event-dismissed","1");}catch{}
+  };
+  modal.querySelectorAll("[data-event-close]").forEach(button=>button.addEventListener("click",close));
+  document.addEventListener("keydown",event=>{if(event.key==="Escape"&&!modal.hidden)close();});
+  modal.hidden=false;
+  modal.querySelector(".event-close")?.focus({preventScroll:true});
+})();

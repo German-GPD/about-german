@@ -2293,3 +2293,25 @@ main>.wrap>section{
 .felt-mat-shape{width:76%;height:90px;display:flex;align-items:flex-end;justify-content:flex-end;padding:12px;background:linear-gradient(135deg,#777b78,#555b58);border:1px solid #929793;box-shadow:0 12px 24px rgba(0,0,0,.18);transform:rotate(-4deg)}
 .felt-mat-shape span{font:8px 'IBM Plex Mono',monospace;letter-spacing:.16em;color:#d8ddd9}
 @media(max-width:700px){.device-storage-note{grid-template-columns:1fr}.device-storage-note>.device-chip{grid-column:auto}}
+
+
+/* 2026-11-24 — temporary birthday event and current keypad */
+.peripheral-current-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.event-modal[hidden]{display:none}
+.event-modal{position:fixed;inset:0;z-index:150;display:grid;place-items:center;padding:20px}
+.event-backdrop{position:absolute;inset:0;width:100%;height:100%;border:0;background:rgba(7,10,14,.68);backdrop-filter:blur(5px);cursor:pointer}
+.event-dialog{position:relative;width:min(100%,430px);padding:clamp(23px,5vw,34px);background:var(--surface);border:1px solid color-mix(in srgb,var(--amber) 58%,var(--line));box-shadow:8px 8px 0 rgba(0,0,0,.25);color:var(--text);animation:event-in .28s cubic-bezier(.2,.8,.2,1) both}
+.event-topline{display:flex;justify-content:space-between;gap:12px;padding:0 34px 15px 0;border-bottom:1px solid var(--line);font:8px 'IBM Plex Mono',monospace;letter-spacing:.1em;color:var(--muted)}
+.event-close{position:absolute;right:17px;top:13px;border:1px solid var(--line);background:transparent;color:var(--text);width:30px;height:30px;font:22px/1 'Space Grotesk',sans-serif;cursor:pointer}
+.event-mark{display:grid;place-items:center;width:78px;height:78px;margin:24px 0 18px;background:var(--amber);color:#17131a;font:30px 'Press Start 2P',monospace;box-shadow:4px 4px 0 var(--line)}
+.event-kicker{margin:0 0 8px;color:var(--amber);font:9px 'IBM Plex Mono',monospace;letter-spacing:.13em}
+.event-dialog h2{margin:0 0 10px;font:700 clamp(24px,5vw,32px)/1.15 'Space Grotesk',sans-serif;letter-spacing:-.045em}
+.event-dialog>p:not(.event-kicker){margin:0;color:var(--muted);font-size:13px;line-height:1.7}
+.event-date{display:flex;align-items:center;justify-content:space-between;margin:22px 0 17px;padding:13px 14px;border:1px solid var(--line);background:var(--bg);font:10px 'IBM Plex Mono',monospace;letter-spacing:.1em}
+.event-date span{color:var(--muted)}
+.event-dismiss{width:100%;min-height:43px;border:1px solid var(--amber);background:var(--amber);color:#17131a;font:9px 'Press Start 2P',monospace;cursor:pointer}
+.event-expiry{display:block;margin-top:12px;text-align:center;color:var(--muted);font:9px 'IBM Plex Mono',monospace}
+@keyframes event-in{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:720px){.peripheral-current-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:420px){.peripheral-current-grid{grid-template-columns:1fr}.event-dialog{padding:22px}.event-mark{width:66px;height:66px}}
+@media(prefers-reduced-motion:reduce){.event-dialog{animation:none}}
